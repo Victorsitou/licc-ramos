@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 
 import Footer from "./components/Footer";
 import Ramo from "./components/Ramo";
-import { transform } from "next/dist/build/swc";
 import Card from "@mui/material/Card";
 
 export interface RamoInterface {
