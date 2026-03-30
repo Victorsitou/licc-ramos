@@ -11,27 +11,25 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 
+import ramosJson from "./ramos.json";
+const ramos = ramosJson as unknown as RamoInterface[];
+
 export interface RamoInterface {
   sigla: string;
   nombre: string;
   clases: number;
   url: string;
+  info_clases: {
+    clase: number;
+    objetivo: string;
+    contenido: string;
+    texto_guia?: string;
+  }[];
 }
 
-const RAMOS: RamoInterface[] = [
-  {
-    sigla: "MAT1207",
-    nombre: "Introducción a Algebra y Geometría",
-    clases: 43,
-    url: "https://repositorios.mat.uc.cl/MAT1207/",
-  },
-  {
-    sigla: "MAT1107",
-    nombre: "Introducción a Cálculo",
-    clases: 29,
-    url: "https://repositorios.mat.uc.cl/MAT1107/",
-  },
-];
+export interface RamosData {
+  [sigla: string]: RamoInterface;
+}
 
 function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -103,7 +101,7 @@ export default function Home() {
             />
           ) : (
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-              {RAMOS.map((ramo) => (
+              {ramos.map((ramo) => (
                 <button
                   key={ramo.sigla}
                   onClick={() => setRamoSeleccionado(ramo)}

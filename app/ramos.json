@@ -1,445 +1,457 @@
 {
-  "MAT1107": [
-    {
-      "clase": 1,
-      "objetivo": "Comprender el algoritmo de la división de polinomios.",
-      "contenido": "Algoritmo de la división",
-      "texto_guia": "Capítulo 7"
-    },
-    {
-      "clase": 2,
-      "objetivo": "Comprender y aplicar el Teorema del Resto y del Factor para determinar raíces y factores.",
-      "contenido": "Teorema del factor y aplicaciones",
-      "texto_guia": "Capítulo 7"
-    },
-    {
-      "clase": 3,
-      "objetivo": "Comprender los axiomas de orden y su aplicación en desigualdades.",
-      "contenido": "Axiomas de Orden",
-      "texto_guia": "Capítulo 2"
-    },
-    {
-      "clase": 4,
-      "objetivo": "Comprender los axiomas de orden y su aplicación en desigualdades.",
-      "contenido": "Axiomas de Orden",
-      "texto_guia": "Capítulo 2"
-    },
-    {
-      "clase": 5,
-      "objetivo": "Comprender el valor absoluto y su aplicación en ecuaciones e inecuaciones.",
-      "contenido": "Valor absoluto",
-      "texto_guia": "Capítulo 2"
-    },
-    {
-      "clase": 6,
-      "objetivo": "Resolver inecuaciones lineales y cuadráticas.",
-      "contenido": "Intervalos e inecuaciones lineales y cuadráticas",
-      "texto_guia": "Capítulo 2"
-    },
-    {
-      "clase": 7,
-      "objetivo": "Resolver inecuaciones racionales.",
-      "contenido": "Inecuaciones racionales",
-      "texto_guia": "Capítulo 2"
-    },
-    {
-      "clase": 8,
-      "objetivo": "Resolver inecuaciones con valor absoluto.",
-      "contenido": "Inecuaciones con valor absoluto",
-      "texto_guia": "Capítulo 2"
-    },
-    {
-      "clase": 9,
-      "objetivo": "Resolver inecuaciones con raíces.",
-      "contenido": "Inecuaciones con raíces",
-      "texto_guia": "Capítulo 2"
-    },
+  "MAT1107": {
+    "sigla": "MAT1207",
+    "nombre": "Introducción a Algebra y Geometría",
+    "clases": 43,
+    "url": "https://repositorios.mat.uc.cl/MAT1207/",
+    "info_clases": [
+      {
+        "clase": 1,
+        "objetivo": "Comprender el algoritmo de la división de polinomios.",
+        "contenido": "Algoritmo de la división",
+        "texto_guia": "Capítulo 7"
+      },
+      {
+        "clase": 2,
+        "objetivo": "Comprender y aplicar el Teorema del Resto y del Factor para determinar raíces y factores.",
+        "contenido": "Teorema del factor y aplicaciones",
+        "texto_guia": "Capítulo 7"
+      },
+      {
+        "clase": 3,
+        "objetivo": "Comprender los axiomas de orden y su aplicación en desigualdades.",
+        "contenido": "Axiomas de Orden",
+        "texto_guia": "Capítulo 2"
+      },
+      {
+        "clase": 4,
+        "objetivo": "Comprender los axiomas de orden y su aplicación en desigualdades.",
+        "contenido": "Axiomas de Orden",
+        "texto_guia": "Capítulo 2"
+      },
+      {
+        "clase": 5,
+        "objetivo": "Comprender el valor absoluto y su aplicación en ecuaciones e inecuaciones.",
+        "contenido": "Valor absoluto",
+        "texto_guia": "Capítulo 2"
+      },
+      {
+        "clase": 6,
+        "objetivo": "Resolver inecuaciones lineales y cuadráticas.",
+        "contenido": "Intervalos e inecuaciones lineales y cuadráticas",
+        "texto_guia": "Capítulo 2"
+      },
+      {
+        "clase": 7,
+        "objetivo": "Resolver inecuaciones racionales.",
+        "contenido": "Inecuaciones racionales",
+        "texto_guia": "Capítulo 2"
+      },
+      {
+        "clase": 8,
+        "objetivo": "Resolver inecuaciones con valor absoluto.",
+        "contenido": "Inecuaciones con valor absoluto",
+        "texto_guia": "Capítulo 2"
+      },
+      {
+        "clase": 9,
+        "objetivo": "Resolver inecuaciones con raíces.",
+        "contenido": "Inecuaciones con raíces",
+        "texto_guia": "Capítulo 2"
+      },
 
-    {
-      "clase": 10,
-      "objetivo": "Comprender la definición formal de función.",
-      "contenido": "Funciones reales",
-      "texto_guia": "Capítulo 3"
-    },
-    {
-      "clase": 11,
-      "objetivo": "Analizar propiedades y gráficos de funciones.",
-      "contenido": "Gráfico de funciones",
-      "texto_guia": "Capítulo 3"
-    },
-    {
-      "clase": 12,
-      "objetivo": "Comprender transformaciones de funciones.",
-      "contenido": "Transformaciones de funciones",
-      "texto_guia": "Capítulo 3"
-    },
-    {
-      "clase": 13,
-      "objetivo": "Analizar y graficar funciones racionales.",
-      "contenido": "Gráfica de funciones racionales",
-      "texto_guia": "Capítulo 3"
-    },
-    {
-      "clase": 14,
-      "objetivo": "Comprender funciones biyectivas.",
-      "contenido": "Funciones biyectivas",
-      "texto_guia": "Capítulo 3"
-    },
-    {
-      "clase": 15,
-      "objetivo": "Comprender funciones biyectivas.",
-      "contenido": "Funciones biyectivas",
-      "texto_guia": "Capítulo 3"
-    },
-    {
-      "clase": 16,
-      "objetivo": "Usar álgebra y composición de funciones.",
-      "contenido": "Álgebra y composición de funciones",
-      "texto_guia": "Capítulo 3"
-    },
-    {
-      "clase": 17,
-      "objetivo": "Comprender funciones inversas.",
-      "contenido": "Función inversa",
-      "texto_guia": "Capítulo 3"
-    },
-    {
-      "clase": 18,
-      "objetivo": "Comprender funciones inversas.",
-      "contenido": "Función inversa",
-      "texto_guia": "Capítulo 3"
-    },
+      {
+        "clase": 10,
+        "objetivo": "Comprender la definición formal de función.",
+        "contenido": "Funciones reales",
+        "texto_guia": "Capítulo 3"
+      },
+      {
+        "clase": 11,
+        "objetivo": "Analizar propiedades y gráficos de funciones.",
+        "contenido": "Gráfico de funciones",
+        "texto_guia": "Capítulo 3"
+      },
+      {
+        "clase": 12,
+        "objetivo": "Comprender transformaciones de funciones.",
+        "contenido": "Transformaciones de funciones",
+        "texto_guia": "Capítulo 3"
+      },
+      {
+        "clase": 13,
+        "objetivo": "Analizar y graficar funciones racionales.",
+        "contenido": "Gráfica de funciones racionales",
+        "texto_guia": "Capítulo 3"
+      },
+      {
+        "clase": 14,
+        "objetivo": "Comprender funciones biyectivas.",
+        "contenido": "Funciones biyectivas",
+        "texto_guia": "Capítulo 3"
+      },
+      {
+        "clase": 15,
+        "objetivo": "Comprender funciones biyectivas.",
+        "contenido": "Funciones biyectivas",
+        "texto_guia": "Capítulo 3"
+      },
+      {
+        "clase": 16,
+        "objetivo": "Usar álgebra y composición de funciones.",
+        "contenido": "Álgebra y composición de funciones",
+        "texto_guia": "Capítulo 3"
+      },
+      {
+        "clase": 17,
+        "objetivo": "Comprender funciones inversas.",
+        "contenido": "Función inversa",
+        "texto_guia": "Capítulo 3"
+      },
+      {
+        "clase": 18,
+        "objetivo": "Comprender funciones inversas.",
+        "contenido": "Función inversa",
+        "texto_guia": "Capítulo 3"
+      },
 
-    {
-      "clase": 19,
-      "objetivo": "Introducir el concepto de límite en sucesiones.",
-      "contenido": "Límites y convergencia",
-      "texto_guia": "Capítulo 10"
-    },
-    {
-      "clase": 20,
-      "objetivo": "Introducir el concepto de límite en sucesiones.",
-      "contenido": "Límites y convergencia",
-      "texto_guia": "Capítulo 10"
-    },
-    {
-      "clase": 21,
-      "objetivo": "Operar con límites de sucesiones.",
-      "contenido": "Operaciones con límites",
-      "texto_guia": "Capítulo 10"
-    },
-    {
-      "clase": 22,
-      "objetivo": "Aplicar el Teorema del Sandwich.",
-      "contenido": "Teorema del Sandwich",
-      "texto_guia": "Capítulo 10"
-    },
-    {
-      "clase": 23,
-      "objetivo": "Aplicar el Teorema del Sandwich.",
-      "contenido": "Teorema del Sandwich",
-      "texto_guia": "Capítulo 10"
-    },
-    {
-      "clase": 24,
-      "objetivo": "Identificar sucesiones monótonas y acotadas.",
-      "contenido": "Sucesiones monótonas y acotadas",
-      "texto_guia": "Capítulo 10"
-    },
-    {
-      "clase": 25,
-      "objetivo": "Calcular límites notables.",
-      "contenido": "Límites relevantes",
-      "texto_guia": "Capítulo 10"
-    },
-    {
-      "clase": 26,
-      "objetivo": "Comprender límites infinitos.",
-      "contenido": "Límites infinitos",
-      "texto_guia": "Capítulo 10"
-    },
+      {
+        "clase": 19,
+        "objetivo": "Introducir el concepto de límite en sucesiones.",
+        "contenido": "Límites y convergencia",
+        "texto_guia": "Capítulo 10"
+      },
+      {
+        "clase": 20,
+        "objetivo": "Introducir el concepto de límite en sucesiones.",
+        "contenido": "Límites y convergencia",
+        "texto_guia": "Capítulo 10"
+      },
+      {
+        "clase": 21,
+        "objetivo": "Operar con límites de sucesiones.",
+        "contenido": "Operaciones con límites",
+        "texto_guia": "Capítulo 10"
+      },
+      {
+        "clase": 22,
+        "objetivo": "Aplicar el Teorema del Sandwich.",
+        "contenido": "Teorema del Sandwich",
+        "texto_guia": "Capítulo 10"
+      },
+      {
+        "clase": 23,
+        "objetivo": "Aplicar el Teorema del Sandwich.",
+        "contenido": "Teorema del Sandwich",
+        "texto_guia": "Capítulo 10"
+      },
+      {
+        "clase": 24,
+        "objetivo": "Identificar sucesiones monótonas y acotadas.",
+        "contenido": "Sucesiones monótonas y acotadas",
+        "texto_guia": "Capítulo 10"
+      },
+      {
+        "clase": 25,
+        "objetivo": "Calcular límites notables.",
+        "contenido": "Límites relevantes",
+        "texto_guia": "Capítulo 10"
+      },
+      {
+        "clase": 26,
+        "objetivo": "Comprender límites infinitos.",
+        "contenido": "Límites infinitos",
+        "texto_guia": "Capítulo 10"
+      },
 
-    {
-      "clase": 27,
-      "objetivo": "Comprender funciones exponenciales.",
-      "contenido": "Función exponencial",
-      "texto_guia": "Capítulo 8"
-    },
-    {
-      "clase": 28,
-      "objetivo": "Comprender funciones logarítmicas.",
-      "contenido": "Función logarítmica",
-      "texto_guia": "Capítulo 8"
-    },
-    {
-      "clase": 29,
-      "objetivo": "Resolver ecuaciones exponenciales y logarítmicas.",
-      "contenido": "Ecuaciones exponenciales y logarítmicas",
-      "texto_guia": "Capítulo 8"
-    }
-  ],
-  "MAT1207": [
-    {
-      "clase": 1,
-      "objetivo": "Comprender proposiciones y lógica básica.",
-      "contenido": "Conectivos lógicos",
-      "texto_guia": "Capítulo 1"
-    },
-    {
-      "clase": 2,
-      "objetivo": "Comprender leyes de la lógica.",
-      "contenido": "Leyes de la lógica",
-      "texto_guia": "Capítulo 1"
-    },
-    {
-      "clase": 3,
-      "objetivo": "Comprender inferencia lógica.",
-      "contenido": "Reglas de inferencia",
-      "texto_guia": "Capítulo 1"
-    },
-    {
-      "clase": 4,
-      "objetivo": "Evaluar argumentos lógicos.",
-      "contenido": "Técnicas de demostración",
-      "texto_guia": "Capítulo 1"
-    },
-    {
-      "clase": 5,
-      "objetivo": "Identificar argumentos válidos.",
-      "contenido": "Técnicas de demostración",
-      "texto_guia": "Capítulo 1"
-    },
-    {
-      "clase": 6,
-      "objetivo": "Aplicar operaciones de conjuntos.",
-      "contenido": "Conjuntos y operaciones",
-      "texto_guia": "Capítulo 1"
-    },
-    {
-      "clase": 7,
-      "objetivo": "Aplicar operaciones de conjuntos.",
-      "contenido": "Conjuntos y operaciones",
-      "texto_guia": "Capítulo 1"
-    },
-    {
-      "clase": 8,
-      "objetivo": "Comprender cuantificadores.",
-      "contenido": "Cuantificadores",
-      "texto_guia": "Capítulo 1"
-    },
-    {
-      "clase": 9,
-      "objetivo": "Comprender cuantificadores.",
-      "contenido": "Cuantificadores",
-      "texto_guia": "Capítulo 1"
-    },
+      {
+        "clase": 27,
+        "objetivo": "Comprender funciones exponenciales.",
+        "contenido": "Función exponencial",
+        "texto_guia": "Capítulo 8"
+      },
+      {
+        "clase": 28,
+        "objetivo": "Comprender funciones logarítmicas.",
+        "contenido": "Función logarítmica",
+        "texto_guia": "Capítulo 8"
+      },
+      {
+        "clase": 29,
+        "objetivo": "Resolver ecuaciones exponenciales y logarítmicas.",
+        "contenido": "Ecuaciones exponenciales y logarítmicas",
+        "texto_guia": "Capítulo 8"
+      }
+    ]
+  },
+  "MAT1207": {
+    "sigla": "MAT1207",
+    "nombre": "Introducción a Cálculo",
+    "clases": 29,
+    "url": "https://repositorios.mat.uc.cl/MAT1207/",
+    "info_clases": [
+      {
+        "clase": 1,
+        "objetivo": "Comprender proposiciones y lógica básica.",
+        "contenido": "Conectivos lógicos",
+        "texto_guia": "Capítulo 1"
+      },
+      {
+        "clase": 2,
+        "objetivo": "Comprender leyes de la lógica.",
+        "contenido": "Leyes de la lógica",
+        "texto_guia": "Capítulo 1"
+      },
+      {
+        "clase": 3,
+        "objetivo": "Comprender inferencia lógica.",
+        "contenido": "Reglas de inferencia",
+        "texto_guia": "Capítulo 1"
+      },
+      {
+        "clase": 4,
+        "objetivo": "Evaluar argumentos lógicos.",
+        "contenido": "Técnicas de demostración",
+        "texto_guia": "Capítulo 1"
+      },
+      {
+        "clase": 5,
+        "objetivo": "Identificar argumentos válidos.",
+        "contenido": "Técnicas de demostración",
+        "texto_guia": "Capítulo 1"
+      },
+      {
+        "clase": 6,
+        "objetivo": "Aplicar operaciones de conjuntos.",
+        "contenido": "Conjuntos y operaciones",
+        "texto_guia": "Capítulo 1"
+      },
+      {
+        "clase": 7,
+        "objetivo": "Aplicar operaciones de conjuntos.",
+        "contenido": "Conjuntos y operaciones",
+        "texto_guia": "Capítulo 1"
+      },
+      {
+        "clase": 8,
+        "objetivo": "Comprender cuantificadores.",
+        "contenido": "Cuantificadores",
+        "texto_guia": "Capítulo 1"
+      },
+      {
+        "clase": 9,
+        "objetivo": "Comprender cuantificadores.",
+        "contenido": "Cuantificadores",
+        "texto_guia": "Capítulo 1"
+      },
 
-    {
-      "clase": 10,
-      "objetivo": "Aplicar inducción matemática.",
-      "contenido": "Inducción",
-      "texto_guia": "Capítulo 5"
-    },
-    {
-      "clase": 11,
-      "objetivo": "Resolver recurrencias con inducción.",
-      "contenido": "Inducción",
-      "texto_guia": "Capítulo 5"
-    },
-    {
-      "clase": 12,
-      "objetivo": "Describir sucesiones.",
-      "contenido": "Sucesión y suma",
-      "texto_guia": "Capítulo 6"
-    },
-    {
-      "clase": 13,
-      "objetivo": "Comprender suma parcial.",
-      "contenido": "Sucesiones aritméticas",
-      "texto_guia": "Capítulo 6"
-    },
-    {
-      "clase": 14,
-      "objetivo": "Comprender suma parcial.",
-      "contenido": "Sucesiones geométricas",
-      "texto_guia": "Capítulo 6"
-    },
-    {
-      "clase": 15,
-      "objetivo": "Trabajar con sumas finitas.",
-      "contenido": "Sumas finitas",
-      "texto_guia": "Capítulo 6"
-    },
-    {
-      "clase": 16,
-      "objetivo": "Aplicar teorema del binomio.",
-      "contenido": "Teorema del binomio",
-      "texto_guia": "Capítulo 6"
-    },
-    {
-      "clase": 17,
-      "objetivo": "Aplicar teorema del binomio.",
-      "contenido": "Teorema del binomio",
-      "texto_guia": "Capítulo 6"
-    },
+      {
+        "clase": 10,
+        "objetivo": "Aplicar inducción matemática.",
+        "contenido": "Inducción",
+        "texto_guia": "Capítulo 5"
+      },
+      {
+        "clase": 11,
+        "objetivo": "Resolver recurrencias con inducción.",
+        "contenido": "Inducción",
+        "texto_guia": "Capítulo 5"
+      },
+      {
+        "clase": 12,
+        "objetivo": "Describir sucesiones.",
+        "contenido": "Sucesión y suma",
+        "texto_guia": "Capítulo 6"
+      },
+      {
+        "clase": 13,
+        "objetivo": "Comprender suma parcial.",
+        "contenido": "Sucesiones aritméticas",
+        "texto_guia": "Capítulo 6"
+      },
+      {
+        "clase": 14,
+        "objetivo": "Comprender suma parcial.",
+        "contenido": "Sucesiones geométricas",
+        "texto_guia": "Capítulo 6"
+      },
+      {
+        "clase": 15,
+        "objetivo": "Trabajar con sumas finitas.",
+        "contenido": "Sumas finitas",
+        "texto_guia": "Capítulo 6"
+      },
+      {
+        "clase": 16,
+        "objetivo": "Aplicar teorema del binomio.",
+        "contenido": "Teorema del binomio",
+        "texto_guia": "Capítulo 6"
+      },
+      {
+        "clase": 17,
+        "objetivo": "Aplicar teorema del binomio.",
+        "contenido": "Teorema del binomio",
+        "texto_guia": "Capítulo 6"
+      },
 
-    {
-      "clase": 18,
-      "objetivo": "Comprender razones trigonométricas.",
-      "contenido": "Razones trigonométricas",
-      "texto_guia": "Capítulo 4"
-    },
-    {
-      "clase": 19,
-      "objetivo": "Comprender funciones trigonométricas.",
-      "contenido": "Funciones trigonométricas",
-      "texto_guia": "Capítulo 4"
-    },
-    {
-      "clase": 20,
-      "objetivo": "Comprender funciones trigonométricas.",
-      "contenido": "Funciones trigonométricas",
-      "texto_guia": "Capítulo 4"
-    },
-    {
-      "clase": 21,
-      "objetivo": "Aplicar identidades trigonométricas.",
-      "contenido": "Identidades trigonométricas",
-      "texto_guia": "Capítulo 4"
-    },
-    {
-      "clase": 22,
-      "objetivo": "Aplicar identidades trigonométricas.",
-      "contenido": "Identidades trigonométricas",
-      "texto_guia": "Capítulo 4"
-    },
-    {
-      "clase": 23,
-      "objetivo": "Usar funciones trig inversas.",
-      "contenido": "Funciones trigonométricas inversas",
-      "texto_guia": "Capítulo 4"
-    },
-    {
-      "clase": 24,
-      "objetivo": "Usar funciones trig inversas.",
-      "contenido": "Funciones trigonométricas inversas",
-      "texto_guia": "Capítulo 4"
-    },
-    {
-      "clase": 25,
-      "objetivo": "Resolver ecuaciones trigonométricas.",
-      "contenido": "Ecuaciones trigonométricas",
-      "texto_guia": "Capítulo 4"
-    },
-    {
-      "clase": 26,
-      "objetivo": "Aplicar teorema del seno y coseno.",
-      "contenido": "Teorema del seno y coseno",
-      "texto_guia": "Capítulo 4"
-    },
+      {
+        "clase": 18,
+        "objetivo": "Comprender razones trigonométricas.",
+        "contenido": "Razones trigonométricas",
+        "texto_guia": "Capítulo 4"
+      },
+      {
+        "clase": 19,
+        "objetivo": "Comprender funciones trigonométricas.",
+        "contenido": "Funciones trigonométricas",
+        "texto_guia": "Capítulo 4"
+      },
+      {
+        "clase": 20,
+        "objetivo": "Comprender funciones trigonométricas.",
+        "contenido": "Funciones trigonométricas",
+        "texto_guia": "Capítulo 4"
+      },
+      {
+        "clase": 21,
+        "objetivo": "Aplicar identidades trigonométricas.",
+        "contenido": "Identidades trigonométricas",
+        "texto_guia": "Capítulo 4"
+      },
+      {
+        "clase": 22,
+        "objetivo": "Aplicar identidades trigonométricas.",
+        "contenido": "Identidades trigonométricas",
+        "texto_guia": "Capítulo 4"
+      },
+      {
+        "clase": 23,
+        "objetivo": "Usar funciones trig inversas.",
+        "contenido": "Funciones trigonométricas inversas",
+        "texto_guia": "Capítulo 4"
+      },
+      {
+        "clase": 24,
+        "objetivo": "Usar funciones trig inversas.",
+        "contenido": "Funciones trigonométricas inversas",
+        "texto_guia": "Capítulo 4"
+      },
+      {
+        "clase": 25,
+        "objetivo": "Resolver ecuaciones trigonométricas.",
+        "contenido": "Ecuaciones trigonométricas",
+        "texto_guia": "Capítulo 4"
+      },
+      {
+        "clase": 26,
+        "objetivo": "Aplicar teorema del seno y coseno.",
+        "contenido": "Teorema del seno y coseno",
+        "texto_guia": "Capítulo 4"
+      },
 
-    {
-      "clase": 27,
-      "objetivo": "Resolver con números complejos.",
-      "contenido": "Números complejos",
-      "texto_guia": "Capítulo 7"
-    },
-    {
-      "clase": 28,
-      "objetivo": "Trabajar forma polar.",
-      "contenido": "Forma polar",
-      "texto_guia": "Capítulo 7"
-    },
-    {
-      "clase": 29,
-      "objetivo": "Manipular raíces complejas.",
-      "contenido": "Raíces n-ésimas",
-      "texto_guia": "Capítulo 7"
-    },
-    {
-      "clase": 30,
-      "objetivo": "Analizar gráficos de polinomios.",
-      "contenido": "Gráficas de polinomios",
-      "texto_guia": "Capítulo 7"
-    },
-    {
-      "clase": 31,
-      "objetivo": "Resolver ecuaciones polinómicas.",
-      "contenido": "Raíces racionales y complejas",
-      "texto_guia": "Capítulo 7"
-    },
-    {
-      "clase": 32,
-      "objetivo": "Comprender teorema fundamental del álgebra.",
-      "contenido": "Teorema Fundamental del Álgebra",
-      "texto_guia": "Capítulo 7"
-    },
+      {
+        "clase": 27,
+        "objetivo": "Resolver con números complejos.",
+        "contenido": "Números complejos",
+        "texto_guia": "Capítulo 7"
+      },
+      {
+        "clase": 28,
+        "objetivo": "Trabajar forma polar.",
+        "contenido": "Forma polar",
+        "texto_guia": "Capítulo 7"
+      },
+      {
+        "clase": 29,
+        "objetivo": "Manipular raíces complejas.",
+        "contenido": "Raíces n-ésimas",
+        "texto_guia": "Capítulo 7"
+      },
+      {
+        "clase": 30,
+        "objetivo": "Analizar gráficos de polinomios.",
+        "contenido": "Gráficas de polinomios",
+        "texto_guia": "Capítulo 7"
+      },
+      {
+        "clase": 31,
+        "objetivo": "Resolver ecuaciones polinómicas.",
+        "contenido": "Raíces racionales y complejas",
+        "texto_guia": "Capítulo 7"
+      },
+      {
+        "clase": 32,
+        "objetivo": "Comprender teorema fundamental del álgebra.",
+        "contenido": "Teorema Fundamental del Álgebra",
+        "texto_guia": "Capítulo 7"
+      },
 
-    {
-      "clase": 33,
-      "objetivo": "Trabajar rectas en el plano.",
-      "contenido": "Rectas en el plano",
-      "texto_guia": "Capítulo 9"
-    },
-    {
-      "clase": 34,
-      "objetivo": "Calcular distancia punto-recta.",
-      "contenido": "Distancia a una recta",
-      "texto_guia": "Capítulo 9"
-    },
-    {
-      "clase": 35,
-      "objetivo": "Resolver problemas con circunferencia.",
-      "contenido": "Circunferencia",
-      "texto_guia": "Capítulo 9"
-    },
-    {
-      "clase": 36,
-      "objetivo": "Analizar familias de circunferencias.",
-      "contenido": "Familias de circunferencias",
-      "texto_guia": "Capítulo 9"
-    },
-    {
-      "clase": 37,
-      "objetivo": "Analizar parábolas.",
-      "contenido": "Parábola",
-      "texto_guia": "Capítulo 9"
-    },
-    {
-      "clase": 38,
-      "objetivo": "Trabajar parábolas con traslación.",
-      "contenido": "Parábola (h,k)",
-      "texto_guia": "Capítulo 9"
-    },
-    {
-      "clase": 39,
-      "objetivo": "Analizar elipses.",
-      "contenido": "Elipse",
-      "texto_guia": "Capítulo 9"
-    },
-    {
-      "clase": 40,
-      "objetivo": "Analizar hipérbolas.",
-      "contenido": "Hipérbola",
-      "texto_guia": "Capítulo 9"
-    },
-    {
-      "clase": 41,
-      "objetivo": "Aplicar rotación de ejes.",
-      "contenido": "Rotación de ejes",
-      "texto_guia": "Capítulo 9"
-    },
-    {
-      "clase": 42,
-      "objetivo": "Simplificar cónicas.",
-      "contenido": "Simplificación por rotaciones",
-      "texto_guia": "Capítulo 9"
-    },
-    {
-      "clase": 43,
-      "objetivo": "Identificar cónicas.",
-      "contenido": "Identificación de cónicas",
-      "texto_guia": "Capítulo 9"
-    }
-  ]
+      {
+        "clase": 33,
+        "objetivo": "Trabajar rectas en el plano.",
+        "contenido": "Rectas en el plano",
+        "texto_guia": "Capítulo 9"
+      },
+      {
+        "clase": 34,
+        "objetivo": "Calcular distancia punto-recta.",
+        "contenido": "Distancia a una recta",
+        "texto_guia": "Capítulo 9"
+      },
+      {
+        "clase": 35,
+        "objetivo": "Resolver problemas con circunferencia.",
+        "contenido": "Circunferencia",
+        "texto_guia": "Capítulo 9"
+      },
+      {
+        "clase": 36,
+        "objetivo": "Analizar familias de circunferencias.",
+        "contenido": "Familias de circunferencias",
+        "texto_guia": "Capítulo 9"
+      },
+      {
+        "clase": 37,
+        "objetivo": "Analizar parábolas.",
+        "contenido": "Parábola",
+        "texto_guia": "Capítulo 9"
+      },
+      {
+        "clase": 38,
+        "objetivo": "Trabajar parábolas con traslación.",
+        "contenido": "Parábola (h,k)",
+        "texto_guia": "Capítulo 9"
+      },
+      {
+        "clase": 39,
+        "objetivo": "Analizar elipses.",
+        "contenido": "Elipse",
+        "texto_guia": "Capítulo 9"
+      },
+      {
+        "clase": 40,
+        "objetivo": "Analizar hipérbolas.",
+        "contenido": "Hipérbola",
+        "texto_guia": "Capítulo 9"
+      },
+      {
+        "clase": 41,
+        "objetivo": "Aplicar rotación de ejes.",
+        "contenido": "Rotación de ejes",
+        "texto_guia": "Capítulo 9"
+      },
+      {
+        "clase": 42,
+        "objetivo": "Simplificar cónicas.",
+        "contenido": "Simplificación por rotaciones",
+        "texto_guia": "Capítulo 9"
+      },
+      {
+        "clase": 43,
+        "objetivo": "Identificar cónicas.",
+        "contenido": "Identificación de cónicas",
+        "texto_guia": "Capítulo 9"
+      }
+    ]
+  }
 }
