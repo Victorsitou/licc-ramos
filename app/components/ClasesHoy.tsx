@@ -1,4 +1,4 @@
-import { InfoClase, RamoInterface } from "../page";
+import type { InfoClase, RamoInterface } from "../page";
 import { stringToDate } from "../utils";
 
 import { Chip } from "@mui/material";
