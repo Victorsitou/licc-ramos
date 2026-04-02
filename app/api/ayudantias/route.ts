@@ -1,43 +1,42 @@
-import fs from "fs";
+const GITHUB_API =
+  "https://api.github.com/repos/Victorsitou/licc-ramos/contents";
 
 export async function GET() {
-  const ramosFolders = fs
-    .readdirSync("public", { withFileTypes: true })
-    .filter((dirent) => dirent.isDirectory())
-    .map((dirent) => dirent.name);
-
-  const cantidadRamos = ramosFolders.length;
-  if (cantidadRamos === 0) {
-    return new Response(JSON.stringify({ error: "No se encontraron ramos" }));
-  }
+  // Leer carpetas raíz de public/
+  const ramosFolders = await fetch(`${GITHUB_API}/public`, {
+    headers: {
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      Accept: "application/vnd.github.raw+json",
+      "X-GitHub-Api-Version": "2026-03-10",
+    },
+  }).then((r) => r.json());
 
   const response = [];
 
-  for (const ramoFolder of ramosFolders) {
-    const ayudantiasPath = `public/${ramoFolder}/Ayudantias`;
+  for (const ramo of ramosFolders.filter((f: any) => f.type === "dir")) {
+    // Leer archivos de cada Ayudantias/
+    const ayudantias = await fetch(
+      `${GITHUB_API}/public/${ramo.name}/Ayudantias`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        },
+      },
+    ).then((r) => r.json());
 
-    if (!fs.existsSync(ayudantiasPath)) {
-      // TODO: debería pasar??
-      return new Response(
-        JSON.stringify({
-          error: `No se encontró la carpeta Ayudantias para el ramo ${ramoFolder}`,
-        }),
-      );
-    }
-
-    const ayudantiasFiles = fs
-      .readdirSync(ayudantiasPath, { withFileTypes: true })
-      .filter((dirent) => dirent.isFile())
-      .map((dirent) => dirent.name);
+    const files = ayudantias
+      .filter((f: any) => f.type === "file")
+      .map((f: any) => ({ name: f.name, url: f.download_url }))
+      .sort((a: { name: string }, b: { name: string }) => {
+        const aNumber = parseInt(a.name.split("Ayudantia_")[1]);
+        const bNumber = parseInt(b.name.split("Ayudantia_")[1]);
+        return aNumber - bNumber;
+      });
 
     response.push({
-      ramo: ramoFolder,
-      ayudantiasPath: ayudantiasPath.replace("public/", ""),
-      ayudantiasFiles: ayudantiasFiles.sort((a, b) => {
-        const aNumber = parseInt(a.split("Ayudantia_")[1]);
-        const bNumber = parseInt(b.split("Ayudantia_")[1]);
-        return aNumber - bNumber;
-      }),
+      ramo: ramo.name,
+      ayudantiasPath: `${ramo.name}/Ayudantias`,
+      ayudantiasFiles: files,
     });
   }
 

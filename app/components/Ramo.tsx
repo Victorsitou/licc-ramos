@@ -49,9 +49,9 @@ export default function Ramo({
           for (const item of data) {
             if (item.ramo === ramo.sigla) {
               const ayudantiasData = item.ayudantiasFiles.map(
-                (file: string) => ({
-                  url: `/${item.ayudantiasPath}/${file}`,
-                  title: file.replace(/_/g, " ").replace(".pdf", ""),
+                (file: { url: string; name: string }) => ({
+                  url: file.url,
+                  title: file.name.replace(/_/g, " ").replace(".pdf", ""),
                 }),
               );
               setAyudantiaData(ayudantiasData);
