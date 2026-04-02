@@ -14,5 +14,21 @@
         "description": "Cada clase ahora muestra el día que le corresponde."
       }
     ]
+  },
+  {
+    "id": "2",
+    "date": "2026-04-01",
+    "features": [
+      {
+        "emoji": "📂",
+        "title": "¡Visor de PDFs!",
+        "description": "Ahora puedes abrir tus PDFs directamente en la aplicación, sin necesidad de salir a otra app."
+      },
+      {
+        "emoji": "📚",
+        "title": "¡Ayudantías!",
+        "description": "Ahora puedes ver los enunciados de las ayudantías de cada ramo."
+      }
+    ]
   }
 ]
