@@ -33,7 +33,11 @@ export async function GET() {
     response.push({
       ramo: ramoFolder,
       ayudantiasPath: ayudantiasPath.replace("public/", ""),
-      ayudantiasFiles: ayudantiasFiles.reverse(),
+      ayudantiasFiles: ayudantiasFiles.sort((a, b) => {
+        const aNumber = parseInt(a.split("Ayudantia_")[1]);
+        const bNumber = parseInt(b.split("Ayudantia_")[1]);
+        return aNumber - bNumber;
+      }),
     });
   }
 
