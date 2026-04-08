@@ -27,12 +27,18 @@ export interface InfoClase {
   interrogacion?: number;
 }
 
+export interface InfoInterrogacion {
+  interrogacion: number;
+  fecha: string;
+}
+
 export interface RamoInterface {
   sigla: string;
   nombre: string;
   clases: number;
   url: string;
   info_clases: InfoClase[];
+  info_interrogaciones: InfoInterrogacion[];
 }
 
 function ThemeToggle() {

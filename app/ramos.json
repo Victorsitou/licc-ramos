@@ -317,6 +317,16 @@
         "contenido": "Identificación de cónicas",
         "texto_guia": "Capítulo 9"
       }
+    ],
+    "info_interrogaciones": [
+      { "interrogacion": 1, "fecha": "2026-03-20" },
+      { "interrogacion": 2, "fecha": "2026-03-27" },
+      { "interrogacion": 3, "fecha": "2026-04-10" },
+      { "interrogacion": 4, "fecha": "2026-04-24" },
+      { "interrogacion": 5, "fecha": "2026-05-15" },
+      { "interrogacion": 6, "fecha": "2026-05-29" },
+      { "interrogacion": 7, "fecha": "2026-06-05" },
+      { "interrogacion": 8, "fecha": "2026-06-19" }
     ]
   },
   {
@@ -536,6 +546,16 @@
         "contenido": "Ecuaciones exponenciales y logarítmicas",
         "texto_guia": "Capítulo 8"
       }
+    ],
+    "info_interrogaciones": [
+      { "interrogacion": 1, "fecha": "2026-03-20" },
+      { "interrogacion": 2, "fecha": "2026-03-27" },
+      { "interrogacion": 3, "fecha": "2026-04-10" },
+      { "interrogacion": 4, "fecha": "2026-04-24" },
+      { "interrogacion": 5, "fecha": "2026-05-15" },
+      { "interrogacion": 6, "fecha": "2026-05-29" },
+      { "interrogacion": 7, "fecha": "2026-06-05" },
+      { "interrogacion": 8, "fecha": "2026-06-19" }
     ]
   }
 ]

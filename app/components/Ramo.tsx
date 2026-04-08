@@ -31,9 +31,8 @@ export default function Ramo({
   const [loading, setLoading] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const latestInterrogacion = Math.max(
-    0,
-    ...ramo.info_clases.map((c) => c.interrogacion || 0),
+  const nextInterrogacion = ramo.info_interrogaciones.find(
+    (i) => new Date(i.fecha) >= new Date(),
   );
 
   // Ayudantía
@@ -205,11 +204,11 @@ export default function Ramo({
                   variant="outlined"
                   sx={{
                     borderColor:
-                      latestInterrogacion === item.interrogacion
+                      nextInterrogacion?.interrogacion === item.interrogacion
                         ? "red"
                         : "green",
                     color:
-                      latestInterrogacion === item.interrogacion
+                      nextInterrogacion?.interrogacion === item.interrogacion
                         ? "red"
                         : "green",
                   }}
