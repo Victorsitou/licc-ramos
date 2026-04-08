@@ -10,77 +10,88 @@
         "fecha": "2026-03-04",
         "objetivo": "Comprender proposiciones y lógica básica.",
         "contenido": "Conectivos lógicos",
-        "texto_guia": "Capítulo 1"
+        "texto_guia": "Capítulo 1",
+        "interrogacion": 1
       },
       {
         "clase": 2,
         "fecha": "2026-03-09",
         "objetivo": "Comprender leyes de la lógica.",
         "contenido": "Leyes de la lógica",
-        "texto_guia": "Capítulo 1"
+        "texto_guia": "Capítulo 1",
+        "interrogacion": 1
       },
       {
         "clase": 3,
         "fecha": "2026-03-10",
         "objetivo": "Comprender inferencia lógica.",
         "contenido": "Reglas de inferencia",
-        "texto_guia": "Capítulo 1"
+        "texto_guia": "Capítulo 1",
+        "interrogacion": 1
       },
       {
         "clase": 4,
         "fecha": "2026-03-11",
         "objetivo": "Evaluar argumentos lógicos.",
         "contenido": "Técnicas de demostración",
-        "texto_guia": "Capítulo 1"
+        "texto_guia": "Capítulo 1",
+        "interrogacion": 2
       },
       {
         "clase": 5,
         "fecha": "2026-03-16",
         "objetivo": "Identificar argumentos válidos.",
         "contenido": "Técnicas de demostración",
-        "texto_guia": "Capítulo 1"
+        "texto_guia": "Capítulo 1",
+        "interrogacion": 2
       },
       {
         "clase": 6,
         "fecha": "2026-03-17",
         "objetivo": "Aplicar operaciones de conjuntos.",
         "contenido": "Conjuntos y operaciones",
-        "texto_guia": "Capítulo 1"
+        "texto_guia": "Capítulo 1",
+        "interrogacion": 2
       },
       {
         "clase": 7,
         "fecha": "2026-03-18",
         "objetivo": "Aplicar operaciones de conjuntos.",
         "contenido": "Conjuntos y operaciones",
-        "texto_guia": "Capítulo 1"
+        "texto_guia": "Capítulo 1",
+        "interrogacion": 3
       },
       {
         "clase": 8,
         "fecha": "2026-03-23",
         "objetivo": "Comprender cuantificadores.",
         "contenido": "Cuantificadores",
-        "texto_guia": "Capítulo 1"
+        "texto_guia": "Capítulo 1",
+        "interrogacion": 3
       },
       {
         "clase": 9,
         "fecha": "2026-03-24",
         "objetivo": "Comprender cuantificadores.",
         "contenido": "Cuantificadores",
-        "texto_guia": "Capítulo 1"
+        "texto_guia": "Capítulo 1",
+        "interrogacion": 3
       },
       {
         "clase": 10,
         "fecha": "2026-03-25",
         "objetivo": "Aplicar inducción matemática.",
         "contenido": "Inducción",
-        "texto_guia": "Capítulo 5"
+        "texto_guia": "Capítulo 5",
+        "interrogacion": 3
       },
       {
         "clase": 11,
         "fecha": "2026-03-30",
         "objetivo": "Resolver recurrencias con inducción.",
         "contenido": "Inducción",
-        "texto_guia": "Capítulo 5"
+        "texto_guia": "Capítulo 5",
+        "interrogacion": 3
       },
       {
         "clase": 12,
@@ -319,56 +330,64 @@
         "fecha": "2026-03-04",
         "objetivo": "Comprender el algoritmo de la división de polinomios.",
         "contenido": "Algoritmo de la división",
-        "texto_guia": "Capítulo 7"
+        "texto_guia": "Capítulo 7",
+        "interrogacion": 1
       },
       {
         "clase": 2,
         "fecha": "2026-03-09",
         "objetivo": "Comprender y aplicar el Teorema del Resto y del Factor para determinar raíces y factores.",
         "contenido": "Teorema del factor y aplicaciones",
-        "texto_guia": "Capítulo 7"
+        "texto_guia": "Capítulo 7",
+        "interrogacion": 1
       },
       {
         "clase": 3,
         "fecha": "2026-03-11",
         "objetivo": "Comprender los axiomas de orden y su aplicación en desigualdades.",
         "contenido": "Axiomas de Orden",
-        "texto_guia": "Capítulo 2"
+        "texto_guia": "Capítulo 2",
+        "interrogacion": 2
       },
       {
         "clase": 4,
         "fecha": "2026-03-16",
         "objetivo": "Comprender los axiomas de orden y su aplicación en desigualdades.",
         "contenido": "Axiomas de Orden",
-        "texto_guia": "Capítulo 2"
+        "texto_guia": "Capítulo 2",
+        "interrogacion": 2
       },
       {
         "clase": 5,
         "fecha": "2026-03-18",
         "objetivo": "Comprender el valor absoluto y su aplicación en ecuaciones e inecuaciones.",
         "contenido": "Valor absoluto",
-        "texto_guia": "Capítulo 2"
+        "texto_guia": "Capítulo 2",
+        "interrogacion": 2
       },
       {
         "clase": 6,
         "fecha": "2026-03-23",
         "objetivo": "Resolver inecuaciones lineales y cuadráticas.",
         "contenido": "Intervalos e inecuaciones lineales y cuadráticas",
-        "texto_guia": "Capítulo 2"
+        "texto_guia": "Capítulo 2",
+        "interrogacion": 3
       },
       {
         "clase": 7,
         "fecha": "2026-03-25",
         "objetivo": "Resolver inecuaciones racionales.",
         "contenido": "Inecuaciones racionales",
-        "texto_guia": "Capítulo 2"
+        "texto_guia": "Capítulo 2",
+        "interrogacion": 3
       },
       {
         "clase": 8,
         "fecha": "2026-03-30",
         "objetivo": "Resolver inecuaciones con valor absoluto.",
         "contenido": "Inecuaciones con valor absoluto",
-        "texto_guia": "Capítulo 2"
+        "texto_guia": "Capítulo 2",
+        "interrogacion": 3
       },
       {
         "clase": 9,

@@ -24,6 +24,7 @@ export interface InfoClase {
   objetivo: string;
   contenido: string;
   texto_guia?: string;
+  interrogacion?: number;
 }
 
 export interface RamoInterface {
