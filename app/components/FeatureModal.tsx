@@ -54,6 +54,14 @@ export default function FeatureModal({
             ))}
           </div>
 
+          <div>
+            {data.footer && (
+              <p className="px-6 pb-6 text-sm text-zinc-500 dark:text-zinc-400">
+                {data.footer}
+              </p>
+            )}
+          </div>
+
           <div className="px-6 pb-6">
             <button
               onClick={close}

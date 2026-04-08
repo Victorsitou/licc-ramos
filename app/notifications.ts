@@ -12,6 +12,7 @@ export interface FeatureData {
   id: string;
   date: string;
   features: Feature[];
+  footer?: string;
 }
 
 export default class Notifications {
