@@ -30,5 +30,17 @@
         "description": "Ahora puedes ver los enunciados de las ayudantías de cada ramo."
       }
     ]
+  },
+  {
+    "id": "3",
+    "date": "2026-04-08",
+    "features": [
+      {
+        "emoji": "📊",
+        "title": "¡Interrogaciones!",
+        "description": "Ahora puedes ver el número de interrogación de cada clase, para que sepas exactamente qué clase corresponde a cada interrogación."
+      }
+    ],
+    "footer": "Mucho éxito a todos en su i3 <3"
   }
 ]
