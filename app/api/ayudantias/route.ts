@@ -13,7 +13,9 @@ export async function GET() {
 
   const response = [];
 
-  for (const ramo of ramosFolders.filter((f: any) => f.type === "dir")) {
+  for (const ramo of ramosFolders.filter(
+    (f: any) => f.type === "dir" && f.name.startsWith("MAT"),
+  )) {
     // Leer archivos de cada Ayudantias/
     const ayudantias = await fetch(
       `${GITHUB_API}/public/${ramo.name}/Ayudantias`,
