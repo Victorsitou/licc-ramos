@@ -15,13 +15,5 @@ export async function GET() {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
-  // TODO: use a better approach instead of creating a safeUser everytime
-  const safeUser = {
-    id: user.id,
-    name: user.name,
-    email: user.email,
-    createdAt: user.createdAt,
-  };
-
-  return NextResponse.json(safeUser);
+  return NextResponse.json(user);
 }
