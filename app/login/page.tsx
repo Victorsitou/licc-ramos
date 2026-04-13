@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { isLoggedIn } from "../utils";
+import { getUser } from "../utils";
 
 import MainLayout from "../components/layout/MainLayout";
 
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
 function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -45,8 +44,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    isLoggedIn().then((loggedIn) => {
-      if (loggedIn) window.location.href = "/";
+    getUser().then((user) => {
+      if (user) window.location.href = "/";
     });
   }, []);
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { isLoggedIn } from "../utils";
+import { getUser } from "../utils";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -9,8 +9,8 @@ export default function Register() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    isLoggedIn().then((loggedIn) => {
-      if (loggedIn) {
+    getUser().then((user) => {
+      if (user) {
         window.location.href = "/";
       }
     });
@@ -29,8 +29,8 @@ export default function Register() {
           alert(data.error);
         });
       } else {
-        isLoggedIn().then((loggedIn) => {
-          if (loggedIn) {
+        getUser().then((user) => {
+          if (user) {
             window.location.href = "/";
           }
         });
