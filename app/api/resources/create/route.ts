@@ -2,6 +2,7 @@ import { getCurrentUser } from "@/src/lib/auth";
 import { NextResponse } from "next/server";
 import { createResourceSchema } from "../../dtos/create-resource.dto";
 import { createResource } from "./resources.service";
+import { isAdmin } from "@/src/lib/admin";
 
 export async function POST(request: Request) {
   try {
@@ -13,10 +14,7 @@ export async function POST(request: Request) {
 
     const body = await request.json();
 
-    if (
-      user.sub !== "cmnxgj4cd0000oc9k9va4ut5e" &&
-      user.sub !== "cmnxdw9rc0000qwpkciodqzw1"
-    ) {
+    if (!isAdmin(user.sub)) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
