@@ -1,19 +1,13 @@
 import { NextResponse } from "next/server";
-import { createUserSchema } from "../../users/user.dto";
+import { loginUserSchema } from "../../users/auth.dto";
 import { signToken } from "@/src/lib/jwt";
 import { prisma } from "@/src/lib/prisma";
 import bcrypt from "bcryptjs";
 
 export async function POST(request: Request) {
-  if (!request.body) {
-    return NextResponse.json(
-      { error: "Missing request body" },
-      { status: 400 },
-    );
-  }
   const body = await request.json();
 
-  const parsed = createUserSchema.safeParse(body);
+  const parsed = loginUserSchema.safeParse(body);
 
   if (!parsed.success) {
     return NextResponse.json(
@@ -43,7 +37,14 @@ export async function POST(request: Request) {
       );
     }
     const token = await signToken({ sub: user.id, email: user.email });
-    const response = NextResponse.json(user, { status: 201 });
+
+    const safeUser = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+    };
+
+    const response = NextResponse.json(safeUser, { status: 201 });
 
     response.cookies.set("token", token, {
       httpOnly: true,
