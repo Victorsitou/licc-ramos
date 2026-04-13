@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { loginUserSchema } from "../../users/auth.dto";
+import { loginUserSchema } from "@/app/api/dtos/auth.dto";
 import { signToken } from "@/src/lib/jwt";
 import { prisma } from "@/src/lib/prisma";
 import bcrypt from "bcryptjs";

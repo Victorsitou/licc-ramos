@@ -1,7 +1,7 @@
 import { getCurrentUser } from "@/src/lib/auth";
 import { NextResponse } from "next/server";
 import { createResourceSchema } from "../../dtos/create-resource.dto";
-import { prisma } from "@/src/lib/prisma";
+import { createResource } from "./resources.service";
 
 export async function POST(request: Request) {
   try {
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!user) {
+    if (!user?.sub) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -27,15 +27,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    await prisma.resource.create({
-      data: {
-        title: parsed.data.title,
-        url: parsed.data.url,
-        type: parsed.data.type,
-        slug: parsed.data.slug,
-        orderIndex: parsed.data.orderIndex,
-      },
-    });
+    await createResource(parsed.data);
     return NextResponse.json(
       { message: "Resource created successfully" },
       { status: 201 },
