@@ -21,3 +21,9 @@ export function isToday(dateString: string): boolean {
     date.getFullYear() === today.getFullYear()
   );
 }
+
+export function isLoggedIn(): Promise<boolean> {
+  return fetch("/api/auth/me").then((res) => {
+    return res.ok;
+  });
+}
