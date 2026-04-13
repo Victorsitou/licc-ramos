@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+  moduleFormat    = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ResourceType {
+  CLASS
+  WORKSHOP
+  AYUDANTIA
+}
+
+model User {
+  id              String                 @id @default(cuid())
+  email           String                 @unique
+  passwordHash    String
+  createdAt       DateTime               @default(now())
+  progressRecords UserResourceProgress[]
+
+  @@map("users")
+}
+
+model Resource {
+  id              String                 @id @default(cuid())
+  title           String
+  url             String
+  type            ResourceType
+  slug            String?                @unique
+  orderIndex      Int?
+  createdAt       DateTime               @default(now())
+  progressRecords UserResourceProgress[]
+
+  @@index([type, orderIndex])
+  @@map("resources")
+}
+
+model UserResourceProgress {
+  userId       String
+  resourceId   String
+  completedAt  DateTime @default(now())
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resource     Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@id([userId, resourceId])
+  @@index([resourceId])
+  @@map("user_resource_progress")
+}
