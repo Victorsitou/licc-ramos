@@ -7,6 +7,10 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
+import UserDropdown from "../UserDropdown";
+
+import { getUser, User } from "@/app/utils";
+
 function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -48,6 +52,18 @@ export default function MainLayout({
   subtitle,
   badge,
 }: Props) {
+  const [user, setuser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadUser() {
+      const data = await getUser();
+      setuser(data);
+      setLoading(false);
+    }
+    loadUser();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-zinc-100 via-zinc-50 to-white text-zinc-900 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 dark:text-zinc-100">
       <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 sm:px-10">
@@ -74,9 +90,11 @@ export default function MainLayout({
             )}
           </div>
 
-          <ThemeToggle />
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            {!loading && user && <UserDropdown user={user} />}
+          </div>
         </div>
-
         {children}
       </main>
     </div>
