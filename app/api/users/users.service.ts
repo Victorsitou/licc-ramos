@@ -12,6 +12,12 @@ export async function getUsers() {
   });
 }
 
+export async function getUserById(id: string) {
+  return await prisma.user.findUnique({
+    where: { id: id },
+  });
+}
+
 export async function createUser(data: CreateUserDto) {
   const existingUser = await prisma.user.findUnique({
     where: { email: data.email },
