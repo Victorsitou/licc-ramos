@@ -6,7 +6,20 @@ import { createResource } from "./resources.service";
 export async function POST(request: Request) {
   try {
     const user = await getCurrentUser();
+
+    if (!user?.sub) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const body = await request.json();
+
+    if (
+      user.sub !== "cmnxgj4cd0000oc9k9va4ut5e" &&
+      user.sub !== "cmnxdw9rc0000qwpkciodqzw1"
+    ) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
     const parsed = createResourceSchema.safeParse(body);
 
     if (!parsed.success) {
@@ -16,22 +29,8 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!user?.sub) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
-    if (
-      user.sub !== "cmnxgj4cd0000oc9k9va4ut5e" &&
-      user.sub !== "cmnxdw9rc0000qwpkciodqzw1"
-    ) {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-    }
-
-    await createResource(parsed.data);
-    return NextResponse.json(
-      { message: "Resource created successfully" },
-      { status: 201 },
-    );
+    const resource = await createResource(parsed.data);
+    return NextResponse.json(resource, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
