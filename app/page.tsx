@@ -11,7 +11,6 @@ import FeatureModal from "./components/FeatureModal";
 
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 
 import ramosJson from "./ramos.json";
