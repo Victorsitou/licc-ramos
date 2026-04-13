@@ -1,5 +1,5 @@
 import { prisma } from "@/src/lib/prisma";
-import { CreateUserDto } from "./user.dto";
+import { CreateUserDto } from "../dtos/user.dto";
 import bcrypt from "bcryptjs";
 
 export async function getUsers() {

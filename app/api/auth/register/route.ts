@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createUserSchema } from "../../users/user.dto";
+import { createUserSchema } from "../../dtos/user.dto";
 import { createUser } from "../../users/users.service";
 import { signToken } from "@/src/lib/jwt";
 
