@@ -1,13 +1,9 @@
 import { getCurrentUser } from "@/src/lib/auth";
 import { NextResponse } from "next/server";
 import { completeResource } from "./completed.service";
-import { completeResourceSchema } from "../../../dtos/complete-resource.dto";
 import { unCompleteResource } from "./completed.service";
 
-export async function POST(
-  req: Request,
-  { params }: { params: Promise<{ id: string }> },
-) {
+export async function POST({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   try {
     const user = await getCurrentUser();
@@ -26,7 +22,8 @@ export async function POST(
   }
 }
 
-export async function DELETE({ params }: { params: { id: string } }) {
+export async function DELETE({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   try {
     const user = await getCurrentUser();
 
@@ -34,7 +31,7 @@ export async function DELETE({ params }: { params: { id: string } }) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    await unCompleteResource(user.sub, params.id);
+    await unCompleteResource(user.sub, id);
 
     return NextResponse.json({ message: "Resource marked as incomplete" });
   } catch {
