@@ -3375,21 +3375,18 @@ export namespace Prisma {
   export type UserResourceProgressMinAggregateOutputType = {
     userId: string | null
     resourceId: string | null
-    completed: boolean | null
     completedAt: Date | null
   }
 
   export type UserResourceProgressMaxAggregateOutputType = {
     userId: string | null
     resourceId: string | null
-    completed: boolean | null
     completedAt: Date | null
   }
 
   export type UserResourceProgressCountAggregateOutputType = {
     userId: number
     resourceId: number
-    completed: number
     completedAt: number
     _all: number
   }
@@ -3398,21 +3395,18 @@ export namespace Prisma {
   export type UserResourceProgressMinAggregateInputType = {
     userId?: true
     resourceId?: true
-    completed?: true
     completedAt?: true
   }
 
   export type UserResourceProgressMaxAggregateInputType = {
     userId?: true
     resourceId?: true
-    completed?: true
     completedAt?: true
   }
 
   export type UserResourceProgressCountAggregateInputType = {
     userId?: true
     resourceId?: true
-    completed?: true
     completedAt?: true
     _all?: true
   }
@@ -3492,7 +3486,6 @@ export namespace Prisma {
   export type UserResourceProgressGroupByOutputType = {
     userId: string
     resourceId: string
-    completed: boolean
     completedAt: Date
     _count: UserResourceProgressCountAggregateOutputType | null
     _min: UserResourceProgressMinAggregateOutputType | null
@@ -3516,7 +3509,6 @@ export namespace Prisma {
   export type UserResourceProgressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
     resourceId?: boolean
-    completed?: boolean
     completedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     resource?: boolean | ResourceDefaultArgs<ExtArgs>
@@ -3525,7 +3517,6 @@ export namespace Prisma {
   export type UserResourceProgressSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
     resourceId?: boolean
-    completed?: boolean
     completedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     resource?: boolean | ResourceDefaultArgs<ExtArgs>
@@ -3534,7 +3525,6 @@ export namespace Prisma {
   export type UserResourceProgressSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
     resourceId?: boolean
-    completed?: boolean
     completedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     resource?: boolean | ResourceDefaultArgs<ExtArgs>
@@ -3543,11 +3533,10 @@ export namespace Prisma {
   export type UserResourceProgressSelectScalar = {
     userId?: boolean
     resourceId?: boolean
-    completed?: boolean
     completedAt?: boolean
   }
 
-  export type UserResourceProgressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "resourceId" | "completed" | "completedAt", ExtArgs["result"]["userResourceProgress"]>
+  export type UserResourceProgressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "resourceId" | "completedAt", ExtArgs["result"]["userResourceProgress"]>
   export type UserResourceProgressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     resource?: boolean | ResourceDefaultArgs<ExtArgs>
@@ -3570,7 +3559,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       userId: string
       resourceId: string
-      completed: boolean
       completedAt: Date
     }, ExtArgs["result"]["userResourceProgress"]>
     composites: {}
@@ -3999,7 +3987,6 @@ export namespace Prisma {
   interface UserResourceProgressFieldRefs {
     readonly userId: FieldRef<"UserResourceProgress", 'String'>
     readonly resourceId: FieldRef<"UserResourceProgress", 'String'>
-    readonly completed: FieldRef<"UserResourceProgress", 'Boolean'>
     readonly completedAt: FieldRef<"UserResourceProgress", 'DateTime'>
   }
     
@@ -4462,7 +4449,6 @@ export namespace Prisma {
   export const UserResourceProgressScalarFieldEnum: {
     userId: 'userId',
     resourceId: 'resourceId',
-    completed: 'completed',
     completedAt: 'completedAt'
   };
 
@@ -4565,13 +4551,6 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -4725,7 +4704,6 @@ export namespace Prisma {
     NOT?: UserResourceProgressWhereInput | UserResourceProgressWhereInput[]
     userId?: StringFilter<"UserResourceProgress"> | string
     resourceId?: StringFilter<"UserResourceProgress"> | string
-    completed?: BoolFilter<"UserResourceProgress"> | boolean
     completedAt?: DateTimeFilter<"UserResourceProgress"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     resource?: XOR<ResourceScalarRelationFilter, ResourceWhereInput>
@@ -4734,7 +4712,6 @@ export namespace Prisma {
   export type UserResourceProgressOrderByWithRelationInput = {
     userId?: SortOrder
     resourceId?: SortOrder
-    completed?: SortOrder
     completedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     resource?: ResourceOrderByWithRelationInput
@@ -4747,7 +4724,6 @@ export namespace Prisma {
     NOT?: UserResourceProgressWhereInput | UserResourceProgressWhereInput[]
     userId?: StringFilter<"UserResourceProgress"> | string
     resourceId?: StringFilter<"UserResourceProgress"> | string
-    completed?: BoolFilter<"UserResourceProgress"> | boolean
     completedAt?: DateTimeFilter<"UserResourceProgress"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     resource?: XOR<ResourceScalarRelationFilter, ResourceWhereInput>
@@ -4756,7 +4732,6 @@ export namespace Prisma {
   export type UserResourceProgressOrderByWithAggregationInput = {
     userId?: SortOrder
     resourceId?: SortOrder
-    completed?: SortOrder
     completedAt?: SortOrder
     _count?: UserResourceProgressCountOrderByAggregateInput
     _max?: UserResourceProgressMaxOrderByAggregateInput
@@ -4769,7 +4744,6 @@ export namespace Prisma {
     NOT?: UserResourceProgressScalarWhereWithAggregatesInput | UserResourceProgressScalarWhereWithAggregatesInput[]
     userId?: StringWithAggregatesFilter<"UserResourceProgress"> | string
     resourceId?: StringWithAggregatesFilter<"UserResourceProgress"> | string
-    completed?: BoolWithAggregatesFilter<"UserResourceProgress"> | boolean
     completedAt?: DateTimeWithAggregatesFilter<"UserResourceProgress"> | Date | string
   }
 
@@ -4915,8 +4889,7 @@ export namespace Prisma {
   }
 
   export type UserResourceProgressCreateInput = {
-    completed?: boolean
-    completedAt: Date | string
+    completedAt?: Date | string
     user: UserCreateNestedOneWithoutProgressRecordsInput
     resource: ResourceCreateNestedOneWithoutProgressRecordsInput
   }
@@ -4924,12 +4897,10 @@ export namespace Prisma {
   export type UserResourceProgressUncheckedCreateInput = {
     userId: string
     resourceId: string
-    completed?: boolean
-    completedAt: Date | string
+    completedAt?: Date | string
   }
 
   export type UserResourceProgressUpdateInput = {
-    completed?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProgressRecordsNestedInput
     resource?: ResourceUpdateOneRequiredWithoutProgressRecordsNestedInput
@@ -4938,26 +4909,22 @@ export namespace Prisma {
   export type UserResourceProgressUncheckedUpdateInput = {
     userId?: StringFieldUpdateOperationsInput | string
     resourceId?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserResourceProgressCreateManyInput = {
     userId: string
     resourceId: string
-    completed?: boolean
-    completedAt: Date | string
+    completedAt?: Date | string
   }
 
   export type UserResourceProgressUpdateManyMutationInput = {
-    completed?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserResourceProgressUncheckedUpdateManyInput = {
     userId?: StringFieldUpdateOperationsInput | string
     resourceId?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5193,11 +5160,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
@@ -5216,30 +5178,19 @@ export namespace Prisma {
   export type UserResourceProgressCountOrderByAggregateInput = {
     userId?: SortOrder
     resourceId?: SortOrder
-    completed?: SortOrder
     completedAt?: SortOrder
   }
 
   export type UserResourceProgressMaxOrderByAggregateInput = {
     userId?: SortOrder
     resourceId?: SortOrder
-    completed?: SortOrder
     completedAt?: SortOrder
   }
 
   export type UserResourceProgressMinOrderByAggregateInput = {
     userId?: SortOrder
     resourceId?: SortOrder
-    completed?: SortOrder
     completedAt?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type UserResourceProgressCreateNestedManyWithoutUserInput = {
@@ -5364,10 +5315,6 @@ export namespace Prisma {
     create?: XOR<ResourceCreateWithoutProgressRecordsInput, ResourceUncheckedCreateWithoutProgressRecordsInput>
     connectOrCreate?: ResourceCreateOrConnectWithoutProgressRecordsInput
     connect?: ResourceWhereUniqueInput
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type UserUpdateOneRequiredWithoutProgressRecordsNestedInput = {
@@ -5556,29 +5503,14 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type UserResourceProgressCreateWithoutUserInput = {
-    completed?: boolean
-    completedAt: Date | string
+    completedAt?: Date | string
     resource: ResourceCreateNestedOneWithoutProgressRecordsInput
   }
 
   export type UserResourceProgressUncheckedCreateWithoutUserInput = {
     resourceId: string
-    completed?: boolean
-    completedAt: Date | string
+    completedAt?: Date | string
   }
 
   export type UserResourceProgressCreateOrConnectWithoutUserInput = {
@@ -5613,20 +5545,17 @@ export namespace Prisma {
     NOT?: UserResourceProgressScalarWhereInput | UserResourceProgressScalarWhereInput[]
     userId?: StringFilter<"UserResourceProgress"> | string
     resourceId?: StringFilter<"UserResourceProgress"> | string
-    completed?: BoolFilter<"UserResourceProgress"> | boolean
     completedAt?: DateTimeFilter<"UserResourceProgress"> | Date | string
   }
 
   export type UserResourceProgressCreateWithoutResourceInput = {
-    completed?: boolean
-    completedAt: Date | string
+    completedAt?: Date | string
     user: UserCreateNestedOneWithoutProgressRecordsInput
   }
 
   export type UserResourceProgressUncheckedCreateWithoutResourceInput = {
     userId: string
-    completed?: boolean
-    completedAt: Date | string
+    completedAt?: Date | string
   }
 
   export type UserResourceProgressCreateOrConnectWithoutResourceInput = {
@@ -5765,49 +5694,41 @@ export namespace Prisma {
 
   export type UserResourceProgressCreateManyUserInput = {
     resourceId: string
-    completed?: boolean
-    completedAt: Date | string
+    completedAt?: Date | string
   }
 
   export type UserResourceProgressUpdateWithoutUserInput = {
-    completed?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resource?: ResourceUpdateOneRequiredWithoutProgressRecordsNestedInput
   }
 
   export type UserResourceProgressUncheckedUpdateWithoutUserInput = {
     resourceId?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserResourceProgressUncheckedUpdateManyWithoutUserInput = {
     resourceId?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserResourceProgressCreateManyResourceInput = {
     userId: string
-    completed?: boolean
-    completedAt: Date | string
+    completedAt?: Date | string
   }
 
   export type UserResourceProgressUpdateWithoutResourceInput = {
-    completed?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutProgressRecordsNestedInput
   }
 
   export type UserResourceProgressUncheckedUpdateWithoutResourceInput = {
     userId?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserResourceProgressUncheckedUpdateManyWithoutResourceInput = {
     userId?: StringFieldUpdateOperationsInput | string
-    completed?: BoolFieldUpdateOperationsInput | boolean
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

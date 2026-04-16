@@ -53,8 +53,7 @@ model Resource {
 model UserResourceProgress {
   userId      String
   resourceId  String
-  completed   Boolean  @default(false)
-  completedAt DateTime
+  completedAt DateTime @default(now())
 
   user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   resource Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
