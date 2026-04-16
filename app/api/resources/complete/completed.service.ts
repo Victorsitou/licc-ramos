@@ -17,3 +17,14 @@ export async function completeResource(userId: string, resourceId: string) {
     },
   });
 }
+
+export async function unCompleteResource(userId: string, resourceId: string) {
+  return await prisma.userResourceProgress.delete({
+    where: {
+      userId_resourceId: {
+        userId,
+        resourceId,
+      },
+    },
+  });
+}
