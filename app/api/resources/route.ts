@@ -1,7 +1,8 @@
 import { getCurrentUser } from "@/src/lib/auth";
 import { NextResponse } from "next/server";
-import { createResourceSchema } from "../../dtos/create-resource.dto";
+import { createResourceSchema } from "../dtos/create-resource.dto";
 import { createResource } from "./resources.service";
+import { getResources } from "./resources.service";
 
 export async function POST(request: Request) {
   try {
@@ -31,6 +32,18 @@ export async function POST(request: Request) {
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 },
+    );
+  }
+}
+
+export async function GET() {
+  try {
+    const resources = await getResources();
+    return NextResponse.json(resources);
+  } catch {
+    return NextResponse.json(
+      { error: "Failed to fetch resources" },
       { status: 500 },
     );
   }

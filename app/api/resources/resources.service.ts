@@ -16,3 +16,9 @@ export async function createResource(data: CreateResourceDto) {
     throw new Error("Slug already exists");
   }
 }
+
+export async function getResources() {
+  return await prisma.resource.findMany({
+    orderBy: { orderIndex: "asc" },
+  });
+}
