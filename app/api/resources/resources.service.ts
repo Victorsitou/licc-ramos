@@ -17,8 +17,22 @@ export async function createResource(data: CreateResourceDto) {
   }
 }
 
-export async function getResources() {
-  return await prisma.resource.findMany({
+export async function getUserResources(userId: string) {
+  const resources = await prisma.resource.findMany({
     orderBy: { orderIndex: "asc" },
+    include: {
+      progressRecords: {
+        where: { userId },
+        select: { completedAt: true },
+      },
+    },
   });
+
+  return resources.map((r) => ({
+    id: r.id,
+    title: r.title,
+    url: r.url,
+    type: r.type,
+    completed: r.progressRecords.length > 0,
+  }));
 }

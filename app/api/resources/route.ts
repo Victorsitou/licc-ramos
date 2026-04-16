@@ -1,8 +1,7 @@
 import { getCurrentUser } from "@/src/lib/auth";
 import { NextResponse } from "next/server";
 import { createResourceSchema } from "../dtos/create-resource.dto";
-import { createResource } from "./resources.service";
-import { getResources } from "./resources.service";
+import { createResource, getUserResources } from "./resources.service";
 
 export async function POST(request: Request) {
   try {
@@ -39,7 +38,13 @@ export async function POST(request: Request) {
 
 export async function GET() {
   try {
-    const resources = await getResources();
+    const user = await getCurrentUser();
+
+    if (!user?.sub) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const resources = await getUserResources(user.sub);
     return NextResponse.json(resources);
   } catch {
     return NextResponse.json(
