@@ -33,6 +33,9 @@ export async function getUserResources(userId: string) {
     title: r.title,
     url: r.url,
     type: r.type,
+    slug: r.slug,
+    orderIndex: r.orderIndex,
+    createdAt: r.createdAt,
     completed: r.progressRecords.length > 0,
   }));
 }
