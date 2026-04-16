@@ -19,10 +19,16 @@ enum ResourceType {
   AYUDANTIA
 }
 
+enum UserRole {
+  STUDENT
+  ADMIN
+}
+
 model User {
   id              String                 @id @default(cuid())
   name            String
   email           String                 @unique
+  role            UserRole               @default(STUDENT)
   passwordHash    String
   createdAt       DateTime               @default(now())
   progressRecords UserResourceProgress[]
@@ -35,7 +41,7 @@ model Resource {
   title           String
   url             String
   type            ResourceType
-  slug            String?                @unique
+  slug            String?
   orderIndex      Int?
   createdAt       DateTime               @default(now())
   progressRecords UserResourceProgress[]

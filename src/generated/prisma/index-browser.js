@@ -124,6 +124,7 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
+  role: 'role',
   passwordHash: 'passwordHash',
   createdAt: 'createdAt'
 };
@@ -158,6 +159,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.UserRole = exports.$Enums.UserRole = {
+  STUDENT: 'STUDENT',
+  ADMIN: 'ADMIN'
+};
+
 exports.ResourceType = exports.$Enums.ResourceType = {
   CLASS: 'CLASS',
   WORKSHOP: 'WORKSHOP',
