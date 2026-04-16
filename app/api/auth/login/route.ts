@@ -36,7 +36,11 @@ export async function POST(request: Request) {
         { status: 401 },
       );
     }
-    const token = await signToken({ sub: user.id, email: user.email });
+    const token = await signToken({
+      sub: user.id,
+      email: user.email,
+      role: user.role,
+    });
 
     const response = NextResponse.json(user, { status: 201 });
 
