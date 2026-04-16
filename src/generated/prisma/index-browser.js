@@ -142,6 +142,7 @@ exports.Prisma.ResourceScalarFieldEnum = {
 exports.Prisma.UserResourceProgressScalarFieldEnum = {
   userId: 'userId',
   resourceId: 'resourceId',
+  completed: 'completed',
   completedAt: 'completedAt'
 };
 
