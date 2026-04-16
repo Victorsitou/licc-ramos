@@ -4,11 +4,14 @@ import bcrypt from "bcryptjs";
 
 export async function getUsers() {
   return await prisma.user.findMany({
-    select: {
-      id: true,
-      name: true,
-      email: true,
-    },
+    omit: { passwordHash: true },
+  });
+}
+
+export async function getUserById(id: string) {
+  return await prisma.user.findUnique({
+    where: { id: id },
+    omit: { passwordHash: true },
   });
 }
 
@@ -28,6 +31,9 @@ export async function createUser(data: CreateUserDto) {
       name: data.name,
       email: data.email,
       passwordHash: hashedPassword,
+    },
+    omit: {
+      passwordHash: true,
     },
   });
 }
