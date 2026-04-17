@@ -63,8 +63,9 @@ export default function Ramo({
 
   // Resources management
   const toggleCompleted = (resource: Resource) => {
-    toggleResourceCompletion(resource.id, !resource.completed);
-    loadAyudantiaData();
+    toggleResourceCompletion(resource.id, !resource.completed).finally(() => {
+      loadAyudantiaData();
+    });
   };
 
   // Bloquear scroll
