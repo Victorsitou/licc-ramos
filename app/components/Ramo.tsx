@@ -13,7 +13,7 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-import { formatDate, isToday } from "../utils";
+import { formatDate, isToday, getUser, User } from "../utils";
 import {
   getResource,
   toggleResourceCompletion,
@@ -143,6 +143,11 @@ export default function Ramo({
     setPdfTitle(title);
   };
 
+  const [user, setUser] = useState<User | null>(null);
+  useEffect(() => {
+    getUser().then((u) => setUser(u));
+  }, []);
+
   return (
     <section className="w-full">
       <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-8">
@@ -248,6 +253,7 @@ export default function Ramo({
         onClose={() => setShowAyudantia(false)}
         data={ayudantiaData}
         ramoSigla={ramo.sigla}
+        user={user}
         onOpenPdf={openPdf}
         onToggleCompleted={toggleCompleted}
       />

@@ -3,11 +3,14 @@
 import CloseIcon from "@mui/icons-material/Close";
 import type { Resource } from "../services/resources";
 
+import { User } from "../utils";
+
 export default function AyudantiaModal({
   open,
   onClose,
   data,
   ramoSigla,
+  user,
   onOpenPdf,
   onToggleCompleted,
 }: {
@@ -15,6 +18,7 @@ export default function AyudantiaModal({
   onClose: () => void;
   data: Resource[] | null;
   ramoSigla: string;
+  user: User | null;
   onOpenPdf: (url: string, title: string) => void;
   onToggleCompleted: (resource: Resource) => void;
 }) {
@@ -86,19 +90,21 @@ export default function AyudantiaModal({
                     </div>
                   </button>
 
-                  <button
-                    onClick={() => onToggleCompleted(item)}
-                    className={`mt-4 w-full text-sm py-2 rounded-xl border transition
+                  {user && (
+                    <button
+                      onClick={() => onToggleCompleted(item)}
+                      className={`mt-4 w-full text-sm py-2 rounded-xl border transition
                       ${
                         item.completed
                           ? "bg-green-500 text-white border-green-500 hover:bg-green-600"
                           : "bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700 hover:dark:bg-zinc-700 hover:bg-zinc-200"
                       }`}
-                  >
-                    {item.completed
-                      ? "✔ Marcada como completada"
-                      : "Marcar como completada"}
-                  </button>
+                    >
+                      {item.completed
+                        ? "✔ Marcada como completada"
+                        : "Marcar como completada"}
+                    </button>
+                  )}
                 </div>
               ))}
             </div>
