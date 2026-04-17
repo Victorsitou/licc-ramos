@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { getUser } from "../utils";
 
+import { register } from "../services/auth";
+
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,24 +18,13 @@ export default function Register() {
     });
   }, []);
 
-  const login = () => {
-    fetch("/api/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, password }),
-    }).then((res) => {
+  const handleRegister = () => {
+    register(name, email, password).then(async (res) => {
       if (!res.ok) {
-        res.json().then((data) => {
-          alert(data.error);
-        });
+        const data = await res.json();
+        alert(data.message || "Error al registrarse");
       } else {
-        getUser().then((user) => {
-          if (user) {
-            window.location.href = "/";
-          }
-        });
+        window.location.href = "/";
       }
     });
   };
@@ -85,17 +76,17 @@ export default function Register() {
             <input
               type="password"
               id="password"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-5₀ focus:ring-blue-5₀ dark:border-gray-6₀ dark:bg-gray-7₀ dark:text-gray-2₀"
               placeholder="********"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <button
             type="submit"
-            className="w-full rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full rounded-md bg-blue-6₀ px-4 py-2 text-sm font-medium text-white hover:bg-blue-7₀ focus:outline-none focus:ring-2 focus:ring-blue-5₀ focus:ring-offset-2"
             onClick={(e) => {
               e.preventDefault();
-              login();
+              handleRegister();
             }}
           >
             Registrarse
