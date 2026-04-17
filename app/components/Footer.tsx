@@ -12,6 +12,15 @@ export default function Footer() {
           >
             Victor
           </a>{" "}
+          y{" "}
+          <a
+            href="https://github.com/Ssj400"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            José
+          </a>{" "}
           -{" "}
           <a
             href="https://github.com/Victorsitou/licc-ramos"
