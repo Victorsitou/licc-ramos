@@ -1,16 +1,24 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { zxcvbn, zxcvbnOptions } from "@zxcvbn-ts/core";
+import * as zxcvbnEsEsPackage from "@zxcvbn-ts/language-es-es";
+zxcvbnOptions.setOptions({
+  translations: zxcvbnEsEsPackage.translations,
+});
+
 import { getUser } from "../utils";
-
 import { register } from "../services/auth";
-
 import MainLayout from "../components/layout/MainLayout";
 
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const passwordStrength = zxcvbn(password);
+  const score = passwordStrength.score;
+  const isStrong = score >= 2;
 
   useEffect(() => {
     getUser().then((user) => {
@@ -19,6 +27,7 @@ export default function Register() {
   }, []);
 
   const handleRegister = () => {
+    if (!isStrong) return;
     register(name, email, password).then(async (res) => {
       if (!res.ok) {
         const data = await res.json();
@@ -27,6 +36,19 @@ export default function Register() {
         window.location.href = "/";
       }
     });
+  };
+
+  const getStrengthColor = () => {
+    if (score < 2) return "#ef4444"; // rojo
+    if (score < 3) return "#f59e0b"; // amarillo
+    return "#22c55e"; // verde
+  };
+
+  const getStrengthText = () => {
+    if (!password) return "Usa una contraseña segura";
+    if (score < 2) return "Contraseña débil";
+    if (score < 3) return "Contraseña aceptable";
+    return "Contraseña fuerte";
   };
 
   return (
@@ -70,6 +92,29 @@ export default function Register() {
                     onChange={(e) => setPassword(e.target.value)}
                     className="mt-2 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-zinc-800"
                   />
+
+                  <div className="mt-2">
+                    <div className="h-2 w-full rounded bg-zinc-200 dark:bg-zinc-700">
+                      <div
+                        className="h-2 rounded transition-all"
+                        style={{
+                          width: `${(score + 1) * 20}%`,
+                          backgroundColor: getStrengthColor(),
+                        }}
+                      />
+                    </div>
+
+                    <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                      {getStrengthText()}
+                    </p>
+
+                    {password && (
+                      <p className="mt-1 text-xs text-zinc-500">
+                        {passwordStrength.feedback.warning ||
+                          passwordStrength.feedback.suggestions[0]}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
                 <button
@@ -77,7 +122,8 @@ export default function Register() {
                     e.preventDefault();
                     handleRegister();
                   }}
-                  className="w-full rounded-xl bg-blue-600 py-2 text-sm font-medium text-white transition hover:scale-[1.02] hover:bg-blue-700"
+                  disabled={!isStrong}
+                  className="w-full rounded-xl bg-blue-600 py-2 text-sm font-medium text-white transition disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] hover:bg-blue-700"
                 >
                   Crear cuenta
                 </button>
