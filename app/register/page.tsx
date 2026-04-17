@@ -7,7 +7,7 @@ zxcvbnOptions.setOptions({
   translations: zxcvbnEsEsPackage.translations,
 });
 
-import { getUser } from "../utils";
+import { getUser, isUCEmail } from "../utils";
 import { register } from "../services/auth";
 import MainLayout from "../components/layout/MainLayout";
 
@@ -19,6 +19,7 @@ export default function Register() {
   const passwordStrength = zxcvbn(password);
   const score = passwordStrength.score;
   const isStrong = score >= 2;
+  const isEmailValid = isUCEmail(email);
 
   useEffect(() => {
     getUser().then((user) => {
@@ -27,7 +28,7 @@ export default function Register() {
   }, []);
 
   const handleRegister = () => {
-    if (!isStrong) return;
+    if (!isStrong || !isEmailValid) return;
     register(name, email, password).then(async (res) => {
       if (!res.ok) {
         const data = await res.json();
@@ -80,6 +81,11 @@ export default function Register() {
                     onChange={(e) => setEmail(e.target.value)}
                     className="mt-2 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-zinc-800"
                   />
+                  {email && !isEmailValid && (
+                    <p className="mt-2 text-xs text-red-500">
+                      Debes usar un correo @uc.cl o @estudiante.uc.cl
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -122,7 +128,7 @@ export default function Register() {
                     e.preventDefault();
                     handleRegister();
                   }}
-                  disabled={!isStrong}
+                  disabled={!isStrong || !isEmailValid}
                   className="w-full rounded-xl bg-blue-600 py-2 text-sm font-medium text-white transition disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] hover:bg-blue-700"
                 >
                   Crear cuenta

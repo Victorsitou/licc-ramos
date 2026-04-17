@@ -40,3 +40,8 @@ export function getUser(): Promise<User | null> {
       return data;
     });
 }
+
+export function isUCEmail(email: string): boolean {
+  const ucEmailRegex = /^[^\s@]+@(uc\.cl|estudiante\.uc\.cl)$/;
+  return ucEmailRegex.test(email);
+}
