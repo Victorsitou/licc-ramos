@@ -17,6 +17,12 @@ export async function createResource(data: CreateResourceDto) {
   }
 }
 
+export async function getResources() {
+  return await prisma.resource.findMany({
+    orderBy: { orderIndex: "asc" },
+  });
+}
+
 export async function getUserResources(userId: string) {
   const resources = await prisma.resource.findMany({
     orderBy: { orderIndex: "asc" },
