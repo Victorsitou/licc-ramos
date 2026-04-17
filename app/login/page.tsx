@@ -29,10 +29,7 @@ export default function Login() {
   };
 
   return (
-    <MainLayout
-      title="Inicia sesión"
-      subtitle="Accede a tu repositorio de clases"
-    >
+    <MainLayout title="Inicia sesión" subtitle="Accede a LICC Ramos">
       <div className="min-h-screen from-zinc-100 via-zinc-50 to-white text-zinc-900 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 dark:text-zinc-100">
         <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 sm:px-10">
           <div className="mx-auto w-full max-w-md">
@@ -71,6 +68,16 @@ export default function Login() {
                 >
                   Iniciar sesión
                 </button>
+
+                <p className="text-center text-sm text-zinc-600 dark:text-zinc-400">
+                  ¿No tienes una cuenta?{" "}
+                  <a
+                    href="/register"
+                    className="font-medium text-blue-600 hover:underline"
+                  >
+                    Regístrate aquí
+                  </a>
+                </p>
               </form>
             </div>
           </div>
