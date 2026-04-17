@@ -5,6 +5,8 @@ import { getUser } from "../utils";
 
 import { register } from "../services/auth";
 
+import MainLayout from "../components/layout/MainLayout";
+
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -12,9 +14,7 @@ export default function Register() {
 
   useEffect(() => {
     getUser().then((user) => {
-      if (user) {
-        window.location.href = "/";
-      }
+      if (user) window.location.href = "/";
     });
   }, []);
 
@@ -30,69 +30,72 @@ export default function Register() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-lg dark:bg-zinc-800">
-        <h2 className="mb-6 text-center text-2xl font-bold text-gray-800 dark:text-gray-200">
-          Registrarse
-        </h2>
-        <form className="space-y-6">
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
-              Nombre
-            </label>
-            <input
-              type="text"
-              id="name"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-              placeholder="Víctor"
-              onChange={(e) => setName(e.target.value)}
-            />
+    <MainLayout title="Crear cuenta" subtitle="Únete a LICC Ramos">
+      <div className="min-h-screen from-zinc-100 via-zinc-50 to-white text-zinc-900 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 dark:text-zinc-100">
+        <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 sm:px-10">
+          <div className="mx-auto w-full max-w-md">
+            <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+              <form className="space-y-5">
+                <div>
+                  <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                    Nombre
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Víctor"
+                    onChange={(e) => setName(e.target.value)}
+                    className="mt-2 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-zinc-800"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                    Correo electrónico
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="victor@estudiante.uc.cl"
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="mt-2 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-zinc-800"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                    Contraseña
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="********"
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="mt-2 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-zinc-800"
+                  />
+                </div>
+
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleRegister();
+                  }}
+                  className="w-full rounded-xl bg-blue-600 py-2 text-sm font-medium text-white transition hover:scale-[1.02] hover:bg-blue-700"
+                >
+                  Crear cuenta
+                </button>
+
+                <p className="text-center text-sm text-zinc-600 dark:text-zinc-400">
+                  ¿Ya tienes cuenta?{" "}
+                  <a
+                    href="/login"
+                    className="font-medium text-blue-600 hover:underline"
+                  >
+                    Inicia sesión
+                  </a>
+                </p>
+              </form>
+            </div>
           </div>
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
-              Correo Electrónico
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-              placeholder="victor@estudiante.uc.cl"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-            >
-              Contraseña
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-5₀ focus:ring-blue-5₀ dark:border-gray-6₀ dark:bg-gray-7₀ dark:text-gray-2₀"
-              placeholder="********"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full rounded-md bg-blue-6₀ px-4 py-2 text-sm font-medium text-white hover:bg-blue-7₀ focus:outline-none focus:ring-2 focus:ring-blue-5₀ focus:ring-offset-2"
-            onClick={(e) => {
-              e.preventDefault();
-              handleRegister();
-            }}
-          >
-            Registrarse
-          </button>
-        </form>
+        </main>
       </div>
-    </div>
+    </MainLayout>
   );
 }
