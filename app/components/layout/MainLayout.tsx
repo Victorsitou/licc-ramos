@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -56,6 +56,7 @@ export default function MainLayout({
   const [user, setuser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     async function loadUser() {
@@ -73,7 +74,7 @@ export default function MainLayout({
         <div className="mb-10 flex items-start justify-between">
           <div>
             <div className="flex items-center gap-3">
-              {window.location.pathname !== "/" && (
+              {pathname !== "/" && (
                 <button
                   title="Ir al inicio"
                   onClick={() => router.push("/")}

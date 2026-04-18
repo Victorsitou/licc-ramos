@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 import { User } from "../utils";
 
@@ -10,16 +10,14 @@ import { logout } from "../services/auth";
 export default function UserDropdown({ user }: { user: User | null }) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleLogout = async () => {
     await logout();
     router.push("/login");
   };
 
-  if (
-    window.location.pathname === "/login" ||
-    window.location.pathname === "/register"
-  ) {
+  if (pathname === "/login" || pathname === "/register") {
     return null;
   }
 
