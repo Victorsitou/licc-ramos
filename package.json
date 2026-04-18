@@ -19,6 +19,7 @@
     "@zxcvbn-ts/core": "^3.0.4",
     "@zxcvbn-ts/language-es-es": "^3.0.2",
     "bcryptjs": "^3.0.3",
+    "dayjs": "^1.11.20",
     "dotenv": "^17.4.2",
     "jose": "^6.2.2",
     "next": "16.2.1",
