@@ -2355,6 +2355,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     url: string | null
+    key: string | null
     type: $Enums.ResourceType | null
     slug: string | null
     orderIndex: number | null
@@ -2365,6 +2366,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     url: string | null
+    key: string | null
     type: $Enums.ResourceType | null
     slug: string | null
     orderIndex: number | null
@@ -2375,6 +2377,7 @@ export namespace Prisma {
     id: number
     title: number
     url: number
+    key: number
     type: number
     slug: number
     orderIndex: number
@@ -2395,6 +2398,7 @@ export namespace Prisma {
     id?: true
     title?: true
     url?: true
+    key?: true
     type?: true
     slug?: true
     orderIndex?: true
@@ -2405,6 +2409,7 @@ export namespace Prisma {
     id?: true
     title?: true
     url?: true
+    key?: true
     type?: true
     slug?: true
     orderIndex?: true
@@ -2415,6 +2420,7 @@ export namespace Prisma {
     id?: true
     title?: true
     url?: true
+    key?: true
     type?: true
     slug?: true
     orderIndex?: true
@@ -2512,6 +2518,7 @@ export namespace Prisma {
     id: string
     title: string
     url: string
+    key: string
     type: $Enums.ResourceType
     slug: string | null
     orderIndex: number | null
@@ -2541,6 +2548,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     url?: boolean
+    key?: boolean
     type?: boolean
     slug?: boolean
     orderIndex?: boolean
@@ -2553,6 +2561,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     url?: boolean
+    key?: boolean
     type?: boolean
     slug?: boolean
     orderIndex?: boolean
@@ -2563,6 +2572,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     url?: boolean
+    key?: boolean
     type?: boolean
     slug?: boolean
     orderIndex?: boolean
@@ -2573,13 +2583,14 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     url?: boolean
+    key?: boolean
     type?: boolean
     slug?: boolean
     orderIndex?: boolean
     createdAt?: boolean
   }
 
-  export type ResourceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "url" | "type" | "slug" | "orderIndex" | "createdAt", ExtArgs["result"]["resource"]>
+  export type ResourceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "url" | "key" | "type" | "slug" | "orderIndex" | "createdAt", ExtArgs["result"]["resource"]>
   export type ResourceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     progressRecords?: boolean | Resource$progressRecordsArgs<ExtArgs>
     _count?: boolean | ResourceCountOutputTypeDefaultArgs<ExtArgs>
@@ -2596,6 +2607,7 @@ export namespace Prisma {
       id: string
       title: string
       url: string
+      key: string
       type: $Enums.ResourceType
       slug: string | null
       orderIndex: number | null
@@ -3027,6 +3039,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Resource", 'String'>
     readonly title: FieldRef<"Resource", 'String'>
     readonly url: FieldRef<"Resource", 'String'>
+    readonly key: FieldRef<"Resource", 'String'>
     readonly type: FieldRef<"Resource", 'ResourceType'>
     readonly slug: FieldRef<"Resource", 'String'>
     readonly orderIndex: FieldRef<"Resource", 'Int'>
@@ -5529,6 +5542,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     url: 'url',
+    key: 'key',
     type: 'type',
     slug: 'slug',
     orderIndex: 'orderIndex',
@@ -5752,6 +5766,7 @@ export namespace Prisma {
     id?: StringFilter<"Resource"> | string
     title?: StringFilter<"Resource"> | string
     url?: StringFilter<"Resource"> | string
+    key?: StringFilter<"Resource"> | string
     type?: EnumResourceTypeFilter<"Resource"> | $Enums.ResourceType
     slug?: StringNullableFilter<"Resource"> | string | null
     orderIndex?: IntNullableFilter<"Resource"> | number | null
@@ -5763,6 +5778,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     url?: SortOrder
+    key?: SortOrder
     type?: SortOrder
     slug?: SortOrderInput | SortOrder
     orderIndex?: SortOrderInput | SortOrder
@@ -5777,6 +5793,7 @@ export namespace Prisma {
     NOT?: ResourceWhereInput | ResourceWhereInput[]
     title?: StringFilter<"Resource"> | string
     url?: StringFilter<"Resource"> | string
+    key?: StringFilter<"Resource"> | string
     type?: EnumResourceTypeFilter<"Resource"> | $Enums.ResourceType
     slug?: StringNullableFilter<"Resource"> | string | null
     orderIndex?: IntNullableFilter<"Resource"> | number | null
@@ -5788,6 +5805,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     url?: SortOrder
+    key?: SortOrder
     type?: SortOrder
     slug?: SortOrderInput | SortOrder
     orderIndex?: SortOrderInput | SortOrder
@@ -5806,6 +5824,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Resource"> | string
     title?: StringWithAggregatesFilter<"Resource"> | string
     url?: StringWithAggregatesFilter<"Resource"> | string
+    key?: StringWithAggregatesFilter<"Resource"> | string
     type?: EnumResourceTypeWithAggregatesFilter<"Resource"> | $Enums.ResourceType
     slug?: StringNullableWithAggregatesFilter<"Resource"> | string | null
     orderIndex?: IntNullableWithAggregatesFilter<"Resource"> | number | null
@@ -5986,6 +6005,7 @@ export namespace Prisma {
     id?: string
     title: string
     url: string
+    key?: string
     type: $Enums.ResourceType
     slug?: string | null
     orderIndex?: number | null
@@ -5997,6 +6017,7 @@ export namespace Prisma {
     id?: string
     title: string
     url: string
+    key?: string
     type: $Enums.ResourceType
     slug?: string | null
     orderIndex?: number | null
@@ -6008,6 +6029,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
     type?: EnumResourceTypeFieldUpdateOperationsInput | $Enums.ResourceType
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: NullableIntFieldUpdateOperationsInput | number | null
@@ -6019,6 +6041,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
     type?: EnumResourceTypeFieldUpdateOperationsInput | $Enums.ResourceType
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: NullableIntFieldUpdateOperationsInput | number | null
@@ -6030,6 +6053,7 @@ export namespace Prisma {
     id?: string
     title: string
     url: string
+    key?: string
     type: $Enums.ResourceType
     slug?: string | null
     orderIndex?: number | null
@@ -6040,6 +6064,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
     type?: EnumResourceTypeFieldUpdateOperationsInput | $Enums.ResourceType
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: NullableIntFieldUpdateOperationsInput | number | null
@@ -6050,6 +6075,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
     type?: EnumResourceTypeFieldUpdateOperationsInput | $Enums.ResourceType
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: NullableIntFieldUpdateOperationsInput | number | null
@@ -6315,6 +6341,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     url?: SortOrder
+    key?: SortOrder
     type?: SortOrder
     slug?: SortOrder
     orderIndex?: SortOrder
@@ -6329,6 +6356,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     url?: SortOrder
+    key?: SortOrder
     type?: SortOrder
     slug?: SortOrder
     orderIndex?: SortOrder
@@ -6339,6 +6367,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     url?: SortOrder
+    key?: SortOrder
     type?: SortOrder
     slug?: SortOrder
     orderIndex?: SortOrder
@@ -6884,6 +6913,7 @@ export namespace Prisma {
     id?: string
     title: string
     url: string
+    key?: string
     type: $Enums.ResourceType
     slug?: string | null
     orderIndex?: number | null
@@ -6894,6 +6924,7 @@ export namespace Prisma {
     id?: string
     title: string
     url: string
+    key?: string
     type: $Enums.ResourceType
     slug?: string | null
     orderIndex?: number | null
@@ -6951,6 +6982,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
     type?: EnumResourceTypeFieldUpdateOperationsInput | $Enums.ResourceType
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: NullableIntFieldUpdateOperationsInput | number | null
@@ -6961,6 +6993,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    key?: StringFieldUpdateOperationsInput | string
     type?: EnumResourceTypeFieldUpdateOperationsInput | $Enums.ResourceType
     slug?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: NullableIntFieldUpdateOperationsInput | number | null
