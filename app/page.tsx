@@ -190,8 +190,7 @@ export default function Home() {
                 <div>
                   <h4 className="text-xl font-bold sm:text-2xl">Talleres</h4>
                   <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                    Accede a material adicional como talleres y ejercicios para
-                    practicar.
+                    Accede a talleres con ejercicios para practicar.
                   </p>
                 </div>
 
