@@ -7,7 +7,7 @@ import { User } from "../utils";
 
 import { logout } from "../services/auth";
 
-export default function UserDropdown({ user }: { user: User }) {
+export default function UserDropdown({ user }: { user: User | null }) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
@@ -15,6 +15,24 @@ export default function UserDropdown({ user }: { user: User }) {
     await logout();
     router.push("/login");
   };
+
+  if (
+    window.location.pathname === "/login" ||
+    window.location.pathname === "/register"
+  ) {
+    return null;
+  }
+
+  if (!user) {
+    return (
+      <button
+        onClick={() => router.push("/login")}
+        className="rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition hover:scale-105 dark:border-zinc-800 dark:bg-zinc-900"
+      >
+        Iniciar sesión
+      </button>
+    );
+  }
 
   return (
     <div className="relative">
