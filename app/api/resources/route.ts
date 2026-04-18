@@ -3,9 +3,10 @@ import { NextResponse } from "next/server";
 import { createResourceSchema } from "../dtos/create-resource.dto";
 import {
   createResource,
+  getClassesResources,
   getUserResources,
-  getResources,
 } from "./resources.service";
+import { getUserById } from "../users/users.service";
 
 export async function POST(request: Request) {
   try {
@@ -40,14 +41,30 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET() {
+export async function GET(_: Request) {
   try {
-    const user = await getCurrentUser();
+    const userJWt = await getCurrentUser();
 
-    const resources = user?.sub
-      ? await getUserResources(user.sub)
-      : await getResources();
+    let resources;
+    if (!userJWt?.sub) {
+      // If the user is not logged in, then return only the classes.
+      resources = await getClassesResources();
+    } else {
+      const user = await getUserById(userJWt.sub);
 
+      if (!user) {
+        return NextResponse.json({ error: "User not found" }, { status: 404 });
+      }
+
+      // Verifies whether the user if verified,
+      // if so, then return all resources with the completed status
+      // if not, then only return the classes.
+      if (user.verified) {
+        resources = await getUserResources(user.id);
+      } else {
+        resources = await getClassesResources();
+      }
+    }
     return NextResponse.json(resources);
   } catch {
     return NextResponse.json(
