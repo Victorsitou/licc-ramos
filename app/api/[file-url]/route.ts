@@ -1,8 +1,9 @@
 import { GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { r2 } from "@/src/lib/r2";
+import { withVerified } from "../wrappers/withVerified";
 
-export async function GET(req: Request) {
+export const GET = withVerified(async (req: Request) => {
   const { searchParams } = new URL(req.url);
   const key = searchParams.get("key");
 
@@ -20,4 +21,4 @@ export async function GET(req: Request) {
   });
 
   return Response.json({ url });
-}
+});
