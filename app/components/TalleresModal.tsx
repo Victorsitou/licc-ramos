@@ -41,11 +41,10 @@ export default function TalleresModal({
           className="relative z-10 flex flex-col w-full sm:max-w-5xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-zinc-900 h-[95dvh] sm:h-[90vh]"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* HEADER */}
           <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-200 dark:border-zinc-800">
             <div>
               <p className="text-xs font-semibold uppercase tracking-widest text-blue-500">
-                ...
+                Material de talleres
               </p>
               <h3 className="text-lg font-bold">Talleres disponibles</h3>
             </div>
@@ -58,7 +57,6 @@ export default function TalleresModal({
             </button>
           </div>
 
-          {/* CONTENIDO */}
           <div className="flex-1 overflow-y-auto p-6 bg-zinc-50 dark:bg-zinc-950/40">
             {!talleresData ? (
               <div className="flex justify-center items-center h-full">
