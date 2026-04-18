@@ -200,7 +200,7 @@ export default function Home() {
           {showTalleresModal && (
             <TalleresModal
               open={showTalleresModal}
-              close={() => setShowTalleresModal(false)}
+              onClose={() => setShowTalleresModal(false)}
             />
           )}
 
