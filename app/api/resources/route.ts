@@ -1,6 +1,7 @@
 import { getCurrentUser } from "@/src/lib/auth";
 import { NextResponse } from "next/server";
 import { createResourceSchema } from "../dtos/create-resource.dto";
+
 import {
   createResource,
   getClassesResources,
