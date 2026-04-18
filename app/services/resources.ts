@@ -7,6 +7,7 @@ export interface Resource {
   orderIndex: number;
   createdAt: string;
   completed: boolean;
+  completedAt: string | null;
 }
 
 export async function getResource(): Promise<Resource[]> {
