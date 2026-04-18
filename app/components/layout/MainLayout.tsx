@@ -2,10 +2,11 @@
 
 import { ReactNode, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+import HomeIcon from "@mui/icons-material/Home";
 
 import UserDropdown from "../UserDropdown";
 
@@ -54,6 +55,7 @@ export default function MainLayout({
 }: Props) {
   const [user, setuser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     async function loadUser() {
@@ -70,18 +72,21 @@ export default function MainLayout({
         {/* Header reutilizable */}
         <div className="mb-10 flex items-start justify-between">
           <div>
-            {badge && (
-              <div className="mb-2 flex items-center gap-2 text-blue-600 dark:text-blue-400">
-                <AutoAwesomeIcon fontSize="small" />
-                <span className="text-xs font-semibold uppercase tracking-[0.2em]">
-                  {badge}
-                </span>
-              </div>
-            )}
+            <div className="flex items-center gap-3">
+              {window.location.pathname !== "/" && (
+                <button
+                  title="Ir al inicio"
+                  onClick={() => router.push("/")}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 text-zinc-400 transition hover:scale-105 hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-500 dark:hover:text-white"
+                >
+                  <HomeIcon sx={{ fontSize: 22 }} />
+                </button>
+              )}
 
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-              {title}
-            </h1>
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+                {title}
+              </h1>
+            </div>
 
             {subtitle && (
               <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400 sm:text-base">
@@ -92,7 +97,7 @@ export default function MainLayout({
 
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            {!loading && user && <UserDropdown user={user} />}
+            {!loading && <UserDropdown user={user} />}
           </div>
         </div>
         {children}
