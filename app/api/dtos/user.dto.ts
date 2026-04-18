@@ -8,7 +8,7 @@ export const createUserSchema = z.object({
       /^[a-zA-Z0-9._%+-]+@(uc\.cl|estudiante\.uc\.cl)$/,
       "Debes usar un correo UC válido",
     ),
-  password: z.string().min(6),
+  password: z.string().min(8, "La contraseña debe tener al menos 8 caracteres"),
 });
 
 export type CreateUserDto = z.infer<typeof createUserSchema>;
