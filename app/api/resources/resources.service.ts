@@ -51,5 +51,6 @@ export async function getUserResources(userId: string) {
     orderIndex: r.orderIndex,
     createdAt: r.createdAt,
     completed: r.progressRecords.length > 0,
+    completedAt: r.progressRecords[0]?.completedAt || null,
   }));
 }

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 
 import PdfViewer from "./PDFViewer";
+import dayjs from "@lib/dayjs";
 
 import {
   getResource,
@@ -133,7 +134,9 @@ export default function TalleresModal({
                     <h4 className="font-bold text-lg">{item.title}</h4>
 
                     <p className="text-sm text-zinc-500 mt-2">
-                      {item.title.replace(/(\.dvi)?\.pdf$/i, "")}
+                      {item.title.replace(/(\.dvi)?\.pdf$/i, "")}{" "}
+                      {item.completed &&
+                        ` (completado ${dayjs(item.completedAt).fromNow()})`}
                     </p>
 
                     <div className="mt-4 text-sm font-semibold text-blue-600 group-hover:underline">

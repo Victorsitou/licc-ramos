@@ -4,6 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import type { Resource } from "../services/resources";
 
 import { User } from "../utils";
+import dayjs from "@lib/dayjs";
 
 export default function AyudantiaModal({
   open,
@@ -105,7 +106,11 @@ export default function AyudantiaModal({
                   >
                     <h4 className="font-bold text-lg">Ayudantía {i + 1}</h4>
 
-                    <p className="text-sm text-zinc-500 mt-2">{item.title}</p>
+                    <p className="text-sm text-zinc-500 mt-2">
+                      {item.title}{" "}
+                      {item.completed &&
+                        ` (completado ${dayjs(item.completedAt).fromNow()})`}
+                    </p>
 
                     <div className="mt-4 text-sm font-semibold text-blue-600 group-hover:underline">
                       Ver material →
