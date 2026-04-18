@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Ramo from "./components/Ramo";
 import ClasesHoy from "./components/ClasesHoy";
 import FeatureModal from "./components/FeatureModal";
+import TalleresModal from "./components/TalleresModal";
 
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -81,6 +82,8 @@ export default function Home() {
   const [showModalNotification, setShowModalNotification] = useState(false);
   const [modalContent, setModalContent] = useState<FeatureData | null>(null);
   const notifications = new Notifications();
+
+  const [showTalleresModal, setShowTalleresModal] = useState(false);
 
   useEffect(() => {
     async function checkNotifications() {
@@ -172,6 +175,48 @@ export default function Home() {
             </div>
           )}
         </div>
+
+        <div className="mt-10">
+          <div className="mb-4 flex items-center gap-2 text-purple-600 dark:text-purple-400">
+            <AutoAwesomeIcon fontSize="small" />
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em]">
+              Extra
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="group rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-purple-400 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h4 className="text-xl font-bold sm:text-2xl">Talleres</h4>
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    Accede a talleres con ejercicios para practicar.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl bg-zinc-100 p-2 text-zinc-500 transition group-hover:scale-105 dark:bg-zinc-800 dark:text-zinc-300">
+                  <MenuBookIcon fontSize="small" />
+                </div>
+              </div>
+
+              <div className="mt-5">
+                <button
+                  onClick={() => setShowTalleresModal(true)}
+                  className="rounded-full bg-purple-600 px-4 py-2 text-sm font-medium text-white hover:bg-purple-700"
+                >
+                  Ver Talleres
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {showTalleresModal && (
+          <TalleresModal
+            open={showTalleresModal}
+            close={() => setShowTalleresModal(false)}
+          />
+        )}
 
         <div className="mt-auto pt-10">
           <Footer />
