@@ -42,15 +42,13 @@ export async function getUserResources(userId: string) {
     },
   });
 
-  return resources.map((r) => ({
-    id: r.id,
-    title: r.title,
-    url: r.url,
-    type: r.type,
-    slug: r.slug,
-    orderIndex: r.orderIndex,
-    createdAt: r.createdAt,
-    completed: r.progressRecords.length > 0,
-    completedAt: r.progressRecords[0]?.completedAt || null,
-  }));
+  return resources.map((r) => {
+    const { progressRecords, ...rest } = r;
+
+    return {
+      ...rest,
+      completed: progressRecords.length > 0,
+      completedAt: progressRecords[0]?.completedAt || null,
+    };
+  });
 }
