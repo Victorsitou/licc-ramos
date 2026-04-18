@@ -144,7 +144,7 @@ export default function Home() {
                   <button
                     key={ramo.sigla + "3"}
                     onClick={() => setRamoSeleccionado(ramo)}
-                    className="group rounded-3xl border border-zinc-200 bg-white p-6 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-400 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900"
+                    className="group rounded-3xl border border-zinc-200 bg-white p-6 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-400 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900 cursor-pointer"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div>
