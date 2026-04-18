@@ -10,6 +10,7 @@ import {
   getResource,
   Resource,
   toggleResourceCompletion,
+  getFileURL,
 } from "../services/resources";
 import { getUser, User } from "../utils";
 
@@ -37,7 +38,7 @@ export default function TalleresModal({
   const loadTalleres = () => {
     getResource().then((resources) => {
       const talleres = resources.filter((r) => r.type === "WORKSHOP");
-      setData(talleres);
+      setData(talleres.reverse());
     });
   };
 
@@ -116,7 +117,7 @@ export default function TalleresModal({
             <div className="grid gap-4 sm:grid-cols-2">
               {data.map((item, i) => (
                 <div
-                  key={item.url}
+                  key={item.key}
                   className={`group rounded-2xl bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl border
                     ${
                       item.completed
@@ -127,7 +128,9 @@ export default function TalleresModal({
                 >
                   <button
                     onClick={() => {
-                      setPdfData({ url: item.url, title: `Taller ${i + 1}` });
+                      getFileURL(item.key).then((url) => {
+                        setPdfData({ url, title: `Taller ${i + 1}` });
+                      });
                     }}
                     className="text-left w-full"
                   >

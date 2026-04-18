@@ -1,6 +1,7 @@
 "use client";
 
 import CloseIcon from "@mui/icons-material/Close";
+import { getFileURL } from "../services/resources";
 import type { Resource } from "../services/resources";
 
 import { User } from "../utils";
@@ -89,7 +90,7 @@ export default function AyudantiaModal({
             <div className="grid gap-4 sm:grid-cols-2">
               {data.map((item, i) => (
                 <div
-                  key={item.url}
+                  key={item.key}
                   className={`group rounded-2xl border p-5 shadow-sm transition 
                     ${
                       item.completed
@@ -99,8 +100,9 @@ export default function AyudantiaModal({
                 >
                   <button
                     onClick={() => {
-                      onOpenPdf(item.url, item.title);
-                      onClose();
+                      getFileURL(item.key).then((url) => {
+                        onOpenPdf(url, item.title);
+                      });
                     }}
                     className="text-left w-full"
                   >
