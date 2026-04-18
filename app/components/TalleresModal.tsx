@@ -86,9 +86,31 @@ export default function TalleresModal({
               <div className="animate-spin h-8 w-8 border-2 border-zinc-300 border-t-blue-500 rounded-full" />
             </div>
           ) : data.length === 0 ? (
-            <p className="text-sm text-zinc-500 text-center">
-              No hay talleres disponibles
-            </p>
+            <div className="flex flex-col items-center justify-center text-center py-16 px-6">
+              {!user ? (
+                <>
+                  <div className="text-5xl mb-4">🔒</div>
+                  <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+                    Inicia sesión
+                  </h3>
+                  <p className="text-zinc-500 mt-2 max-w-sm">
+                    Necesitas iniciar sesión para ver los talleres disponibles y
+                    guardar tu progreso.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <div className="text-5xl mb-4">📚</div>
+                  <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+                    No hay talleres disponibles
+                  </h3>
+                  <p className="text-zinc-500 mt-2 max-w-sm">
+                    Aún no se han publicado talleres, intenta nuevamente más
+                    tarde.
+                  </p>
+                </>
+              )}
+            </div>
           ) : (
             <div className="grid gap-4 sm:grid-cols-2">
               {data.map((item, i) => (
