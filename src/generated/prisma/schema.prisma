@@ -30,6 +30,7 @@ model User {
   email           String                 @unique
   role            UserRole               @default(STUDENT)
   passwordHash    String
+  verified        Boolean                @default(false)
   createdAt       DateTime               @default(now())
   progressRecords UserResourceProgress[]
 
@@ -61,4 +62,14 @@ model UserResourceProgress {
   @@id([userId, resourceId])
   @@index([resourceId])
   @@map("user_resource_progress")
+}
+
+model VerificationToken {
+  id        String   @id @default(cuid())
+  email     String
+  tokenHash String   @unique
+  expiresAt DateTime
+
+  @@index([email])
+  @@map("verification_tokens")
 }

@@ -126,6 +126,7 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   role: 'role',
   passwordHash: 'passwordHash',
+  verified: 'verified',
   createdAt: 'createdAt'
 };
 
@@ -143,6 +144,13 @@ exports.Prisma.UserResourceProgressScalarFieldEnum = {
   userId: 'userId',
   resourceId: 'resourceId',
   completedAt: 'completedAt'
+};
+
+exports.Prisma.VerificationTokenScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -173,7 +181,8 @@ exports.ResourceType = exports.$Enums.ResourceType = {
 exports.Prisma.ModelName = {
   User: 'User',
   Resource: 'Resource',
-  UserResourceProgress: 'UserResourceProgress'
+  UserResourceProgress: 'UserResourceProgress',
+  VerificationToken: 'VerificationToken'
 };
 
 /**
