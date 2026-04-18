@@ -252,7 +252,7 @@ export default function Ramo({
       <AyudantiaModal
         open={showAyudantia}
         onClose={() => setShowAyudantia(false)}
-        data={ayudantiaData}
+        data={ayudantiaData?.reverse() || []}
         ramoSigla={ramo.sigla}
         user={user}
         onOpenPdf={openPdf}
