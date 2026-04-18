@@ -40,9 +40,10 @@ model User {
 model Resource {
   id              String                 @id @default(cuid())
   title           String
-  url             String
+  url             String                 
+  key             String 
   type            ResourceType
-  slug            String?                 
+  slug            String?                
   orderIndex      Int?
   createdAt       DateTime               @default(now())
   progressRecords UserResourceProgress[]
