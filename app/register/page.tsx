@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { zxcvbn, zxcvbnOptions } from "@zxcvbn-ts/core";
 import * as zxcvbnEsEsPackage from "@zxcvbn-ts/language-es-es";
 zxcvbnOptions.setOptions({
@@ -15,6 +16,7 @@ export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const passwordStrength = zxcvbn(password);
   const score = passwordStrength.score;
@@ -23,7 +25,7 @@ export default function Register() {
 
   useEffect(() => {
     getUser().then((user) => {
-      if (user) window.location.href = "/";
+      if (user) router.push("/");
     });
   }, []);
 
@@ -34,7 +36,7 @@ export default function Register() {
         const data = await res.json();
         alert(data.message || "Error al registrarse");
       } else {
-        window.location.href = "/";
+        router.push("/login");
       }
     });
   };

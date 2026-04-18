@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { getUser } from "../utils";
 
 import { login } from "../services/auth";
@@ -10,10 +11,11 @@ import MainLayout from "../components/layout/MainLayout";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     getUser().then((user) => {
-      if (user) window.location.href = "/";
+      if (user) router.push("/");
     });
   }, []);
 
@@ -23,7 +25,7 @@ export default function Login() {
         const data = await res.json();
         alert(data.message || "Error al iniciar sesión");
       } else {
-        window.location.href = "/";
+        router.push("/");
       }
     });
   };
