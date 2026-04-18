@@ -76,7 +76,9 @@ export default function TalleresModal({
                     }}
                     className="group text-left rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg hover:border-blue-400 transition dark:border-zinc-800 dark:bg-zinc-900"
                   >
-                    <h4 className="font-bold text-lg">Taller {i + 1}</h4>
+                    <h4 className="font-bold text-lg">
+                      {item.name.split(".")[0]}
+                    </h4>
 
                     <p className="text-sm text-zinc-500 mt-2">{item.name}</p>
 
