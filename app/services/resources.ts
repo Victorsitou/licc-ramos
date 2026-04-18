@@ -1,7 +1,8 @@
 export interface Resource {
   id: string;
   title: string;
-  url: string;
+  url: string; // DEPRECATED
+  key: string;
   type: "CLASS" | "AYUDANTIA" | "WORKSHOP";
   slug: string;
   orderIndex: number;
@@ -41,4 +42,13 @@ export async function toggleResourceCompletion(
     throw new Error("Failed to toggle resource completion");
   }
   return response.json();
+}
+
+export async function getFileURL(key: string) {
+  const res = await fetch(`/api/file-url?key=${encodeURIComponent(key)}`);
+  if (!res.ok) {
+    throw new Error("Failed to get file URL");
+  }
+  const data = await res.json();
+  return data.url;
 }
