@@ -134,6 +134,7 @@ exports.Prisma.ResourceScalarFieldEnum = {
   id: 'id',
   title: 'title',
   url: 'url',
+  key: 'key',
   type: 'type',
   slug: 'slug',
   orderIndex: 'orderIndex',

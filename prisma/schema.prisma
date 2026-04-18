@@ -41,7 +41,7 @@ model Resource {
   id              String                 @id @default(cuid())
   title           String
   url             String                 
-  key             String 
+  key             String                 @default("")
   type            ResourceType
   slug            String?                
   orderIndex      Int?
