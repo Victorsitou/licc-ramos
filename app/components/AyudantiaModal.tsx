@@ -106,7 +106,9 @@ export default function AyudantiaModal({
                     }}
                     className="text-left w-full"
                   >
-                    <h4 className="font-bold text-lg">Ayudantía {i + 1}</h4>
+                    <h4 className="font-bold text-lg">
+                      Ayudantía {item.title.split(" ")[1]}
+                    </h4>
 
                     <p className="text-sm text-zinc-500 mt-2">
                       {item.title}{" "}
