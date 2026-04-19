@@ -16,13 +16,24 @@ export async function getUserById(id: string) {
 }
 
 export async function getUserByEmail(email: string) {
+  email = email.toLowerCase().trim();
   return await prisma.user.findUnique({
     where: { email: email },
     omit: { passwordHash: true },
   });
 }
 
+export async function getUserByEmailUser(emailUser: string) {
+  emailUser = emailUser.toLowerCase().trim();
+
+  return await prisma.user.findFirst({
+    where: { email: { startsWith: `${emailUser}@` } },
+    omit: { passwordHash: true },
+  });
+}
+
 export async function createUser(data: CreateUserDto) {
+  data.email = data.email.toLowerCase().trim();
   const existingUser = await prisma.user.findUnique({
     where: { email: data.email },
   });
@@ -42,5 +53,13 @@ export async function createUser(data: CreateUserDto) {
     omit: {
       passwordHash: true,
     },
+  });
+}
+
+export async function verifyUser(userId: string) {
+  return await prisma.user.update({
+    where: { id: userId },
+    data: { verified: true },
+    omit: { passwordHash: true },
   });
 }

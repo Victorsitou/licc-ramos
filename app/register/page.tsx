@@ -16,6 +16,7 @@ export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showVerifyModal, setShowVerifyModal] = useState(false);
   const router = useRouter();
 
   const passwordStrength = zxcvbn(password);
@@ -36,7 +37,7 @@ export default function Register() {
         const data = await res.json();
         alert(data.message || "Error al registrarse");
       } else {
-        router.push("/login");
+        setShowVerifyModal(true);
       }
     });
   };
@@ -146,6 +147,40 @@ export default function Register() {
                   </a>
                 </p>
               </form>
+              {showVerifyModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+                  <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-lg dark:bg-zinc-900">
+                    <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                      Verifica tu correo UC
+                    </h2>
+
+                    <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                      Para completar tu registro, debes iniciar sesión con tu
+                      cuenta UC. Serás redirigido al sistema de autenticación.
+                    </p>
+
+                    <div className="mt-6 flex justify-end gap-3">
+                      <button
+                        onClick={() => setShowVerifyModal(false)}
+                        className="rounded-lg px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                      >
+                        Cancelar
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          router.push(
+                            `${process.env.NEXT_PUBLIC_VERIFY_URL}?service=${process.env.NEXT_PUBLIC_SERVICE_URL}`,
+                          );
+                        }}
+                        className="rounded-lg bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700"
+                      >
+                        Verificar ahora
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </main>
