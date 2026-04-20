@@ -18,8 +18,9 @@ export async function POST(request: Request) {
 
   try {
     const email = parsed.data.email.toLowerCase().trim();
+    const emailUsername = email.split("@")[0];
     const user = await prisma.user.findUnique({
-      where: { email: email },
+      where: { email: emailUsername },
     });
 
     if (!user) {
