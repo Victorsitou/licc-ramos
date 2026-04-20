@@ -32,8 +32,13 @@ export default function Footer() {
           </a>
         </p>
         <p className="text-sm text-zinc-500 dark:text-zinc-400">
-          Cualquier sugerencia o error, no dudes en contactarme por WhatsApp
-          (+56 9 3453 0126) :)
+          Cualquier sugerencia o error, no dudes en contactarme por correo{" "}
+          <a
+            href="mailto:vvegaa5@estudiante.uc.cl"
+            className="text-blue-500 hover:underline"
+          >
+            vvegaa5@estudiante.uc.cl
+          </a>
         </p>
       </div>
     </footer>
