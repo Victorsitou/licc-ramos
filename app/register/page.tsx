@@ -64,11 +64,11 @@ export default function Register() {
               <form className="space-y-5">
                 <div>
                   <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                    Nombre
+                    Apodo
                   </label>
                   <input
                     type="text"
-                    placeholder="Víctor"
+                    placeholder="Vic"
                     onChange={(e) => setName(e.target.value)}
                     className="mt-2 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-zinc-800"
                   />
