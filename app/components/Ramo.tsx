@@ -174,7 +174,7 @@ export default function Ramo({
         <div className="mb-6 flex items-center gap-3">
           <button
             onClick={() => setShowAyudantia(true)}
-            className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/50"
+            className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/50 cursor-pointer"
           >
             <MenuBookIcon sx={{ fontSize: 18 }} />
             Ver ayudantías
@@ -259,7 +259,6 @@ export default function Ramo({
         onToggleCompleted={toggleCompleted}
       />
 
-      {/* Modal para mostrar PDF */}
       {pdfUrl && (
         <div
           className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"

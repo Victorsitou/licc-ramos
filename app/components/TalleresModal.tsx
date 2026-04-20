@@ -132,7 +132,7 @@ export default function TalleresModal({
                         setPdfData({ url, title: `Taller ${i + 1}` });
                       });
                     }}
-                    className="text-left w-full"
+                    className="text-left w-full cursor-pointer"
                   >
                     <h4 className="font-bold text-lg">{item.title}</h4>
 
@@ -149,7 +149,7 @@ export default function TalleresModal({
                   {user && (
                     <button
                       onClick={() => toggleCompleted(item)}
-                      className={`mt-4 w-full text-sm py-2 rounded-xl border transition
+                      className={`mt-4 w-full text-sm py-2 rounded-xl border transition cursor-pointer
                       ${
                         item.completed
                           ? "bg-green-500 text-white border-green-500 hover:bg-green-600"

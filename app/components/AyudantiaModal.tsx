@@ -89,7 +89,7 @@ export default function AyudantiaModal({
               {data.map((item, i) => (
                 <div
                   key={item.key}
-                  className={`group rounded-2xl border p-5 shadow-sm transition 
+                  className={`group rounded-2xl border p-5 shadow-sm transition
                     ${
                       item.completed
                         ? "bg-green-50 border-green-400 dark:bg-green-900/20"
@@ -102,7 +102,7 @@ export default function AyudantiaModal({
                         onOpenPdf(url, item.title);
                       });
                     }}
-                    className="text-left w-full"
+                    className="text-left w-full cursor-pointer"
                   >
                     <h4 className="font-bold text-lg">
                       Ayudantía {item.title.split(" ")[1]}
@@ -122,7 +122,7 @@ export default function AyudantiaModal({
                   {user && (
                     <button
                       onClick={() => onToggleCompleted(item)}
-                      className={`mt-4 w-full text-sm py-2 rounded-xl border transition
+                      className={`mt-4 w-full text-sm py-2 rounded-xl border transition cursor-pointer
                       ${
                         item.completed
                           ? "bg-green-500 text-white border-green-500 hover:bg-green-600"
