@@ -59,18 +59,15 @@ export default function MainLayout({
   const pathname = usePathname();
 
   useEffect(() => {
-    async function loadUser() {
-      const data = await getUser();
+    getUser().then((data) => {
       setuser(data);
       setLoading(false);
-    }
-    loadUser();
+    });
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-zinc-100 via-zinc-50 to-white text-zinc-900 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 dark:text-zinc-100">
       <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 sm:px-10">
-        {/* Header reutilizable */}
         <div className="mb-10 flex items-start justify-between">
           <div>
             <div className="flex items-center gap-3">
