@@ -137,7 +137,10 @@ export default function TalleresModal({
                   <button
                     onClick={() => {
                       getFileURL(item.key).then((url) => {
-                        setPdfData({ url, title: `Taller ${i + 1}` });
+                        setPdfData({
+                          url,
+                          title: item.title.replace(/(\.dvi)?\.pdf$/i, ""),
+                        });
                       });
                     }}
                     className="text-left w-full cursor-pointer"
