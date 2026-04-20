@@ -17,13 +17,6 @@ export async function createResource(data: CreateResourceDto) {
   }
 }
 
-// TODO: deprecated
-export async function getResources() {
-  return await prisma.resource.findMany({
-    orderBy: { orderIndex: "asc" },
-  });
-}
-
 export async function getClassesResources() {
   return await prisma.resource.findMany({
     where: { type: "CLASS" },

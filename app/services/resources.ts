@@ -12,7 +12,6 @@ export interface Resource {
 }
 
 export async function getResource(): Promise<Resource[]> {
-  // TODO: implement cache
   const response = await fetch("/api/resources");
 
   if (!response.ok) {
