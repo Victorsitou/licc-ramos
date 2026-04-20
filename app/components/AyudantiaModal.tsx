@@ -1,33 +1,58 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { getFileURL } from "../services/resources";
 import type { Resource } from "../services/resources";
+
+import PdfViewer from "./PDFViewer";
 
 import LockIcon from "@mui/icons-material/Lock";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 import { User } from "../utils";
+import { RamoInterface } from "../page";
+import { toggleResourceCompletion, getResource } from "../services/resources";
 import dayjs from "@lib/dayjs";
 
 export default function AyudantiaModal({
+  ramo,
   open,
   onClose,
-  data,
   ramoSigla,
   user,
-  onOpenPdf,
-  onToggleCompleted,
 }: {
+  ramo: RamoInterface;
   open: boolean;
   onClose: () => void;
-  data: Resource[] | null;
   ramoSigla: string;
   user: User | null;
-  onOpenPdf: (url: string, title: string) => void;
-  onToggleCompleted: (resource: Resource) => void;
 }) {
+  const [ayudantiaData, setAyudantiaData] = useState<Resource[] | null>(null);
+  const [pdfData, setPdfData] = useState<{ url: string; title: string } | null>(
+    null,
+  );
+
+  const loadAyudantiaData = () => {
+    getResource().then((data) => {
+      setAyudantiaData(
+        data.filter((r) => r.slug === ramo.sigla && r.type === "AYUDANTIA"),
+      );
+    });
+  };
+
+  const toggleCompleted = (resource: Resource) => {
+    toggleResourceCompletion(resource.id, !resource.completed).then(() => {
+      loadAyudantiaData();
+    });
+  };
+
+  useEffect(() => {
+    if (!open || ayudantiaData !== null) return;
+    loadAyudantiaData();
+  }, []);
+
   if (!open) return null;
 
   return (
@@ -58,11 +83,11 @@ export default function AyudantiaModal({
         </div>
 
         <div className="flex-1 overflow-y-auto p-6 bg-zinc-50 dark:bg-zinc-950/40">
-          {!data ? (
+          {!ayudantiaData ? (
             <div className="flex justify-center items-center h-full">
               <div className="animate-spin h-8 w-8 border-2 border-zinc-300 border-t-blue-500 rounded-full" />
             </div>
-          ) : data.length === 0 ? (
+          ) : ayudantiaData.length === 0 ? (
             <div className="flex flex-col items-center justify-center text-center py-16 px-6">
               {!user ? (
                 <>
@@ -94,7 +119,7 @@ export default function AyudantiaModal({
             </div>
           ) : (
             <div className="grid gap-4 sm:grid-cols-2">
-              {data.map((item, i) => (
+              {[...ayudantiaData].reverse().map((item, i) => (
                 <div
                   key={item.key}
                   className={`group rounded-2xl border p-5 shadow-sm transition
@@ -107,7 +132,10 @@ export default function AyudantiaModal({
                   <button
                     onClick={() => {
                       getFileURL(item.key).then((url) => {
-                        onOpenPdf(url, item.title);
+                        setPdfData({
+                          url,
+                          title: item.title.replace(/(\.dvi)?\.pdf$/i, ""),
+                        });
                       });
                     }}
                     className="text-left w-full cursor-pointer"
@@ -129,7 +157,7 @@ export default function AyudantiaModal({
 
                   {user && (
                     <button
-                      onClick={() => onToggleCompleted(item)}
+                      onClick={() => toggleCompleted(item)}
                       className={`mt-4 w-full text-sm py-2 rounded-xl border transition cursor-pointer
                       ${
                         item.completed
@@ -155,6 +183,13 @@ export default function AyudantiaModal({
           )}
         </div>
       </div>
+      {pdfData && (
+        <PdfViewer
+          title={pdfData.title}
+          url={pdfData.url}
+          onClose={() => setPdfData(null)}
+        />
+      )}
     </div>
   );
 }

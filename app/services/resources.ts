@@ -15,7 +15,7 @@ export async function getResource(): Promise<Resource[]> {
   const response = await fetch("/api/resources");
 
   if (!response.ok) {
-    throw new Error("Failed to fetch resources");
+    return [];
   }
 
   return response.json();

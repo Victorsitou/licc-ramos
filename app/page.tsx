@@ -9,6 +9,7 @@ import Ramo from "./components/Ramo";
 import ClasesHoy from "./components/ClasesHoy";
 import FeatureModal from "./components/FeatureModal";
 import TalleresModal from "./components/TalleresModal";
+import AyudantiaModal from "./components/AyudantiaModal";
 
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -19,6 +20,7 @@ import ramosJson from "./ramos.json";
 const ramos: RamoInterface[] = ramosJson;
 
 import Notifications, { FeatureData } from "./notifications";
+import { getUser, User } from "./utils";
 
 export interface InfoClase {
   clase: number;
@@ -85,6 +87,12 @@ export default function Home() {
   const notifications = new Notifications();
 
   const [showTalleresModal, setShowTalleresModal] = useState(false);
+  const [showAyudantiaModal, setShowAyudantiaModal] = useState(false);
+
+  const [user, setUser] = useState<User | null>(null);
+  useEffect(() => {
+    getUser().then((user) => setUser(user));
+  }, []);
 
   useEffect(() => {
     async function checkNotifications() {
@@ -155,8 +163,23 @@ export default function Home() {
                         disponibles de forma ordenada.
                       </p>
 
-                      <div className="mt-5 inline-flex rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-sm font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
-                        {ramo.clases} clases
+                      <div className="flex gap-4">
+                        <div className="mt-5 inline-flex rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-sm font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                          {ramo.clases} clases
+                        </div>
+
+                        <div>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setRamoSeleccionado(ramo);
+                              setShowAyudantiaModal(true);
+                            }}
+                            className="mt-5 inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer"
+                          >
+                            Ver Ayudantías
+                          </button>
+                        </div>
                       </div>
                     </button>
                   </div>
@@ -210,6 +233,19 @@ export default function Home() {
           <div className="mt-auto pt-10">
             <Footer />
           </div>
+
+          {showAyudantiaModal && (
+            <AyudantiaModal
+              ramo={ramoSeleccionado!}
+              open={showAyudantiaModal}
+              onClose={() => {
+                setShowAyudantiaModal(false);
+                setRamoSeleccionado(null);
+              }}
+              ramoSigla={ramoSeleccionado!.sigla}
+              user={user}
+            />
+          )}
         </main>
       </div>
     </MainLayout>

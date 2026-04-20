@@ -14,11 +14,6 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import { formatDate, isToday, getUser, User } from "../utils";
-import {
-  getResource,
-  toggleResourceCompletion,
-  Resource,
-} from "../services/resources";
 
 export default function Ramo({
   ramo,
@@ -45,28 +40,6 @@ export default function Ramo({
 
   // Ayudantía
   const [showAyudantia, setShowAyudantia] = useState(false);
-  const [ayudantiaData, setAyudantiaData] = useState<Resource[] | null>(null);
-
-  const loadAyudantiaData = () => {
-    getResource().then((data) => {
-      setAyudantiaData(
-        data.filter((r) => r.slug === ramo.sigla && r.type === "AYUDANTIA"),
-      );
-    });
-  };
-
-  useEffect(() => {
-    if (showAyudantia) {
-      loadAyudantiaData();
-    }
-  }, [showAyudantia]);
-
-  // Resources management
-  const toggleCompleted = (resource: Resource) => {
-    toggleResourceCompletion(resource.id, !resource.completed).finally(() => {
-      loadAyudantiaData();
-    });
-  };
 
   // Bloquear scroll
   useEffect(() => {
@@ -249,15 +222,15 @@ export default function Ramo({
         </div>
       </div>
 
-      <AyudantiaModal
-        open={showAyudantia}
-        onClose={() => setShowAyudantia(false)}
-        data={[...(ayudantiaData || [])].reverse()}
-        ramoSigla={ramo.sigla}
-        user={user}
-        onOpenPdf={openPdf}
-        onToggleCompleted={toggleCompleted}
-      />
+      {showAyudantia && (
+        <AyudantiaModal
+          ramo={ramo}
+          open={showAyudantia}
+          onClose={() => setShowAyudantia(false)}
+          ramoSigla={ramo.sigla}
+          user={user}
+        />
+      )}
 
       {pdfUrl && (
         <div
