@@ -45,12 +45,12 @@
   },
   {
     "id": "4",
-    "date": "2026-04-17",
+    "date": "2026-04-19",
     "features": [
       {
         "emoji": "💾",
         "title": "Guardado de progreso",
-        "description": "¡Ahora puedes crear una cuenta y guardar el progreso de las ayudantías que ya has resuelto!"
+        "description": "¡Ahora puedes crear una cuenta y guardar el progreso de las ayudantías y talleres que ya has resuelto!"
       }
     ]
   }
