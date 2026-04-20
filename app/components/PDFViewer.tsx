@@ -6,6 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import DownloadIcon from "@mui/icons-material/Download";
 
 type Props = {
   url: string | null;
@@ -87,6 +88,20 @@ export default function PdfViewer({ url, title, onClose }: Props) {
     });
   }, [pdfDoc, currentPage]);
 
+  const downloadPDF = () => {
+    if (!url) return;
+    fetch(url).then(async (res) => {
+      if (!res.body) return;
+      const buffer = await res.arrayBuffer();
+      const blob = new Blob([buffer], { type: "application/pdf" });
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.download = (title || "document") + ".pdf";
+      link.click();
+      window.URL.revokeObjectURL(link.href);
+    });
+  };
+
   if (!url) return null;
 
   return (
@@ -100,7 +115,6 @@ export default function PdfViewer({ url, title, onClose }: Props) {
         className="relative z-10 flex flex-col w-full sm:max-w-5xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-zinc-900 h-[95dvh] sm:h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* HEADER */}
         <div className="flex items-center justify-between gap-4 px-5 py-4 border-b border-zinc-200 dark:border-zinc-800 shrink-0">
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-blue-500">
@@ -110,6 +124,14 @@ export default function PdfViewer({ url, title, onClose }: Props) {
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={downloadPDF}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/50"
+            >
+              <DownloadIcon sx={{ fontSize: 16 }} />
+              <span className="hidden sm:inline">Descargar</span>
+            </button>
+
             <a
               href={url}
               target="_blank"
@@ -129,7 +151,6 @@ export default function PdfViewer({ url, title, onClose }: Props) {
           </div>
         </div>
 
-        {/* CONTENIDO */}
         <div
           ref={containerRef}
           className="flex-1 overflow-y-auto bg-zinc-100 flex flex-col items-center"
@@ -143,7 +164,6 @@ export default function PdfViewer({ url, title, onClose }: Props) {
           )}
         </div>
 
-        {/* NAV */}
         {!loading && totalPages > 0 && (
           <div className="flex items-center justify-center gap-4 px-5 py-3 border-t border-zinc-200 dark:border-zinc-800 shrink-0">
             <button
