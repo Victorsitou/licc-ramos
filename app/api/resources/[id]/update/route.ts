@@ -7,7 +7,7 @@ import { getZodErrorMessage } from "@/src/lib/errors";
 
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const user = await getCurrentUser();
