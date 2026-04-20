@@ -36,7 +36,7 @@ export default function UserDropdown({ user }: { user: User | null }) {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition hover:scale-105 dark:border-zinc-800 dark:bg-zinc-900"
+        className="h-11 rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition hover:scale-105 dark:border-zinc-800 dark:bg-zinc-900 cursor-pointer"
       >
         Hola, {user.name}
       </button>
