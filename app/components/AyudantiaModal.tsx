@@ -4,6 +4,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import { getFileURL } from "../services/resources";
 import type { Resource } from "../services/resources";
 
+import LockIcon from "@mui/icons-material/Lock";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+
 import { User } from "../utils";
 import dayjs from "@lib/dayjs";
 
@@ -62,7 +66,9 @@ export default function AyudantiaModal({
             <div className="flex flex-col items-center justify-center text-center py-16 px-6">
               {!user ? (
                 <>
-                  <div className="text-5xl mb-4">🔒</div>
+                  <div className="mb-4 text-zinc-400">
+                    <LockIcon sx={{ fontSize: 48 }} />
+                  </div>
                   <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
                     Inicia sesión
                   </h3>
@@ -73,7 +79,9 @@ export default function AyudantiaModal({
                 </>
               ) : (
                 <>
-                  <div className="text-5xl mb-4">📚</div>
+                  <div className="mb-4 text-zinc-400">
+                    <MenuBookIcon sx={{ fontSize: 48 }} />
+                  </div>
                   <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
                     No hay ayudantías disponibles
                   </h3>
@@ -129,9 +137,16 @@ export default function AyudantiaModal({
                           : "bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700 hover:dark:bg-zinc-700 hover:bg-zinc-200"
                       }`}
                     >
-                      {item.completed
-                        ? "✔ Marcada como completada"
-                        : "Marcar como completada"}
+                      <div className="flex items-center justify-center gap-2">
+                        {item.completed && (
+                          <CheckCircleIcon sx={{ fontSize: 18 }} />
+                        )}
+                        <span>
+                          {item.completed
+                            ? "Marcada como completada"
+                            : "Marcar como completada"}
+                        </span>
+                      </div>
                     </button>
                   )}
                 </div>
