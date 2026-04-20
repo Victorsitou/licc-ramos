@@ -6,7 +6,8 @@ export async function createResource(data: CreateResourceDto) {
     return await prisma.resource.create({
       data: {
         title: data.title,
-        url: data.url,
+        key: data.key,
+        url: data.key,
         type: data.type,
         slug: data.slug,
         orderIndex: data.orderIndex,
