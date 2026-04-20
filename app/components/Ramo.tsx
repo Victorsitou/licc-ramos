@@ -3,6 +3,7 @@
 import type { RamoInterface } from "../page";
 import { useEffect, useRef, useState } from "react";
 
+import AyudantiaModal from "./AyudantiaModal";
 import { Chip } from "@mui/material";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -12,7 +13,12 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-import { formatDate, isToday } from "../utils";
+import { formatDate, isToday, getUser, User } from "../utils";
+import {
+  getResource,
+  toggleResourceCompletion,
+  Resource,
+} from "../services/resources";
 
 export default function Ramo({
   ramo,
@@ -39,53 +45,28 @@ export default function Ramo({
 
   // Ayudantía
   const [showAyudantia, setShowAyudantia] = useState(false);
-  const [ayudantiaData, setAyudantiaData] = useState<
-    | {
-        url: string;
-        title: string;
-      }[]
-    | null
-  >(null);
+  const [ayudantiaData, setAyudantiaData] = useState<Resource[] | null>(null);
+
+  const loadAyudantiaData = () => {
+    getResource().then((data) => {
+      setAyudantiaData(
+        data.filter((r) => r.slug === ramo.sigla && r.type === "AYUDANTIA"),
+      );
+    });
+  };
+
   useEffect(() => {
     if (showAyudantia) {
-      fetch(`/api/ayudantias`)
-        .then((res) => res.json())
-        .then((data) => {
-          for (const item of data) {
-            if (item.ramo === ramo.sigla) {
-              const ayudantiasData = item.ayudantiasFiles.map(
-                (file: { url: string; name: string }) => ({
-                  url: file.url,
-                  title: file.name.replace(/_/g, " ").replace(".pdf", ""),
-                }),
-              );
-              setAyudantiaData(ayudantiasData);
-              break;
-            }
-          }
-        });
+      loadAyudantiaData();
     }
   }, [showAyudantia]);
 
-  // Talleres
-  const [showTalleres, setShowTalleres] = useState(false);
-  const [talleresData, setTalleresData] = useState<
-    { url: string; name: string }[] | null
-  >(null);
-  useEffect(() => {
-    if (showTalleres) {
-      fetch(`/api/talleres`)
-        .then((res) => res.json())
-        .then((data) =>
-          setTalleresData(
-            data.map((item: { url: string; name: string }) => ({
-              url: item.url,
-              title: item.name.replace(/_/g, " ").replace(".pdf", ""),
-            })),
-          ),
-        );
-    }
-  }, [showTalleres]);
+  // Resources management
+  const toggleCompleted = (resource: Resource) => {
+    toggleResourceCompletion(resource.id, !resource.completed).finally(() => {
+      loadAyudantiaData();
+    });
+  };
 
   // Bloquear scroll
   useEffect(() => {
@@ -163,6 +144,11 @@ export default function Ramo({
     setPdfTitle(title);
   };
 
+  const [user, setUser] = useState<User | null>(null);
+  useEffect(() => {
+    getUser().then((u) => setUser(u));
+  }, []);
+
   return (
     <section className="w-full">
       <div className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-8">
@@ -185,22 +171,13 @@ export default function Ramo({
           </div>
         </div>
 
-        {/* ayudantía */}
         <div className="mb-6 flex items-center gap-3">
           <button
             onClick={() => setShowAyudantia(true)}
-            className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/50"
+            className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/50 cursor-pointer"
           >
             <MenuBookIcon sx={{ fontSize: 18 }} />
             Ver ayudantías
-          </button>
-
-          <button
-            onClick={() => setShowTalleres(true)}
-            className="inline-flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:-translate-y-0.5 hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/50"
-          >
-            <MenuBookIcon sx={{ fontSize: 18 }} />
-            Ver talleres
           </button>
         </div>
 
@@ -272,137 +249,16 @@ export default function Ramo({
         </div>
       </div>
 
-      {showAyudantia && (
-        <div
-          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
-          onClick={() => setShowAyudantia(false)}
-        >
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      <AyudantiaModal
+        open={showAyudantia}
+        onClose={() => setShowAyudantia(false)}
+        data={[...(ayudantiaData || [])].reverse()}
+        ramoSigla={ramo.sigla}
+        user={user}
+        onOpenPdf={openPdf}
+        onToggleCompleted={toggleCompleted}
+      />
 
-          <div
-            className="relative z-10 flex flex-col w-full sm:max-w-5xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-zinc-900 h-[95dvh] sm:h-[90vh]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* HEADER */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-200 dark:border-zinc-800">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-blue-500">
-                  {ramo.sigla}
-                </p>
-                <h3 className="text-lg font-bold">Ayudantías disponibles</h3>
-              </div>
-
-              <button
-                onClick={() => setShowAyudantia(false)}
-                className="p-2 rounded-xl border border-zinc-200 bg-zinc-100 hover:bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700"
-              >
-                <CloseIcon sx={{ fontSize: 20 }} />
-              </button>
-            </div>
-
-            {/* CONTENIDO */}
-            <div className="flex-1 overflow-y-auto p-6 bg-zinc-50 dark:bg-zinc-950/40">
-              {!ayudantiaData ? (
-                <div className="flex justify-center items-center h-full">
-                  <div className="animate-spin h-8 w-8 border-2 border-zinc-300 border-t-blue-500 rounded-full" />
-                </div>
-              ) : ayudantiaData.length === 0 ? (
-                <p className="text-sm text-zinc-500 text-center">
-                  No hay ayudantías disponibles
-                </p>
-              ) : (
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {ayudantiaData.map((item, i) => (
-                    <button
-                      key={item.url}
-                      onClick={() => {
-                        openPdf(item.url, item.title);
-                        setShowAyudantia(false);
-                      }}
-                      className="group text-left rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg hover:border-blue-400 transition dark:border-zinc-800 dark:bg-zinc-900"
-                    >
-                      <h4 className="font-bold text-lg">Ayudantía {i + 1}</h4>
-
-                      <p className="text-sm text-zinc-500 mt-2">{item.title}</p>
-
-                      <div className="mt-4 text-sm font-semibold text-blue-600 group-hover:underline">
-                        Ver material →
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {showTalleres && (
-        <div
-          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
-          onClick={() => setShowTalleres(false)}
-        >
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-
-          <div
-            className="relative z-10 flex flex-col w-full sm:max-w-5xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-zinc-900 h-[95dvh] sm:h-[90vh]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* HEADER */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-200 dark:border-zinc-800">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-blue-500">
-                  {ramo.sigla}
-                </p>
-                <h3 className="text-lg font-bold">Talleres disponibles</h3>
-              </div>
-
-              <button
-                onClick={() => setShowTalleres(false)}
-                className="p-2 rounded-xl border border-zinc-200 bg-zinc-100 hover:bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700"
-              >
-                <CloseIcon sx={{ fontSize: 20 }} />
-              </button>
-            </div>
-
-            {/* CONTENIDO */}
-            <div className="flex-1 overflow-y-auto p-6 bg-zinc-50 dark:bg-zinc-950/40">
-              {!talleresData ? (
-                <div className="flex justify-center items-center h-full">
-                  <div className="animate-spin h-8 w-8 border-2 border-zinc-300 border-t-blue-500 rounded-full" />
-                </div>
-              ) : talleresData.length === 0 ? (
-                <p className="text-sm text-zinc-500 text-center">
-                  No hay talleres disponibles
-                </p>
-              ) : (
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {talleresData.map((item, i) => (
-                    <button
-                      key={item.url}
-                      onClick={() => {
-                        openPdf(item.url, item.title);
-                        setShowTalleres(false);
-                      }}
-                      className="group text-left rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm hover:-translate-y-1 hover:shadow-lg hover:border-blue-400 transition dark:border-zinc-800 dark:bg-zinc-900"
-                    >
-                      <h4 className="font-bold text-lg">Taller {i + 1}</h4>
-
-                      <p className="text-sm text-zinc-500 mt-2">{item.title}</p>
-
-                      <div className="mt-4 text-sm font-semibold text-blue-600 group-hover:underline">
-                        Ver material →
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Modal para mostrar PDF */}
       {pdfUrl && (
         <div
           className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"

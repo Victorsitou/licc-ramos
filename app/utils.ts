@@ -21,3 +21,27 @@ export function isToday(dateString: string): boolean {
     date.getFullYear() === today.getFullYear()
   );
 }
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: string;
+}
+
+export function getUser(): Promise<User | null> {
+  // TODO: cache this?
+  return fetch("/api/auth/me")
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.error) {
+        return null;
+      }
+      return data;
+    });
+}
+
+export function isUCEmail(email: string): boolean {
+  const ucEmailRegex = /^[^\s@]+@(uc\.cl|estudiante\.uc\.cl)$/;
+  return ucEmailRegex.test(email);
+}
