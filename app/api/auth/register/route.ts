@@ -3,6 +3,8 @@ import { createUserSchema } from "../../dtos/user.dto";
 import { createUser } from "../../users/users.service";
 import { signToken } from "@/src/lib/jwt";
 
+import { getZodErrorMessage } from "@/src/lib/errors";
+
 export async function POST(request: Request) {
   const body = await request.json();
 
@@ -10,7 +12,7 @@ export async function POST(request: Request) {
 
   if (!parsed.success) {
     return NextResponse.json(
-      { error: parsed.error.flatten() },
+      { error: getZodErrorMessage(parsed.error) },
       { status: 400 },
     );
   }

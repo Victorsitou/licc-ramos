@@ -4,6 +4,8 @@ import { signToken } from "@/src/lib/jwt";
 import { prisma } from "@/src/lib/prisma";
 import bcrypt from "bcryptjs";
 
+import { getZodErrorMessage } from "@/src/lib/errors";
+
 export async function POST(request: Request) {
   const body = await request.json();
 
@@ -11,7 +13,7 @@ export async function POST(request: Request) {
 
   if (!parsed.success) {
     return NextResponse.json(
-      { error: parsed.error.flatten() },
+      { error: getZodErrorMessage(parsed.error) },
       { status: 400 },
     );
   }

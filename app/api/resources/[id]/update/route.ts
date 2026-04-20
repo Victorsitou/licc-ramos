@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { getCurrentUser } from "@/src/lib/auth";
 import { updateResourceSchema } from "../../../dtos/patch-resource.dto";
 import { updateResource } from "./update.service";
+
+import { getZodErrorMessage } from "@/src/lib/errors";
+
 export async function PATCH(
   request: Request,
   { params }: { params: { id: string } },
@@ -23,7 +26,7 @@ export async function PATCH(
 
     if (!parsed.success) {
       return NextResponse.json(
-        { error: parsed.error.flatten() },
+        { error: getZodErrorMessage(parsed.error) },
         { status: 400 },
       );
     }

@@ -23,7 +23,7 @@ export default function Login() {
     login(email, password).then(async (res) => {
       if (!res.ok) {
         const data = await res.json();
-        alert(data.message || "Error al iniciar sesión");
+        alert(data.error || "Error al iniciar sesión");
       } else {
         router.push("/");
       }

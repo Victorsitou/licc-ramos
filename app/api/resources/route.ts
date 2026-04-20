@@ -9,6 +9,8 @@ import {
 } from "./resources.service";
 import { getUserById } from "../users/users.service";
 
+import { getZodErrorMessage } from "@/src/lib/errors";
+
 export async function POST(request: Request) {
   try {
     const user = await getCurrentUser();
@@ -27,7 +29,7 @@ export async function POST(request: Request) {
 
     if (!parsed.success) {
       return NextResponse.json(
-        { error: parsed.error.flatten() },
+        { error: getZodErrorMessage(parsed.error) },
         { status: 400 },
       );
     }
