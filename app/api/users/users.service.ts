@@ -2,12 +2,6 @@ import { prisma } from "@/src/lib/prisma";
 import { CreateUserDto } from "../dtos/user.dto";
 import bcrypt from "bcryptjs";
 
-export async function getUsers() {
-  return await prisma.user.findMany({
-    omit: { passwordHash: true },
-  });
-}
-
 export async function getUserById(id: string) {
   return await prisma.user.findUnique({
     where: { id: id },
