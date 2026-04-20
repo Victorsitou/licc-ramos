@@ -96,6 +96,14 @@ export default function MainLayout({
           <div className="flex items-center gap-3">
             <ThemeToggle />
             {!loading && <UserDropdown user={user} />}
+            {user && user.role == "ADMIN" && (
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 text-zinc-400 transition hover:scale-105 hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-500 dark:hover:text-white"
+              >
+                <HomeIcon sx={{ fontSize: 22 }} />
+              </button>
+            )}
           </div>
         </div>
         {children}

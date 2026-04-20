@@ -51,3 +51,22 @@ export async function getFileURL(key: string) {
   const data = await res.json();
   return data.url;
 }
+
+export async function uploadFile(
+  file: File,
+  resourceData: Omit<
+    Resource,
+    "id" | "createdAt" | "orderIndex" | "completed" | "completedAt"
+  >,
+) {
+  const res = await fetch("/api/resources/cf", {
+    method: "POST",
+    body: JSON.stringify({
+      content: await file
+        .arrayBuffer()
+        .then((buffer) => Buffer.from(buffer).toString("base64")),
+      resourceData,
+    }),
+  });
+  return res.json();
+}

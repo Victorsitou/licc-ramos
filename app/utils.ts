@@ -26,6 +26,8 @@ export interface User {
   id: string;
   name: string;
   email: string;
+  verified: boolean;
+  role: "STUDENT" | "ADMIN";
   createdAt: string;
 }
 
