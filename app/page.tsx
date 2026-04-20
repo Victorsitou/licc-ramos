@@ -164,7 +164,7 @@ export default function Home() {
                       </p>
 
                       <div className="flex gap-4">
-                        <div className="mt-5 inline-flex rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-sm font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                        <div className="mt-5 inline-flex rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
                           {ramo.clases} clases
                         </div>
 
@@ -175,7 +175,7 @@ export default function Home() {
                               setRamoSeleccionado(ramo);
                               setShowAyudantiaModal(true);
                             }}
-                            className="mt-5 inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer"
+                            className="mt-5 inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer"
                           >
                             Ver Ayudantías
                           </button>
