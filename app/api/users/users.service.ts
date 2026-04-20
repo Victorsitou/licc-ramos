@@ -27,7 +27,7 @@ export async function getUserByEmailUser(emailUser: string) {
   emailUser = emailUser.toLowerCase().trim();
 
   return await prisma.user.findFirst({
-    where: { email: { startsWith: `${emailUser}@` } },
+    where: { email: emailUser },
     omit: { passwordHash: true },
   });
 }
@@ -44,10 +44,11 @@ export async function createUser(data: CreateUserDto) {
 
   const hashedPassword = await bcrypt.hash(data.password, 12);
 
+  const username = data.email.split("@")[0];
   return prisma.user.create({
     data: {
       name: data.name,
-      email: data.email,
+      email: username,
       passwordHash: hashedPassword,
     },
     omit: {
