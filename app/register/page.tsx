@@ -35,7 +35,7 @@ export default function Register() {
     register(name, email, password).then(async (res) => {
       if (!res.ok) {
         const data = await res.json();
-        alert(data.message || "Error al registrarse");
+        alert(data.error || "Error al registrarse");
       } else {
         setShowVerifyModal(true);
       }
