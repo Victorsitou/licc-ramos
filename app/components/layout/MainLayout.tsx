@@ -7,6 +7,7 @@ import { useRouter, usePathname } from "next/navigation";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import HomeIcon from "@mui/icons-material/Home";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 import UserDropdown from "../UserDropdown";
 
@@ -29,7 +30,7 @@ function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 bg-white shadow-sm transition hover:scale-105 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+      className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 bg-white shadow-sm transition hover:scale-105 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 cursor-pointer"
     >
       {isDark ? (
         <LightModeIcon fontSize="small" />
@@ -75,7 +76,7 @@ export default function MainLayout({
                 <button
                   title="Ir al inicio"
                   onClick={() => router.push("/")}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 text-zinc-400 transition hover:scale-105 hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-500 dark:hover:text-white"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 bg-white shadow-sm text-zinc-400 transition hover:scale-105 hover:shadow-md hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-500 dark:hover:text-white cursor-pointer"
                 >
                   <HomeIcon sx={{ fontSize: 22 }} />
                 </button>
@@ -96,6 +97,14 @@ export default function MainLayout({
           <div className="flex items-center gap-3">
             <ThemeToggle />
             {!loading && <UserDropdown user={user} />}
+            {user && user.role == "ADMIN" && (
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 bg-white shadow-sm transition hover:scale-105 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 cursor-pointer"
+              >
+                <DashboardIcon sx={{ fontSize: 22 }} />
+              </button>
+            )}
           </div>
         </div>
         {children}
