@@ -35,8 +35,6 @@ export default function Dashboard() {
         type,
         slug,
       });
-
-      console.log(res);
       setFile(null);
     } finally {
       setLoading(false);

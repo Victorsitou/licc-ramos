@@ -35,8 +35,6 @@ export default class Notifications {
     const response: NotificationResponse = await fetch(
       "/api/notifications",
     ).then((res) => res.json());
-    console.log(response);
-
     if (!response.data.length)
       return {
         unseen: false,
