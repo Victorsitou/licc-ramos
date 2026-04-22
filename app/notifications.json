@@ -53,5 +53,17 @@
         "description": "¡Ahora puedes crear una cuenta y guardar el progreso de las ayudantías y talleres que ya has resuelto!"
       }
     ]
+  },
+  {
+    "id": "5",
+    "date": "2026-04-22",
+    "features": [
+      {
+        "emoji": "📊",
+        "title": "Contenidos de la interrogación 4",
+        "description": "Ya actualicé los contenidos que corresponden a la interrogación 4."
+      }
+    ],
+    "footer": "Mucho éxito a todos :)"
   }
 ]

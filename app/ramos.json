@@ -98,42 +98,48 @@
         "fecha": "2026-03-31",
         "objetivo": "Describir sucesiones.",
         "contenido": "Sucesión y suma",
-        "texto_guia": "Capítulo 6"
+        "texto_guia": "Capítulo 6",
+        "interrogacion": 4
       },
       {
         "clase": 13,
         "fecha": "2026-04-01",
         "objetivo": "Comprender suma parcial.",
         "contenido": "Sucesiones aritméticas",
-        "texto_guia": "Capítulo 6"
+        "texto_guia": "Capítulo 6",
+        "interrogacion": 4
       },
       {
         "clase": 14,
         "fecha": "2026-04-06",
         "objetivo": "Comprender suma parcial.",
         "contenido": "Sucesiones geométricas",
-        "texto_guia": "Capítulo 6"
+        "texto_guia": "Capítulo 6",
+        "interrogacion": 4
       },
       {
         "clase": 15,
         "fecha": "2026-04-07",
         "objetivo": "Trabajar con sumas finitas.",
         "contenido": "Sumas finitas",
-        "texto_guia": "Capítulo 6"
+        "texto_guia": "Capítulo 6",
+        "interrogacion": 4
       },
       {
         "clase": 16,
         "fecha": "2026-04-08",
         "objetivo": "Aplicar teorema del binomio.",
         "contenido": "Teorema del binomio",
-        "texto_guia": "Capítulo 6"
+        "texto_guia": "Capítulo 6",
+        "interrogacion": 4
       },
       {
         "clase": 17,
         "fecha": "2026-04-13",
         "objetivo": "Aplicar teorema del binomio.",
         "contenido": "Teorema del binomio",
-        "texto_guia": "Capítulo 6"
+        "texto_guia": "Capítulo 6",
+        "interrogacion": 4
       },
       {
         "clase": 18,
@@ -404,35 +410,40 @@
         "fecha": "2026-04-01",
         "objetivo": "Resolver inecuaciones con raíces.",
         "contenido": "Inecuaciones con raíces",
-        "texto_guia": "Capítulo 2"
+        "texto_guia": "Capítulo 2",
+        "interrogacion": 4
       },
       {
         "clase": 10,
         "fecha": "2026-04-06",
         "objetivo": "Comprender la definición formal de función.",
         "contenido": "Funciones reales",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 4
       },
       {
         "clase": 11,
         "fecha": "2026-04-08",
         "objetivo": "Analizar propiedades y gráficos de funciones.",
         "contenido": "Gráfico de funciones",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 4
       },
       {
         "clase": 12,
         "fecha": "2026-04-13",
         "objetivo": "Comprender transformaciones de funciones.",
         "contenido": "Transformaciones de funciones",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 4
       },
       {
         "clase": 13,
         "fecha": "2026-04-15",
         "objetivo": "Analizar y graficar funciones racionales.",
         "contenido": "Gráfica de funciones racionales",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 4
       },
       {
         "clase": 14,
