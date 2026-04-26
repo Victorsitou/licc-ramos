@@ -6,8 +6,8 @@ import { useRouter, usePathname } from "next/navigation";
 
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
-import HomeIcon from "@mui/icons-material/Home";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import HomeIcon from "@mui/icons-material/Home";
 
 import UserDropdown from "../UserDropdown";
 
@@ -43,17 +43,9 @@ function ThemeToggle() {
 
 interface Props {
   children: ReactNode;
-  title: string;
-  subtitle?: string;
-  badge?: string;
 }
 
-export default function MainLayout({
-  children,
-  title,
-  subtitle,
-  badge,
-}: Props) {
+export default function Header({ children }: Props) {
   const [user, setuser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -68,7 +60,7 @@ export default function MainLayout({
 
   return (
     <div className="bg-gradient-to-b from-zinc-100 via-zinc-50 to-white text-zinc-900 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 dark:text-zinc-100">
-      <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 sm:px-10">
+      <main className="mx-auto flex flex-col px-6 py-10 sm:px-10">
         <div className="mb-10 flex items-start justify-between">
           <div>
             <div className="flex items-center gap-3">
@@ -83,18 +75,11 @@ export default function MainLayout({
               )}
 
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-                {title}
+                LICC Ramos
               </h1>
             </div>
-
-            {subtitle && (
-              <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400 sm:text-base">
-                {subtitle}
-              </p>
-            )}
           </div>
-
-          <div className="flex items-center gap-3">
+          <div className="flex items-right gap-3">
             <ThemeToggle />
             {!loading && <UserDropdown user={user} />}
             {user && user.role == "ADMIN" && (

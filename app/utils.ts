@@ -1,3 +1,9 @@
+import ramosJson from "./ramos.json";
+const ramos: RamoInterface[] = ramosJson;
+
+export const baseURL =
+  process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
 export function stringToDate(dateString: string): Date {
   const [year, month, day] = dateString.split("-").map(Number);
   return new Date(year, month - 1, day);
@@ -46,4 +52,36 @@ export function getUser(): Promise<User | null> {
 export function isUCEmail(email: string): boolean {
   const ucEmailRegex = /^[^\s@]+@(uc\.cl|estudiante\.uc\.cl)$/;
   return ucEmailRegex.test(email);
+}
+
+export interface InfoClase {
+  clase: number;
+  fecha: string;
+  objetivo: string;
+  contenido: string;
+  texto_guia?: string;
+  interrogacion?: number;
+}
+
+export interface InfoInterrogacion {
+  interrogacion: number;
+  fecha: string;
+}
+
+export interface RamoInterface {
+  sigla: string;
+  nombre: string;
+  descripcion: string;
+  clases: number;
+  url: string;
+  info_clases: InfoClase[];
+  info_interrogaciones: InfoInterrogacion[];
+}
+
+export function getRamo(slug: string): RamoInterface | null {
+  return (
+    ramos.find(
+      (ramo) => ramo.sigla.toLocaleLowerCase() === slug.toLowerCase(),
+    ) || null
+  );
 }

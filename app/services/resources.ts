@@ -1,3 +1,5 @@
+import { baseURL } from "../utils";
+
 export interface Resource {
   id: string;
   title: string;
@@ -11,14 +13,42 @@ export interface Resource {
   completedAt: string | null;
 }
 
-export async function getResource(): Promise<Resource[]> {
-  const response = await fetch("/api/resources");
-
+export async function getResource({
+  slug,
+  type,
+  orderIndex,
+}: {
+  slug?: string;
+  type?: "CLASS" | "AYUDANTIA" | "WORKSHOP";
+  orderIndex?: number;
+}): Promise<Resource[]> {
+  const response = await fetch(
+    `${baseURL}/api/resources?${new URLSearchParams({
+      ...(slug ? { slug } : {}),
+      ...(type ? { type } : {}),
+      ...(orderIndex !== undefined
+        ? { orderIndex: orderIndex.toString() }
+        : {}),
+    })}`,
+    {
+      cache: "no-store",
+    },
+  );
+  console.log(response.url);
   if (!response.ok) {
     return [];
   }
 
   return response.json();
+}
+
+export async function getResourceByIndex(
+  slug: string,
+  type: "AYUDANTIA" | "WORKSHOP" | "CLASS",
+  orderIndex: number,
+): Promise<Resource | null> {
+  const resources = await getResource({ slug, type, orderIndex });
+  return resources[0] || null;
 }
 
 export async function toggleResourceCompletion(
@@ -28,10 +58,10 @@ export async function toggleResourceCompletion(
   let url = "";
   let method: "POST" | "DELETE";
   if (completed) {
-    url = `/api/resources/${resourceId}/complete`;
+    url = `${baseURL}/api/resources/${resourceId}/complete`;
     method = "POST";
   } else {
-    url = `/api/resources/${resourceId}/complete`;
+    url = `${baseURL}/api/resources/${resourceId}/complete`;
     method = "DELETE";
   }
 
@@ -44,7 +74,9 @@ export async function toggleResourceCompletion(
 }
 
 export async function getFileURL(key: string) {
-  const res = await fetch(`/api/file-url?key=${encodeURIComponent(key)}`);
+  const res = await fetch(
+    `${baseURL}/api/file-url?key=${encodeURIComponent(key)}`,
+  );
   if (!res.ok) {
     throw new Error("Failed to get file URL");
   }
@@ -59,7 +91,7 @@ export async function uploadFile(
     "id" | "createdAt" | "orderIndex" | "completed" | "completedAt"
   >,
 ) {
-  const res = await fetch("/api/resources/cf", {
+  const res = await fetch(`${baseURL}/api/resources/cf`, {
     method: "POST",
     body: JSON.stringify({
       content: await file

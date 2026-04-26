@@ -44,7 +44,7 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
     const userJWt = await getCurrentUser();
 
@@ -63,7 +63,19 @@ export async function GET() {
       // if so, then return all resources with the completed status
       // if not, then only return the classes.
       if (user.verified) {
-        resources = await getUserResources(user.id);
+        console.log("fetch resources");
+        const { searchParams } = new URL(request.url);
+        resources = await getUserResources(user.id, {
+          slug: searchParams.get("slug"),
+          type: searchParams.get("type") as
+            | "CLASS"
+            | "WORKSHOP"
+            | "AYUDANTIA"
+            | null,
+          orderIndex: searchParams.get("orderIndex")
+            ? parseInt(searchParams.get("orderIndex")!)
+            : null,
+        });
       } else {
         resources = await getClassesResources();
       }
