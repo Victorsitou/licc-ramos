@@ -25,14 +25,15 @@ enum UserRole {
 }
 
 model User {
-  id              String                 @id @default(cuid())
-  name            String
-  email           String                 @unique
-  role            UserRole               @default(STUDENT)
-  passwordHash    String
-  verified        Boolean                @default(false)
-  createdAt       DateTime               @default(now())
-  progressRecords UserResourceProgress[]
+  id                 String                   @id @default(cuid())
+  name               String
+  email              String                   @unique
+  role               UserRole                 @default(STUDENT)
+  passwordHash       String
+  verified           Boolean                  @default(false)
+  createdAt          DateTime                 @default(now())
+  progressRecords    UserResourceProgress[]
+  setProgressRecords UserProblemSetProgress[]
 
   @@map("users")
 }
@@ -73,4 +74,51 @@ model VerificationToken {
 
   @@index([email])
   @@map("verification_tokens")
+}
+
+model ProblemSet {
+  id String @id @default(cuid())
+
+  title       String
+  description String?
+
+  orderIndex Int
+
+  problems Problem[]
+
+  progressRecords UserProblemSetProgress[]
+
+  createdAt DateTime @default(now())
+
+  @@unique([orderIndex])
+}
+
+model Problem {
+  id String @id @default(cuid())
+
+  title       String
+  description String?
+
+  orderIndex Int
+
+  setId String
+  set   ProblemSet @relation(fields: [setId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@unique([setId, orderIndex])
+  @@index([setId, orderIndex])
+}
+
+model UserProblemSetProgress {
+  userId String
+  setId  String
+
+  completedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  set ProblemSet @relation(fields: [setId], references: [id], onDelete: Cascade)
+
+  @@id([userId, setId])
 }

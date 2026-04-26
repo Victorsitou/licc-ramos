@@ -154,6 +154,29 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
   expiresAt: 'expiresAt'
 };
 
+exports.Prisma.ProblemSetScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  orderIndex: 'orderIndex',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ProblemScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  orderIndex: 'orderIndex',
+  setId: 'setId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.UserProblemSetProgressScalarFieldEnum = {
+  userId: 'userId',
+  setId: 'setId',
+  completedAt: 'completedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -183,7 +206,10 @@ exports.Prisma.ModelName = {
   User: 'User',
   Resource: 'Resource',
   UserResourceProgress: 'UserResourceProgress',
-  VerificationToken: 'VerificationToken'
+  VerificationToken: 'VerificationToken',
+  ProblemSet: 'ProblemSet',
+  Problem: 'Problem',
+  UserProblemSetProgress: 'UserProblemSetProgress'
 };
 
 /**

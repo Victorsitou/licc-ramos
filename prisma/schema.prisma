@@ -4,9 +4,9 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
-  moduleFormat    = "cjs"
+  provider     = "prisma-client-js"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
 }
 
 datasource db {
@@ -25,14 +25,15 @@ enum UserRole {
 }
 
 model User {
-  id              String                 @id @default(cuid())
-  name            String                 
-  email           String                 @unique
-  role            UserRole               @default(STUDENT)
-  passwordHash    String
-  verified        Boolean                @default(false)
-  createdAt       DateTime               @default(now())
-  progressRecords UserResourceProgress[]
+  id                 String                 @id @default(cuid())
+  name               String
+  email              String                 @unique
+  role               UserRole               @default(STUDENT)
+  passwordHash       String
+  verified           Boolean                @default(false)
+  createdAt          DateTime               @default(now())
+  progressRecords    UserResourceProgress[]
+  setProgressRecords UserProblemSetProgress[]
 
   @@map("users")
 }
@@ -40,10 +41,10 @@ model User {
 model Resource {
   id              String                 @id @default(cuid())
   title           String
-  url             String                 
+  url             String
   key             String                 @default("")
   type            ResourceType
-  slug            String?                
+  slug            String?
   orderIndex      Int?
   createdAt       DateTime               @default(now())
   progressRecords UserResourceProgress[]
@@ -53,12 +54,12 @@ model Resource {
 }
 
 model UserResourceProgress {
-  userId       String
-  resourceId   String
-  completedAt  DateTime @default(now())
+  userId      String
+  resourceId  String
+  completedAt DateTime @default(now())
 
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  resource     Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  resource Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
 
   @@id([userId, resourceId])
   @@index([resourceId])
@@ -73,4 +74,50 @@ model VerificationToken {
 
   @@index([email])
   @@map("verification_tokens")
+}
+
+model ProblemSet {
+  id String @id @default(cuid())
+
+  title       String
+  description String?
+
+  orderIndex Int
+
+  problems Problem[]
+
+  progressRecords UserProblemSetProgress[]
+  @@unique([orderIndex])
+
+  createdAt DateTime @default(now())
+}
+
+model Problem {
+  id String @id @default(cuid())
+
+  title String
+  description String?
+
+  orderIndex Int
+
+  setId String
+  set ProblemSet @relation(fields:[setId], references:[id], onDelete: Cascade)
+
+  @@index([setId, orderIndex])
+  @@unique([setId, orderIndex])
+
+  createdAt DateTime @default(now())
+}
+
+model UserProblemSetProgress {
+  userId String
+  setId String
+
+  completedAt DateTime @default(now())
+
+  user User @relation(fields:[userId], references:[id], onDelete:Cascade)
+
+  set ProblemSet @relation(fields:[setId], references:[id], onDelete:Cascade)
+
+  @@id([userId,setId])
 }
