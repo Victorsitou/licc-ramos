@@ -33,7 +33,7 @@ model User {
   verified           Boolean                @default(false)
   createdAt          DateTime               @default(now())
   progressRecords    UserResourceProgress[]
-  setProgressRecords UserProblemSetProgress[]
+  problemProgressRecords UserProblemProgress[]
 
   @@map("users")
 }
@@ -86,7 +86,6 @@ model ProblemSet {
 
   problems Problem[]
 
-  progressRecords UserProblemSetProgress[]
   @@unique([orderIndex])
 
   createdAt DateTime @default(now())
@@ -103,21 +102,25 @@ model Problem {
   setId String
   set ProblemSet @relation(fields:[setId], references:[id], onDelete: Cascade)
 
+  progressRecords UserProblemProgress[]
+  
   @@index([setId, orderIndex])
   @@unique([setId, orderIndex])
 
   createdAt DateTime @default(now())
 }
 
-model UserProblemSetProgress {
+model UserProblemProgress {
   userId String
-  setId String
+  problemId String
 
   completedAt DateTime @default(now())
 
   user User @relation(fields:[userId], references:[id], onDelete:Cascade)
 
-  set ProblemSet @relation(fields:[setId], references:[id], onDelete:Cascade)
+  problem Problem @relation(fields:[problemId], references:[id], onDelete:Cascade)
 
-  @@id([userId,setId])
+  @@id([userId, problemId])
+
+  @@index([problemId])
 }

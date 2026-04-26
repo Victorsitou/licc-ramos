@@ -171,9 +171,9 @@ exports.Prisma.ProblemScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.UserProblemSetProgressScalarFieldEnum = {
+exports.Prisma.UserProblemProgressScalarFieldEnum = {
   userId: 'userId',
-  setId: 'setId',
+  problemId: 'problemId',
   completedAt: 'completedAt'
 };
 
@@ -209,7 +209,7 @@ exports.Prisma.ModelName = {
   VerificationToken: 'VerificationToken',
   ProblemSet: 'ProblemSet',
   Problem: 'Problem',
-  UserProblemSetProgress: 'UserProblemSetProgress'
+  UserProblemProgress: 'UserProblemProgress'
 };
 
 /**

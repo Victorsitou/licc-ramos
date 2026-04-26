@@ -25,15 +25,15 @@ enum UserRole {
 }
 
 model User {
-  id                 String                   @id @default(cuid())
-  name               String
-  email              String                   @unique
-  role               UserRole                 @default(STUDENT)
-  passwordHash       String
-  verified           Boolean                  @default(false)
-  createdAt          DateTime                 @default(now())
-  progressRecords    UserResourceProgress[]
-  setProgressRecords UserProblemSetProgress[]
+  id                     String                 @id @default(cuid())
+  name                   String
+  email                  String                 @unique
+  role                   UserRole               @default(STUDENT)
+  passwordHash           String
+  verified               Boolean                @default(false)
+  createdAt              DateTime               @default(now())
+  progressRecords        UserResourceProgress[]
+  problemProgressRecords UserProblemProgress[]
 
   @@map("users")
 }
@@ -86,8 +86,6 @@ model ProblemSet {
 
   problems Problem[]
 
-  progressRecords UserProblemSetProgress[]
-
   createdAt DateTime @default(now())
 
   @@unique([orderIndex])
@@ -104,21 +102,24 @@ model Problem {
   setId String
   set   ProblemSet @relation(fields: [setId], references: [id], onDelete: Cascade)
 
+  progressRecords UserProblemProgress[]
+
   createdAt DateTime @default(now())
 
   @@unique([setId, orderIndex])
   @@index([setId, orderIndex])
 }
 
-model UserProblemSetProgress {
-  userId String
-  setId  String
+model UserProblemProgress {
+  userId    String
+  problemId String
 
   completedAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  set ProblemSet @relation(fields: [setId], references: [id], onDelete: Cascade)
+  problem Problem @relation(fields: [problemId], references: [id], onDelete: Cascade)
 
-  @@id([userId, setId])
+  @@id([userId, problemId])
+  @@index([problemId])
 }

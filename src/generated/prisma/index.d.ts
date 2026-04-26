@@ -44,10 +44,10 @@ export type ProblemSet = $Result.DefaultSelection<Prisma.$ProblemSetPayload>
  */
 export type Problem = $Result.DefaultSelection<Prisma.$ProblemPayload>
 /**
- * Model UserProblemSetProgress
+ * Model UserProblemProgress
  * 
  */
-export type UserProblemSetProgress = $Result.DefaultSelection<Prisma.$UserProblemSetProgressPayload>
+export type UserProblemProgress = $Result.DefaultSelection<Prisma.$UserProblemProgressPayload>
 
 /**
  * Enums
@@ -261,14 +261,14 @@ export class PrismaClient<
   get problem(): Prisma.ProblemDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.userProblemSetProgress`: Exposes CRUD operations for the **UserProblemSetProgress** model.
+   * `prisma.userProblemProgress`: Exposes CRUD operations for the **UserProblemProgress** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more UserProblemSetProgresses
-    * const userProblemSetProgresses = await prisma.userProblemSetProgress.findMany()
+    * // Fetch zero or more UserProblemProgresses
+    * const userProblemProgresses = await prisma.userProblemProgress.findMany()
     * ```
     */
-  get userProblemSetProgress(): Prisma.UserProblemSetProgressDelegate<ExtArgs, ClientOptions>;
+  get userProblemProgress(): Prisma.UserProblemProgressDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -709,7 +709,7 @@ export namespace Prisma {
     VerificationToken: 'VerificationToken',
     ProblemSet: 'ProblemSet',
     Problem: 'Problem',
-    UserProblemSetProgress: 'UserProblemSetProgress'
+    UserProblemProgress: 'UserProblemProgress'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -725,7 +725,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "resource" | "userResourceProgress" | "verificationToken" | "problemSet" | "problem" | "userProblemSetProgress"
+      modelProps: "user" | "resource" | "userResourceProgress" | "verificationToken" | "problemSet" | "problem" | "userProblemProgress"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1173,77 +1173,77 @@ export namespace Prisma {
           }
         }
       }
-      UserProblemSetProgress: {
-        payload: Prisma.$UserProblemSetProgressPayload<ExtArgs>
-        fields: Prisma.UserProblemSetProgressFieldRefs
+      UserProblemProgress: {
+        payload: Prisma.$UserProblemProgressPayload<ExtArgs>
+        fields: Prisma.UserProblemProgressFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserProblemSetProgressFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserProblemSetProgressPayload> | null
+            args: Prisma.UserProblemProgressFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserProblemProgressPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserProblemSetProgressFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserProblemSetProgressPayload>
+            args: Prisma.UserProblemProgressFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserProblemProgressPayload>
           }
           findFirst: {
-            args: Prisma.UserProblemSetProgressFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserProblemSetProgressPayload> | null
+            args: Prisma.UserProblemProgressFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserProblemProgressPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserProblemSetProgressFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserProblemSetProgressPayload>
+            args: Prisma.UserProblemProgressFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserProblemProgressPayload>
           }
           findMany: {
-            args: Prisma.UserProblemSetProgressFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserProblemSetProgressPayload>[]
+            args: Prisma.UserProblemProgressFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserProblemProgressPayload>[]
           }
           create: {
-            args: Prisma.UserProblemSetProgressCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserProblemSetProgressPayload>
+            args: Prisma.UserProblemProgressCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserProblemProgressPayload>
           }
           createMany: {
-            args: Prisma.UserProblemSetProgressCreateManyArgs<ExtArgs>
+            args: Prisma.UserProblemProgressCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.UserProblemSetProgressCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserProblemSetProgressPayload>[]
+            args: Prisma.UserProblemProgressCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserProblemProgressPayload>[]
           }
           delete: {
-            args: Prisma.UserProblemSetProgressDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserProblemSetProgressPayload>
+            args: Prisma.UserProblemProgressDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserProblemProgressPayload>
           }
           update: {
-            args: Prisma.UserProblemSetProgressUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserProblemSetProgressPayload>
+            args: Prisma.UserProblemProgressUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserProblemProgressPayload>
           }
           deleteMany: {
-            args: Prisma.UserProblemSetProgressDeleteManyArgs<ExtArgs>
+            args: Prisma.UserProblemProgressDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.UserProblemSetProgressUpdateManyArgs<ExtArgs>
+            args: Prisma.UserProblemProgressUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.UserProblemSetProgressUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserProblemSetProgressPayload>[]
+            args: Prisma.UserProblemProgressUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserProblemProgressPayload>[]
           }
           upsert: {
-            args: Prisma.UserProblemSetProgressUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserProblemSetProgressPayload>
+            args: Prisma.UserProblemProgressUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserProblemProgressPayload>
           }
           aggregate: {
-            args: Prisma.UserProblemSetProgressAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUserProblemSetProgress>
+            args: Prisma.UserProblemProgressAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserProblemProgress>
           }
           groupBy: {
-            args: Prisma.UserProblemSetProgressGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserProblemSetProgressGroupByOutputType>[]
+            args: Prisma.UserProblemProgressGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserProblemProgressGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserProblemSetProgressCountArgs<ExtArgs>
-            result: $Utils.Optional<UserProblemSetProgressCountAggregateOutputType> | number
+            args: Prisma.UserProblemProgressCountArgs<ExtArgs>
+            result: $Utils.Optional<UserProblemProgressCountAggregateOutputType> | number
           }
         }
       }
@@ -1361,7 +1361,7 @@ export namespace Prisma {
     verificationToken?: VerificationTokenOmit
     problemSet?: ProblemSetOmit
     problem?: ProblemOmit
-    userProblemSetProgress?: UserProblemSetProgressOmit
+    userProblemProgress?: UserProblemProgressOmit
   }
 
   /* Types for Logging */
@@ -1443,12 +1443,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     progressRecords: number
-    setProgressRecords: number
+    problemProgressRecords: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     progressRecords?: boolean | UserCountOutputTypeCountProgressRecordsArgs
-    setProgressRecords?: boolean | UserCountOutputTypeCountSetProgressRecordsArgs
+    problemProgressRecords?: boolean | UserCountOutputTypeCountProblemProgressRecordsArgs
   }
 
   // Custom InputTypes
@@ -1472,8 +1472,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSetProgressRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserProblemSetProgressWhereInput
+  export type UserCountOutputTypeCountProblemProgressRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserProblemProgressWhereInput
   }
 
 
@@ -1514,12 +1514,10 @@ export namespace Prisma {
 
   export type ProblemSetCountOutputType = {
     problems: number
-    progressRecords: number
   }
 
   export type ProblemSetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     problems?: boolean | ProblemSetCountOutputTypeCountProblemsArgs
-    progressRecords?: boolean | ProblemSetCountOutputTypeCountProgressRecordsArgs
   }
 
   // Custom InputTypes
@@ -1540,11 +1538,35 @@ export namespace Prisma {
     where?: ProblemWhereInput
   }
 
+
   /**
-   * ProblemSetCountOutputType without action
+   * Count Type ProblemCountOutputType
    */
-  export type ProblemSetCountOutputTypeCountProgressRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserProblemSetProgressWhereInput
+
+  export type ProblemCountOutputType = {
+    progressRecords: number
+  }
+
+  export type ProblemCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    progressRecords?: boolean | ProblemCountOutputTypeCountProgressRecordsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProblemCountOutputType without action
+   */
+  export type ProblemCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProblemCountOutputType
+     */
+    select?: ProblemCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProblemCountOutputType without action
+   */
+  export type ProblemCountOutputTypeCountProgressRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserProblemProgressWhereInput
   }
 
 
@@ -1733,7 +1755,7 @@ export namespace Prisma {
     verified?: boolean
     createdAt?: boolean
     progressRecords?: boolean | User$progressRecordsArgs<ExtArgs>
-    setProgressRecords?: boolean | User$setProgressRecordsArgs<ExtArgs>
+    problemProgressRecords?: boolean | User$problemProgressRecordsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1770,7 +1792,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "role" | "passwordHash" | "verified" | "createdAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     progressRecords?: boolean | User$progressRecordsArgs<ExtArgs>
-    setProgressRecords?: boolean | User$setProgressRecordsArgs<ExtArgs>
+    problemProgressRecords?: boolean | User$problemProgressRecordsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1780,7 +1802,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       progressRecords: Prisma.$UserResourceProgressPayload<ExtArgs>[]
-      setProgressRecords: Prisma.$UserProblemSetProgressPayload<ExtArgs>[]
+      problemProgressRecords: Prisma.$UserProblemProgressPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2185,7 +2207,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     progressRecords<T extends User$progressRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$progressRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserResourceProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    setProgressRecords<T extends User$setProgressRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$setProgressRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    problemProgressRecords<T extends User$problemProgressRecordsArgs<ExtArgs> = {}>(args?: Subset<T, User$problemProgressRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2639,27 +2661,27 @@ export namespace Prisma {
   }
 
   /**
-   * User.setProgressRecords
+   * User.problemProgressRecords
    */
-  export type User$setProgressRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$problemProgressRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
+    select?: UserProblemProgressSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
-    where?: UserProblemSetProgressWhereInput
-    orderBy?: UserProblemSetProgressOrderByWithRelationInput | UserProblemSetProgressOrderByWithRelationInput[]
-    cursor?: UserProblemSetProgressWhereUniqueInput
+    include?: UserProblemProgressInclude<ExtArgs> | null
+    where?: UserProblemProgressWhereInput
+    orderBy?: UserProblemProgressOrderByWithRelationInput | UserProblemProgressOrderByWithRelationInput[]
+    cursor?: UserProblemProgressWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserProblemSetProgressScalarFieldEnum | UserProblemSetProgressScalarFieldEnum[]
+    distinct?: UserProblemProgressScalarFieldEnum | UserProblemProgressScalarFieldEnum[]
   }
 
   /**
@@ -6060,7 +6082,6 @@ export namespace Prisma {
     orderIndex?: boolean
     createdAt?: boolean
     problems?: boolean | ProblemSet$problemsArgs<ExtArgs>
-    progressRecords?: boolean | ProblemSet$progressRecordsArgs<ExtArgs>
     _count?: boolean | ProblemSetCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problemSet"]>
 
@@ -6091,7 +6112,6 @@ export namespace Prisma {
   export type ProblemSetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "orderIndex" | "createdAt", ExtArgs["result"]["problemSet"]>
   export type ProblemSetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     problems?: boolean | ProblemSet$problemsArgs<ExtArgs>
-    progressRecords?: boolean | ProblemSet$progressRecordsArgs<ExtArgs>
     _count?: boolean | ProblemSetCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProblemSetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -6101,7 +6121,6 @@ export namespace Prisma {
     name: "ProblemSet"
     objects: {
       problems: Prisma.$ProblemPayload<ExtArgs>[]
-      progressRecords: Prisma.$UserProblemSetProgressPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6504,7 +6523,6 @@ export namespace Prisma {
   export interface Prisma__ProblemSetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     problems<T extends ProblemSet$problemsArgs<ExtArgs> = {}>(args?: Subset<T, ProblemSet$problemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProblemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    progressRecords<T extends ProblemSet$progressRecordsArgs<ExtArgs> = {}>(args?: Subset<T, ProblemSet$progressRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6956,30 +6974,6 @@ export namespace Prisma {
   }
 
   /**
-   * ProblemSet.progressRecords
-   */
-  export type ProblemSet$progressRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserProblemSetProgress
-     */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserProblemSetProgress
-     */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
-    where?: UserProblemSetProgressWhereInput
-    orderBy?: UserProblemSetProgressOrderByWithRelationInput | UserProblemSetProgressOrderByWithRelationInput[]
-    cursor?: UserProblemSetProgressWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserProblemSetProgressScalarFieldEnum | UserProblemSetProgressScalarFieldEnum[]
-  }
-
-  /**
    * ProblemSet without action
    */
   export type ProblemSetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7205,6 +7199,8 @@ export namespace Prisma {
     setId?: boolean
     createdAt?: boolean
     set?: boolean | ProblemSetDefaultArgs<ExtArgs>
+    progressRecords?: boolean | Problem$progressRecordsArgs<ExtArgs>
+    _count?: boolean | ProblemCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["problem"]>
 
   export type ProblemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7239,6 +7235,8 @@ export namespace Prisma {
   export type ProblemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "orderIndex" | "setId" | "createdAt", ExtArgs["result"]["problem"]>
   export type ProblemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     set?: boolean | ProblemSetDefaultArgs<ExtArgs>
+    progressRecords?: boolean | Problem$progressRecordsArgs<ExtArgs>
+    _count?: boolean | ProblemCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProblemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     set?: boolean | ProblemSetDefaultArgs<ExtArgs>
@@ -7251,6 +7249,7 @@ export namespace Prisma {
     name: "Problem"
     objects: {
       set: Prisma.$ProblemSetPayload<ExtArgs>
+      progressRecords: Prisma.$UserProblemProgressPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7654,6 +7653,7 @@ export namespace Prisma {
   export interface Prisma__ProblemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     set<T extends ProblemSetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProblemSetDefaultArgs<ExtArgs>>): Prisma__ProblemSetClient<$Result.GetResult<Prisma.$ProblemSetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    progressRecords<T extends Problem$progressRecordsArgs<ExtArgs> = {}>(args?: Subset<T, Problem$progressRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8090,6 +8090,30 @@ export namespace Prisma {
   }
 
   /**
+   * Problem.progressRecords
+   */
+  export type Problem$progressRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserProblemProgress
+     */
+    select?: UserProblemProgressSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserProblemProgress
+     */
+    omit?: UserProblemProgressOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserProblemProgressInclude<ExtArgs> | null
+    where?: UserProblemProgressWhereInput
+    orderBy?: UserProblemProgressOrderByWithRelationInput | UserProblemProgressOrderByWithRelationInput[]
+    cursor?: UserProblemProgressWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserProblemProgressScalarFieldEnum | UserProblemProgressScalarFieldEnum[]
+  }
+
+  /**
    * Problem without action
    */
   export type ProblemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8109,333 +8133,333 @@ export namespace Prisma {
 
 
   /**
-   * Model UserProblemSetProgress
+   * Model UserProblemProgress
    */
 
-  export type AggregateUserProblemSetProgress = {
-    _count: UserProblemSetProgressCountAggregateOutputType | null
-    _min: UserProblemSetProgressMinAggregateOutputType | null
-    _max: UserProblemSetProgressMaxAggregateOutputType | null
+  export type AggregateUserProblemProgress = {
+    _count: UserProblemProgressCountAggregateOutputType | null
+    _min: UserProblemProgressMinAggregateOutputType | null
+    _max: UserProblemProgressMaxAggregateOutputType | null
   }
 
-  export type UserProblemSetProgressMinAggregateOutputType = {
+  export type UserProblemProgressMinAggregateOutputType = {
     userId: string | null
-    setId: string | null
+    problemId: string | null
     completedAt: Date | null
   }
 
-  export type UserProblemSetProgressMaxAggregateOutputType = {
+  export type UserProblemProgressMaxAggregateOutputType = {
     userId: string | null
-    setId: string | null
+    problemId: string | null
     completedAt: Date | null
   }
 
-  export type UserProblemSetProgressCountAggregateOutputType = {
+  export type UserProblemProgressCountAggregateOutputType = {
     userId: number
-    setId: number
+    problemId: number
     completedAt: number
     _all: number
   }
 
 
-  export type UserProblemSetProgressMinAggregateInputType = {
+  export type UserProblemProgressMinAggregateInputType = {
     userId?: true
-    setId?: true
+    problemId?: true
     completedAt?: true
   }
 
-  export type UserProblemSetProgressMaxAggregateInputType = {
+  export type UserProblemProgressMaxAggregateInputType = {
     userId?: true
-    setId?: true
+    problemId?: true
     completedAt?: true
   }
 
-  export type UserProblemSetProgressCountAggregateInputType = {
+  export type UserProblemProgressCountAggregateInputType = {
     userId?: true
-    setId?: true
+    problemId?: true
     completedAt?: true
     _all?: true
   }
 
-  export type UserProblemSetProgressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserProblemSetProgress to aggregate.
+     * Filter which UserProblemProgress to aggregate.
      */
-    where?: UserProblemSetProgressWhereInput
+    where?: UserProblemProgressWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserProblemSetProgresses to fetch.
+     * Determine the order of UserProblemProgresses to fetch.
      */
-    orderBy?: UserProblemSetProgressOrderByWithRelationInput | UserProblemSetProgressOrderByWithRelationInput[]
+    orderBy?: UserProblemProgressOrderByWithRelationInput | UserProblemProgressOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserProblemSetProgressWhereUniqueInput
+    cursor?: UserProblemProgressWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserProblemSetProgresses from the position of the cursor.
+     * Take `±n` UserProblemProgresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserProblemSetProgresses.
+     * Skip the first `n` UserProblemProgresses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned UserProblemSetProgresses
+     * Count returned UserProblemProgresses
     **/
-    _count?: true | UserProblemSetProgressCountAggregateInputType
+    _count?: true | UserProblemProgressCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserProblemSetProgressMinAggregateInputType
+    _min?: UserProblemProgressMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserProblemSetProgressMaxAggregateInputType
+    _max?: UserProblemProgressMaxAggregateInputType
   }
 
-  export type GetUserProblemSetProgressAggregateType<T extends UserProblemSetProgressAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserProblemSetProgress]: P extends '_count' | 'count'
+  export type GetUserProblemProgressAggregateType<T extends UserProblemProgressAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserProblemProgress]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUserProblemSetProgress[P]>
-      : GetScalarType<T[P], AggregateUserProblemSetProgress[P]>
+        : GetScalarType<T[P], AggregateUserProblemProgress[P]>
+      : GetScalarType<T[P], AggregateUserProblemProgress[P]>
   }
 
 
 
 
-  export type UserProblemSetProgressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserProblemSetProgressWhereInput
-    orderBy?: UserProblemSetProgressOrderByWithAggregationInput | UserProblemSetProgressOrderByWithAggregationInput[]
-    by: UserProblemSetProgressScalarFieldEnum[] | UserProblemSetProgressScalarFieldEnum
-    having?: UserProblemSetProgressScalarWhereWithAggregatesInput
+  export type UserProblemProgressGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserProblemProgressWhereInput
+    orderBy?: UserProblemProgressOrderByWithAggregationInput | UserProblemProgressOrderByWithAggregationInput[]
+    by: UserProblemProgressScalarFieldEnum[] | UserProblemProgressScalarFieldEnum
+    having?: UserProblemProgressScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserProblemSetProgressCountAggregateInputType | true
-    _min?: UserProblemSetProgressMinAggregateInputType
-    _max?: UserProblemSetProgressMaxAggregateInputType
+    _count?: UserProblemProgressCountAggregateInputType | true
+    _min?: UserProblemProgressMinAggregateInputType
+    _max?: UserProblemProgressMaxAggregateInputType
   }
 
-  export type UserProblemSetProgressGroupByOutputType = {
+  export type UserProblemProgressGroupByOutputType = {
     userId: string
-    setId: string
+    problemId: string
     completedAt: Date
-    _count: UserProblemSetProgressCountAggregateOutputType | null
-    _min: UserProblemSetProgressMinAggregateOutputType | null
-    _max: UserProblemSetProgressMaxAggregateOutputType | null
+    _count: UserProblemProgressCountAggregateOutputType | null
+    _min: UserProblemProgressMinAggregateOutputType | null
+    _max: UserProblemProgressMaxAggregateOutputType | null
   }
 
-  type GetUserProblemSetProgressGroupByPayload<T extends UserProblemSetProgressGroupByArgs> = Prisma.PrismaPromise<
+  type GetUserProblemProgressGroupByPayload<T extends UserProblemProgressGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserProblemSetProgressGroupByOutputType, T['by']> &
+      PickEnumerable<UserProblemProgressGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserProblemSetProgressGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof UserProblemProgressGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserProblemSetProgressGroupByOutputType[P]>
-            : GetScalarType<T[P], UserProblemSetProgressGroupByOutputType[P]>
+              : GetScalarType<T[P], UserProblemProgressGroupByOutputType[P]>
+            : GetScalarType<T[P], UserProblemProgressGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserProblemSetProgressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UserProblemProgressSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
-    setId?: boolean
+    problemId?: boolean
     completedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    set?: boolean | ProblemSetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userProblemSetProgress"]>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userProblemProgress"]>
 
-  export type UserProblemSetProgressSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UserProblemProgressSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
-    setId?: boolean
+    problemId?: boolean
     completedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    set?: boolean | ProblemSetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userProblemSetProgress"]>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userProblemProgress"]>
 
-  export type UserProblemSetProgressSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UserProblemProgressSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     userId?: boolean
-    setId?: boolean
+    problemId?: boolean
     completedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    set?: boolean | ProblemSetDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userProblemSetProgress"]>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userProblemProgress"]>
 
-  export type UserProblemSetProgressSelectScalar = {
+  export type UserProblemProgressSelectScalar = {
     userId?: boolean
-    setId?: boolean
+    problemId?: boolean
     completedAt?: boolean
   }
 
-  export type UserProblemSetProgressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "setId" | "completedAt", ExtArgs["result"]["userProblemSetProgress"]>
-  export type UserProblemSetProgressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "problemId" | "completedAt", ExtArgs["result"]["userProblemProgress"]>
+  export type UserProblemProgressInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    set?: boolean | ProblemSetDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
   }
-  export type UserProblemSetProgressIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    set?: boolean | ProblemSetDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
   }
-  export type UserProblemSetProgressIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    set?: boolean | ProblemSetDefaultArgs<ExtArgs>
+    problem?: boolean | ProblemDefaultArgs<ExtArgs>
   }
 
-  export type $UserProblemSetProgressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserProblemSetProgress"
+  export type $UserProblemProgressPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserProblemProgress"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      set: Prisma.$ProblemSetPayload<ExtArgs>
+      problem: Prisma.$ProblemPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       userId: string
-      setId: string
+      problemId: string
       completedAt: Date
-    }, ExtArgs["result"]["userProblemSetProgress"]>
+    }, ExtArgs["result"]["userProblemProgress"]>
     composites: {}
   }
 
-  type UserProblemSetProgressGetPayload<S extends boolean | null | undefined | UserProblemSetProgressDefaultArgs> = $Result.GetResult<Prisma.$UserProblemSetProgressPayload, S>
+  type UserProblemProgressGetPayload<S extends boolean | null | undefined | UserProblemProgressDefaultArgs> = $Result.GetResult<Prisma.$UserProblemProgressPayload, S>
 
-  type UserProblemSetProgressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserProblemSetProgressFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UserProblemSetProgressCountAggregateInputType | true
+  type UserProblemProgressCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserProblemProgressFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserProblemProgressCountAggregateInputType | true
     }
 
-  export interface UserProblemSetProgressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserProblemSetProgress'], meta: { name: 'UserProblemSetProgress' } }
+  export interface UserProblemProgressDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserProblemProgress'], meta: { name: 'UserProblemProgress' } }
     /**
-     * Find zero or one UserProblemSetProgress that matches the filter.
-     * @param {UserProblemSetProgressFindUniqueArgs} args - Arguments to find a UserProblemSetProgress
+     * Find zero or one UserProblemProgress that matches the filter.
+     * @param {UserProblemProgressFindUniqueArgs} args - Arguments to find a UserProblemProgress
      * @example
-     * // Get one UserProblemSetProgress
-     * const userProblemSetProgress = await prisma.userProblemSetProgress.findUnique({
+     * // Get one UserProblemProgress
+     * const userProblemProgress = await prisma.userProblemProgress.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends UserProblemSetProgressFindUniqueArgs>(args: SelectSubset<T, UserProblemSetProgressFindUniqueArgs<ExtArgs>>): Prisma__UserProblemSetProgressClient<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends UserProblemProgressFindUniqueArgs>(args: SelectSubset<T, UserProblemProgressFindUniqueArgs<ExtArgs>>): Prisma__UserProblemProgressClient<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one UserProblemSetProgress that matches the filter or throw an error with `error.code='P2025'`
+     * Find one UserProblemProgress that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {UserProblemSetProgressFindUniqueOrThrowArgs} args - Arguments to find a UserProblemSetProgress
+     * @param {UserProblemProgressFindUniqueOrThrowArgs} args - Arguments to find a UserProblemProgress
      * @example
-     * // Get one UserProblemSetProgress
-     * const userProblemSetProgress = await prisma.userProblemSetProgress.findUniqueOrThrow({
+     * // Get one UserProblemProgress
+     * const userProblemProgress = await prisma.userProblemProgress.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends UserProblemSetProgressFindUniqueOrThrowArgs>(args: SelectSubset<T, UserProblemSetProgressFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserProblemSetProgressClient<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends UserProblemProgressFindUniqueOrThrowArgs>(args: SelectSubset<T, UserProblemProgressFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserProblemProgressClient<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserProblemSetProgress that matches the filter.
+     * Find the first UserProblemProgress that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserProblemSetProgressFindFirstArgs} args - Arguments to find a UserProblemSetProgress
+     * @param {UserProblemProgressFindFirstArgs} args - Arguments to find a UserProblemProgress
      * @example
-     * // Get one UserProblemSetProgress
-     * const userProblemSetProgress = await prisma.userProblemSetProgress.findFirst({
+     * // Get one UserProblemProgress
+     * const userProblemProgress = await prisma.userProblemProgress.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends UserProblemSetProgressFindFirstArgs>(args?: SelectSubset<T, UserProblemSetProgressFindFirstArgs<ExtArgs>>): Prisma__UserProblemSetProgressClient<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends UserProblemProgressFindFirstArgs>(args?: SelectSubset<T, UserProblemProgressFindFirstArgs<ExtArgs>>): Prisma__UserProblemProgressClient<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserProblemSetProgress that matches the filter or
+     * Find the first UserProblemProgress that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserProblemSetProgressFindFirstOrThrowArgs} args - Arguments to find a UserProblemSetProgress
+     * @param {UserProblemProgressFindFirstOrThrowArgs} args - Arguments to find a UserProblemProgress
      * @example
-     * // Get one UserProblemSetProgress
-     * const userProblemSetProgress = await prisma.userProblemSetProgress.findFirstOrThrow({
+     * // Get one UserProblemProgress
+     * const userProblemProgress = await prisma.userProblemProgress.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends UserProblemSetProgressFindFirstOrThrowArgs>(args?: SelectSubset<T, UserProblemSetProgressFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserProblemSetProgressClient<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends UserProblemProgressFindFirstOrThrowArgs>(args?: SelectSubset<T, UserProblemProgressFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserProblemProgressClient<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more UserProblemSetProgresses that matches the filter.
+     * Find zero or more UserProblemProgresses that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserProblemSetProgressFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {UserProblemProgressFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all UserProblemSetProgresses
-     * const userProblemSetProgresses = await prisma.userProblemSetProgress.findMany()
+     * // Get all UserProblemProgresses
+     * const userProblemProgresses = await prisma.userProblemProgress.findMany()
      * 
-     * // Get first 10 UserProblemSetProgresses
-     * const userProblemSetProgresses = await prisma.userProblemSetProgress.findMany({ take: 10 })
+     * // Get first 10 UserProblemProgresses
+     * const userProblemProgresses = await prisma.userProblemProgress.findMany({ take: 10 })
      * 
      * // Only select the `userId`
-     * const userProblemSetProgressWithUserIdOnly = await prisma.userProblemSetProgress.findMany({ select: { userId: true } })
+     * const userProblemProgressWithUserIdOnly = await prisma.userProblemProgress.findMany({ select: { userId: true } })
      * 
      */
-    findMany<T extends UserProblemSetProgressFindManyArgs>(args?: SelectSubset<T, UserProblemSetProgressFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends UserProblemProgressFindManyArgs>(args?: SelectSubset<T, UserProblemProgressFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a UserProblemSetProgress.
-     * @param {UserProblemSetProgressCreateArgs} args - Arguments to create a UserProblemSetProgress.
+     * Create a UserProblemProgress.
+     * @param {UserProblemProgressCreateArgs} args - Arguments to create a UserProblemProgress.
      * @example
-     * // Create one UserProblemSetProgress
-     * const UserProblemSetProgress = await prisma.userProblemSetProgress.create({
+     * // Create one UserProblemProgress
+     * const UserProblemProgress = await prisma.userProblemProgress.create({
      *   data: {
-     *     // ... data to create a UserProblemSetProgress
+     *     // ... data to create a UserProblemProgress
      *   }
      * })
      * 
      */
-    create<T extends UserProblemSetProgressCreateArgs>(args: SelectSubset<T, UserProblemSetProgressCreateArgs<ExtArgs>>): Prisma__UserProblemSetProgressClient<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends UserProblemProgressCreateArgs>(args: SelectSubset<T, UserProblemProgressCreateArgs<ExtArgs>>): Prisma__UserProblemProgressClient<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many UserProblemSetProgresses.
-     * @param {UserProblemSetProgressCreateManyArgs} args - Arguments to create many UserProblemSetProgresses.
+     * Create many UserProblemProgresses.
+     * @param {UserProblemProgressCreateManyArgs} args - Arguments to create many UserProblemProgresses.
      * @example
-     * // Create many UserProblemSetProgresses
-     * const userProblemSetProgress = await prisma.userProblemSetProgress.createMany({
+     * // Create many UserProblemProgresses
+     * const userProblemProgress = await prisma.userProblemProgress.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends UserProblemSetProgressCreateManyArgs>(args?: SelectSubset<T, UserProblemSetProgressCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends UserProblemProgressCreateManyArgs>(args?: SelectSubset<T, UserProblemProgressCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many UserProblemSetProgresses and returns the data saved in the database.
-     * @param {UserProblemSetProgressCreateManyAndReturnArgs} args - Arguments to create many UserProblemSetProgresses.
+     * Create many UserProblemProgresses and returns the data saved in the database.
+     * @param {UserProblemProgressCreateManyAndReturnArgs} args - Arguments to create many UserProblemProgresses.
      * @example
-     * // Create many UserProblemSetProgresses
-     * const userProblemSetProgress = await prisma.userProblemSetProgress.createManyAndReturn({
+     * // Create many UserProblemProgresses
+     * const userProblemProgress = await prisma.userProblemProgress.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many UserProblemSetProgresses and only return the `userId`
-     * const userProblemSetProgressWithUserIdOnly = await prisma.userProblemSetProgress.createManyAndReturn({
+     * // Create many UserProblemProgresses and only return the `userId`
+     * const userProblemProgressWithUserIdOnly = await prisma.userProblemProgress.createManyAndReturn({
      *   select: { userId: true },
      *   data: [
      *     // ... provide data here
@@ -8445,28 +8469,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends UserProblemSetProgressCreateManyAndReturnArgs>(args?: SelectSubset<T, UserProblemSetProgressCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends UserProblemProgressCreateManyAndReturnArgs>(args?: SelectSubset<T, UserProblemProgressCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a UserProblemSetProgress.
-     * @param {UserProblemSetProgressDeleteArgs} args - Arguments to delete one UserProblemSetProgress.
+     * Delete a UserProblemProgress.
+     * @param {UserProblemProgressDeleteArgs} args - Arguments to delete one UserProblemProgress.
      * @example
-     * // Delete one UserProblemSetProgress
-     * const UserProblemSetProgress = await prisma.userProblemSetProgress.delete({
+     * // Delete one UserProblemProgress
+     * const UserProblemProgress = await prisma.userProblemProgress.delete({
      *   where: {
-     *     // ... filter to delete one UserProblemSetProgress
+     *     // ... filter to delete one UserProblemProgress
      *   }
      * })
      * 
      */
-    delete<T extends UserProblemSetProgressDeleteArgs>(args: SelectSubset<T, UserProblemSetProgressDeleteArgs<ExtArgs>>): Prisma__UserProblemSetProgressClient<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends UserProblemProgressDeleteArgs>(args: SelectSubset<T, UserProblemProgressDeleteArgs<ExtArgs>>): Prisma__UserProblemProgressClient<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one UserProblemSetProgress.
-     * @param {UserProblemSetProgressUpdateArgs} args - Arguments to update one UserProblemSetProgress.
+     * Update one UserProblemProgress.
+     * @param {UserProblemProgressUpdateArgs} args - Arguments to update one UserProblemProgress.
      * @example
-     * // Update one UserProblemSetProgress
-     * const userProblemSetProgress = await prisma.userProblemSetProgress.update({
+     * // Update one UserProblemProgress
+     * const userProblemProgress = await prisma.userProblemProgress.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8476,30 +8500,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends UserProblemSetProgressUpdateArgs>(args: SelectSubset<T, UserProblemSetProgressUpdateArgs<ExtArgs>>): Prisma__UserProblemSetProgressClient<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends UserProblemProgressUpdateArgs>(args: SelectSubset<T, UserProblemProgressUpdateArgs<ExtArgs>>): Prisma__UserProblemProgressClient<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more UserProblemSetProgresses.
-     * @param {UserProblemSetProgressDeleteManyArgs} args - Arguments to filter UserProblemSetProgresses to delete.
+     * Delete zero or more UserProblemProgresses.
+     * @param {UserProblemProgressDeleteManyArgs} args - Arguments to filter UserProblemProgresses to delete.
      * @example
-     * // Delete a few UserProblemSetProgresses
-     * const { count } = await prisma.userProblemSetProgress.deleteMany({
+     * // Delete a few UserProblemProgresses
+     * const { count } = await prisma.userProblemProgress.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends UserProblemSetProgressDeleteManyArgs>(args?: SelectSubset<T, UserProblemSetProgressDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends UserProblemProgressDeleteManyArgs>(args?: SelectSubset<T, UserProblemProgressDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserProblemSetProgresses.
+     * Update zero or more UserProblemProgresses.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserProblemSetProgressUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {UserProblemProgressUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many UserProblemSetProgresses
-     * const userProblemSetProgress = await prisma.userProblemSetProgress.updateMany({
+     * // Update many UserProblemProgresses
+     * const userProblemProgress = await prisma.userProblemProgress.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8509,14 +8533,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends UserProblemSetProgressUpdateManyArgs>(args: SelectSubset<T, UserProblemSetProgressUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends UserProblemProgressUpdateManyArgs>(args: SelectSubset<T, UserProblemProgressUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserProblemSetProgresses and returns the data updated in the database.
-     * @param {UserProblemSetProgressUpdateManyAndReturnArgs} args - Arguments to update many UserProblemSetProgresses.
+     * Update zero or more UserProblemProgresses and returns the data updated in the database.
+     * @param {UserProblemProgressUpdateManyAndReturnArgs} args - Arguments to update many UserProblemProgresses.
      * @example
-     * // Update many UserProblemSetProgresses
-     * const userProblemSetProgress = await prisma.userProblemSetProgress.updateManyAndReturn({
+     * // Update many UserProblemProgresses
+     * const userProblemProgress = await prisma.userProblemProgress.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8525,8 +8549,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more UserProblemSetProgresses and only return the `userId`
-     * const userProblemSetProgressWithUserIdOnly = await prisma.userProblemSetProgress.updateManyAndReturn({
+     * // Update zero or more UserProblemProgresses and only return the `userId`
+     * const userProblemProgressWithUserIdOnly = await prisma.userProblemProgress.updateManyAndReturn({
      *   select: { userId: true },
      *   where: {
      *     // ... provide filter here
@@ -8539,56 +8563,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends UserProblemSetProgressUpdateManyAndReturnArgs>(args: SelectSubset<T, UserProblemSetProgressUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends UserProblemProgressUpdateManyAndReturnArgs>(args: SelectSubset<T, UserProblemProgressUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one UserProblemSetProgress.
-     * @param {UserProblemSetProgressUpsertArgs} args - Arguments to update or create a UserProblemSetProgress.
+     * Create or update one UserProblemProgress.
+     * @param {UserProblemProgressUpsertArgs} args - Arguments to update or create a UserProblemProgress.
      * @example
-     * // Update or create a UserProblemSetProgress
-     * const userProblemSetProgress = await prisma.userProblemSetProgress.upsert({
+     * // Update or create a UserProblemProgress
+     * const userProblemProgress = await prisma.userProblemProgress.upsert({
      *   create: {
-     *     // ... data to create a UserProblemSetProgress
+     *     // ... data to create a UserProblemProgress
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the UserProblemSetProgress we want to update
+     *     // ... the filter for the UserProblemProgress we want to update
      *   }
      * })
      */
-    upsert<T extends UserProblemSetProgressUpsertArgs>(args: SelectSubset<T, UserProblemSetProgressUpsertArgs<ExtArgs>>): Prisma__UserProblemSetProgressClient<$Result.GetResult<Prisma.$UserProblemSetProgressPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends UserProblemProgressUpsertArgs>(args: SelectSubset<T, UserProblemProgressUpsertArgs<ExtArgs>>): Prisma__UserProblemProgressClient<$Result.GetResult<Prisma.$UserProblemProgressPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of UserProblemSetProgresses.
+     * Count the number of UserProblemProgresses.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserProblemSetProgressCountArgs} args - Arguments to filter UserProblemSetProgresses to count.
+     * @param {UserProblemProgressCountArgs} args - Arguments to filter UserProblemProgresses to count.
      * @example
-     * // Count the number of UserProblemSetProgresses
-     * const count = await prisma.userProblemSetProgress.count({
+     * // Count the number of UserProblemProgresses
+     * const count = await prisma.userProblemProgress.count({
      *   where: {
-     *     // ... the filter for the UserProblemSetProgresses we want to count
+     *     // ... the filter for the UserProblemProgresses we want to count
      *   }
      * })
     **/
-    count<T extends UserProblemSetProgressCountArgs>(
-      args?: Subset<T, UserProblemSetProgressCountArgs>,
+    count<T extends UserProblemProgressCountArgs>(
+      args?: Subset<T, UserProblemProgressCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserProblemSetProgressCountAggregateOutputType>
+          : GetScalarType<T['select'], UserProblemProgressCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a UserProblemSetProgress.
+     * Allows you to perform aggregations operations on a UserProblemProgress.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserProblemSetProgressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {UserProblemProgressAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -8608,13 +8632,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserProblemSetProgressAggregateArgs>(args: Subset<T, UserProblemSetProgressAggregateArgs>): Prisma.PrismaPromise<GetUserProblemSetProgressAggregateType<T>>
+    aggregate<T extends UserProblemProgressAggregateArgs>(args: Subset<T, UserProblemProgressAggregateArgs>): Prisma.PrismaPromise<GetUserProblemProgressAggregateType<T>>
 
     /**
-     * Group by UserProblemSetProgress.
+     * Group by UserProblemProgress.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserProblemSetProgressGroupByArgs} args - Group by arguments.
+     * @param {UserProblemProgressGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -8629,14 +8653,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserProblemSetProgressGroupByArgs,
+      T extends UserProblemProgressGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserProblemSetProgressGroupByArgs['orderBy'] }
-        : { orderBy?: UserProblemSetProgressGroupByArgs['orderBy'] },
+        ? { orderBy: UserProblemProgressGroupByArgs['orderBy'] }
+        : { orderBy?: UserProblemProgressGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -8685,23 +8709,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserProblemSetProgressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserProblemSetProgressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, UserProblemProgressGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserProblemProgressGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the UserProblemSetProgress model
+   * Fields of the UserProblemProgress model
    */
-  readonly fields: UserProblemSetProgressFieldRefs;
+  readonly fields: UserProblemProgressFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for UserProblemSetProgress.
+   * The delegate class that acts as a "Promise-like" for UserProblemProgress.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserProblemSetProgressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__UserProblemProgressClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    set<T extends ProblemSetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProblemSetDefaultArgs<ExtArgs>>): Prisma__ProblemSetClient<$Result.GetResult<Prisma.$ProblemSetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    problem<T extends ProblemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProblemDefaultArgs<ExtArgs>>): Prisma__ProblemClient<$Result.GetResult<Prisma.$ProblemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8728,428 +8752,428 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the UserProblemSetProgress model
+   * Fields of the UserProblemProgress model
    */
-  interface UserProblemSetProgressFieldRefs {
-    readonly userId: FieldRef<"UserProblemSetProgress", 'String'>
-    readonly setId: FieldRef<"UserProblemSetProgress", 'String'>
-    readonly completedAt: FieldRef<"UserProblemSetProgress", 'DateTime'>
+  interface UserProblemProgressFieldRefs {
+    readonly userId: FieldRef<"UserProblemProgress", 'String'>
+    readonly problemId: FieldRef<"UserProblemProgress", 'String'>
+    readonly completedAt: FieldRef<"UserProblemProgress", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * UserProblemSetProgress findUnique
+   * UserProblemProgress findUnique
    */
-  export type UserProblemSetProgressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
+    select?: UserProblemProgressSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
+    include?: UserProblemProgressInclude<ExtArgs> | null
     /**
-     * Filter, which UserProblemSetProgress to fetch.
+     * Filter, which UserProblemProgress to fetch.
      */
-    where: UserProblemSetProgressWhereUniqueInput
+    where: UserProblemProgressWhereUniqueInput
   }
 
   /**
-   * UserProblemSetProgress findUniqueOrThrow
+   * UserProblemProgress findUniqueOrThrow
    */
-  export type UserProblemSetProgressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
+    select?: UserProblemProgressSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
+    include?: UserProblemProgressInclude<ExtArgs> | null
     /**
-     * Filter, which UserProblemSetProgress to fetch.
+     * Filter, which UserProblemProgress to fetch.
      */
-    where: UserProblemSetProgressWhereUniqueInput
+    where: UserProblemProgressWhereUniqueInput
   }
 
   /**
-   * UserProblemSetProgress findFirst
+   * UserProblemProgress findFirst
    */
-  export type UserProblemSetProgressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
+    select?: UserProblemProgressSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
+    include?: UserProblemProgressInclude<ExtArgs> | null
     /**
-     * Filter, which UserProblemSetProgress to fetch.
+     * Filter, which UserProblemProgress to fetch.
      */
-    where?: UserProblemSetProgressWhereInput
+    where?: UserProblemProgressWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserProblemSetProgresses to fetch.
+     * Determine the order of UserProblemProgresses to fetch.
      */
-    orderBy?: UserProblemSetProgressOrderByWithRelationInput | UserProblemSetProgressOrderByWithRelationInput[]
+    orderBy?: UserProblemProgressOrderByWithRelationInput | UserProblemProgressOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserProblemSetProgresses.
+     * Sets the position for searching for UserProblemProgresses.
      */
-    cursor?: UserProblemSetProgressWhereUniqueInput
+    cursor?: UserProblemProgressWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserProblemSetProgresses from the position of the cursor.
+     * Take `±n` UserProblemProgresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserProblemSetProgresses.
+     * Skip the first `n` UserProblemProgresses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserProblemSetProgresses.
+     * Filter by unique combinations of UserProblemProgresses.
      */
-    distinct?: UserProblemSetProgressScalarFieldEnum | UserProblemSetProgressScalarFieldEnum[]
+    distinct?: UserProblemProgressScalarFieldEnum | UserProblemProgressScalarFieldEnum[]
   }
 
   /**
-   * UserProblemSetProgress findFirstOrThrow
+   * UserProblemProgress findFirstOrThrow
    */
-  export type UserProblemSetProgressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
+    select?: UserProblemProgressSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
+    include?: UserProblemProgressInclude<ExtArgs> | null
     /**
-     * Filter, which UserProblemSetProgress to fetch.
+     * Filter, which UserProblemProgress to fetch.
      */
-    where?: UserProblemSetProgressWhereInput
+    where?: UserProblemProgressWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserProblemSetProgresses to fetch.
+     * Determine the order of UserProblemProgresses to fetch.
      */
-    orderBy?: UserProblemSetProgressOrderByWithRelationInput | UserProblemSetProgressOrderByWithRelationInput[]
+    orderBy?: UserProblemProgressOrderByWithRelationInput | UserProblemProgressOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserProblemSetProgresses.
+     * Sets the position for searching for UserProblemProgresses.
      */
-    cursor?: UserProblemSetProgressWhereUniqueInput
+    cursor?: UserProblemProgressWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserProblemSetProgresses from the position of the cursor.
+     * Take `±n` UserProblemProgresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserProblemSetProgresses.
+     * Skip the first `n` UserProblemProgresses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserProblemSetProgresses.
+     * Filter by unique combinations of UserProblemProgresses.
      */
-    distinct?: UserProblemSetProgressScalarFieldEnum | UserProblemSetProgressScalarFieldEnum[]
+    distinct?: UserProblemProgressScalarFieldEnum | UserProblemProgressScalarFieldEnum[]
   }
 
   /**
-   * UserProblemSetProgress findMany
+   * UserProblemProgress findMany
    */
-  export type UserProblemSetProgressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
+    select?: UserProblemProgressSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
+    include?: UserProblemProgressInclude<ExtArgs> | null
     /**
-     * Filter, which UserProblemSetProgresses to fetch.
+     * Filter, which UserProblemProgresses to fetch.
      */
-    where?: UserProblemSetProgressWhereInput
+    where?: UserProblemProgressWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserProblemSetProgresses to fetch.
+     * Determine the order of UserProblemProgresses to fetch.
      */
-    orderBy?: UserProblemSetProgressOrderByWithRelationInput | UserProblemSetProgressOrderByWithRelationInput[]
+    orderBy?: UserProblemProgressOrderByWithRelationInput | UserProblemProgressOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing UserProblemSetProgresses.
+     * Sets the position for listing UserProblemProgresses.
      */
-    cursor?: UserProblemSetProgressWhereUniqueInput
+    cursor?: UserProblemProgressWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserProblemSetProgresses from the position of the cursor.
+     * Take `±n` UserProblemProgresses from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserProblemSetProgresses.
+     * Skip the first `n` UserProblemProgresses.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserProblemSetProgresses.
+     * Filter by unique combinations of UserProblemProgresses.
      */
-    distinct?: UserProblemSetProgressScalarFieldEnum | UserProblemSetProgressScalarFieldEnum[]
+    distinct?: UserProblemProgressScalarFieldEnum | UserProblemProgressScalarFieldEnum[]
   }
 
   /**
-   * UserProblemSetProgress create
+   * UserProblemProgress create
    */
-  export type UserProblemSetProgressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
+    select?: UserProblemProgressSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
+    include?: UserProblemProgressInclude<ExtArgs> | null
     /**
-     * The data needed to create a UserProblemSetProgress.
+     * The data needed to create a UserProblemProgress.
      */
-    data: XOR<UserProblemSetProgressCreateInput, UserProblemSetProgressUncheckedCreateInput>
+    data: XOR<UserProblemProgressCreateInput, UserProblemProgressUncheckedCreateInput>
   }
 
   /**
-   * UserProblemSetProgress createMany
+   * UserProblemProgress createMany
    */
-  export type UserProblemSetProgressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many UserProblemSetProgresses.
+     * The data used to create many UserProblemProgresses.
      */
-    data: UserProblemSetProgressCreateManyInput | UserProblemSetProgressCreateManyInput[]
+    data: UserProblemProgressCreateManyInput | UserProblemProgressCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * UserProblemSetProgress createManyAndReturn
+   * UserProblemProgress createManyAndReturn
    */
-  export type UserProblemSetProgressCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelectCreateManyAndReturn<ExtArgs> | null
+    select?: UserProblemProgressSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
-     * The data used to create many UserProblemSetProgresses.
+     * The data used to create many UserProblemProgresses.
      */
-    data: UserProblemSetProgressCreateManyInput | UserProblemSetProgressCreateManyInput[]
+    data: UserProblemProgressCreateManyInput | UserProblemProgressCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: UserProblemProgressIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * UserProblemSetProgress update
+   * UserProblemProgress update
    */
-  export type UserProblemSetProgressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
+    select?: UserProblemProgressSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
+    include?: UserProblemProgressInclude<ExtArgs> | null
     /**
-     * The data needed to update a UserProblemSetProgress.
+     * The data needed to update a UserProblemProgress.
      */
-    data: XOR<UserProblemSetProgressUpdateInput, UserProblemSetProgressUncheckedUpdateInput>
+    data: XOR<UserProblemProgressUpdateInput, UserProblemProgressUncheckedUpdateInput>
     /**
-     * Choose, which UserProblemSetProgress to update.
+     * Choose, which UserProblemProgress to update.
      */
-    where: UserProblemSetProgressWhereUniqueInput
+    where: UserProblemProgressWhereUniqueInput
   }
 
   /**
-   * UserProblemSetProgress updateMany
+   * UserProblemProgress updateMany
    */
-  export type UserProblemSetProgressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update UserProblemSetProgresses.
+     * The data used to update UserProblemProgresses.
      */
-    data: XOR<UserProblemSetProgressUpdateManyMutationInput, UserProblemSetProgressUncheckedUpdateManyInput>
+    data: XOR<UserProblemProgressUpdateManyMutationInput, UserProblemProgressUncheckedUpdateManyInput>
     /**
-     * Filter which UserProblemSetProgresses to update
+     * Filter which UserProblemProgresses to update
      */
-    where?: UserProblemSetProgressWhereInput
+    where?: UserProblemProgressWhereInput
     /**
-     * Limit how many UserProblemSetProgresses to update.
+     * Limit how many UserProblemProgresses to update.
      */
     limit?: number
   }
 
   /**
-   * UserProblemSetProgress updateManyAndReturn
+   * UserProblemProgress updateManyAndReturn
    */
-  export type UserProblemSetProgressUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: UserProblemProgressSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
-     * The data used to update UserProblemSetProgresses.
+     * The data used to update UserProblemProgresses.
      */
-    data: XOR<UserProblemSetProgressUpdateManyMutationInput, UserProblemSetProgressUncheckedUpdateManyInput>
+    data: XOR<UserProblemProgressUpdateManyMutationInput, UserProblemProgressUncheckedUpdateManyInput>
     /**
-     * Filter which UserProblemSetProgresses to update
+     * Filter which UserProblemProgresses to update
      */
-    where?: UserProblemSetProgressWhereInput
+    where?: UserProblemProgressWhereInput
     /**
-     * Limit how many UserProblemSetProgresses to update.
+     * Limit how many UserProblemProgresses to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: UserProblemProgressIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * UserProblemSetProgress upsert
+   * UserProblemProgress upsert
    */
-  export type UserProblemSetProgressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
+    select?: UserProblemProgressSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
+    include?: UserProblemProgressInclude<ExtArgs> | null
     /**
-     * The filter to search for the UserProblemSetProgress to update in case it exists.
+     * The filter to search for the UserProblemProgress to update in case it exists.
      */
-    where: UserProblemSetProgressWhereUniqueInput
+    where: UserProblemProgressWhereUniqueInput
     /**
-     * In case the UserProblemSetProgress found by the `where` argument doesn't exist, create a new UserProblemSetProgress with this data.
+     * In case the UserProblemProgress found by the `where` argument doesn't exist, create a new UserProblemProgress with this data.
      */
-    create: XOR<UserProblemSetProgressCreateInput, UserProblemSetProgressUncheckedCreateInput>
+    create: XOR<UserProblemProgressCreateInput, UserProblemProgressUncheckedCreateInput>
     /**
-     * In case the UserProblemSetProgress was found with the provided `where` argument, update it with this data.
+     * In case the UserProblemProgress was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserProblemSetProgressUpdateInput, UserProblemSetProgressUncheckedUpdateInput>
+    update: XOR<UserProblemProgressUpdateInput, UserProblemProgressUncheckedUpdateInput>
   }
 
   /**
-   * UserProblemSetProgress delete
+   * UserProblemProgress delete
    */
-  export type UserProblemSetProgressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
+    select?: UserProblemProgressSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
+    include?: UserProblemProgressInclude<ExtArgs> | null
     /**
-     * Filter which UserProblemSetProgress to delete.
+     * Filter which UserProblemProgress to delete.
      */
-    where: UserProblemSetProgressWhereUniqueInput
+    where: UserProblemProgressWhereUniqueInput
   }
 
   /**
-   * UserProblemSetProgress deleteMany
+   * UserProblemProgress deleteMany
    */
-  export type UserProblemSetProgressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserProblemSetProgresses to delete
+     * Filter which UserProblemProgresses to delete
      */
-    where?: UserProblemSetProgressWhereInput
+    where?: UserProblemProgressWhereInput
     /**
-     * Limit how many UserProblemSetProgresses to delete.
+     * Limit how many UserProblemProgresses to delete.
      */
     limit?: number
   }
 
   /**
-   * UserProblemSetProgress without action
+   * UserProblemProgress without action
    */
-  export type UserProblemSetProgressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserProblemProgressDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserProblemSetProgress
+     * Select specific fields to fetch from the UserProblemProgress
      */
-    select?: UserProblemSetProgressSelect<ExtArgs> | null
+    select?: UserProblemProgressSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserProblemSetProgress
+     * Omit specific fields from the UserProblemProgress
      */
-    omit?: UserProblemSetProgressOmit<ExtArgs> | null
+    omit?: UserProblemProgressOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserProblemSetProgressInclude<ExtArgs> | null
+    include?: UserProblemProgressInclude<ExtArgs> | null
   }
 
 
@@ -9236,13 +9260,13 @@ export namespace Prisma {
   export type ProblemScalarFieldEnum = (typeof ProblemScalarFieldEnum)[keyof typeof ProblemScalarFieldEnum]
 
 
-  export const UserProblemSetProgressScalarFieldEnum: {
+  export const UserProblemProgressScalarFieldEnum: {
     userId: 'userId',
-    setId: 'setId',
+    problemId: 'problemId',
     completedAt: 'completedAt'
   };
 
-  export type UserProblemSetProgressScalarFieldEnum = (typeof UserProblemSetProgressScalarFieldEnum)[keyof typeof UserProblemSetProgressScalarFieldEnum]
+  export type UserProblemProgressScalarFieldEnum = (typeof UserProblemProgressScalarFieldEnum)[keyof typeof UserProblemProgressScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -9380,7 +9404,7 @@ export namespace Prisma {
     verified?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     progressRecords?: UserResourceProgressListRelationFilter
-    setProgressRecords?: UserProblemSetProgressListRelationFilter
+    problemProgressRecords?: UserProblemProgressListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -9392,7 +9416,7 @@ export namespace Prisma {
     verified?: SortOrder
     createdAt?: SortOrder
     progressRecords?: UserResourceProgressOrderByRelationAggregateInput
-    setProgressRecords?: UserProblemSetProgressOrderByRelationAggregateInput
+    problemProgressRecords?: UserProblemProgressOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -9407,7 +9431,7 @@ export namespace Prisma {
     verified?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     progressRecords?: UserResourceProgressListRelationFilter
-    setProgressRecords?: UserProblemSetProgressListRelationFilter
+    problemProgressRecords?: UserProblemProgressListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -9614,7 +9638,6 @@ export namespace Prisma {
     orderIndex?: IntFilter<"ProblemSet"> | number
     createdAt?: DateTimeFilter<"ProblemSet"> | Date | string
     problems?: ProblemListRelationFilter
-    progressRecords?: UserProblemSetProgressListRelationFilter
   }
 
   export type ProblemSetOrderByWithRelationInput = {
@@ -9624,7 +9647,6 @@ export namespace Prisma {
     orderIndex?: SortOrder
     createdAt?: SortOrder
     problems?: ProblemOrderByRelationAggregateInput
-    progressRecords?: UserProblemSetProgressOrderByRelationAggregateInput
   }
 
   export type ProblemSetWhereUniqueInput = Prisma.AtLeast<{
@@ -9637,7 +9659,6 @@ export namespace Prisma {
     description?: StringNullableFilter<"ProblemSet"> | string | null
     createdAt?: DateTimeFilter<"ProblemSet"> | Date | string
     problems?: ProblemListRelationFilter
-    progressRecords?: UserProblemSetProgressListRelationFilter
   }, "id" | "orderIndex">
 
   export type ProblemSetOrderByWithAggregationInput = {
@@ -9675,6 +9696,7 @@ export namespace Prisma {
     setId?: StringFilter<"Problem"> | string
     createdAt?: DateTimeFilter<"Problem"> | Date | string
     set?: XOR<ProblemSetScalarRelationFilter, ProblemSetWhereInput>
+    progressRecords?: UserProblemProgressListRelationFilter
   }
 
   export type ProblemOrderByWithRelationInput = {
@@ -9685,6 +9707,7 @@ export namespace Prisma {
     setId?: SortOrder
     createdAt?: SortOrder
     set?: ProblemSetOrderByWithRelationInput
+    progressRecords?: UserProblemProgressOrderByRelationAggregateInput
   }
 
   export type ProblemWhereUniqueInput = Prisma.AtLeast<{
@@ -9699,6 +9722,7 @@ export namespace Prisma {
     setId?: StringFilter<"Problem"> | string
     createdAt?: DateTimeFilter<"Problem"> | Date | string
     set?: XOR<ProblemSetScalarRelationFilter, ProblemSetWhereInput>
+    progressRecords?: UserProblemProgressListRelationFilter
   }, "id" | "setId_orderIndex">
 
   export type ProblemOrderByWithAggregationInput = {
@@ -9727,53 +9751,53 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Problem"> | Date | string
   }
 
-  export type UserProblemSetProgressWhereInput = {
-    AND?: UserProblemSetProgressWhereInput | UserProblemSetProgressWhereInput[]
-    OR?: UserProblemSetProgressWhereInput[]
-    NOT?: UserProblemSetProgressWhereInput | UserProblemSetProgressWhereInput[]
-    userId?: StringFilter<"UserProblemSetProgress"> | string
-    setId?: StringFilter<"UserProblemSetProgress"> | string
-    completedAt?: DateTimeFilter<"UserProblemSetProgress"> | Date | string
+  export type UserProblemProgressWhereInput = {
+    AND?: UserProblemProgressWhereInput | UserProblemProgressWhereInput[]
+    OR?: UserProblemProgressWhereInput[]
+    NOT?: UserProblemProgressWhereInput | UserProblemProgressWhereInput[]
+    userId?: StringFilter<"UserProblemProgress"> | string
+    problemId?: StringFilter<"UserProblemProgress"> | string
+    completedAt?: DateTimeFilter<"UserProblemProgress"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    set?: XOR<ProblemSetScalarRelationFilter, ProblemSetWhereInput>
+    problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
   }
 
-  export type UserProblemSetProgressOrderByWithRelationInput = {
+  export type UserProblemProgressOrderByWithRelationInput = {
     userId?: SortOrder
-    setId?: SortOrder
+    problemId?: SortOrder
     completedAt?: SortOrder
     user?: UserOrderByWithRelationInput
-    set?: ProblemSetOrderByWithRelationInput
+    problem?: ProblemOrderByWithRelationInput
   }
 
-  export type UserProblemSetProgressWhereUniqueInput = Prisma.AtLeast<{
-    userId_setId?: UserProblemSetProgressUserIdSetIdCompoundUniqueInput
-    AND?: UserProblemSetProgressWhereInput | UserProblemSetProgressWhereInput[]
-    OR?: UserProblemSetProgressWhereInput[]
-    NOT?: UserProblemSetProgressWhereInput | UserProblemSetProgressWhereInput[]
-    userId?: StringFilter<"UserProblemSetProgress"> | string
-    setId?: StringFilter<"UserProblemSetProgress"> | string
-    completedAt?: DateTimeFilter<"UserProblemSetProgress"> | Date | string
+  export type UserProblemProgressWhereUniqueInput = Prisma.AtLeast<{
+    userId_problemId?: UserProblemProgressUserIdProblemIdCompoundUniqueInput
+    AND?: UserProblemProgressWhereInput | UserProblemProgressWhereInput[]
+    OR?: UserProblemProgressWhereInput[]
+    NOT?: UserProblemProgressWhereInput | UserProblemProgressWhereInput[]
+    userId?: StringFilter<"UserProblemProgress"> | string
+    problemId?: StringFilter<"UserProblemProgress"> | string
+    completedAt?: DateTimeFilter<"UserProblemProgress"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    set?: XOR<ProblemSetScalarRelationFilter, ProblemSetWhereInput>
-  }, "userId_setId">
+    problem?: XOR<ProblemScalarRelationFilter, ProblemWhereInput>
+  }, "userId_problemId">
 
-  export type UserProblemSetProgressOrderByWithAggregationInput = {
+  export type UserProblemProgressOrderByWithAggregationInput = {
     userId?: SortOrder
-    setId?: SortOrder
+    problemId?: SortOrder
     completedAt?: SortOrder
-    _count?: UserProblemSetProgressCountOrderByAggregateInput
-    _max?: UserProblemSetProgressMaxOrderByAggregateInput
-    _min?: UserProblemSetProgressMinOrderByAggregateInput
+    _count?: UserProblemProgressCountOrderByAggregateInput
+    _max?: UserProblemProgressMaxOrderByAggregateInput
+    _min?: UserProblemProgressMinOrderByAggregateInput
   }
 
-  export type UserProblemSetProgressScalarWhereWithAggregatesInput = {
-    AND?: UserProblemSetProgressScalarWhereWithAggregatesInput | UserProblemSetProgressScalarWhereWithAggregatesInput[]
-    OR?: UserProblemSetProgressScalarWhereWithAggregatesInput[]
-    NOT?: UserProblemSetProgressScalarWhereWithAggregatesInput | UserProblemSetProgressScalarWhereWithAggregatesInput[]
-    userId?: StringWithAggregatesFilter<"UserProblemSetProgress"> | string
-    setId?: StringWithAggregatesFilter<"UserProblemSetProgress"> | string
-    completedAt?: DateTimeWithAggregatesFilter<"UserProblemSetProgress"> | Date | string
+  export type UserProblemProgressScalarWhereWithAggregatesInput = {
+    AND?: UserProblemProgressScalarWhereWithAggregatesInput | UserProblemProgressScalarWhereWithAggregatesInput[]
+    OR?: UserProblemProgressScalarWhereWithAggregatesInput[]
+    NOT?: UserProblemProgressScalarWhereWithAggregatesInput | UserProblemProgressScalarWhereWithAggregatesInput[]
+    userId?: StringWithAggregatesFilter<"UserProblemProgress"> | string
+    problemId?: StringWithAggregatesFilter<"UserProblemProgress"> | string
+    completedAt?: DateTimeWithAggregatesFilter<"UserProblemProgress"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -9785,7 +9809,7 @@ export namespace Prisma {
     verified?: boolean
     createdAt?: Date | string
     progressRecords?: UserResourceProgressCreateNestedManyWithoutUserInput
-    setProgressRecords?: UserProblemSetProgressCreateNestedManyWithoutUserInput
+    problemProgressRecords?: UserProblemProgressCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -9797,7 +9821,7 @@ export namespace Prisma {
     verified?: boolean
     createdAt?: Date | string
     progressRecords?: UserResourceProgressUncheckedCreateNestedManyWithoutUserInput
-    setProgressRecords?: UserProblemSetProgressUncheckedCreateNestedManyWithoutUserInput
+    problemProgressRecords?: UserProblemProgressUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -9809,7 +9833,7 @@ export namespace Prisma {
     verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     progressRecords?: UserResourceProgressUpdateManyWithoutUserNestedInput
-    setProgressRecords?: UserProblemSetProgressUpdateManyWithoutUserNestedInput
+    problemProgressRecords?: UserProblemProgressUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -9821,7 +9845,7 @@ export namespace Prisma {
     verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     progressRecords?: UserResourceProgressUncheckedUpdateManyWithoutUserNestedInput
-    setProgressRecords?: UserProblemSetProgressUncheckedUpdateManyWithoutUserNestedInput
+    problemProgressRecords?: UserProblemProgressUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -10031,7 +10055,6 @@ export namespace Prisma {
     orderIndex: number
     createdAt?: Date | string
     problems?: ProblemCreateNestedManyWithoutSetInput
-    progressRecords?: UserProblemSetProgressCreateNestedManyWithoutSetInput
   }
 
   export type ProblemSetUncheckedCreateInput = {
@@ -10041,7 +10064,6 @@ export namespace Prisma {
     orderIndex: number
     createdAt?: Date | string
     problems?: ProblemUncheckedCreateNestedManyWithoutSetInput
-    progressRecords?: UserProblemSetProgressUncheckedCreateNestedManyWithoutSetInput
   }
 
   export type ProblemSetUpdateInput = {
@@ -10051,7 +10073,6 @@ export namespace Prisma {
     orderIndex?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUpdateManyWithoutSetNestedInput
-    progressRecords?: UserProblemSetProgressUpdateManyWithoutSetNestedInput
   }
 
   export type ProblemSetUncheckedUpdateInput = {
@@ -10061,7 +10082,6 @@ export namespace Prisma {
     orderIndex?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     problems?: ProblemUncheckedUpdateManyWithoutSetNestedInput
-    progressRecords?: UserProblemSetProgressUncheckedUpdateManyWithoutSetNestedInput
   }
 
   export type ProblemSetCreateManyInput = {
@@ -10095,6 +10115,7 @@ export namespace Prisma {
     orderIndex: number
     createdAt?: Date | string
     set: ProblemSetCreateNestedOneWithoutProblemsInput
+    progressRecords?: UserProblemProgressCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateInput = {
@@ -10104,6 +10125,7 @@ export namespace Prisma {
     orderIndex: number
     setId: string
     createdAt?: Date | string
+    progressRecords?: UserProblemProgressUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUpdateInput = {
@@ -10113,6 +10135,7 @@ export namespace Prisma {
     orderIndex?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     set?: ProblemSetUpdateOneRequiredWithoutProblemsNestedInput
+    progressRecords?: UserProblemProgressUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateInput = {
@@ -10122,6 +10145,7 @@ export namespace Prisma {
     orderIndex?: IntFieldUpdateOperationsInput | number
     setId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    progressRecords?: UserProblemProgressUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemCreateManyInput = {
@@ -10150,43 +10174,43 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserProblemSetProgressCreateInput = {
+  export type UserProblemProgressCreateInput = {
     completedAt?: Date | string
-    user: UserCreateNestedOneWithoutSetProgressRecordsInput
-    set: ProblemSetCreateNestedOneWithoutProgressRecordsInput
+    user: UserCreateNestedOneWithoutProblemProgressRecordsInput
+    problem: ProblemCreateNestedOneWithoutProgressRecordsInput
   }
 
-  export type UserProblemSetProgressUncheckedCreateInput = {
+  export type UserProblemProgressUncheckedCreateInput = {
     userId: string
-    setId: string
+    problemId: string
     completedAt?: Date | string
   }
 
-  export type UserProblemSetProgressUpdateInput = {
+  export type UserProblemProgressUpdateInput = {
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSetProgressRecordsNestedInput
-    set?: ProblemSetUpdateOneRequiredWithoutProgressRecordsNestedInput
+    user?: UserUpdateOneRequiredWithoutProblemProgressRecordsNestedInput
+    problem?: ProblemUpdateOneRequiredWithoutProgressRecordsNestedInput
   }
 
-  export type UserProblemSetProgressUncheckedUpdateInput = {
+  export type UserProblemProgressUncheckedUpdateInput = {
     userId?: StringFieldUpdateOperationsInput | string
-    setId?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserProblemSetProgressCreateManyInput = {
+  export type UserProblemProgressCreateManyInput = {
     userId: string
-    setId: string
+    problemId: string
     completedAt?: Date | string
   }
 
-  export type UserProblemSetProgressUpdateManyMutationInput = {
+  export type UserProblemProgressUpdateManyMutationInput = {
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserProblemSetProgressUncheckedUpdateManyInput = {
+  export type UserProblemProgressUncheckedUpdateManyInput = {
     userId?: StringFieldUpdateOperationsInput | string
-    setId?: StringFieldUpdateOperationsInput | string
+    problemId?: StringFieldUpdateOperationsInput | string
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -10234,17 +10258,17 @@ export namespace Prisma {
     none?: UserResourceProgressWhereInput
   }
 
-  export type UserProblemSetProgressListRelationFilter = {
-    every?: UserProblemSetProgressWhereInput
-    some?: UserProblemSetProgressWhereInput
-    none?: UserProblemSetProgressWhereInput
+  export type UserProblemProgressListRelationFilter = {
+    every?: UserProblemProgressWhereInput
+    some?: UserProblemProgressWhereInput
+    none?: UserProblemProgressWhereInput
   }
 
   export type UserResourceProgressOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type UserProblemSetProgressOrderByRelationAggregateInput = {
+  export type UserProblemProgressOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -10619,26 +10643,31 @@ export namespace Prisma {
     orderIndex?: SortOrder
   }
 
-  export type UserProblemSetProgressUserIdSetIdCompoundUniqueInput = {
+  export type ProblemScalarRelationFilter = {
+    is?: ProblemWhereInput
+    isNot?: ProblemWhereInput
+  }
+
+  export type UserProblemProgressUserIdProblemIdCompoundUniqueInput = {
     userId: string
-    setId: string
+    problemId: string
   }
 
-  export type UserProblemSetProgressCountOrderByAggregateInput = {
+  export type UserProblemProgressCountOrderByAggregateInput = {
     userId?: SortOrder
-    setId?: SortOrder
+    problemId?: SortOrder
     completedAt?: SortOrder
   }
 
-  export type UserProblemSetProgressMaxOrderByAggregateInput = {
+  export type UserProblemProgressMaxOrderByAggregateInput = {
     userId?: SortOrder
-    setId?: SortOrder
+    problemId?: SortOrder
     completedAt?: SortOrder
   }
 
-  export type UserProblemSetProgressMinOrderByAggregateInput = {
+  export type UserProblemProgressMinOrderByAggregateInput = {
     userId?: SortOrder
-    setId?: SortOrder
+    problemId?: SortOrder
     completedAt?: SortOrder
   }
 
@@ -10649,11 +10678,11 @@ export namespace Prisma {
     connect?: UserResourceProgressWhereUniqueInput | UserResourceProgressWhereUniqueInput[]
   }
 
-  export type UserProblemSetProgressCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserProblemSetProgressCreateWithoutUserInput, UserProblemSetProgressUncheckedCreateWithoutUserInput> | UserProblemSetProgressCreateWithoutUserInput[] | UserProblemSetProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserProblemSetProgressCreateOrConnectWithoutUserInput | UserProblemSetProgressCreateOrConnectWithoutUserInput[]
-    createMany?: UserProblemSetProgressCreateManyUserInputEnvelope
-    connect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
+  export type UserProblemProgressCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserProblemProgressCreateWithoutUserInput, UserProblemProgressUncheckedCreateWithoutUserInput> | UserProblemProgressCreateWithoutUserInput[] | UserProblemProgressUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserProblemProgressCreateOrConnectWithoutUserInput | UserProblemProgressCreateOrConnectWithoutUserInput[]
+    createMany?: UserProblemProgressCreateManyUserInputEnvelope
+    connect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
   }
 
   export type UserResourceProgressUncheckedCreateNestedManyWithoutUserInput = {
@@ -10663,11 +10692,11 @@ export namespace Prisma {
     connect?: UserResourceProgressWhereUniqueInput | UserResourceProgressWhereUniqueInput[]
   }
 
-  export type UserProblemSetProgressUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserProblemSetProgressCreateWithoutUserInput, UserProblemSetProgressUncheckedCreateWithoutUserInput> | UserProblemSetProgressCreateWithoutUserInput[] | UserProblemSetProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserProblemSetProgressCreateOrConnectWithoutUserInput | UserProblemSetProgressCreateOrConnectWithoutUserInput[]
-    createMany?: UserProblemSetProgressCreateManyUserInputEnvelope
-    connect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
+  export type UserProblemProgressUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserProblemProgressCreateWithoutUserInput, UserProblemProgressUncheckedCreateWithoutUserInput> | UserProblemProgressCreateWithoutUserInput[] | UserProblemProgressUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserProblemProgressCreateOrConnectWithoutUserInput | UserProblemProgressCreateOrConnectWithoutUserInput[]
+    createMany?: UserProblemProgressCreateManyUserInputEnvelope
+    connect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -10700,18 +10729,18 @@ export namespace Prisma {
     deleteMany?: UserResourceProgressScalarWhereInput | UserResourceProgressScalarWhereInput[]
   }
 
-  export type UserProblemSetProgressUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserProblemSetProgressCreateWithoutUserInput, UserProblemSetProgressUncheckedCreateWithoutUserInput> | UserProblemSetProgressCreateWithoutUserInput[] | UserProblemSetProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserProblemSetProgressCreateOrConnectWithoutUserInput | UserProblemSetProgressCreateOrConnectWithoutUserInput[]
-    upsert?: UserProblemSetProgressUpsertWithWhereUniqueWithoutUserInput | UserProblemSetProgressUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserProblemSetProgressCreateManyUserInputEnvelope
-    set?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    disconnect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    delete?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    connect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    update?: UserProblemSetProgressUpdateWithWhereUniqueWithoutUserInput | UserProblemSetProgressUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserProblemSetProgressUpdateManyWithWhereWithoutUserInput | UserProblemSetProgressUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserProblemSetProgressScalarWhereInput | UserProblemSetProgressScalarWhereInput[]
+  export type UserProblemProgressUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserProblemProgressCreateWithoutUserInput, UserProblemProgressUncheckedCreateWithoutUserInput> | UserProblemProgressCreateWithoutUserInput[] | UserProblemProgressUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserProblemProgressCreateOrConnectWithoutUserInput | UserProblemProgressCreateOrConnectWithoutUserInput[]
+    upsert?: UserProblemProgressUpsertWithWhereUniqueWithoutUserInput | UserProblemProgressUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserProblemProgressCreateManyUserInputEnvelope
+    set?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    disconnect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    delete?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    connect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    update?: UserProblemProgressUpdateWithWhereUniqueWithoutUserInput | UserProblemProgressUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserProblemProgressUpdateManyWithWhereWithoutUserInput | UserProblemProgressUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserProblemProgressScalarWhereInput | UserProblemProgressScalarWhereInput[]
   }
 
   export type UserResourceProgressUncheckedUpdateManyWithoutUserNestedInput = {
@@ -10728,18 +10757,18 @@ export namespace Prisma {
     deleteMany?: UserResourceProgressScalarWhereInput | UserResourceProgressScalarWhereInput[]
   }
 
-  export type UserProblemSetProgressUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserProblemSetProgressCreateWithoutUserInput, UserProblemSetProgressUncheckedCreateWithoutUserInput> | UserProblemSetProgressCreateWithoutUserInput[] | UserProblemSetProgressUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserProblemSetProgressCreateOrConnectWithoutUserInput | UserProblemSetProgressCreateOrConnectWithoutUserInput[]
-    upsert?: UserProblemSetProgressUpsertWithWhereUniqueWithoutUserInput | UserProblemSetProgressUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserProblemSetProgressCreateManyUserInputEnvelope
-    set?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    disconnect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    delete?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    connect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    update?: UserProblemSetProgressUpdateWithWhereUniqueWithoutUserInput | UserProblemSetProgressUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserProblemSetProgressUpdateManyWithWhereWithoutUserInput | UserProblemSetProgressUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserProblemSetProgressScalarWhereInput | UserProblemSetProgressScalarWhereInput[]
+  export type UserProblemProgressUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserProblemProgressCreateWithoutUserInput, UserProblemProgressUncheckedCreateWithoutUserInput> | UserProblemProgressCreateWithoutUserInput[] | UserProblemProgressUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserProblemProgressCreateOrConnectWithoutUserInput | UserProblemProgressCreateOrConnectWithoutUserInput[]
+    upsert?: UserProblemProgressUpsertWithWhereUniqueWithoutUserInput | UserProblemProgressUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserProblemProgressCreateManyUserInputEnvelope
+    set?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    disconnect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    delete?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    connect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    update?: UserProblemProgressUpdateWithWhereUniqueWithoutUserInput | UserProblemProgressUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserProblemProgressUpdateManyWithWhereWithoutUserInput | UserProblemProgressUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserProblemProgressScalarWhereInput | UserProblemProgressScalarWhereInput[]
   }
 
   export type UserResourceProgressCreateNestedManyWithoutResourceInput = {
@@ -10835,25 +10864,11 @@ export namespace Prisma {
     connect?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
   }
 
-  export type UserProblemSetProgressCreateNestedManyWithoutSetInput = {
-    create?: XOR<UserProblemSetProgressCreateWithoutSetInput, UserProblemSetProgressUncheckedCreateWithoutSetInput> | UserProblemSetProgressCreateWithoutSetInput[] | UserProblemSetProgressUncheckedCreateWithoutSetInput[]
-    connectOrCreate?: UserProblemSetProgressCreateOrConnectWithoutSetInput | UserProblemSetProgressCreateOrConnectWithoutSetInput[]
-    createMany?: UserProblemSetProgressCreateManySetInputEnvelope
-    connect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-  }
-
   export type ProblemUncheckedCreateNestedManyWithoutSetInput = {
     create?: XOR<ProblemCreateWithoutSetInput, ProblemUncheckedCreateWithoutSetInput> | ProblemCreateWithoutSetInput[] | ProblemUncheckedCreateWithoutSetInput[]
     connectOrCreate?: ProblemCreateOrConnectWithoutSetInput | ProblemCreateOrConnectWithoutSetInput[]
     createMany?: ProblemCreateManySetInputEnvelope
     connect?: ProblemWhereUniqueInput | ProblemWhereUniqueInput[]
-  }
-
-  export type UserProblemSetProgressUncheckedCreateNestedManyWithoutSetInput = {
-    create?: XOR<UserProblemSetProgressCreateWithoutSetInput, UserProblemSetProgressUncheckedCreateWithoutSetInput> | UserProblemSetProgressCreateWithoutSetInput[] | UserProblemSetProgressUncheckedCreateWithoutSetInput[]
-    connectOrCreate?: UserProblemSetProgressCreateOrConnectWithoutSetInput | UserProblemSetProgressCreateOrConnectWithoutSetInput[]
-    createMany?: UserProblemSetProgressCreateManySetInputEnvelope
-    connect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -10878,20 +10893,6 @@ export namespace Prisma {
     deleteMany?: ProblemScalarWhereInput | ProblemScalarWhereInput[]
   }
 
-  export type UserProblemSetProgressUpdateManyWithoutSetNestedInput = {
-    create?: XOR<UserProblemSetProgressCreateWithoutSetInput, UserProblemSetProgressUncheckedCreateWithoutSetInput> | UserProblemSetProgressCreateWithoutSetInput[] | UserProblemSetProgressUncheckedCreateWithoutSetInput[]
-    connectOrCreate?: UserProblemSetProgressCreateOrConnectWithoutSetInput | UserProblemSetProgressCreateOrConnectWithoutSetInput[]
-    upsert?: UserProblemSetProgressUpsertWithWhereUniqueWithoutSetInput | UserProblemSetProgressUpsertWithWhereUniqueWithoutSetInput[]
-    createMany?: UserProblemSetProgressCreateManySetInputEnvelope
-    set?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    disconnect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    delete?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    connect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    update?: UserProblemSetProgressUpdateWithWhereUniqueWithoutSetInput | UserProblemSetProgressUpdateWithWhereUniqueWithoutSetInput[]
-    updateMany?: UserProblemSetProgressUpdateManyWithWhereWithoutSetInput | UserProblemSetProgressUpdateManyWithWhereWithoutSetInput[]
-    deleteMany?: UserProblemSetProgressScalarWhereInput | UserProblemSetProgressScalarWhereInput[]
-  }
-
   export type ProblemUncheckedUpdateManyWithoutSetNestedInput = {
     create?: XOR<ProblemCreateWithoutSetInput, ProblemUncheckedCreateWithoutSetInput> | ProblemCreateWithoutSetInput[] | ProblemUncheckedCreateWithoutSetInput[]
     connectOrCreate?: ProblemCreateOrConnectWithoutSetInput | ProblemCreateOrConnectWithoutSetInput[]
@@ -10906,24 +10907,24 @@ export namespace Prisma {
     deleteMany?: ProblemScalarWhereInput | ProblemScalarWhereInput[]
   }
 
-  export type UserProblemSetProgressUncheckedUpdateManyWithoutSetNestedInput = {
-    create?: XOR<UserProblemSetProgressCreateWithoutSetInput, UserProblemSetProgressUncheckedCreateWithoutSetInput> | UserProblemSetProgressCreateWithoutSetInput[] | UserProblemSetProgressUncheckedCreateWithoutSetInput[]
-    connectOrCreate?: UserProblemSetProgressCreateOrConnectWithoutSetInput | UserProblemSetProgressCreateOrConnectWithoutSetInput[]
-    upsert?: UserProblemSetProgressUpsertWithWhereUniqueWithoutSetInput | UserProblemSetProgressUpsertWithWhereUniqueWithoutSetInput[]
-    createMany?: UserProblemSetProgressCreateManySetInputEnvelope
-    set?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    disconnect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    delete?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    connect?: UserProblemSetProgressWhereUniqueInput | UserProblemSetProgressWhereUniqueInput[]
-    update?: UserProblemSetProgressUpdateWithWhereUniqueWithoutSetInput | UserProblemSetProgressUpdateWithWhereUniqueWithoutSetInput[]
-    updateMany?: UserProblemSetProgressUpdateManyWithWhereWithoutSetInput | UserProblemSetProgressUpdateManyWithWhereWithoutSetInput[]
-    deleteMany?: UserProblemSetProgressScalarWhereInput | UserProblemSetProgressScalarWhereInput[]
-  }
-
   export type ProblemSetCreateNestedOneWithoutProblemsInput = {
     create?: XOR<ProblemSetCreateWithoutProblemsInput, ProblemSetUncheckedCreateWithoutProblemsInput>
     connectOrCreate?: ProblemSetCreateOrConnectWithoutProblemsInput
     connect?: ProblemSetWhereUniqueInput
+  }
+
+  export type UserProblemProgressCreateNestedManyWithoutProblemInput = {
+    create?: XOR<UserProblemProgressCreateWithoutProblemInput, UserProblemProgressUncheckedCreateWithoutProblemInput> | UserProblemProgressCreateWithoutProblemInput[] | UserProblemProgressUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: UserProblemProgressCreateOrConnectWithoutProblemInput | UserProblemProgressCreateOrConnectWithoutProblemInput[]
+    createMany?: UserProblemProgressCreateManyProblemInputEnvelope
+    connect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+  }
+
+  export type UserProblemProgressUncheckedCreateNestedManyWithoutProblemInput = {
+    create?: XOR<UserProblemProgressCreateWithoutProblemInput, UserProblemProgressUncheckedCreateWithoutProblemInput> | UserProblemProgressCreateWithoutProblemInput[] | UserProblemProgressUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: UserProblemProgressCreateOrConnectWithoutProblemInput | UserProblemProgressCreateOrConnectWithoutProblemInput[]
+    createMany?: UserProblemProgressCreateManyProblemInputEnvelope
+    connect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
   }
 
   export type ProblemSetUpdateOneRequiredWithoutProblemsNestedInput = {
@@ -10934,32 +10935,60 @@ export namespace Prisma {
     update?: XOR<XOR<ProblemSetUpdateToOneWithWhereWithoutProblemsInput, ProblemSetUpdateWithoutProblemsInput>, ProblemSetUncheckedUpdateWithoutProblemsInput>
   }
 
-  export type UserCreateNestedOneWithoutSetProgressRecordsInput = {
-    create?: XOR<UserCreateWithoutSetProgressRecordsInput, UserUncheckedCreateWithoutSetProgressRecordsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSetProgressRecordsInput
+  export type UserProblemProgressUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<UserProblemProgressCreateWithoutProblemInput, UserProblemProgressUncheckedCreateWithoutProblemInput> | UserProblemProgressCreateWithoutProblemInput[] | UserProblemProgressUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: UserProblemProgressCreateOrConnectWithoutProblemInput | UserProblemProgressCreateOrConnectWithoutProblemInput[]
+    upsert?: UserProblemProgressUpsertWithWhereUniqueWithoutProblemInput | UserProblemProgressUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: UserProblemProgressCreateManyProblemInputEnvelope
+    set?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    disconnect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    delete?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    connect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    update?: UserProblemProgressUpdateWithWhereUniqueWithoutProblemInput | UserProblemProgressUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: UserProblemProgressUpdateManyWithWhereWithoutProblemInput | UserProblemProgressUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: UserProblemProgressScalarWhereInput | UserProblemProgressScalarWhereInput[]
+  }
+
+  export type UserProblemProgressUncheckedUpdateManyWithoutProblemNestedInput = {
+    create?: XOR<UserProblemProgressCreateWithoutProblemInput, UserProblemProgressUncheckedCreateWithoutProblemInput> | UserProblemProgressCreateWithoutProblemInput[] | UserProblemProgressUncheckedCreateWithoutProblemInput[]
+    connectOrCreate?: UserProblemProgressCreateOrConnectWithoutProblemInput | UserProblemProgressCreateOrConnectWithoutProblemInput[]
+    upsert?: UserProblemProgressUpsertWithWhereUniqueWithoutProblemInput | UserProblemProgressUpsertWithWhereUniqueWithoutProblemInput[]
+    createMany?: UserProblemProgressCreateManyProblemInputEnvelope
+    set?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    disconnect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    delete?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    connect?: UserProblemProgressWhereUniqueInput | UserProblemProgressWhereUniqueInput[]
+    update?: UserProblemProgressUpdateWithWhereUniqueWithoutProblemInput | UserProblemProgressUpdateWithWhereUniqueWithoutProblemInput[]
+    updateMany?: UserProblemProgressUpdateManyWithWhereWithoutProblemInput | UserProblemProgressUpdateManyWithWhereWithoutProblemInput[]
+    deleteMany?: UserProblemProgressScalarWhereInput | UserProblemProgressScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutProblemProgressRecordsInput = {
+    create?: XOR<UserCreateWithoutProblemProgressRecordsInput, UserUncheckedCreateWithoutProblemProgressRecordsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProblemProgressRecordsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type ProblemSetCreateNestedOneWithoutProgressRecordsInput = {
-    create?: XOR<ProblemSetCreateWithoutProgressRecordsInput, ProblemSetUncheckedCreateWithoutProgressRecordsInput>
-    connectOrCreate?: ProblemSetCreateOrConnectWithoutProgressRecordsInput
-    connect?: ProblemSetWhereUniqueInput
+  export type ProblemCreateNestedOneWithoutProgressRecordsInput = {
+    create?: XOR<ProblemCreateWithoutProgressRecordsInput, ProblemUncheckedCreateWithoutProgressRecordsInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutProgressRecordsInput
+    connect?: ProblemWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutSetProgressRecordsNestedInput = {
-    create?: XOR<UserCreateWithoutSetProgressRecordsInput, UserUncheckedCreateWithoutSetProgressRecordsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSetProgressRecordsInput
-    upsert?: UserUpsertWithoutSetProgressRecordsInput
+  export type UserUpdateOneRequiredWithoutProblemProgressRecordsNestedInput = {
+    create?: XOR<UserCreateWithoutProblemProgressRecordsInput, UserUncheckedCreateWithoutProblemProgressRecordsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProblemProgressRecordsInput
+    upsert?: UserUpsertWithoutProblemProgressRecordsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSetProgressRecordsInput, UserUpdateWithoutSetProgressRecordsInput>, UserUncheckedUpdateWithoutSetProgressRecordsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProblemProgressRecordsInput, UserUpdateWithoutProblemProgressRecordsInput>, UserUncheckedUpdateWithoutProblemProgressRecordsInput>
   }
 
-  export type ProblemSetUpdateOneRequiredWithoutProgressRecordsNestedInput = {
-    create?: XOR<ProblemSetCreateWithoutProgressRecordsInput, ProblemSetUncheckedCreateWithoutProgressRecordsInput>
-    connectOrCreate?: ProblemSetCreateOrConnectWithoutProgressRecordsInput
-    upsert?: ProblemSetUpsertWithoutProgressRecordsInput
-    connect?: ProblemSetWhereUniqueInput
-    update?: XOR<XOR<ProblemSetUpdateToOneWithWhereWithoutProgressRecordsInput, ProblemSetUpdateWithoutProgressRecordsInput>, ProblemSetUncheckedUpdateWithoutProgressRecordsInput>
+  export type ProblemUpdateOneRequiredWithoutProgressRecordsNestedInput = {
+    create?: XOR<ProblemCreateWithoutProgressRecordsInput, ProblemUncheckedCreateWithoutProgressRecordsInput>
+    connectOrCreate?: ProblemCreateOrConnectWithoutProgressRecordsInput
+    upsert?: ProblemUpsertWithoutProgressRecordsInput
+    connect?: ProblemWhereUniqueInput
+    update?: XOR<XOR<ProblemUpdateToOneWithWhereWithoutProgressRecordsInput, ProblemUpdateWithoutProgressRecordsInput>, ProblemUncheckedUpdateWithoutProgressRecordsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -11192,23 +11221,23 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type UserProblemSetProgressCreateWithoutUserInput = {
+  export type UserProblemProgressCreateWithoutUserInput = {
     completedAt?: Date | string
-    set: ProblemSetCreateNestedOneWithoutProgressRecordsInput
+    problem: ProblemCreateNestedOneWithoutProgressRecordsInput
   }
 
-  export type UserProblemSetProgressUncheckedCreateWithoutUserInput = {
-    setId: string
+  export type UserProblemProgressUncheckedCreateWithoutUserInput = {
+    problemId: string
     completedAt?: Date | string
   }
 
-  export type UserProblemSetProgressCreateOrConnectWithoutUserInput = {
-    where: UserProblemSetProgressWhereUniqueInput
-    create: XOR<UserProblemSetProgressCreateWithoutUserInput, UserProblemSetProgressUncheckedCreateWithoutUserInput>
+  export type UserProblemProgressCreateOrConnectWithoutUserInput = {
+    where: UserProblemProgressWhereUniqueInput
+    create: XOR<UserProblemProgressCreateWithoutUserInput, UserProblemProgressUncheckedCreateWithoutUserInput>
   }
 
-  export type UserProblemSetProgressCreateManyUserInputEnvelope = {
-    data: UserProblemSetProgressCreateManyUserInput | UserProblemSetProgressCreateManyUserInput[]
+  export type UserProblemProgressCreateManyUserInputEnvelope = {
+    data: UserProblemProgressCreateManyUserInput | UserProblemProgressCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -11237,29 +11266,29 @@ export namespace Prisma {
     completedAt?: DateTimeFilter<"UserResourceProgress"> | Date | string
   }
 
-  export type UserProblemSetProgressUpsertWithWhereUniqueWithoutUserInput = {
-    where: UserProblemSetProgressWhereUniqueInput
-    update: XOR<UserProblemSetProgressUpdateWithoutUserInput, UserProblemSetProgressUncheckedUpdateWithoutUserInput>
-    create: XOR<UserProblemSetProgressCreateWithoutUserInput, UserProblemSetProgressUncheckedCreateWithoutUserInput>
+  export type UserProblemProgressUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserProblemProgressWhereUniqueInput
+    update: XOR<UserProblemProgressUpdateWithoutUserInput, UserProblemProgressUncheckedUpdateWithoutUserInput>
+    create: XOR<UserProblemProgressCreateWithoutUserInput, UserProblemProgressUncheckedCreateWithoutUserInput>
   }
 
-  export type UserProblemSetProgressUpdateWithWhereUniqueWithoutUserInput = {
-    where: UserProblemSetProgressWhereUniqueInput
-    data: XOR<UserProblemSetProgressUpdateWithoutUserInput, UserProblemSetProgressUncheckedUpdateWithoutUserInput>
+  export type UserProblemProgressUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserProblemProgressWhereUniqueInput
+    data: XOR<UserProblemProgressUpdateWithoutUserInput, UserProblemProgressUncheckedUpdateWithoutUserInput>
   }
 
-  export type UserProblemSetProgressUpdateManyWithWhereWithoutUserInput = {
-    where: UserProblemSetProgressScalarWhereInput
-    data: XOR<UserProblemSetProgressUpdateManyMutationInput, UserProblemSetProgressUncheckedUpdateManyWithoutUserInput>
+  export type UserProblemProgressUpdateManyWithWhereWithoutUserInput = {
+    where: UserProblemProgressScalarWhereInput
+    data: XOR<UserProblemProgressUpdateManyMutationInput, UserProblemProgressUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type UserProblemSetProgressScalarWhereInput = {
-    AND?: UserProblemSetProgressScalarWhereInput | UserProblemSetProgressScalarWhereInput[]
-    OR?: UserProblemSetProgressScalarWhereInput[]
-    NOT?: UserProblemSetProgressScalarWhereInput | UserProblemSetProgressScalarWhereInput[]
-    userId?: StringFilter<"UserProblemSetProgress"> | string
-    setId?: StringFilter<"UserProblemSetProgress"> | string
-    completedAt?: DateTimeFilter<"UserProblemSetProgress"> | Date | string
+  export type UserProblemProgressScalarWhereInput = {
+    AND?: UserProblemProgressScalarWhereInput | UserProblemProgressScalarWhereInput[]
+    OR?: UserProblemProgressScalarWhereInput[]
+    NOT?: UserProblemProgressScalarWhereInput | UserProblemProgressScalarWhereInput[]
+    userId?: StringFilter<"UserProblemProgress"> | string
+    problemId?: StringFilter<"UserProblemProgress"> | string
+    completedAt?: DateTimeFilter<"UserProblemProgress"> | Date | string
   }
 
   export type UserResourceProgressCreateWithoutResourceInput = {
@@ -11306,7 +11335,7 @@ export namespace Prisma {
     passwordHash: string
     verified?: boolean
     createdAt?: Date | string
-    setProgressRecords?: UserProblemSetProgressCreateNestedManyWithoutUserInput
+    problemProgressRecords?: UserProblemProgressCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutProgressRecordsInput = {
@@ -11317,7 +11346,7 @@ export namespace Prisma {
     passwordHash: string
     verified?: boolean
     createdAt?: Date | string
-    setProgressRecords?: UserProblemSetProgressUncheckedCreateNestedManyWithoutUserInput
+    problemProgressRecords?: UserProblemProgressUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutProgressRecordsInput = {
@@ -11371,7 +11400,7 @@ export namespace Prisma {
     passwordHash?: StringFieldUpdateOperationsInput | string
     verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    setProgressRecords?: UserProblemSetProgressUpdateManyWithoutUserNestedInput
+    problemProgressRecords?: UserProblemProgressUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutProgressRecordsInput = {
@@ -11382,7 +11411,7 @@ export namespace Prisma {
     passwordHash?: StringFieldUpdateOperationsInput | string
     verified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    setProgressRecords?: UserProblemSetProgressUncheckedUpdateManyWithoutUserNestedInput
+    problemProgressRecords?: UserProblemProgressUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ResourceUpsertWithoutProgressRecordsInput = {
@@ -11424,6 +11453,7 @@ export namespace Prisma {
     description?: string | null
     orderIndex: number
     createdAt?: Date | string
+    progressRecords?: UserProblemProgressCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemUncheckedCreateWithoutSetInput = {
@@ -11432,6 +11462,7 @@ export namespace Prisma {
     description?: string | null
     orderIndex: number
     createdAt?: Date | string
+    progressRecords?: UserProblemProgressUncheckedCreateNestedManyWithoutProblemInput
   }
 
   export type ProblemCreateOrConnectWithoutSetInput = {
@@ -11441,26 +11472,6 @@ export namespace Prisma {
 
   export type ProblemCreateManySetInputEnvelope = {
     data: ProblemCreateManySetInput | ProblemCreateManySetInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type UserProblemSetProgressCreateWithoutSetInput = {
-    completedAt?: Date | string
-    user: UserCreateNestedOneWithoutSetProgressRecordsInput
-  }
-
-  export type UserProblemSetProgressUncheckedCreateWithoutSetInput = {
-    userId: string
-    completedAt?: Date | string
-  }
-
-  export type UserProblemSetProgressCreateOrConnectWithoutSetInput = {
-    where: UserProblemSetProgressWhereUniqueInput
-    create: XOR<UserProblemSetProgressCreateWithoutSetInput, UserProblemSetProgressUncheckedCreateWithoutSetInput>
-  }
-
-  export type UserProblemSetProgressCreateManySetInputEnvelope = {
-    data: UserProblemSetProgressCreateManySetInput | UserProblemSetProgressCreateManySetInput[]
     skipDuplicates?: boolean
   }
 
@@ -11492,29 +11503,12 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Problem"> | Date | string
   }
 
-  export type UserProblemSetProgressUpsertWithWhereUniqueWithoutSetInput = {
-    where: UserProblemSetProgressWhereUniqueInput
-    update: XOR<UserProblemSetProgressUpdateWithoutSetInput, UserProblemSetProgressUncheckedUpdateWithoutSetInput>
-    create: XOR<UserProblemSetProgressCreateWithoutSetInput, UserProblemSetProgressUncheckedCreateWithoutSetInput>
-  }
-
-  export type UserProblemSetProgressUpdateWithWhereUniqueWithoutSetInput = {
-    where: UserProblemSetProgressWhereUniqueInput
-    data: XOR<UserProblemSetProgressUpdateWithoutSetInput, UserProblemSetProgressUncheckedUpdateWithoutSetInput>
-  }
-
-  export type UserProblemSetProgressUpdateManyWithWhereWithoutSetInput = {
-    where: UserProblemSetProgressScalarWhereInput
-    data: XOR<UserProblemSetProgressUpdateManyMutationInput, UserProblemSetProgressUncheckedUpdateManyWithoutSetInput>
-  }
-
   export type ProblemSetCreateWithoutProblemsInput = {
     id?: string
     title: string
     description?: string | null
     orderIndex: number
     createdAt?: Date | string
-    progressRecords?: UserProblemSetProgressCreateNestedManyWithoutSetInput
   }
 
   export type ProblemSetUncheckedCreateWithoutProblemsInput = {
@@ -11523,12 +11517,31 @@ export namespace Prisma {
     description?: string | null
     orderIndex: number
     createdAt?: Date | string
-    progressRecords?: UserProblemSetProgressUncheckedCreateNestedManyWithoutSetInput
   }
 
   export type ProblemSetCreateOrConnectWithoutProblemsInput = {
     where: ProblemSetWhereUniqueInput
     create: XOR<ProblemSetCreateWithoutProblemsInput, ProblemSetUncheckedCreateWithoutProblemsInput>
+  }
+
+  export type UserProblemProgressCreateWithoutProblemInput = {
+    completedAt?: Date | string
+    user: UserCreateNestedOneWithoutProblemProgressRecordsInput
+  }
+
+  export type UserProblemProgressUncheckedCreateWithoutProblemInput = {
+    userId: string
+    completedAt?: Date | string
+  }
+
+  export type UserProblemProgressCreateOrConnectWithoutProblemInput = {
+    where: UserProblemProgressWhereUniqueInput
+    create: XOR<UserProblemProgressCreateWithoutProblemInput, UserProblemProgressUncheckedCreateWithoutProblemInput>
+  }
+
+  export type UserProblemProgressCreateManyProblemInputEnvelope = {
+    data: UserProblemProgressCreateManyProblemInput | UserProblemProgressCreateManyProblemInput[]
+    skipDuplicates?: boolean
   }
 
   export type ProblemSetUpsertWithoutProblemsInput = {
@@ -11548,7 +11561,6 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    progressRecords?: UserProblemSetProgressUpdateManyWithoutSetNestedInput
   }
 
   export type ProblemSetUncheckedUpdateWithoutProblemsInput = {
@@ -11557,10 +11569,25 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    progressRecords?: UserProblemSetProgressUncheckedUpdateManyWithoutSetNestedInput
   }
 
-  export type UserCreateWithoutSetProgressRecordsInput = {
+  export type UserProblemProgressUpsertWithWhereUniqueWithoutProblemInput = {
+    where: UserProblemProgressWhereUniqueInput
+    update: XOR<UserProblemProgressUpdateWithoutProblemInput, UserProblemProgressUncheckedUpdateWithoutProblemInput>
+    create: XOR<UserProblemProgressCreateWithoutProblemInput, UserProblemProgressUncheckedCreateWithoutProblemInput>
+  }
+
+  export type UserProblemProgressUpdateWithWhereUniqueWithoutProblemInput = {
+    where: UserProblemProgressWhereUniqueInput
+    data: XOR<UserProblemProgressUpdateWithoutProblemInput, UserProblemProgressUncheckedUpdateWithoutProblemInput>
+  }
+
+  export type UserProblemProgressUpdateManyWithWhereWithoutProblemInput = {
+    where: UserProblemProgressScalarWhereInput
+    data: XOR<UserProblemProgressUpdateManyMutationInput, UserProblemProgressUncheckedUpdateManyWithoutProblemInput>
+  }
+
+  export type UserCreateWithoutProblemProgressRecordsInput = {
     id?: string
     name: string
     email: string
@@ -11571,7 +11598,7 @@ export namespace Prisma {
     progressRecords?: UserResourceProgressCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutSetProgressRecordsInput = {
+  export type UserUncheckedCreateWithoutProblemProgressRecordsInput = {
     id?: string
     name: string
     email: string
@@ -11582,46 +11609,46 @@ export namespace Prisma {
     progressRecords?: UserResourceProgressUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutSetProgressRecordsInput = {
+  export type UserCreateOrConnectWithoutProblemProgressRecordsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSetProgressRecordsInput, UserUncheckedCreateWithoutSetProgressRecordsInput>
+    create: XOR<UserCreateWithoutProblemProgressRecordsInput, UserUncheckedCreateWithoutProblemProgressRecordsInput>
   }
 
-  export type ProblemSetCreateWithoutProgressRecordsInput = {
+  export type ProblemCreateWithoutProgressRecordsInput = {
     id?: string
     title: string
     description?: string | null
     orderIndex: number
     createdAt?: Date | string
-    problems?: ProblemCreateNestedManyWithoutSetInput
+    set: ProblemSetCreateNestedOneWithoutProblemsInput
   }
 
-  export type ProblemSetUncheckedCreateWithoutProgressRecordsInput = {
+  export type ProblemUncheckedCreateWithoutProgressRecordsInput = {
     id?: string
     title: string
     description?: string | null
     orderIndex: number
+    setId: string
     createdAt?: Date | string
-    problems?: ProblemUncheckedCreateNestedManyWithoutSetInput
   }
 
-  export type ProblemSetCreateOrConnectWithoutProgressRecordsInput = {
-    where: ProblemSetWhereUniqueInput
-    create: XOR<ProblemSetCreateWithoutProgressRecordsInput, ProblemSetUncheckedCreateWithoutProgressRecordsInput>
+  export type ProblemCreateOrConnectWithoutProgressRecordsInput = {
+    where: ProblemWhereUniqueInput
+    create: XOR<ProblemCreateWithoutProgressRecordsInput, ProblemUncheckedCreateWithoutProgressRecordsInput>
   }
 
-  export type UserUpsertWithoutSetProgressRecordsInput = {
-    update: XOR<UserUpdateWithoutSetProgressRecordsInput, UserUncheckedUpdateWithoutSetProgressRecordsInput>
-    create: XOR<UserCreateWithoutSetProgressRecordsInput, UserUncheckedCreateWithoutSetProgressRecordsInput>
+  export type UserUpsertWithoutProblemProgressRecordsInput = {
+    update: XOR<UserUpdateWithoutProblemProgressRecordsInput, UserUncheckedUpdateWithoutProblemProgressRecordsInput>
+    create: XOR<UserCreateWithoutProblemProgressRecordsInput, UserUncheckedCreateWithoutProblemProgressRecordsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutSetProgressRecordsInput = {
+  export type UserUpdateToOneWithWhereWithoutProblemProgressRecordsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSetProgressRecordsInput, UserUncheckedUpdateWithoutSetProgressRecordsInput>
+    data: XOR<UserUpdateWithoutProblemProgressRecordsInput, UserUncheckedUpdateWithoutProblemProgressRecordsInput>
   }
 
-  export type UserUpdateWithoutSetProgressRecordsInput = {
+  export type UserUpdateWithoutProblemProgressRecordsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -11632,7 +11659,7 @@ export namespace Prisma {
     progressRecords?: UserResourceProgressUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutSetProgressRecordsInput = {
+  export type UserUncheckedUpdateWithoutProblemProgressRecordsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
@@ -11643,33 +11670,33 @@ export namespace Prisma {
     progressRecords?: UserResourceProgressUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type ProblemSetUpsertWithoutProgressRecordsInput = {
-    update: XOR<ProblemSetUpdateWithoutProgressRecordsInput, ProblemSetUncheckedUpdateWithoutProgressRecordsInput>
-    create: XOR<ProblemSetCreateWithoutProgressRecordsInput, ProblemSetUncheckedCreateWithoutProgressRecordsInput>
-    where?: ProblemSetWhereInput
+  export type ProblemUpsertWithoutProgressRecordsInput = {
+    update: XOR<ProblemUpdateWithoutProgressRecordsInput, ProblemUncheckedUpdateWithoutProgressRecordsInput>
+    create: XOR<ProblemCreateWithoutProgressRecordsInput, ProblemUncheckedCreateWithoutProgressRecordsInput>
+    where?: ProblemWhereInput
   }
 
-  export type ProblemSetUpdateToOneWithWhereWithoutProgressRecordsInput = {
-    where?: ProblemSetWhereInput
-    data: XOR<ProblemSetUpdateWithoutProgressRecordsInput, ProblemSetUncheckedUpdateWithoutProgressRecordsInput>
+  export type ProblemUpdateToOneWithWhereWithoutProgressRecordsInput = {
+    where?: ProblemWhereInput
+    data: XOR<ProblemUpdateWithoutProgressRecordsInput, ProblemUncheckedUpdateWithoutProgressRecordsInput>
   }
 
-  export type ProblemSetUpdateWithoutProgressRecordsInput = {
+  export type ProblemUpdateWithoutProgressRecordsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    problems?: ProblemUpdateManyWithoutSetNestedInput
+    set?: ProblemSetUpdateOneRequiredWithoutProblemsNestedInput
   }
 
-  export type ProblemSetUncheckedUpdateWithoutProgressRecordsInput = {
+  export type ProblemUncheckedUpdateWithoutProgressRecordsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: IntFieldUpdateOperationsInput | number
+    setId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    problems?: ProblemUncheckedUpdateManyWithoutSetNestedInput
   }
 
   export type UserResourceProgressCreateManyUserInput = {
@@ -11677,8 +11704,8 @@ export namespace Prisma {
     completedAt?: Date | string
   }
 
-  export type UserProblemSetProgressCreateManyUserInput = {
-    setId: string
+  export type UserProblemProgressCreateManyUserInput = {
+    problemId: string
     completedAt?: Date | string
   }
 
@@ -11697,18 +11724,18 @@ export namespace Prisma {
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserProblemSetProgressUpdateWithoutUserInput = {
+  export type UserProblemProgressUpdateWithoutUserInput = {
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    set?: ProblemSetUpdateOneRequiredWithoutProgressRecordsNestedInput
+    problem?: ProblemUpdateOneRequiredWithoutProgressRecordsNestedInput
   }
 
-  export type UserProblemSetProgressUncheckedUpdateWithoutUserInput = {
-    setId?: StringFieldUpdateOperationsInput | string
+  export type UserProblemProgressUncheckedUpdateWithoutUserInput = {
+    problemId?: StringFieldUpdateOperationsInput | string
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserProblemSetProgressUncheckedUpdateManyWithoutUserInput = {
-    setId?: StringFieldUpdateOperationsInput | string
+  export type UserProblemProgressUncheckedUpdateManyWithoutUserInput = {
+    problemId?: StringFieldUpdateOperationsInput | string
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -11740,17 +11767,13 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type UserProblemSetProgressCreateManySetInput = {
-    userId: string
-    completedAt?: Date | string
-  }
-
   export type ProblemUpdateWithoutSetInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    progressRecords?: UserProblemProgressUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateWithoutSetInput = {
@@ -11759,6 +11782,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     orderIndex?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    progressRecords?: UserProblemProgressUncheckedUpdateManyWithoutProblemNestedInput
   }
 
   export type ProblemUncheckedUpdateManyWithoutSetInput = {
@@ -11769,17 +11793,22 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserProblemSetProgressUpdateWithoutSetInput = {
-    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSetProgressRecordsNestedInput
+  export type UserProblemProgressCreateManyProblemInput = {
+    userId: string
+    completedAt?: Date | string
   }
 
-  export type UserProblemSetProgressUncheckedUpdateWithoutSetInput = {
+  export type UserProblemProgressUpdateWithoutProblemInput = {
+    completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutProblemProgressRecordsNestedInput
+  }
+
+  export type UserProblemProgressUncheckedUpdateWithoutProblemInput = {
     userId?: StringFieldUpdateOperationsInput | string
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserProblemSetProgressUncheckedUpdateManyWithoutSetInput = {
+  export type UserProblemProgressUncheckedUpdateManyWithoutProblemInput = {
     userId?: StringFieldUpdateOperationsInput | string
     completedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
