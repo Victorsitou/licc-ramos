@@ -63,7 +63,6 @@ export async function GET(request: Request) {
       // if so, then return all resources with the completed status
       // if not, then only return the classes.
       if (user.verified) {
-        console.log("fetch resources");
         const { searchParams } = new URL(request.url);
         resources = await getUserResources(user.id, {
           slug: searchParams.get("slug"),

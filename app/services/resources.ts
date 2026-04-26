@@ -34,7 +34,6 @@ export async function getResource({
       cache: "no-store",
     },
   );
-  console.log(response.url);
   if (!response.ok) {
     return [];
   }
