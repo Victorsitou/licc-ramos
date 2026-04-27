@@ -141,7 +141,7 @@ export default function TalleresPage({
                     <p className="text-sm text-zinc-500 mt-2">
                       {item.title.replace(/(\.dvi)?\.pdf$/i, "")}{" "}
                       {item.completed &&
-                        `(Completado ${dayjs(item.completedAt).fromNow()})`}
+                        ` (completado ${dayjs(item.completedAt).fromNow()})`}
                     </p>
                     <div className="mt-4 text-sm font-semibold text-blue-600 group-hover:underline">
                       Ver material →
