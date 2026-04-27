@@ -1,5 +1,3 @@
-import { baseURL } from "../utils";
-
 export interface Resource {
   id: string;
   title: string;
@@ -23,16 +21,13 @@ export async function getResource({
   orderIndex?: number;
 }): Promise<Resource[]> {
   const response = await fetch(
-    `${baseURL}/api/resources?${new URLSearchParams({
+    `/api/resources?${new URLSearchParams({
       ...(slug ? { slug } : {}),
       ...(type ? { type } : {}),
       ...(orderIndex !== undefined
         ? { orderIndex: orderIndex.toString() }
         : {}),
     })}`,
-    {
-      cache: "no-store",
-    },
   );
   if (!response.ok) {
     return [];
@@ -57,10 +52,10 @@ export async function toggleResourceCompletion(
   let url = "";
   let method: "POST" | "DELETE";
   if (completed) {
-    url = `${baseURL}/api/resources/${resourceId}/complete`;
+    url = `api/resources/${resourceId}/complete`;
     method = "POST";
   } else {
-    url = `${baseURL}/api/resources/${resourceId}/complete`;
+    url = `api/resources/${resourceId}/complete`;
     method = "DELETE";
   }
 
@@ -73,9 +68,7 @@ export async function toggleResourceCompletion(
 }
 
 export async function getFileURL(key: string) {
-  const res = await fetch(
-    `${baseURL}/api/file-url?key=${encodeURIComponent(key)}`,
-  );
+  const res = await fetch(`/api/file-url?key=${encodeURIComponent(key)}`);
   if (!res.ok) {
     throw new Error("Failed to get file URL");
   }
@@ -90,7 +83,7 @@ export async function uploadFile(
     "id" | "createdAt" | "orderIndex" | "completed" | "completedAt"
   >,
 ) {
-  const res = await fetch(`${baseURL}/api/resources/cf`, {
+  const res = await fetch(`/api/resources/cf`, {
     method: "POST",
     body: JSON.stringify({
       content: await file

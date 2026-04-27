@@ -45,12 +45,25 @@ export async function POST(request: Request) {
 }
 
 export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const slug = searchParams.get("slug") || undefined;
+  const type = searchParams.get("type") as
+    | "CLASS"
+    | "WORKSHOP"
+    | "AYUDANTIA"
+    | undefined;
+  const orderIndex = searchParams.get("orderIndex")
+    ? parseInt(searchParams.get("orderIndex")!)
+    : undefined;
   try {
     const userJWt = await getCurrentUser();
 
     let resources;
     if (!userJWt?.sub) {
       // If the user is not logged in, then return only the classes.
+      if (type && type !== "CLASS") {
+        return NextResponse.json([], { status: 200 });
+      }
       resources = await getClassesResources();
     } else {
       const user = await getUserById(userJWt.sub);
@@ -63,17 +76,10 @@ export async function GET(request: Request) {
       // if so, then return all resources with the completed status
       // if not, then only return the classes.
       if (user.verified) {
-        const { searchParams } = new URL(request.url);
         resources = await getUserResources(user.id, {
-          slug: searchParams.get("slug"),
-          type: searchParams.get("type") as
-            | "CLASS"
-            | "WORKSHOP"
-            | "AYUDANTIA"
-            | null,
-          orderIndex: searchParams.get("orderIndex")
-            ? parseInt(searchParams.get("orderIndex")!)
-            : null,
+          slug: slug,
+          type: type,
+          orderIndex: orderIndex,
         });
       } else {
         resources = await getClassesResources();

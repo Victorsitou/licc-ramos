@@ -37,8 +37,11 @@ export default function Clases({
   const nextClase = useMemo(() => {
     const today = new Date();
     return ramo.info_clases
-      ?.filter((c) => new Date(c.fecha) >= today)
-      ?.sort((a, b) => +new Date(a.fecha) - +new Date(b.fecha))[0];
+      ?.filter((c) => new Date(c.fecha + "T00:00:00") >= today)
+      ?.sort(
+        (a, b) =>
+          +new Date(a.fecha + "T00:00:00") - +new Date(b.fecha + "T00:00:00"),
+      )[0];
   }, [ramo]);
 
   const filtered = useMemo(() => {
@@ -104,7 +107,15 @@ export default function Clases({
             </div>
 
             <button
-              onClick={onScrollToNext}
+              onClick={() => {
+                if (nextRef.current) {
+                  nextRef.current.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                  });
+                  onScrollToNext();
+                }
+              }}
               className="w-full md:w-auto inline-flex justify-center items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition"
             >
               Próxima clase →
@@ -114,22 +125,32 @@ export default function Clases({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {filtered.map((item) => {
+        {filtered.map((item, i) => {
+          const previousIsToday =
+            i === 0 ? false : isToday(filtered[i - 1]?.fecha);
+          const today = isToday(item.fecha);
           const isNext = item.clase === nextClase?.clase;
+
+          let css = "";
+          if (today) {
+            css = "ring-2 ring-blue-400 bg-blue-100 dark:bg-blue-900/30";
+          } else if (isNext && !previousIsToday) {
+            css = "ring-2 ring-blue-400 bg-blue-100 dark:bg-blue-900/30";
+          }
+
+          if (isNext && highlight) {
+            css += "ring-2 ring-blue-400";
+          }
 
           return (
             <button
               key={item.clase}
-              ref={isNext ? nextRef : undefined}
+              ref={isNext ? nextRef : null}
               className={`group text-left rounded-3xl border border-zinc-200 p-5 shadow-sm transition duration-200
                 hover:-translate-y-1 hover:border-blue-400 hover:shadow-xl
                 dark:border-zinc-800
-                ${
-                  isNext
-                    ? "ring-2 ring-blue-400 bg-blue-100 dark:bg-blue-900/30"
-                    : "bg-zinc-50 dark:bg-zinc-950/40"
-                }
-                ${isNext && highlight ? "scale-[1.02]" : ""}
+                ${css ? css : "bg-zinc-50 dark:bg-zinc-950/40"}
+                ${isNext && highlight ? "scale-[1.03]" : ""}
               `}
               onClick={() => router.push(`${ramo.sigla}/clases/${item.clase}`)}
             >

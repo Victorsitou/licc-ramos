@@ -1,8 +1,9 @@
 import ramosJson from "./ramos.json";
 const ramos: RamoInterface[] = ramosJson;
 
-export const baseURL =
-  process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+export const baseURL = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
 
 export function stringToDate(dateString: string): Date {
   const [year, month, day] = dateString.split("-").map(Number);

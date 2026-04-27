@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useRouter, useParams, usePathname } from "next/navigation";
 
 import Clases from "../components/Clases";
 
 import { getRamo } from "../utils";
-import { getResource, Resource } from "../services/resources";
 
 export default function ClasesPage() {
   const router = useRouter();
@@ -16,13 +15,6 @@ export default function ClasesPage() {
   const slug = params.slug;
   if (typeof slug !== "string") {
     return router.push("/");
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3 p-10 rounded-xl border border-red-900/40 bg-red-950/20">
-          <p className="text-red-400 text-sm font-medium">Ramo no encontrado</p>
-        </div>
-      </div>
-    );
   }
   const [ramo] = useState(getRamo(slug));
 
@@ -33,19 +25,28 @@ export default function ClasesPage() {
     return <div>Ramo no encontrado</div>;
   }
 
-  const [resources, setResources] = useState<Resource[] | null>(null);
-  useEffect(() => {
-    getResource({ slug }).then(setResources);
-  }, []);
-
   const scrollToNext = () => {
-    nextRef.current?.scrollIntoView({
+    const el = nextRef.current;
+    if (!el) return;
+
+    el.scrollIntoView({
       behavior: "smooth",
       block: "center",
     });
 
-    setHighlight(true);
-    setTimeout(() => setHighlight(false), 1500);
+    const checkIfCentered = () => {
+      const rect = el.getBoundingClientRect();
+      const isCentered = rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+      if (isCentered) {
+        setHighlight(true);
+        setTimeout(() => setHighlight(false), 1500);
+      } else {
+        requestAnimationFrame(checkIfCentered);
+      }
+    };
+
+    requestAnimationFrame(checkIfCentered);
   };
 
   return (
@@ -55,7 +56,7 @@ export default function ClasesPage() {
           <div>
             <div className="flex items-center gap-5 mb-5">
               <button
-                onClick={() => router.back()}
+                onClick={() => router.push("/")}
                 className="flex items-center gap-1.5 text-zinc-500 hover:text-zinc-200 text-xs font-medium tracking-wide uppercase transition-all duration-200 hover:gap-2.5 cursor-pointer"
               >
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">

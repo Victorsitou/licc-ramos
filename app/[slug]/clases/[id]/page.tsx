@@ -64,11 +64,11 @@ export default function RamoClassPage() {
   }
 
   return (
-    <div className="flex flex-col gap-5 p-4">
-      <div className="rounded-3xl border border-zinc-200 bg-white p-6 text-left shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="flex flex-col gap-5">
+      <div className="rounded-3xl border border-zinc-200 bg-white p-4 text-left shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
         <div className="flex items-center gap-5 mb-5">
           <button
-            onClick={() => router.back()}
+            onClick={() => router.push(`/${slug}/clases`)}
             className="flex items-center gap-1.5 text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-200 text-xs font-medium tracking-wide uppercase transition-all duration-200 hover:gap-2.5 cursor-pointer"
           >
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -96,6 +96,72 @@ export default function RamoClassPage() {
               Clase {id}
             </span>
           </nav>
+        </div>
+
+        <div className="flex items-center justify-between gap-3 mb-5">
+          <button
+            onClick={() => router.push(`/${slug}/clases/${parseInt(id) - 1}`)}
+            disabled={parseInt(id) <= 1}
+            className="group flex items-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 16 16"
+              fill="none"
+              className="group-hover:-translate-x-0.5 transition-transform"
+            >
+              <path
+                d="M10 3L5 8L10 13"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <div className="text-left">
+              <p className="text-[10px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest leading-none mb-0.5">
+                Anterior
+              </p>
+              <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                Clase {parseInt(id) - 1}
+              </p>
+            </div>
+          </button>
+
+          <span className="text-xs font-medium text-zinc-400 dark:text-zinc-600 tabular-nums">
+            {id} / {ramo.clases}
+          </span>
+
+          <button
+            onClick={() => router.push(`/${slug}/clases/${parseInt(id) + 1}`)}
+            disabled={parseInt(id) >= ramo.clases}
+            className="group flex items-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+          >
+            <div className="text-right">
+              <p className="text-[10px] text-zinc-400 dark:text-zinc-500 uppercase tracking-widest leading-none mb-0.5">
+                Siguiente
+              </p>
+              <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                Clase {parseInt(id) + 1}
+              </p>
+            </div>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 16 16"
+              fill="none"
+              className="group-hover:translate-x-0.5 transition-transform"
+            >
+              <path
+                d="M6 3L11 8L6 13"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
         </div>
 
         {resourceURL ? (
