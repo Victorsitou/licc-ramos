@@ -4,6 +4,11 @@ import { CreateResourceDto } from "@/app/api/dtos/create-resource.dto";
 
 export async function createResource(data: CreateResourceDto) {
   try {
+    const lastOrderIndex = await prisma.resource.findFirst({
+      where: { type: data.type, slug: data.slug },
+      orderBy: { orderIndex: "desc" },
+      select: { orderIndex: true },
+    });
     return await prisma.resource.create({
       data: {
         title: data.title,
@@ -11,7 +16,10 @@ export async function createResource(data: CreateResourceDto) {
         url: data.key,
         type: data.type,
         slug: data.slug,
-        orderIndex: data.orderIndex,
+        orderIndex:
+          lastOrderIndex && lastOrderIndex.orderIndex !== null
+            ? lastOrderIndex.orderIndex + 1
+            : data.orderIndex || 0,
       },
     });
   } catch {
