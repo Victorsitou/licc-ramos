@@ -52,10 +52,10 @@ export async function toggleResourceCompletion(
   let url = "";
   let method: "POST" | "DELETE";
   if (completed) {
-    url = `api/resources/${resourceId}/complete`;
+    url = `/api/resources/${resourceId}/complete`;
     method = "POST";
   } else {
-    url = `api/resources/${resourceId}/complete`;
+    url = `/api/resources/${resourceId}/complete`;
     method = "DELETE";
   }
 
@@ -83,7 +83,7 @@ export async function uploadFile(
     "id" | "createdAt" | "orderIndex" | "completed" | "completedAt"
   >,
 ) {
-  const res = await fetch(`/api/resources/cf`, {
+  const res = await fetch("/api/resources/cf", {
     method: "POST",
     body: JSON.stringify({
       content: await file
