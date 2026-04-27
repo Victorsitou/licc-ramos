@@ -64,7 +64,11 @@ export async function GET(request: Request) {
       if (type && type !== "CLASS") {
         return NextResponse.json([], { status: 200 });
       }
-      resources = await getClassesResources();
+      resources = await getClassesResources({
+        slug: slug,
+        type: type,
+        orderIndex: orderIndex,
+      });
     } else {
       const user = await getUserById(userJWt.sub);
 
@@ -82,7 +86,11 @@ export async function GET(request: Request) {
           orderIndex: orderIndex,
         });
       } else {
-        resources = await getClassesResources();
+        resources = await getClassesResources({
+          slug: slug,
+          type: type,
+          orderIndex: orderIndex,
+        });
       }
     }
     return NextResponse.json(resources);
