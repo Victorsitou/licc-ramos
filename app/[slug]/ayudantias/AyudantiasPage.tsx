@@ -1,45 +1,51 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import CloseIcon from "@mui/icons-material/Close";
-import { getFileURL } from "../services/resources";
-import type { Resource } from "../services/resources";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-import PdfViewer from "./PDFViewer";
+import { getRamo, getUser, User } from "../../utils";
+import {
+  getResource,
+  toggleResourceCompletion,
+  Resource,
+} from "@/app/services/resources";
 
 import LockIcon from "@mui/icons-material/Lock";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-import { User } from "../utils";
-import { RamoInterface } from "../page";
-import { toggleResourceCompletion, getResource } from "../services/resources";
 import dayjs from "@lib/dayjs";
 
-export default function AyudantiaModal({
-  ramo,
-  open,
-  onClose,
-  ramoSigla,
-  user,
+export default function AyudantiasPage({
+  initialData,
 }: {
-  ramo: RamoInterface;
-  open: boolean;
-  onClose: () => void;
-  ramoSigla: string;
-  user: User | null;
+  initialData: Resource[];
 }) {
-  const [ayudantiaData, setAyudantiaData] = useState<Resource[] | null>(null);
-  const [pdfData, setPdfData] = useState<{ url: string; title: string } | null>(
-    null,
+  const params = useParams();
+  const router = useRouter();
+  const slug = params.slug;
+  if (typeof slug !== "string") {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex flex-col items-center gap-3 p-10 rounded-xl border border-red-900/40 bg-red-950/20">
+          <p className="text-red-400 text-sm font-medium">Ramo no encontrado</p>
+        </div>
+      </div>
+    );
+  }
+  const [ramo] = useState(getRamo(slug));
+
+  const [user, setUser] = useState<User | null>(null);
+  const [ayudantiaData, setAyudantiaData] = useState<Resource[] | null>(
+    initialData,
   );
 
+  useEffect(() => {
+    getUser().then(setUser);
+  }, []);
+
   const loadAyudantiaData = () => {
-    getResource().then((data) => {
-      setAyudantiaData(
-        data.filter((r) => r.slug === ramo.sigla && r.type === "AYUDANTIA"),
-      );
-    });
+    getResource({ slug, type: "AYUDANTIA" }).then(setAyudantiaData);
   };
 
   const toggleCompleted = (resource: Resource) => {
@@ -48,43 +54,67 @@ export default function AyudantiaModal({
     });
   };
 
-  useEffect(() => {
-    if (!open || ayudantiaData !== null) return;
-    loadAyudantiaData();
-  }, []);
-
-  if (!open) return null;
+  if (!ramo) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex flex-col items-center gap-3 p-10 rounded-xl border border-red-900/40 bg-red-950/20">
+          <p className="text-red-400 text-sm font-medium">Ramo no encontrado</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
-      onClick={onClose}
-    >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-
-      <div
-        className="relative z-10 flex flex-col w-full sm:max-w-5xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-zinc-900 h-[95dvh] sm:h-[90vh]"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-200 dark:border-zinc-800">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-blue-500">
-              {ramoSigla}
-            </p>
-            <h3 className="text-lg font-bold">Ayudantías disponibles</h3>
-          </div>
-
+    <div className="flex flex-col gap-5 p-4">
+      <div className="rounded-3xl border border-zinc-200 bg-white p-6 text-left shadow-sm transition dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="flex items-center gap-5 mb-5">
           <button
-            onClick={onClose}
-            className="p-2 rounded-xl border border-zinc-200 bg-zinc-100 hover:bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+            onClick={() => router.back()}
+            className="flex items-center gap-1.5 text-zinc-500 hover:text-zinc-200 text-xs font-medium tracking-wide uppercase transition-all duration-200 hover:gap-2.5 cursor-pointer"
           >
-            <CloseIcon sx={{ fontSize: 20 }} />
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M10 3L5 8L10 13"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Volver
+          </button>
+
+          <nav className="flex items-center gap-1.5 text-xs tracking-widest uppercase">
+            <span className="text-zinc-600 font-medium">{slug}</span>
+            <span className="text-zinc-700">›</span>
+            <span className="text-zinc-400 font-medium">Ayudantías</span>
+          </nav>
+        </div>
+
+        <h2 className="text-xl font-bold sm:text-2xl">{ramo.nombre}</h2>
+        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+          {ramo.sigla}
+        </p>
+
+        <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
+          Revisa las ayudantías disponibles del curso.
+        </p>
+
+        <div className="flex gap-3 mt-5">
+          <div className="rounded-full border px-4 py-2 text-sm">
+            {ayudantiaData?.length ?? "—"} ayudantías
+          </div>
+          <button
+            onClick={() => router.push(`/${slug}`)}
+            className="inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer"
+          >
+            Ver Clases
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-6 bg-zinc-50 dark:bg-zinc-950/40">
+        <div className="mt-6">
           {!ayudantiaData ? (
-            <div className="flex justify-center items-center h-full">
+            <div className="flex justify-center items-center py-16">
               <div className="animate-spin h-8 w-8 border-2 border-zinc-300 border-t-blue-500 rounded-full" />
             </div>
           ) : ayudantiaData.length === 0 ? (
@@ -119,7 +149,7 @@ export default function AyudantiaModal({
             </div>
           ) : (
             <div className="grid gap-4 sm:grid-cols-2">
-              {[...ayudantiaData].reverse().map((item, i) => (
+              {[...ayudantiaData].reverse().map((item, index) => (
                 <div
                   key={item.key}
                   className={`group rounded-2xl border p-5 shadow-sm transition
@@ -131,25 +161,20 @@ export default function AyudantiaModal({
                 >
                   <button
                     onClick={() => {
-                      getFileURL(item.key).then((url) => {
-                        setPdfData({
-                          url,
-                          title: item.title.replace(/(\.dvi)?\.pdf$/i, ""),
-                        });
-                      });
+                      router.push(
+                        `/${slug}/ayudantias/${ayudantiaData.length - index}`,
+                      );
                     }}
                     className="text-left w-full cursor-pointer"
                   >
                     <h4 className="font-bold text-lg">
                       Ayudantía {item.title.split(" ")[1]}
                     </h4>
-
                     <p className="text-sm text-zinc-500 mt-2">
-                      {item.title}{" "}
+                      {item.title}
                       {item.completed &&
                         ` (completado ${dayjs(item.completedAt).fromNow()})`}
                     </p>
-
                     <div className="mt-4 text-sm font-semibold text-blue-600 group-hover:underline">
                       Ver material →
                     </div>
@@ -159,11 +184,11 @@ export default function AyudantiaModal({
                     <button
                       onClick={() => toggleCompleted(item)}
                       className={`mt-4 w-full text-sm py-2 rounded-xl border transition cursor-pointer
-                      ${
-                        item.completed
-                          ? "bg-green-500 text-white border-green-500 hover:bg-green-600"
-                          : "bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700 hover:dark:bg-zinc-700 hover:bg-zinc-200"
-                      }`}
+                        ${
+                          item.completed
+                            ? "bg-green-500 text-white border-green-500 hover:bg-green-600"
+                            : "bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                        }`}
                     >
                       <div className="flex items-center justify-center gap-2">
                         {item.completed && (
@@ -183,13 +208,6 @@ export default function AyudantiaModal({
           )}
         </div>
       </div>
-      {pdfData && (
-        <PdfViewer
-          title={pdfData.title}
-          url={pdfData.url}
-          onClose={() => setPdfData(null)}
-        />
-      )}
     </div>
   );
 }

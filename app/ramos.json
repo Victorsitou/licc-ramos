@@ -2,6 +2,7 @@
   {
     "sigla": "MAT1207",
     "nombre": "Introducción a Algebra y Geometría",
+    "descripcion": "En este curso, de carácter teórico-aplicado, los estudiantes desarrollarán habilidades para el razonamiento científico, lógico-analítico y la resolución de problemas en el contexto del álgebra y la geometría. En el curso se abordarán temas como: fundamentos de lógica matemática, funciones, inducción, trigonometría, números complejos y geometría analítica.",
     "clases": 43,
     "url": "https://repositorios.mat.uc.cl/MAT1207/",
     "info_clases": [
@@ -338,6 +339,7 @@
   {
     "sigla": "MAT1107",
     "nombre": "Introducción a Cálculo",
+    "descripcion": "En este curso, de carácter teórico-aplicado, los estudiantes desarrollarán habilidades para el razonamiento científico, lógico-analítico y la resolución de problemas en el contexto del precálculo. En el curso se abordarán temas como: inecuaciones, polinomios, sucesiones y funciones a valores reales.",
     "clases": 29,
     "url": "https://repositorios.mat.uc.cl/MAT1107/",
     "info_clases": [
@@ -434,16 +436,14 @@
         "fecha": "2026-04-13",
         "objetivo": "Comprender transformaciones de funciones.",
         "contenido": "Transformaciones de funciones",
-        "texto_guia": "Capítulo 3",
-        "interrogacion": 4
+        "texto_guia": "Capítulo 3"
       },
       {
         "clase": 13,
         "fecha": "2026-04-15",
         "objetivo": "Analizar y graficar funciones racionales.",
         "contenido": "Gráfica de funciones racionales",
-        "texto_guia": "Capítulo 3",
-        "interrogacion": 4
+        "texto_guia": "Capítulo 3"
       },
       {
         "clase": 14,

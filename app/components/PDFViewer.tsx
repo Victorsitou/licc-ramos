@@ -2,48 +2,43 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import CloseIcon from "@mui/icons-material/Close";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import DownloadIcon from "@mui/icons-material/Download";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 
 type Props = {
-  url: string | null;
+  url: string;
   title?: string;
-  onClose: () => void;
 };
 
-export default function PdfViewer({ url, title, onClose }: Props) {
+export default function PdfViewer({ url, title }: Props) {
   const [pdfDoc, setPdfDoc] = useState<any>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const [isCompact, setIsCompact] = useState(false);
+  useEffect(() => {
+    const checkSize = () => {
+      setIsCompact(window.innerHeight < 500);
+    };
+
+    checkSize();
+    window.addEventListener("resize", checkSize);
+
+    return () => window.removeEventListener("resize", checkSize);
+  }, []);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // bloquear scroll
-  useEffect(() => {
-    document.body.style.overflow = url ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [url]);
-
-  // escape
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, []);
-
-  // cargar PDF
   useEffect(() => {
     if (!url) return;
-
     setLoading(true);
     setCurrentPage(1);
     setPdfDoc(null);
@@ -62,34 +57,56 @@ export default function PdfViewer({ url, title, onClose }: Props) {
     });
   }, [url]);
 
-  // render page
   useEffect(() => {
     if (!pdfDoc || !canvasRef.current || !containerRef.current) return;
+
+    let renderTask: any = null;
 
     pdfDoc.getPage(currentPage).then((page: any) => {
       const canvas = canvasRef.current!;
       const context = canvas.getContext("2d")!;
-      const containerWidth = containerRef.current!.clientWidth;
+      const container = containerRef.current!;
+      const containerWidth = container.clientWidth;
+
       const dpr = window.devicePixelRatio || 1;
 
       const viewport = page.getViewport({ scale: 1 });
-      const scale = (containerWidth / viewport.width) * dpr;
+
+      const scaleX = containerWidth / viewport.width;
+
+      const scale = scaleX * dpr;
+
       const scaledViewport = page.getViewport({ scale });
 
       canvas.width = scaledViewport.width;
       canvas.height = scaledViewport.height;
-      canvas.style.width = containerWidth + "px";
+
+      canvas.style.width = scaledViewport.width / dpr + "px";
       canvas.style.height = scaledViewport.height / dpr + "px";
 
-      page.render({
+      renderTask = page.render({
         canvasContext: context,
         viewport: scaledViewport,
       });
+      renderTask.promise.catch((err: any) => {
+        if (err?.name !== "RenderingCancelledException") console.error(err);
+      });
     });
-  }, [pdfDoc, currentPage]);
+
+    return () => {
+      renderTask?.cancel();
+    };
+  }, [pdfDoc, currentPage, isFullscreen]);
+
+  useEffect(() => {
+    if (!pdfDoc) return;
+    const timeout = setTimeout(() => {
+      setPdfDoc((d: any) => d); // trigger re-render
+    }, 50);
+    return () => clearTimeout(timeout);
+  }, [isFullscreen]);
 
   const downloadPDF = () => {
-    if (!url) return;
     fetch(url).then(async (res) => {
       if (!res.body) return;
       const buffer = await res.arrayBuffer();
@@ -102,69 +119,105 @@ export default function PdfViewer({ url, title, onClose }: Props) {
     });
   };
 
-  if (!url) return null;
-
-  return (
+  const viewer = (
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
-      onClick={onClose}
+      className={`relative flex flex-col w-full bg-white dark:bg-zinc-900 ${
+        isFullscreen ? "h-full" : "rounded-3xl overflow-hidden shadow-2xl"
+      }`}
     >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      <div
+        className={`flex items-center justify-between gap-4 px-5 py-4 border-b border-zinc-200 dark:border-zinc-800 shrink-0 ${
+          isCompact ? "px-3 py-2" : "px-5 py-4"
+        }`}
+      >
+        <div className="min-w-0">
+          <p className="text-xs font-semibold uppercase tracking-widest text-blue-500">
+            Documento
+          </p>
+          <h3 className="text-base font-bold truncate">{title}</h3>
+        </div>
+
+        <div className="flex items-center gap-2 shrink-0">
+          <button
+            onClick={downloadPDF}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 cursor-pointer"
+          >
+            <DownloadIcon sx={{ fontSize: 16 }} />
+            <span className="hidden sm:inline">Descargar</span>
+          </button>
+
+          <button
+            onClick={() => navigator.clipboard.writeText(window.location.href)}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 cursor-pointer"
+          >
+            <ContentCopyIcon sx={{ fontSize: 16 }} />
+            <span className="hidden sm:inline">Copiar enlace</span>
+          </button>
+
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+          >
+            <OpenInNewIcon sx={{ fontSize: 16 }} />
+            <span>Abrir en pestaña</span>
+          </a>
+
+          <button
+            onClick={() => setIsFullscreen((f) => !f)}
+            className="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 p-2 text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 cursor-pointer"
+            title={
+              isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"
+            }
+          >
+            {isFullscreen ? (
+              <FullscreenExitIcon sx={{ fontSize: 20 }} />
+            ) : (
+              <FullscreenIcon sx={{ fontSize: 20 }} />
+            )}
+          </button>
+        </div>
+      </div>
 
       <div
-        className="relative z-10 flex flex-col w-full sm:max-w-5xl sm:rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-zinc-900 h-[95dvh] sm:h-[90vh]"
-        onClick={(e) => e.stopPropagation()}
+        ref={containerRef}
+        className={`bg-zinc-100 dark:bg-zinc-950 flex flex-col items-center ${isFullscreen ? "flex-1 overflow-y-auto" : "min-h-[200px]"}`}
       >
-        <div className="flex items-center justify-between gap-4 px-5 py-4 border-b border-zinc-200 dark:border-zinc-800 shrink-0">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-blue-500">
-              Documento
-            </p>
-            <h3 className="text-base font-bold">{title}</h3>
+        {loading ? (
+          <div className="flex items-center justify-center py-20">
+            <div className="animate-spin rounded-full h-10 w-10 border-2 border-zinc-300 border-t-zinc-800 dark:border-t-zinc-300" />
           </div>
+        ) : (
+          <canvas ref={canvasRef} className="w-full shadow-lg" />
+        )}
+      </div>
 
-          <div className="flex items-center gap-2">
+      {!loading &&
+        totalPages > 0 &&
+        (isCompact ? (
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-3 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full shadow-lg">
             <button
-              onClick={downloadPDF}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/50"
+              onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+              disabled={currentPage === 1}
+              className="p-1.5 rounded-full bg-white/20 text-white disabled:opacity-30"
             >
-              <DownloadIcon sx={{ fontSize: 16 }} />
-              <span className="hidden sm:inline">Descargar</span>
+              <ArrowBackIosNewIcon sx={{ fontSize: 14 }} />
             </button>
 
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-xl border border-blue-200 bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-blue-900/50"
-            >
-              <OpenInNewIcon sx={{ fontSize: 16 }} />
-              <span className="hidden sm:inline">Abrir en pestaña</span>
-            </a>
+            <span className="text-xs font-semibold text-white tabular-nums">
+              {currentPage} / {totalPages}
+            </span>
 
             <button
-              onClick={onClose}
-              className="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-zinc-100 p-2 hover:bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+              onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className="p-1.5 rounded-full bg-white/20 text-white disabled:opacity-30"
             >
-              <CloseIcon sx={{ fontSize: 20 }} />
+              <ArrowForwardIosIcon sx={{ fontSize: 14 }} />
             </button>
           </div>
-        </div>
-
-        <div
-          ref={containerRef}
-          className="flex-1 overflow-y-auto bg-zinc-100 flex flex-col items-center"
-        >
-          {loading ? (
-            <div className="flex items-center justify-center h-full">
-              <div className="animate-spin rounded-full h-10 w-10 border-2 border-zinc-300 border-t-blue-500" />
-            </div>
-          ) : (
-            <canvas ref={canvasRef} className="w-full shadow-lg" />
-          )}
-        </div>
-
-        {!loading && totalPages > 0 && (
+        ) : (
           <div className="flex items-center justify-center gap-4 px-5 py-3 border-t border-zinc-200 dark:border-zinc-800 shrink-0">
             <button
               onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
@@ -174,7 +227,7 @@ export default function PdfViewer({ url, title, onClose }: Props) {
               <ArrowBackIosNewIcon sx={{ fontSize: 16 }} />
             </button>
 
-            <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+            <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 tabular-nums">
               {currentPage} / {totalPages}
             </span>
 
@@ -186,8 +239,17 @@ export default function PdfViewer({ url, title, onClose }: Props) {
               <ArrowForwardIosIcon sx={{ fontSize: 16 }} />
             </button>
           </div>
-        )}
-      </div>
+        ))}
     </div>
   );
+
+  if (isFullscreen) {
+    return (
+      <div className="fixed inset-0 z-50 bg-white dark:bg-zinc-900 flex flex-col">
+        {viewer}
+      </div>
+    );
+  }
+
+  return viewer;
 }
