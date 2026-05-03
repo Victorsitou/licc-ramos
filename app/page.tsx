@@ -11,9 +11,7 @@ import FeatureModal from "./components/FeatureModal";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
-import ramosJson from "./ramos.json";
-const ramos: RamoInterface[] = ramosJson;
-
+import { ramos } from "./utils";
 import Notifications, { FeatureData } from "./notifications";
 
 export interface InfoClase {
