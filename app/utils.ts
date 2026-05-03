@@ -1,5 +1,5 @@
 import ramosJson from "./ramos.json";
-const ramos: RamoInterface[] = ramosJson;
+export const ramos: RamoInterface[] = ramosJson;
 
 export const baseURL = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -74,6 +74,7 @@ export interface RamoInterface {
   nombre: string;
   descripcion: string;
   clases: number;
+  offset: number;
   url: string;
   info_clases: InfoClase[];
   info_interrogaciones: InfoInterrogacion[];

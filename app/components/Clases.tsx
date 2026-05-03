@@ -36,12 +36,19 @@ export default function Clases({
 
   const nextClase = useMemo(() => {
     const today = new Date();
-    return ramo.info_clases
-      ?.filter((c) => new Date(c.fecha + "T00:00:00") >= today)
-      ?.sort(
-        (a, b) =>
-          +new Date(a.fecha + "T00:00:00") - +new Date(b.fecha + "T00:00:00"),
-      )[0];
+    const sorted = ramo.info_clases.sort(
+      (a, b) =>
+        +new Date(a.fecha + "T00:00:00") - +new Date(b.fecha + "T00:00:00"),
+    );
+
+    const nextIndex = sorted.findIndex(
+      (c) => new Date(c.fecha + "T00:00:00") >= today,
+    );
+
+    if (nextIndex === -1) return undefined;
+
+    const targetIndex = nextIndex - ramo.offset;
+    return sorted[Math.max(targetIndex, 0)];
   }, [ramo]);
 
   const filtered = useMemo(() => {
@@ -126,9 +133,14 @@ export default function Clases({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {filtered.map((item, i) => {
-          const previousIsToday =
+          let today = isToday(item.fecha);
+          let previousIsToday =
             i === 0 ? false : isToday(filtered[i - 1]?.fecha);
-          const today = isToday(item.fecha);
+          if (today && ramo.offset > 0) {
+            previousIsToday =
+              i === 0 ? false : isToday(filtered[i - (ramo.offset + 1)]?.fecha);
+            today = isToday(filtered[i - ramo.offset]?.fecha);
+          }
           const isNext = item.clase === nextClase?.clase;
 
           let css = "";
