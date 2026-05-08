@@ -58,3 +58,12 @@ export async function verifyUser(userId: string) {
     omit: { passwordHash: true },
   });
 }
+
+export async function updateUserPassword(userId: string, newPassword: string) {
+  const hashedPassword = await bcrypt.hash(newPassword, 12);
+  return await prisma.user.update({
+    where: { id: userId },
+    data: { passwordHash: hashedPassword },
+    omit: { passwordHash: true },
+  });
+}
