@@ -19,6 +19,13 @@ enum ResourceType {
   AYUDANTIA
 }
 
+enum ProblemCollectionType {
+  SET
+  ENSAYO
+  INTERROGACION
+  COMPILADO
+}
+
 enum UserRole {
   STUDENT
   ADMIN
@@ -76,7 +83,7 @@ model VerificationToken {
   @@map("verification_tokens")
 }
 
-model ProblemSet {
+model ProblemCollection {
   id String @id @default(cuid())
 
   title       String
@@ -84,9 +91,10 @@ model ProblemSet {
 
   orderIndex Int
 
+  type ProblemCollectionType
   problems Problem[]
 
-  @@unique([orderIndex])
+  @@unique([type, orderIndex])
 
   createdAt DateTime @default(now())
 }
@@ -99,13 +107,14 @@ model Problem {
 
   orderIndex Int
 
-  setId String
-  set ProblemSet @relation(fields:[setId], references:[id], onDelete: Cascade)
+  collectionId String
+  
+  set ProblemCollection @relation(fields:[collectionId], references:[id], onDelete: Cascade)
 
   progressRecords UserProblemProgress[]
   
-  @@index([setId, orderIndex])
-  @@unique([setId, orderIndex])
+  @@index([collectionId, orderIndex])
+  @@unique([collectionId, orderIndex])
 
   createdAt DateTime @default(now())
 }

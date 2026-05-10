@@ -154,11 +154,12 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
   expiresAt: 'expiresAt'
 };
 
-exports.Prisma.ProblemSetScalarFieldEnum = {
+exports.Prisma.ProblemCollectionScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
   orderIndex: 'orderIndex',
+  type: 'type',
   createdAt: 'createdAt'
 };
 
@@ -167,7 +168,7 @@ exports.Prisma.ProblemScalarFieldEnum = {
   title: 'title',
   description: 'description',
   orderIndex: 'orderIndex',
-  setId: 'setId',
+  collectionId: 'collectionId',
   createdAt: 'createdAt'
 };
 
@@ -202,12 +203,19 @@ exports.ResourceType = exports.$Enums.ResourceType = {
   AYUDANTIA: 'AYUDANTIA'
 };
 
+exports.ProblemCollectionType = exports.$Enums.ProblemCollectionType = {
+  SET: 'SET',
+  ENSAYO: 'ENSAYO',
+  INTERROGACION: 'INTERROGACION',
+  COMPILADO: 'COMPILADO'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Resource: 'Resource',
   UserResourceProgress: 'UserResourceProgress',
   VerificationToken: 'VerificationToken',
-  ProblemSet: 'ProblemSet',
+  ProblemCollection: 'ProblemCollection',
   Problem: 'Problem',
   UserProblemProgress: 'UserProblemProgress'
 };
