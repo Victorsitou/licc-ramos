@@ -13,3 +13,11 @@ export async function getCurrentUser() {
     return null;
   }
 }
+
+export async function getUserFromToken(token: string) {
+  try {
+    return await verifyToken(token);
+  } catch {
+    return null;
+  }
+}
