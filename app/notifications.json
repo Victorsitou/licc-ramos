@@ -65,5 +65,16 @@
       }
     ],
     "footer": "Mucho éxito a todos :)"
+  },
+  {
+    "id": "6",
+    "date": "2026-05-10",
+    "features": [
+      {
+        "emoji": "🔒",
+        "title": "Reseteo de contraseña",
+        "description": "Ahora es posible recuperar tu contraseña en caso de que la hayas olvidado."
+      }
+    ]
   }
 ]
