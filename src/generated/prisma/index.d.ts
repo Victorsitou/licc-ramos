@@ -64,7 +64,7 @@ export type ResourceType = (typeof ResourceType)[keyof typeof ResourceType]
 
 export const ProblemCollectionType: {
   SET: 'SET',
-  ENSAYO: 'ENSAYO',
+  ACTIVIDAD: 'ACTIVIDAD',
   INTERROGACION: 'INTERROGACION',
   COMPILADO: 'COMPILADO'
 };

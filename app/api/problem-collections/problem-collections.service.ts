@@ -1,21 +1,40 @@
 import { prisma } from "@/src/lib/prisma";
-import { CreateProblemSetDtoType } from "../dtos/problem-sets/create-problem-set.dto";
+import { CreateProblemCollectionDtoType } from "../dtos/problem-sets/create-problem-collection.dto";
 
-export async function getProblemSets() {
-  return await prisma.problemSet.findMany({
+export async function getProblemCollections() {
+  return await prisma.problemCollection.findMany({
     include: {
       problems: true,
     },
   });
 }
 
-export async function createProblemSet(data: CreateProblemSetDtoType) {
-  const orderIndex = (await prisma.problemSet.count()) + 1;
-  return await prisma.problemSet.create({
+export async function getProblemCollectionById(id: string) {
+  return await prisma.problemCollection.findUnique({
+    where: {
+      id: id,
+    },
+    include: {
+      problems: true,
+    },
+  });
+}
+
+export async function createProblemCollection(
+  data: CreateProblemCollectionDtoType,
+) {
+  const orderIndex =
+    (await prisma.problemCollection.count({
+      where: {
+        type: data.type,
+      },
+    })) + 1;
+  return await prisma.problemCollection.create({
     data: {
       title: data.title,
       description: data.description,
       orderIndex: orderIndex,
+      type: data.type,
       problems: {},
     },
   });

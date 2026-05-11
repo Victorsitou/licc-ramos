@@ -1,12 +1,14 @@
 import { CreateProblemDto } from "@/app/api/dtos/problem-sets/create-problem.dto";
 import { getCurrentUser } from "@/src/lib/auth";
 import { NextResponse } from "next/server";
+import { createProblem } from "./problems.service";
 
 export async function POST(
   request: Request,
-  { params }: { params: { setId: string } },
+  { params }: { params: Promise<{ collectionId: string }> },
 ) {
   try {
+    const collectionId = (await params).collectionId;
     const user = await getCurrentUser();
 
     if (!user?.sub) {
@@ -26,5 +28,13 @@ export async function POST(
         { status: 400 },
       );
     }
-  } catch {}
+    return NextResponse.json(await createProblem(parsed.data, collectionId), {
+      status: 201,
+    });
+  } catch {
+    return NextResponse.json(
+      { error: "Error creating problem" },
+      { status: 500 },
+    );
+  }
 }

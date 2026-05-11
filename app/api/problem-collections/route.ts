@@ -1,14 +1,23 @@
 import { NextResponse } from "next/server";
 import {
-  createProblemSet,
-  getProblemSets,
+  createProblemCollection,
+  getProblemCollections,
 } from "./problem-collections.service";
-import { CreateProblemSetDto } from "../dtos/problem-sets/create-problem-set.dto";
+import { CreateProblemCollectionDto } from "../dtos/problem-sets/create-problem-collection.dto";
 import { getCurrentUser } from "@/src/lib/auth";
 
 export async function GET() {
-  const sets = await getProblemSets();
-  return NextResponse.json(sets);
+  const user = await getCurrentUser();
+
+  if (!user?.sub) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  if (user.role !== "ADMIN") {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+  const collections = await getProblemCollections();
+  return NextResponse.json(collections);
 }
 
 export async function POST(request: Request) {
@@ -24,7 +33,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const parsed = CreateProblemSetDto.safeParse(body);
+    const parsed = CreateProblemCollectionDto.safeParse(body);
 
     if (!parsed.success) {
       return NextResponse.json(
@@ -33,11 +42,11 @@ export async function POST(request: Request) {
       );
     }
 
-    const newSet = await createProblemSet(parsed.data);
-    return NextResponse.json(newSet, { status: 201 });
+    const newCollection = await createProblemCollection(parsed.data);
+    return NextResponse.json(newCollection, { status: 201 });
   } catch {
     return NextResponse.json(
-      { error: "Error creating problem set" },
+      { error: "Error creating problem collection" },
       { status: 500 },
     );
   }

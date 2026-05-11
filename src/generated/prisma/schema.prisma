@@ -21,7 +21,7 @@ enum ResourceType {
 
 enum ProblemCollectionType {
   SET
-  ENSAYO
+  ACTIVIDAD
   INTERROGACION
   COMPILADO
 }

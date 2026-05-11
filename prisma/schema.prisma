@@ -21,7 +21,7 @@ enum ResourceType {
 
 enum ProblemCollectionType {
   SET
-  ENSAYO
+  ACTIVIDAD
   INTERROGACION
   COMPILADO
 }
@@ -108,7 +108,7 @@ model Problem {
   orderIndex Int
 
   collectionId String
-  
+
   set ProblemCollection @relation(fields:[collectionId], references:[id], onDelete: Cascade)
 
   progressRecords UserProblemProgress[]

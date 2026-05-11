@@ -205,7 +205,7 @@ exports.ResourceType = exports.$Enums.ResourceType = {
 
 exports.ProblemCollectionType = exports.$Enums.ProblemCollectionType = {
   SET: 'SET',
-  ENSAYO: 'ENSAYO',
+  ACTIVIDAD: 'ACTIVIDAD',
   INTERROGACION: 'INTERROGACION',
   COMPILADO: 'COMPILADO'
 };
