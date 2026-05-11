@@ -60,6 +60,12 @@ export default function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                     className="mt-2 w-full rounded-xl border border-border bg-input px-4 py-2 text-sm outline-none transition focus:border-primary focus:ring-2 text-foreground"
                   />
+                  <a
+                    href="/reset-password"
+                    className="mt-2 block text-sm text-right text-blue-600 hover:underline"
+                  >
+                    ¿Olvidaste tu contraseña?
+                  </a>
                 </div>
 
                 <button
