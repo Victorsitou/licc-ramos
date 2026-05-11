@@ -144,12 +144,19 @@ export default function Clases({
           const todayLabelClassNumber = todayClass
             ? Math.max(todayClass.clase - ramo.offset, 1)
             : undefined;
+          const nextInterrogacion = ramo.info_interrogaciones.find((i) => {
+            const fecha = new Date(i.fecha);
+            fecha.setDate(fecha.getDate() + 1);
+            return fecha >= new Date();
+          });
 
           return filtered.map((item, i) => {
             const isNext = item.clase === nextClase?.clase;
             const isHighlighted = item.clase === highlightedClassNumber;
             const shouldPulse = isNext && highlight;
             const showsTodayLabel = item.clase === todayLabelClassNumber;
+            const isNextInterrogacion =
+              nextInterrogacion?.interrogacion === item.interrogacion;
 
             return (
               <button
@@ -183,8 +190,9 @@ export default function Clases({
                       size="small"
                       variant="outlined"
                       sx={{
-                        borderColor: "green",
-                        color: "green",
+                        borderColor: isNextInterrogacion ? "red" : "green",
+
+                        color: isNextInterrogacion ? "red" : "green",
                       }}
                     />
                   )}

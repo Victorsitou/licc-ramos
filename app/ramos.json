@@ -148,63 +148,72 @@
         "fecha": "2026-04-14",
         "objetivo": "Comprender razones trigonométricas.",
         "contenido": "Razones trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 19,
         "fecha": "2026-04-15",
         "objetivo": "Comprender funciones trigonométricas.",
         "contenido": "Funciones trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 20,
         "fecha": "2026-04-20",
         "objetivo": "Comprender funciones trigonométricas.",
         "contenido": "Funciones trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 21,
         "fecha": "2026-04-21",
         "objetivo": "Aplicar identidades trigonométricas.",
         "contenido": "Identidades trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 22,
         "fecha": "2026-04-22",
         "objetivo": "Aplicar identidades trigonométricas.",
         "contenido": "Identidades trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 23,
         "fecha": "2026-04-27",
         "objetivo": "Usar funciones trig inversas.",
         "contenido": "Funciones trigonométricas inversas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 24,
         "fecha": "2026-04-28",
         "objetivo": "Usar funciones trig inversas.",
         "contenido": "Funciones trigonométricas inversas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 25,
         "fecha": "2026-04-29",
         "objetivo": "Resolver ecuaciones trigonométricas.",
         "contenido": "Ecuaciones trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 26,
         "fecha": "2026-05-04",
         "objetivo": "Aplicar teorema del seno y coseno.",
         "contenido": "Teorema del seno y coseno",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 27,
@@ -438,35 +447,40 @@
         "fecha": "2026-04-13",
         "objetivo": "Comprender transformaciones de funciones.",
         "contenido": "Transformaciones de funciones",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 5
       },
       {
         "clase": 13,
         "fecha": "2026-04-15",
         "objetivo": "Analizar y graficar funciones racionales.",
         "contenido": "Gráfica de funciones racionales",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 5
       },
       {
         "clase": 14,
         "fecha": "2026-04-20",
         "objetivo": "Comprender funciones biyectivas.",
         "contenido": "Funciones biyectivas",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 5
       },
       {
         "clase": 15,
         "fecha": "2026-04-22",
         "objetivo": "Comprender funciones biyectivas.",
         "contenido": "Funciones biyectivas",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 5
       },
       {
         "clase": 16,
         "fecha": "2026-04-27",
         "objetivo": "Usar álgebra y composición de funciones.",
         "contenido": "Álgebra y composición de funciones",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 5
       },
       {
         "clase": 17,
