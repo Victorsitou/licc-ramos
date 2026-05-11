@@ -62,7 +62,7 @@ export default function Login() {
                   />
                   <a
                     href="/reset-password"
-                    className="mt-2 block text-sm text-right text-blue-600 hover:underline"
+                    className="mt-2 block text-sm text-right text-primary hover:underline"
                   >
                     ¿Olvidaste tu contraseña?
                   </a>
