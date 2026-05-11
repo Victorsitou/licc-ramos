@@ -201,9 +201,12 @@ function ResetPasswordForm({ token }: { token: string }) {
   );
 }
 
-export default function PasswordRecoveryPage() {
-  const params = useSearchParams();
-  const token = params.get("token");
+export default function PasswordRecoveryPage({
+  searchParams,
+}: {
+  searchParams: { token?: string };
+}) {
+  const token = searchParams.token;
   const isReset = Boolean(token);
 
   return (
