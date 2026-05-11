@@ -87,5 +87,16 @@
       }
     ],
     "footer": "Mucha suerte a todos en la i5 <3"
+  },
+  {
+    "id": "7",
+    "date": "2026-05-20",
+    "features": [
+      {
+        "emoji": "📅",
+        "title": "Calendario de interrogaciones y clases",
+        "description": "¡Ahora puedes ver un calendario con todas las clases e interrogaciones de cada ramo!"
+      }
+    ]
   }
 ]
