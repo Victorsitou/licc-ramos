@@ -31,12 +31,10 @@ function ThemeToggle() {
       className="h-11 rounded-xl border border-border bg-card px-4 text-sm text-foreground shadow-sm outline-none transition hover:opacity-90 cursor-pointer"
     >
       <option value="light">☀️ Claro</option>
-
       <option value="dark">🌙 Oscuro</option>
-
       <option value="light-pink">🌸 Rosa claro</option>
-
       <option value="dark-pink">🌺 Rosa oscuro</option>
+      <option value="peru">🧑‍🦲 Perú</option>
     </select>
   );
 }
@@ -55,12 +53,10 @@ export default function MainLayout({
   badge,
 }: Props) {
   const [user, setuser] = useState<User | null>(null);
-
   const [loading, setLoading] = useState(true);
-
   const router = useRouter();
-
   const pathname = usePathname();
+  const { theme } = useTheme();
 
   useEffect(() => {
     getUser().then((data) => {
@@ -71,7 +67,15 @@ export default function MainLayout({
   }, []);
 
   return (
-    <div className=" bg-background text-foreground">
+    <div className="relative bg-background text-foreground">
+      {theme === "peru" && (
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10 pointer-events-none"
+          style={{
+            backgroundImage: "url('/perulol.jpg')",
+          }}
+        />
+      )}
       <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 sm:px-10">
         <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
           <div>

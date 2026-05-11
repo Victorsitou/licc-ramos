@@ -147,6 +147,41 @@ body {
   --ring: rgb(244, 114, 182);
 }
 
+.peru {
+  --background: rgb(58, 32, 22);
+  --foreground: rgb(255, 236, 220);
+
+  --card: rgb(76, 42, 28);
+  --card-foreground: rgb(255, 236, 220);
+
+  --border: rgb(145, 78, 48);
+  --input: rgb(92, 52, 36);
+
+  --primary: rgb(165, 94, 60);
+  --primary-foreground: rgb(255, 248, 242);
+
+  --muted: rgb(92, 52, 36);
+  --muted-foreground: rgb(214, 176, 150);
+
+  --accent: rgb(220, 38, 38);
+  --accent-foreground: rgb(255, 245, 245);
+
+  --accent-hover: rgb(185, 28, 28);
+
+  --success: rgb(124, 145, 74);
+  --success-soft: rgba(124, 145, 74, 0.22);
+  --success-foreground: rgb(255, 255, 255);
+
+  --destructive: rgb(239, 68, 68);
+  --destructive-soft: rgba(239, 68, 68, 0.18);
+  --destructive-foreground: rgb(255, 255, 255);
+
+  --highlight: rgba(220, 38, 38, 0.22);
+  --highlight-foreground: rgb(255, 220, 220);
+
+  --ring: rgb(248, 113, 113);
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
