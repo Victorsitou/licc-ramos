@@ -95,12 +95,10 @@ function ResetPasswordForm({ token }: { token: string }) {
     try {
       resetPassword(token, password).then(async (res) => {
         if (!res.ok) {
-          if (!res.ok) {
-            const data = await res.json();
-            alert(data.error || "Error al cambiar la contraseña");
-          } else {
-            setDone(true);
-          }
+          const data = await res.json();
+          alert(data.error || "Error al cambiar la contraseña");
+        } else {
+          setDone(true);
         }
       });
     } finally {
