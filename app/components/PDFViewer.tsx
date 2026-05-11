@@ -130,18 +130,18 @@ export default function PdfViewer({ url, title }: Props) {
       }`}
     >
       <div
-        className={`flex items-center justify-between gap-4 px-5 py-4 border-b border-zinc-200 dark:border-zinc-800 shrink-0 ${
+        className={`flex flex-col gap-4 border-b border-border shrink-0 md:flex-row md:items-center md:justify-between ${
           isCompact ? "px-3 py-2" : "px-5 py-4"
         }`}
       >
-        <div className="min-w-0">
+        <div className="min-w-0 text-center sm:text-left">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">
             Documento
           </p>
           <h3 className="text-base font-bold truncate">{title}</h3>
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex flex-wrap gap-2 shrink-0 items-center justify-center">
           <Button
             onClick={downloadPDF}
             variant="surface"
@@ -167,10 +167,9 @@ export default function PdfViewer({ url, title }: Props) {
             target="_blank"
             rel="noopener noreferrer"
             variant="surface"
-            className="hidden sm:inline-flex"
           >
             <OpenInNewIcon sx={{ fontSize: 16 }} />
-            <span>Abrir en pestaña</span>
+            <span className="hidden sm:inline">Abrir en pestaña</span>
           </ButtonLink>
 
           <Button
@@ -183,9 +182,9 @@ export default function PdfViewer({ url, title }: Props) {
             }
           >
             {isFullscreen ? (
-              <FullscreenExitIcon sx={{ fontSize: 20 }} />
+              <FullscreenExitIcon sx={{ fontSize: 18 }} />
             ) : (
-              <FullscreenIcon sx={{ fontSize: 20 }} />
+              <FullscreenIcon sx={{ fontSize: 18 }} />
             )}
           </Button>
         </div>
