@@ -11,6 +11,7 @@ zxcvbnOptions.setOptions({
 import { getUser, isUCEmail } from "../utils";
 import { register } from "../services/auth";
 import MainLayout from "../components/layout/MainLayout";
+import Button from "../components/Button";
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -60,29 +61,29 @@ export default function Register() {
       <div className="min-h-screen from-zinc-100 via-zinc-50 to-white text-zinc-900 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 dark:text-zinc-100">
         <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 sm:px-10">
           <div className="mx-auto w-full max-w-md">
-            <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+            <div className="rounded-3xl border border-border bg-card p-8 shadow-sm">
               <form className="space-y-5">
                 <div>
-                  <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  <label className="text-sm font-medium text-muted-foreground">
                     Apodo
                   </label>
                   <input
                     type="text"
                     placeholder="Vic"
                     onChange={(e) => setName(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-zinc-800"
+                    className="mt-2 w-full rounded-xl border border-border bg-input px-4 py-2 text-sm outline-none transition focus:border-primary focus:ring-2 text-foreground"
                   />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  <label className="text-sm font-medium text-muted-foreground">
                     Correo electrónico
                   </label>
                   <input
                     type="email"
                     placeholder="victor@estudiante.uc.cl"
                     onChange={(e) => setEmail(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-zinc-800"
+                    className="mt-2 w-full rounded-xl border border-border bg-input px-4 py-2 text-sm outline-none transition focus:border-primary focus:ring-2 text-foreground"
                   />
                   {email && !isEmailValid && (
                     <p className="mt-2 text-xs text-red-500">
@@ -92,14 +93,14 @@ export default function Register() {
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  <label className="text-sm font-medium text-muted-foreground">
                     Contraseña
                   </label>
                   <input
                     type="password"
                     placeholder="********"
                     onChange={(e) => setPassword(e.target.value)}
-                    className="mt-2 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-zinc-800"
+                    className="mt-2 w-full rounded-xl border border-border bg-input px-4 py-2 text-sm outline-none transition focus:border-primary focus:ring-2 text-foreground"
                   />
 
                   <div className="mt-2">
@@ -113,12 +114,12 @@ export default function Register() {
                       />
                     </div>
 
-                    <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-1 text-xs text-muted-foreground">
                       {getStrengthText()}
                     </p>
 
                     {password && (
-                      <p className="mt-1 text-xs text-zinc-500">
+                      <p className="mt-1 text-xs text-muted-foreground">
                         {passwordStrength.feedback.warning ||
                           passwordStrength.feedback.suggestions[0]}
                       </p>
@@ -126,22 +127,24 @@ export default function Register() {
                   </div>
                 </div>
 
-                <button
+                <Button
                   onClick={(e) => {
                     e.preventDefault();
                     handleRegister();
                   }}
                   disabled={!isStrong || !isEmailValid}
-                  className="w-full rounded-xl bg-blue-600 py-2 text-sm font-medium text-white transition disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] hover:bg-blue-700"
+                  fullWidth
+                  rounded="lg"
+                  className="hover:scale-[1.02] disabled:hover:scale-100"
                 >
                   Crear cuenta
-                </button>
+                </Button>
 
-                <p className="text-center text-sm text-zinc-600 dark:text-zinc-400">
+                <p className="text-center text-sm text-muted-foreground">
                   ¿Ya tienes cuenta?{" "}
                   <a
                     href="/login"
-                    className="font-medium text-blue-600 hover:underline"
+                    className="font-medium text-primary hover:underline"
                   >
                     Inicia sesión
                   </a>
@@ -149,12 +152,12 @@ export default function Register() {
               </form>
               {showVerifyModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-                  <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-lg dark:bg-zinc-900">
-                    <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  <div className="w-full max-w-md rounded-2xl bg-card p-6 shadow-lg">
+                    <h2 className="text-lg font-semibold text-primary">
                       Verifica tu correo UC
                     </h2>
 
-                    <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-2 text-sm text-muted-foreground">
                       Para completar tu registro, debes iniciar sesión con tu
                       cuenta UC. Serás redirigido al sistema de autenticación.
                     </p>
@@ -162,21 +165,23 @@ export default function Register() {
                     <div className="mt-6 flex justify-end gap-3">
                       <button
                         onClick={() => setShowVerifyModal(false)}
-                        className="rounded-lg px-4 py-2 text-sm text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                        className="rounded-lg px-4 py-2 text-sm text-muted-foreground hover:bg-muted dark:text-muted-foreground dark:hover:bg-muted"
                       >
                         Cancelar
                       </button>
 
-                      <button
+                      <Button
                         onClick={() => {
                           router.push(
                             `${process.env.NEXT_PUBLIC_VERIFY_URL}?service=${process.env.NEXT_PUBLIC_SERVICE_URL}`,
                           );
                         }}
-                        className="rounded-lg bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700"
+                        variant="primary"
+                        className="hover:bg-accent-hover"
+                        rounded="md"
                       >
                         Verificar ahora
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>

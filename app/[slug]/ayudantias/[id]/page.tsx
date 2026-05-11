@@ -10,6 +10,8 @@ import {
   Resource,
 } from "@/app/services/resources";
 
+import Breadcrumb from "@/app/components/Breadcrumb";
+
 export default function AyudantiaPage() {
   const params = useParams();
   const router = useRouter();
@@ -17,9 +19,10 @@ export default function AyudantiaPage() {
 
   if (typeof slug !== "string" || typeof id !== "string") {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3 p-10 rounded-xl border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/20">
-          <p className="text-red-500 dark:text-red-400 text-sm font-medium">
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="flex flex-col items-center gap-3 rounded-xl border border-destructive bg-destructive-soft p-10">
+          <span className="text-3xl">⚠</span>
+          <p className="text-sm font-medium text-destructive">
             Ramo no encontrado
           </p>
         </div>
@@ -68,7 +71,7 @@ export default function AyudantiaPage() {
 
   return (
     <div className="flex flex-col gap-5 p-4">
-      <div className="rounded-3xl border border-zinc-200 bg-white p-6 text-left shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="rounded-3xl border border-border bg-card p-6 text-left shadow-sm">
         <div className="flex items-center gap-5 mb-5">
           <button
             onClick={() => router.back()}
@@ -86,23 +89,17 @@ export default function AyudantiaPage() {
             Volver
           </button>
 
-          <nav className="flex items-center gap-1.5 text-xs tracking-widest uppercase">
-            <span className="text-zinc-400 dark:text-zinc-600 font-medium">
-              {slug}
-            </span>
-            <span className="text-zinc-300 dark:text-zinc-700">›</span>
-            <span className="text-zinc-400 dark:text-zinc-600 font-medium">
-              Ayudantías
-            </span>
-            <span className="text-zinc-300 dark:text-zinc-700">›</span>
-            <span className="text-zinc-800 dark:text-zinc-200 font-semibold">
-              Ayudantía {id}
-            </span>
-          </nav>
+          <Breadcrumb
+            items={[
+              { label: ramo.sigla },
+              { label: "Ayudantías" },
+              { label: `Ayudantía ${id}` },
+            ]}
+          />
         </div>
 
         {resourceURL ? (
-          <div className="max-w-3xl mx-auto rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm dark:shadow-black/40">
+          <div className="max-w-3xl mx-auto rounded-2xl overflow-hidden border border-border shadow-sm dark:shadow-black/40">
             <PDFViewer url={resourceURL} title={resource?.title} />
           </div>
         ) : (

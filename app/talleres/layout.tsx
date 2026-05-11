@@ -1,5 +1,5 @@
-import Header from "@/app/components/layout/Header";
+import MainLayout from "../components/layout/MainLayout";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <Header>{children}</Header>;
+  return <MainLayout title="LICC Ramos">{children}</MainLayout>;
 }

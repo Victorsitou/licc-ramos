@@ -4,6 +4,8 @@ import { useState, useRef } from "react";
 import { useRouter, useParams, usePathname } from "next/navigation";
 
 import Clases from "../components/Clases";
+import Button from "../components/Button";
+import Breadcrumb from "../components/Breadcrumb";
 
 import { getRamo } from "../utils";
 
@@ -51,7 +53,7 @@ export default function ClasesPage() {
 
   return (
     <div className="flex flex-col gap-5 p-4">
-      <div className="rounded-3xl border border-zinc-200 bg-white p-6 text-left shadow-sm transition dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="rounded-3xl border border-border p-6 text-left shadow-sm transition bg-card">
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="flex items-center gap-5 mb-5">
@@ -71,32 +73,23 @@ export default function ClasesPage() {
                 Volver
               </button>
 
-              <nav className="flex items-center gap-1.5 text-xs tracking-widest uppercase">
-                <span className="text-zinc-600 font-medium">{slug}</span>
-              </nav>
+              <Breadcrumb items={[{ label: slug }]} />
             </div>
             <h2 className="text-xl font-bold sm:text-2xl">{ramo.nombre}</h2>
-            <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-              {ramo.sigla}
-            </p>
+            <p className="text-sm font-semibold text-primary">{ramo.sigla}</p>
           </div>
         </div>
 
-        <p className="mt-4 text-m text-zinc-600 dark:text-zinc-400">
-          {ramo.descripcion}
-        </p>
+        <p className="mt-4 text-m text-muted-foreground">{ramo.descripcion}</p>
 
         <div className="flex gap-4 mt-5">
-          <div className="rounded-full border px-4 py-2 text-sm">
+          <div className="rounded-full border border-border border-2 px-4 py-2 text-sm">
             {ramo.clases} clases
           </div>
 
-          <button
-            onClick={() => router.push(`${pathname}/ayudantias`)}
-            className="inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer"
-          >
+          <Button onClick={() => router.push(`${pathname}/ayudantias`)}>
             Ver Ayudantías
-          </button>
+          </Button>
         </div>
         <div className="mt-5">
           <Clases

@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import PDFViewer from "@/app/components/PDFViewer";
 import { getResource, getFileURL, Resource } from "@/app/services/resources";
 
+import Breadcrumb from "@/app/components/Breadcrumb";
+
 export default function TallerPage() {
   const params = useParams();
   const router = useRouter();
@@ -51,7 +53,7 @@ export default function TallerPage() {
 
   return (
     <div className="flex flex-col gap-5 p-4">
-      <div className="rounded-3xl border border-zinc-200 bg-white p-6 text-left shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="rounded-3xl border border-b border-border bg-card p-6 text-left shadow-sm">
         <div className="flex items-center gap-5 mb-5">
           <button
             onClick={() => router.back()}
@@ -69,19 +71,20 @@ export default function TallerPage() {
             Volver
           </button>
 
-          <nav className="flex items-center gap-1.5 text-xs tracking-widest uppercase">
-            <span className="text-zinc-400 dark:text-zinc-600 font-medium">
-              Talleres
-            </span>
-            <span className="text-zinc-300 dark:text-zinc-700">›</span>
-            <span className="text-zinc-800 dark:text-zinc-200 font-semibold">
-              {resource?.title.replace(/(\.dvi)?\.pdf$/i, "") ?? `Taller ${id}`}
-            </span>
-          </nav>
+          <Breadcrumb
+            items={[
+              { label: "Talleres" },
+              {
+                label:
+                  resource?.title.replace(/(\.dvi)?\.pdf$/i, "") ??
+                  `Taller ${id}`,
+              },
+            ]}
+          />
         </div>
 
         {resourceURL ? (
-          <div className="max-w-3xl mx-auto rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm dark:shadow-black/40">
+          <div className="max-w-3xl mx-auto rounded-2xl overflow-hidden border border-border shadow-sm dark:shadow-black/40">
             <PDFViewer url={resourceURL} title={resource?.title} />
           </div>
         ) : (

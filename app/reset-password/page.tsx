@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { zxcvbn, zxcvbnOptions } from "@zxcvbn-ts/core";
 import * as zxcvbnEsEsPackage from "@zxcvbn-ts/language-es-es";
 import MainLayout from "../components/layout/MainLayout";
+import Button from "../components/Button";
 
 import { resetPassword } from "../services/auth";
 import { isUCEmail } from "../utils";
@@ -19,10 +20,10 @@ function RequestResetForm() {
   const isEmailValid = isUCEmail(email);
 
   return (
-    <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="rounded-3xl border border-border bg-card p-8 shadow-sm">
       <form className="space-y-5">
         <div>
-          <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+          <label className="text-sm font-medium text-muted-foreground">
             Correo electrónico
           </label>
           <input
@@ -30,7 +31,7 @@ function RequestResetForm() {
             placeholder="victor@estudiante.uc.cl"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-2 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-zinc-800"
+            className="mt-2 w-full rounded-xl border border-border bg-input px-4 py-2 text-sm outline-none transition focus:border-primary focus:ring-2 text-foreground"
           />
           {email && !isEmailValid && (
             <p className="mt-2 text-xs text-red-500">
@@ -39,23 +40,22 @@ function RequestResetForm() {
           )}
         </div>
 
-        <button
+        <Button
           onClick={() => {
             router.push(
               `${process.env.NEXT_PUBLIC_VERIFY_URL}?service=${process.env.NEXT_PUBLIC_REQUEST_PASSWORD_SERVICE_URL}`,
             );
           }}
-          disabled={!email}
-          className="w-full rounded-xl bg-blue-600 py-2 text-sm font-medium text-white transition hover:scale-[1.02] hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+          disabled={!email || !isEmailValid}
+          className="hover:scale-[1.02] disabled:hover:scale-100"
+          fullWidth
+          rounded="lg"
         >
           Recuperar contraseña
-        </button>
+        </Button>
 
-        <p className="text-center text-sm text-zinc-600 dark:text-zinc-400">
-          <a
-            href="/login"
-            className="font-medium text-blue-600 hover:underline"
-          >
+        <p className="text-center text-sm text-muted-foreground">
+          <a href="/login" className="font-medium text-primary hover:underline">
             Volver al inicio de sesión
           </a>
         </p>
@@ -108,16 +108,16 @@ function ResetPasswordForm({ token }: { token: string }) {
 
   if (done) {
     return (
-      <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 text-center space-y-3">
-        <h1 className="text-zinc-800 dark:text-zinc-100 text-2xl font-semibold">
+      <div className="rounded-3xl border border-border bg-card p-8 shadow-sm text-center space-y-3">
+        <h1 className="text-primary text-2xl font-semibold">
           ¡Contraseña actualizada!
         </h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+        <p className="text-sm text-muted-foreground">
           Ya puedes iniciar sesión con tu nueva contraseña.
         </p>
         <a
           href="/login"
-          className="inline-block mt-2 text-sm text-blue-600 hover:underline font-medium"
+          className="inline-block mt-2 text-sm text-primary hover:underline font-medium"
         >
           Ir al inicio de sesión
         </a>
@@ -126,10 +126,10 @@ function ResetPasswordForm({ token }: { token: string }) {
   }
 
   return (
-    <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="rounded-3xl border border-border bg-card p-8 shadow-sm">
       <form className="space-y-5">
         <div>
-          <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+          <label className="text-sm font-medium text-muted-foreground">
             Nueva contraseña
           </label>
           <input
@@ -137,7 +137,7 @@ function ResetPasswordForm({ token }: { token: string }) {
             placeholder="********"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-2 w-full rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:border-zinc-700 dark:bg-zinc-800"
+            className="mt-2 w-full rounded-xl border border-border bg-input px-4 py-2 text-sm outline-none transition focus:border-primary focus:ring-2 text-foreground"
           />
 
           <div className="mt-2">
@@ -150,11 +150,11 @@ function ResetPasswordForm({ token }: { token: string }) {
                 }}
               />
             </div>
-            <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <p className="mt-1 text-xs text-muted-foreground">
               {getStrengthText()}
             </p>
             {password && (
-              <p className="mt-1 text-xs text-zinc-500">
+              <p className="mt-1 text-xs text-muted-foreground">
                 {passwordStrength.feedback.warning ||
                   passwordStrength.feedback.suggestions[0]}
               </p>
@@ -163,7 +163,7 @@ function ResetPasswordForm({ token }: { token: string }) {
         </div>
 
         <div>
-          <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+          <label className="text-sm font-medium text-muted-foreground">
             Confirmar contraseña
           </label>
           <input
@@ -171,29 +171,28 @@ function ResetPasswordForm({ token }: { token: string }) {
             placeholder="Repite la contraseña"
             value={confirm}
             onChange={(e) => setConfirm(e.target.value)}
-            className={`mt-2 w-full rounded-xl border bg-zinc-50 px-4 py-2 text-sm outline-none transition focus:border-blue-500 dark:bg-zinc-800 ${
-              mismatch
-                ? "border-red-400 dark:border-red-500"
-                : "border-zinc-200 dark:border-zinc-700"
-            }`}
+            className={`mt-2 w-full rounded-xl border border-border bg-input px-4 py-2 text-sm outline-none transition focus:border-primary focus:ring-2 text-foreground
+              ${mismatch ? "border-destructive dark:border-destructive" : ""}`}
           />
           {mismatch && (
-            <p className="mt-1 text-xs text-red-500">
+            <p className="mt-1 text-xs text-destructive">
               Las contraseñas no coinciden
             </p>
           )}
         </div>
 
-        <button
+        <Button
           onClick={(e) => {
             e.preventDefault();
             handleSubmit();
           }}
           disabled={loading || !valid}
-          className="w-full rounded-xl bg-blue-600 py-2 text-sm font-medium text-white transition hover:scale-[1.02] hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="hover:scale-[1.02] disabled:hover:scale-100"
+          fullWidth
+          rounded="lg"
         >
           {loading ? "Guardando..." : "Cambiar contraseña"}
-        </button>
+        </Button>
       </form>
     </div>
   );

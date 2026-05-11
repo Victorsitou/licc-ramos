@@ -3,6 +3,8 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import Button from "@/app/components/Button";
+import Breadcrumb from "@/app/components/Breadcrumb";
 import { getRamo, getUser, User } from "../../utils";
 import {
   getResource,
@@ -66,7 +68,7 @@ export default function AyudantiasPage({
 
   return (
     <div className="flex flex-col gap-5 p-4">
-      <div className="rounded-3xl border border-zinc-200 bg-white p-6 text-left shadow-sm transition dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="rounded-3xl border border-border bg-card p-6 text-left shadow-sm transition ">
         <div className="flex items-center gap-5 mb-5">
           <button
             onClick={() => router.back()}
@@ -84,32 +86,23 @@ export default function AyudantiasPage({
             Volver
           </button>
 
-          <nav className="flex items-center gap-1.5 text-xs tracking-widest uppercase">
-            <span className="text-zinc-600 font-medium">{slug}</span>
-            <span className="text-zinc-700">›</span>
-            <span className="text-zinc-400 font-medium">Ayudantías</span>
-          </nav>
+          <Breadcrumb
+            items={[{ label: ramo.sigla }, { label: "Ayudantías" }]}
+          />
         </div>
 
         <h2 className="text-xl font-bold sm:text-2xl">{ramo.nombre}</h2>
-        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-          {ramo.sigla}
-        </p>
+        <p className="text-sm font-semibold text-primary">{ramo.sigla}</p>
 
         <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
           Revisa las ayudantías disponibles del curso.
         </p>
 
-        <div className="flex gap-3 mt-5">
-          <div className="rounded-full border px-4 py-2 text-sm">
+        <div className="flex gap-4 mt-5">
+          <div className="rounded-full border border-border border-2 px-4 py-2 text-sm">
             {ayudantiaData?.length ?? "—"} ayudantías
           </div>
-          <button
-            onClick={() => router.push(`/${slug}`)}
-            className="inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium bg-blue-600 text-white hover:bg-blue-700 transition cursor-pointer"
-          >
-            Ver Clases
-          </button>
+          <Button onClick={() => router.push(`/${slug}`)}>Ver Clases</Button>
         </div>
 
         <div className="mt-6">
@@ -124,10 +117,10 @@ export default function AyudantiasPage({
                   <div className="mb-4 text-zinc-400">
                     <LockIcon sx={{ fontSize: 48 }} />
                   </div>
-                  <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+                  <h3 className="text-lg font-semibold text-primary">
                     Inicia sesión
                   </h3>
-                  <p className="text-zinc-500 mt-2 max-w-sm">
+                  <p className="text-muted-foreground mt-2 max-w-sm">
                     Necesitas iniciar sesión para ver las ayudantías disponibles
                     y guardar tu progreso.
                   </p>
@@ -137,10 +130,10 @@ export default function AyudantiasPage({
                   <div className="mb-4 text-zinc-400">
                     <MenuBookIcon sx={{ fontSize: 48 }} />
                   </div>
-                  <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+                  <h3 className="text-lg font-semibold text-primary">
                     No hay ayudantías disponibles
                   </h3>
-                  <p className="text-zinc-500 mt-2 max-w-sm">
+                  <p className="text-muted-foreground mt-2 max-w-sm">
                     Aún no se han publicado ayudantías, intenta nuevamente más
                     tarde.
                   </p>
@@ -155,8 +148,8 @@ export default function AyudantiasPage({
                   className={`group rounded-2xl border p-5 shadow-sm transition
                     ${
                       item.completed
-                        ? "bg-green-50 border-green-400 dark:bg-green-900/20"
-                        : "bg-white border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800"
+                        ? "bg-success-soft border-green-400"
+                        : "bg-card border-border"
                     }`}
                 >
                   <button
@@ -175,20 +168,18 @@ export default function AyudantiasPage({
                       {item.completed &&
                         ` (completado ${dayjs(item.completedAt).fromNow()})`}
                     </p>
-                    <div className="mt-4 text-sm font-semibold text-blue-600 group-hover:underline">
+                    <div className="mt-4 text-sm font-semibold text-primary group-hover:underline">
                       Ver material →
                     </div>
                   </button>
 
                   {user && (
-                    <button
+                    <Button
                       onClick={() => toggleCompleted(item)}
-                      className={`mt-4 w-full text-sm py-2 rounded-xl border transition cursor-pointer
-                        ${
-                          item.completed
-                            ? "bg-green-500 text-white border-green-500 hover:bg-green-600"
-                            : "bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700"
-                        }`}
+                      className="mt-4"
+                      fullWidth
+                      rounded="lg"
+                      variant={item.completed ? "success" : "primary"}
                     >
                       <div className="flex items-center justify-center gap-2">
                         {item.completed && (
@@ -200,7 +191,7 @@ export default function AyudantiasPage({
                             : "Marcar como completada"}
                         </span>
                       </div>
-                    </button>
+                    </Button>
                   )}
                 </div>
               ))}

@@ -6,6 +6,7 @@ import { stringToDate } from "../utils";
 
 import { Chip } from "@mui/material";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+import clsx from "clsx";
 
 function findClasesHoy(ramo: RamoInterface): InfoClase | null {
   const hoy = new Date();
@@ -19,11 +20,16 @@ function findClasesHoy(ramo: RamoInterface): InfoClase | null {
 
 export default function ClasesHoy({ ramo }: { ramo: RamoInterface }) {
   const router = useRouter();
-  const claseHoy = findClasesHoy(ramo);
+  const claseRealHoy = findClasesHoy(ramo);
+  const claseHoy = claseRealHoy
+    ? (ramo.info_clases.find(
+        (c) => c.clase === Math.max(claseRealHoy.clase - ramo.offset, 1),
+      ) ?? null)
+    : null;
 
   if (!claseHoy) {
     return (
-      <p className="text-sm text-zinc-500 dark:text-zinc-400">
+      <p className="text-sm text-muted-foreground">
         No hay clases programadas para hoy.
       </p>
     );
@@ -33,7 +39,11 @@ export default function ClasesHoy({ ramo }: { ramo: RamoInterface }) {
     <button
       type="button"
       onClick={() => router.push(`/${ramo.sigla}/clases/${claseHoy.clase}`)}
-      className="group w-full cursor-pointer rounded-3xl border border-zinc-200 bg-blue-100 p-5 text-left shadow-sm ring-2 ring-blue-400 transition duration-200 hover:-translate-y-1 hover:border-blue-400 hover:shadow-xl dark:border-zinc-800 dark:bg-blue-900/30"
+      className={clsx(
+        "group w-full rounded-3xl border border-border bg-card p-5 text-left shadow-sm transition duration-200",
+        "hover:-translate-y-1 hover:border-accent hover:shadow-xl",
+        "ring-2 ring-ring bg-highlight",
+      )}
     >
       <h3 className="text-xl font-bold leading-tight">
         Clase {claseHoy.clase} - Hoy
@@ -51,14 +61,12 @@ export default function ClasesHoy({ ramo }: { ramo: RamoInterface }) {
         </div>
       )}
 
-      <p className="mt-4 text-base font-semibold text-zinc-800 dark:text-zinc-100">
+      <p className="mt-4 text-base font-semibold text-foreground">
         {claseHoy.contenido}
       </p>
 
-      <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-        <span className="font-semibold text-zinc-800 dark:text-zinc-200">
-          Objetivo:
-        </span>{" "}
+      <p className="mt-3 text-sm leading-6 text-muted-foreground">
+        <span className="font-semibold text-foreground">Objetivo:</span>{" "}
         {claseHoy.objetivo}
       </p>
     </button>

@@ -74,6 +74,11 @@
         "emoji": "🔒",
         "title": "Reseteo de contraseña",
         "description": "Ahora es posible recuperar tu contraseña en caso de que la hayas olvidado."
+      },
+      {
+        "emoji": "🎨",
+        "title": "¡Nuevos temas!",
+        "description": "Ahora puedes elegir entre más temas de colores para personalizar la app."
       }
     ]
   }

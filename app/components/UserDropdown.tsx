@@ -25,7 +25,7 @@ export default function UserDropdown({ user }: { user: User | null }) {
     return (
       <button
         onClick={() => router.push("/login")}
-        className="rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition hover:scale-105 dark:border-zinc-800 dark:bg-zinc-900"
+        className="rounded-xl border border-border bg-card px-4 py-2 text-sm font-medium text-foreground shadow-sm transition hover:scale-105 hover:opacity-90 cursor-pointer"
       >
         Iniciar sesión
       </button>
@@ -36,16 +36,16 @@ export default function UserDropdown({ user }: { user: User | null }) {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="h-11 rounded-xl border border-zinc-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition hover:scale-105 dark:border-zinc-800 dark:bg-zinc-900 cursor-pointer"
+        className="h-11 rounded-xl border border-border bg-card px-4 py-2 text-sm font-medium text-foreground shadow-sm transition hover:scale-105 hover:opacity-90 cursor-pointer"
       >
         Hola, {user.name}
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-44 rounded-2xl border border-zinc-200 bg-white p-2 shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="absolute right-0 mt-2 w-44 rounded-2xl border border-border bg-card p-2 text-card-foreground shadow-lg">
           <button
             onClick={handleLogout}
-            className="w-full rounded-xl px-3 py-2 text-left text-sm hover:bg-red-100 dark:hover:bg-red-800"
+            className="w-full rounded-xl px-3 py-2 text-left text-sm text-red-500 transition hover:bg-muted cursor-pointer"
           >
             Cerrar sesión
           </button>
