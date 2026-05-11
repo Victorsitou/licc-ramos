@@ -1,7 +1,7 @@
 import { CreateProblemDto } from "@/app/api/dtos/problem-sets/create-problem.dto";
 import { getCurrentUser } from "@/src/lib/auth";
 import { NextResponse } from "next/server";
-import { createProblem } from "./problems.service";
+import { createProblem } from "../../../problems/problems.service";
 
 export async function POST(
   request: Request,

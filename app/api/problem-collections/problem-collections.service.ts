@@ -1,5 +1,6 @@
 import { prisma } from "@/src/lib/prisma";
 import { CreateProblemCollectionDtoType } from "../dtos/problem-sets/create-problem-collection.dto";
+import { UpdateProblemCollectionDtoType } from "../dtos/problem-sets/update-problem-collection.dto";
 
 export async function getProblemCollections() {
   return await prisma.problemCollection.findMany({
@@ -36,6 +37,30 @@ export async function createProblemCollection(
       orderIndex: orderIndex,
       type: data.type,
       problems: {},
+    },
+  });
+}
+
+export async function updateProblemCollection(
+  id: string,
+  data: UpdateProblemCollectionDtoType,
+) {
+  return await prisma.problemCollection.update({
+    where: {
+      id: id,
+    },
+    data: {
+      title: data.title,
+      description: data.description,
+      type: data.type,
+    },
+  });
+}
+
+export async function deleteProblemCollection(id: string) {
+  return await prisma.problemCollection.delete({
+    where: {
+      id: id,
     },
   });
 }
