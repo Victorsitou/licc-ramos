@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 
 import { Chip } from "@mui/material";
+import Button from "./Button";
+import clsx from "clsx";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 
 import { RamoInterface, isToday, formatDate } from "../utils";
@@ -72,12 +74,12 @@ export default function Clases({
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="relative rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-100/60 via-transparent to-zinc-100/60 dark:from-zinc-800/40 dark:via-transparent dark:to-zinc-800/40 blur-xl pointer-events-none" />
-
+      <div className="relative rounded-2xl border border-border bg-card p-4 overflow-hidden">
         <div className="relative flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm text-zinc-400 mr-2">Filtrar por:</span>
+            <span className="text-sm text-muted-foreground mr-2">
+              Filtrar por:
+            </span>
 
             {filterOptions.map((f) => (
               <button
@@ -86,8 +88,8 @@ export default function Clases({
                 className={`px-3 py-1.5 rounded-xl text-sm transition
             ${
               filter === f
-                ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
-                : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+                ? "bg-accent text-accent-foreground"
+                : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground"
             }`}
               >
                 {f === "todas"
@@ -101,19 +103,21 @@ export default function Clases({
 
           <div className="flex flex-col gap-3 md:flex-row md:items-center">
             <div className="flex items-center gap-2">
-              <span className="text-sm text-zinc-400">Ordenar por:</span>
+              <span className="text-sm text-muted-foreground">
+                Ordenar por:
+              </span>
 
               <select
                 value={order}
                 onChange={(e) => setOrder(e.target.value as "asc" | "desc")}
-                className="bg-zinc-100 dark:bg-zinc-800 text-sm rounded-xl px-3 py-1.5 text-zinc-700 dark:text-zinc-200 border-none outline-none"
+                className="bg-muted text-foreground text-sm rounded-xl px-3 py-1.5 border-none outline-none cursor-pointer"
               >
                 <option value="asc">{"Fecha (antiguas -> nuevas)"}</option>
                 <option value="desc">{"Fecha (nuevas -> antiguas)"}</option>
               </select>
             </div>
 
-            <button
+            <Button
               onClick={() => {
                 if (nextRef.current) {
                   nextRef.current.scrollIntoView({
@@ -123,98 +127,99 @@ export default function Clases({
                   onScrollToNext();
                 }
               }}
-              className="w-full md:w-auto inline-flex justify-center items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition"
+              rounded="lg"
             >
               Próxima clase →
-            </button>
+            </Button>
           </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {filtered.map((item, i) => {
-          let today = isToday(item.fecha);
-          let previousIsToday =
-            i === 0 ? false : isToday(filtered[i - 1]?.fecha);
-          if (today && ramo.offset > 0) {
-            previousIsToday =
-              i === 0 ? false : isToday(filtered[i - (ramo.offset + 1)]?.fecha);
-            today = isToday(filtered[i - ramo.offset]?.fecha);
-          }
-          const isNext = item.clase === nextClase?.clase;
+        {(() => {
+          const todayClass = filtered.find((c) => isToday(c.fecha));
+          const highlightedClassNumber = todayClass
+            ? todayClass.clase - ramo.offset
+            : nextClase?.clase;
+          const todayLabelClassNumber = todayClass
+            ? Math.max(todayClass.clase - ramo.offset, 1)
+            : undefined;
 
-          let css = "";
-          if (today) {
-            css = "ring-2 ring-blue-400 bg-blue-100 dark:bg-blue-900/30";
-          } else if (isNext && !previousIsToday) {
-            css = "ring-2 ring-blue-400 bg-blue-100 dark:bg-blue-900/30";
-          }
+          return filtered.map((item, i) => {
+            const isNext = item.clase === nextClase?.clase;
+            const isHighlighted = item.clase === highlightedClassNumber;
+            const shouldPulse = isNext && highlight;
+            const showsTodayLabel = item.clase === todayLabelClassNumber;
 
-          if (isNext && highlight) {
-            css += "ring-2 ring-blue-400";
-          }
+            return (
+              <button
+                key={item.clase}
+                ref={isNext ? nextRef : null}
+                className={clsx(
+                  "group rounded-3xl border border-border bg-card p-5 text-left shadow-sm transition duration-200",
 
-          return (
-            <button
-              key={item.clase}
-              ref={isNext ? nextRef : null}
-              className={`group text-left rounded-3xl border border-zinc-200 p-5 shadow-sm transition duration-200
-                hover:-translate-y-1 hover:border-blue-400 hover:shadow-xl
-                dark:border-zinc-800
-                ${css ? css : "bg-zinc-50 dark:bg-zinc-950/40"}
-                ${isNext && highlight ? "scale-[1.03]" : ""}
-              `}
-              onClick={() => router.push(`${ramo.sigla}/clases/${item.clase}`)}
-            >
-              <h3 className="text-xl font-bold leading-tight">
-                Clase {item.clase} -{" "}
-                {isToday(item.fecha) ? "Hoy" : formatDate(item.fecha)}
-              </h3>
+                  "hover:-translate-y-1 hover:border-accent hover:shadow-xl",
 
-              <div className="mt-2 flex flex-wrap gap-2">
-                {item.interrogacion && (
-                  <Chip
-                    className="font-bold"
-                    label={`Interrogación ${item.interrogacion}`}
-                    size="small"
-                    variant="outlined"
-                    sx={{
-                      borderColor: "green",
-                      color: "green",
-                    }}
-                  />
+                  {
+                    "ring-2 ring-ring bg-highlight": isHighlighted,
+
+                    "scale-[1.03]": shouldPulse,
+                  },
                 )}
+                onClick={() =>
+                  router.push(`${ramo.sigla}/clases/${item.clase}`)
+                }
+              >
+                <h3 className="text-xl font-bold leading-tight">
+                  Clase {item.clase} -{" "}
+                  {showsTodayLabel ? "Hoy" : formatDate(item.fecha)}
+                </h3>
 
-                {item.texto_guia && (
-                  <Chip
-                    icon={<MenuBookIcon />}
-                    label={item.texto_guia}
-                    size="small"
-                    color="primary"
-                    variant="outlined"
-                  />
-                )}
-              </div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {item.interrogacion && (
+                    <Chip
+                      className="font-bold"
+                      label={`Interrogación ${item.interrogacion}`}
+                      size="small"
+                      variant="outlined"
+                      sx={{
+                        borderColor: "green",
+                        color: "green",
+                      }}
+                    />
+                  )}
 
-              <p className="mt-4 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-                {item.contenido}
-              </p>
-
-              <p className="mt-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
-                <span className="font-semibold text-zinc-800 dark:text-zinc-200">
-                  Objetivo:
-                </span>{" "}
-                {item.objetivo}
-              </p>
-
-              {isNext && (
-                <div className="mt-3 text-xs font-bold text-blue-500">
-                  PRÓXIMA CLASE
+                  {item.texto_guia && (
+                    <Chip
+                      icon={<MenuBookIcon />}
+                      label={item.texto_guia}
+                      size="small"
+                      color="primary"
+                      variant="outlined"
+                    />
+                  )}
                 </div>
-              )}
-            </button>
-          );
-        })}
+
+                <p className="mt-4 text-base font-bold text-foreground">
+                  {item.contenido}
+                </p>
+
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                  <span className="font-semibold text-foreground">
+                    Objetivo:
+                  </span>{" "}
+                  {item.objetivo}
+                </p>
+
+                {isNext && (
+                  <div className="mt-3 text-xs font-bold text-primary">
+                    PRÓXIMA CLASE
+                  </div>
+                )}
+              </button>
+            );
+          });
+        })()}
       </div>
     </div>
   );

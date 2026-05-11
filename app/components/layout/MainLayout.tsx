@@ -4,8 +4,6 @@ import { ReactNode, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { useRouter, usePathname } from "next/navigation";
 
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
 import HomeIcon from "@mui/icons-material/Home";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 
@@ -14,30 +12,32 @@ import UserDropdown from "../UserDropdown";
 import { getUser, User } from "@/app/utils";
 
 function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
+
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
     return (
-      <div className="h-11 w-11 rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900" />
+      <div className="h-11 w-36 rounded-xl border border-border bg-card" />
     );
   }
 
-  const isDark = resolvedTheme === "dark";
-
   return (
-    <button
-      onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 bg-white shadow-sm transition hover:scale-105 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 cursor-pointer"
+    <select
+      value={theme}
+      onChange={(e) => setTheme(e.target.value)}
+      className="h-11 rounded-xl border border-border bg-card px-4 text-sm text-foreground shadow-sm outline-none transition hover:opacity-90 cursor-pointer"
     >
-      {isDark ? (
-        <LightModeIcon fontSize="small" />
-      ) : (
-        <DarkModeIcon fontSize="small" />
-      )}
-    </button>
+      <option value="light">☀️ Light</option>
+
+      <option value="dark">🌙 Dark</option>
+
+      <option value="light-pink">🌸 Light Pink</option>
+
+      <option value="dark-pink">🌺 Dark Pink</option>
+    </select>
   );
 }
 
@@ -55,19 +55,23 @@ export default function MainLayout({
   badge,
 }: Props) {
   const [user, setuser] = useState<User | null>(null);
+
   const [loading, setLoading] = useState(true);
+
   const router = useRouter();
+
   const pathname = usePathname();
 
   useEffect(() => {
     getUser().then((data) => {
       setuser(data);
+
       setLoading(false);
     });
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-zinc-100 via-zinc-50 to-white text-zinc-900 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 dark:text-zinc-100">
+    <div className=" bg-background text-foreground">
       <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 sm:px-10">
         <div className="mb-10 flex items-start justify-between">
           <div>
@@ -76,7 +80,7 @@ export default function MainLayout({
                 <button
                   title="Ir al inicio"
                   onClick={() => router.push("/")}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 bg-white shadow-sm text-zinc-400 transition hover:scale-105 hover:shadow-md hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-500 dark:hover:text-white cursor-pointer"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-card text-muted-foreground shadow-sm transition hover:scale-105 hover:text-foreground cursor-pointer"
                 >
                   <HomeIcon sx={{ fontSize: 22 }} />
                 </button>
@@ -88,7 +92,7 @@ export default function MainLayout({
             </div>
 
             {subtitle && (
-              <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400 sm:text-base">
+              <p className="mt-3 text-sm text-muted-foreground sm:text-base">
                 {subtitle}
               </p>
             )}
@@ -96,17 +100,20 @@ export default function MainLayout({
 
           <div className="flex items-center gap-3">
             <ThemeToggle />
+
             {!loading && <UserDropdown user={user} />}
+
             {user && user.role == "ADMIN" && (
               <button
                 onClick={() => router.push("/dashboard")}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 bg-white shadow-sm transition hover:scale-105 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 cursor-pointer"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-card text-foreground shadow-sm transition hover:scale-105 hover:opacity-90 cursor-pointer"
               >
                 <DashboardIcon sx={{ fontSize: 22 }} />
               </button>
             )}
           </div>
         </div>
+
         {children}
       </main>
     </div>

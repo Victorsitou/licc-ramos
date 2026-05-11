@@ -3,6 +3,9 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import Button from "../components/Button";
+import Breadcrumb from "../components/Breadcrumb";
+
 import { getUser, User } from "../utils";
 import {
   getResource,
@@ -44,7 +47,7 @@ export default function TalleresPage({
 
   return (
     <div className="flex flex-col gap-5 p-4">
-      <div className="rounded-3xl border border-zinc-200 bg-white p-6 text-left shadow-sm transition dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="rounded-3xl border border-border bg-card p-6 text-left shadow-sm transition">
         <div className="flex items-center gap-5 mb-5">
           <button
             onClick={() => router.back()}
@@ -62,22 +65,20 @@ export default function TalleresPage({
             Volver
           </button>
 
-          <nav className="flex items-center gap-1.5 text-xs tracking-widest uppercase">
-            <span className="text-zinc-400 font-medium">Talleres</span>
-          </nav>
+          <Breadcrumb items={[{ label: "Talleres" }]} />
         </div>
 
-        <p className="text-xs font-semibold uppercase tracking-widest text-blue-500 mb-1">
+        <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-1">
           Material de talleres
         </p>
         <h2 className="text-xl font-bold sm:text-2xl">Talleres disponibles</h2>
 
-        <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
+        <p className="mt-4 text-sm text-muted-foreground">
           Revisa los talleres disponibles del curso.
         </p>
 
         <div className="flex gap-3 mt-5">
-          <div className="rounded-full border px-4 py-2 text-sm">
+          <div className="rounded-full border-2 border-border px-4 py-2 text-sm">
             {tallerData?.length ?? "—"} talleres
           </div>
         </div>
@@ -94,10 +95,10 @@ export default function TalleresPage({
                   <div className="mb-4 text-zinc-400">
                     <LockIcon sx={{ fontSize: 48 }} />
                   </div>
-                  <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+                  <h3 className="text-lg font-semibold text-primary">
                     Inicia sesión
                   </h3>
-                  <p className="text-zinc-500 mt-2 max-w-sm">
+                  <p className="text-muted-foreground mt-2 max-w-sm">
                     Necesitas iniciar sesión para ver los talleres disponibles y
                     guardar tu progreso.
                   </p>
@@ -107,10 +108,10 @@ export default function TalleresPage({
                   <div className="mb-4 text-zinc-400">
                     <MenuBookIcon sx={{ fontSize: 48 }} />
                   </div>
-                  <h3 className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+                  <h3 className="text-lg font-semibold text-primary">
                     No hay talleres disponibles
                   </h3>
-                  <p className="text-zinc-500 mt-2 max-w-sm">
+                  <p className="text-muted-foreground mt-2 max-w-sm">
                     Aún no se han publicado talleres, intenta nuevamente más
                     tarde.
                   </p>
@@ -122,11 +123,11 @@ export default function TalleresPage({
               {tallerData.map((item) => (
                 <div
                   key={item.key}
-                  className={`group rounded-2xl border p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl
+                  className={`group rounded-2xl border p-5 shadow-sm transition
                     ${
                       item.completed
-                        ? "bg-green-50 border-green-400 dark:bg-green-900/20"
-                        : "bg-white border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800"
+                        ? "bg-success-soft border-green-400"
+                        : "bg-card border-border"
                     }`}
                 >
                   <button
@@ -143,20 +144,18 @@ export default function TalleresPage({
                       {item.completed &&
                         ` (completado ${dayjs(item.completedAt).fromNow()})`}
                     </p>
-                    <div className="mt-4 text-sm font-semibold text-blue-600 group-hover:underline">
+                    <div className="mt-4 text-sm font-semibold text-primary group-hover:underline">
                       Ver material →
                     </div>
                   </button>
 
                   {user && (
-                    <button
+                    <Button
                       onClick={() => toggleCompleted(item)}
-                      className={`mt-4 w-full text-sm py-2 rounded-xl border transition cursor-pointer
-                        ${
-                          item.completed
-                            ? "bg-green-500 text-white border-green-500 hover:bg-green-600"
-                            : "bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700"
-                        }`}
+                      className="mt-4"
+                      fullWidth
+                      rounded="lg"
+                      variant={item.completed ? "success" : "primary"}
                     >
                       <div className="flex items-center justify-center gap-2">
                         {item.completed && (
@@ -164,11 +163,11 @@ export default function TalleresPage({
                         )}
                         <span>
                           {item.completed
-                            ? "Marcado como completado"
-                            : "Marcar como completado"}
+                            ? "Marcada como completada"
+                            : "Marcar como completada"}
                         </span>
                       </div>
-                    </button>
+                    </Button>
                   )}
                 </div>
               ))}

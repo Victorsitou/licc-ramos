@@ -2,6 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import Button from "./Button";
+import ButtonLink from "./ButtonLink";
+import IconButton from "./IconButton";
+
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -121,7 +125,7 @@ export default function PdfViewer({ url, title }: Props) {
 
   const viewer = (
     <div
-      className={`relative flex flex-col w-full bg-white dark:bg-zinc-900 ${
+      className={`relative flex flex-col w-full bg-card ${
         isFullscreen ? "h-full" : "rounded-3xl overflow-hidden shadow-2xl"
       }`}
     >
@@ -131,42 +135,49 @@ export default function PdfViewer({ url, title }: Props) {
         }`}
       >
         <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-widest text-blue-500">
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary">
             Documento
           </p>
           <h3 className="text-base font-bold truncate">{title}</h3>
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
-          <button
+          <Button
             onClick={downloadPDF}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 cursor-pointer"
+            variant="surface"
+            className="inline-flex items-center gap-1.5"
+            rounded="lg"
           >
             <DownloadIcon sx={{ fontSize: 16 }} />
             <span className="hidden sm:inline">Descargar</span>
-          </button>
+          </Button>
 
-          <button
+          <Button
             onClick={() => navigator.clipboard.writeText(window.location.href)}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 cursor-pointer"
+            variant="surface"
+            className="inline-flex items-center gap-1.5"
+            rounded="lg"
           >
             <ContentCopyIcon sx={{ fontSize: 16 }} />
             <span className="hidden sm:inline">Copiar enlace</span>
-          </button>
+          </Button>
 
-          <a
+          <ButtonLink
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+            variant="surface"
+            className="hidden sm:inline-flex"
           >
             <OpenInNewIcon sx={{ fontSize: 16 }} />
             <span>Abrir en pestaña</span>
-          </a>
+          </ButtonLink>
 
-          <button
+          <Button
             onClick={() => setIsFullscreen((f) => !f)}
-            className="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-zinc-50 p-2 text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 cursor-pointer"
+            variant="surface"
+            className="inline-flex items-center gap-1.5"
+            rounded="lg"
             title={
               isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"
             }
@@ -176,7 +187,7 @@ export default function PdfViewer({ url, title }: Props) {
             ) : (
               <FullscreenIcon sx={{ fontSize: 20 }} />
             )}
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -204,7 +215,12 @@ export default function PdfViewer({ url, title }: Props) {
             >
               <ArrowBackIosNewIcon sx={{ fontSize: 14 }} />
             </button>
-
+            <IconButton
+              onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              <ArrowBackIosNewIcon sx={{ fontSize: 14 }} />
+            </IconButton>
             <span className="text-xs font-semibold text-white tabular-nums">
               {currentPage} / {totalPages}
             </span>
@@ -219,25 +235,23 @@ export default function PdfViewer({ url, title }: Props) {
           </div>
         ) : (
           <div className="flex items-center justify-center gap-4 px-5 py-3 border-t border-zinc-200 dark:border-zinc-800 shrink-0">
-            <button
+            <IconButton
               onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
               disabled={currentPage === 1}
-              className="p-2 rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-700 disabled:opacity-30 hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 transition"
             >
-              <ArrowBackIosNewIcon sx={{ fontSize: 16 }} />
-            </button>
+              <ArrowBackIosNewIcon sx={{ fontSize: 14 }} />
+            </IconButton>
 
-            <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 tabular-nums">
+            <span className="text-sm font-semibold text-muted-foreground dark:text-zinc-300 tabular-nums">
               {currentPage} / {totalPages}
             </span>
 
-            <button
+            <IconButton
               onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className="p-2 rounded-xl border border-zinc-200 bg-zinc-50 text-zinc-700 disabled:opacity-30 hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 transition"
             >
-              <ArrowForwardIosIcon sx={{ fontSize: 16 }} />
-            </button>
+              <ArrowForwardIosIcon sx={{ fontSize: 14 }} />
+            </IconButton>
           </div>
         ))}
     </div>
@@ -245,9 +259,7 @@ export default function PdfViewer({ url, title }: Props) {
 
   if (isFullscreen) {
     return (
-      <div className="fixed inset-0 z-50 bg-white dark:bg-zinc-900 flex flex-col">
-        {viewer}
-      </div>
+      <div className="fixed inset-0 z-50 bg-card flex flex-col">{viewer}</div>
     );
   }
 
