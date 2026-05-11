@@ -6,7 +6,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 import HomeIcon from "@mui/icons-material/Home";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-
+import ButtonLink from "../ButtonLink";
 import UserDropdown from "../UserDropdown";
 
 import { getUser, User } from "@/app/utils";
@@ -43,14 +43,14 @@ interface Props {
   children: ReactNode;
   title: string;
   subtitle?: string;
-  badge?: string;
+  fullWidth?: boolean;
 }
 
 export default function MainLayout({
   children,
   title,
   subtitle,
-  badge,
+  fullWidth = false,
 }: Props) {
   const [user, setuser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -66,9 +66,12 @@ export default function MainLayout({
     });
   }, []);
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <div className="relative bg-background text-foreground">
-      {theme === "peru" && (
+      {mounted && theme === "peru" && (
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10 pointer-events-none"
           style={{
@@ -76,7 +79,9 @@ export default function MainLayout({
           }}
         />
       )}
-      <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 sm:px-10">
+      <main
+        className={`mx-auto flex min-h-screen w-full ${!fullWidth ? "max-w-5xl" : ""} flex-col px-6 py-10 sm:px-10`}
+      >
         <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
           <div>
             <div className="flex items-center gap-3">
@@ -103,6 +108,12 @@ export default function MainLayout({
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
+            {pathname === "/" && (
+              <ButtonLink href="/calendario" className="h-11 rounded-xl px-5">
+                Calendario
+              </ButtonLink>
+            )}
+
             <ThemeToggle />
 
             {!loading && <UserDropdown user={user} />}

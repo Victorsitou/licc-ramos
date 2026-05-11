@@ -336,14 +336,14 @@
       }
     ],
     "info_interrogaciones": [
-      { "interrogacion": 1, "fecha": "2026-03-20" },
-      { "interrogacion": 2, "fecha": "2026-03-27" },
-      { "interrogacion": 3, "fecha": "2026-04-10" },
-      { "interrogacion": 4, "fecha": "2026-04-24" },
-      { "interrogacion": 5, "fecha": "2026-05-15" },
-      { "interrogacion": 6, "fecha": "2026-05-29" },
-      { "interrogacion": 7, "fecha": "2026-06-05" },
-      { "interrogacion": 8, "fecha": "2026-06-19" }
+      { "interrogacion": 1, "fecha": "2026-03-20", "modulo": 2 },
+      { "interrogacion": 2, "fecha": "2026-03-27", "modulo": 4 },
+      { "interrogacion": 3, "fecha": "2026-04-10", "modulo": 2 },
+      { "interrogacion": 4, "fecha": "2026-04-24", "modulo": 4 },
+      { "interrogacion": 5, "fecha": "2026-05-15", "modulo": 2 },
+      { "interrogacion": 6, "fecha": "2026-05-29", "modulo": 4 },
+      { "interrogacion": 7, "fecha": "2026-06-05", "modulo": 2 },
+      { "interrogacion": 8, "fecha": "2026-06-19", "modulo": 4 }
     ]
   },
   {
@@ -575,14 +575,14 @@
       }
     ],
     "info_interrogaciones": [
-      { "interrogacion": 1, "fecha": "2026-03-20" },
-      { "interrogacion": 2, "fecha": "2026-03-27" },
-      { "interrogacion": 3, "fecha": "2026-04-10" },
-      { "interrogacion": 4, "fecha": "2026-04-24" },
-      { "interrogacion": 5, "fecha": "2026-05-15" },
-      { "interrogacion": 6, "fecha": "2026-05-29" },
-      { "interrogacion": 7, "fecha": "2026-06-05" },
-      { "interrogacion": 8, "fecha": "2026-06-19" }
+      { "interrogacion": 1, "fecha": "2026-03-20", "modulo": 4 },
+      { "interrogacion": 2, "fecha": "2026-03-27", "modulo": 2 },
+      { "interrogacion": 3, "fecha": "2026-04-10", "modulo": 4 },
+      { "interrogacion": 4, "fecha": "2026-04-24", "modulo": 2 },
+      { "interrogacion": 5, "fecha": "2026-05-15", "modulo": 4 },
+      { "interrogacion": 6, "fecha": "2026-05-29", "modulo": 2 },
+      { "interrogacion": 7, "fecha": "2026-06-05", "modulo": 4 },
+      { "interrogacion": 8, "fecha": "2026-06-19", "modulo": 2 }
     ]
   }
 ]

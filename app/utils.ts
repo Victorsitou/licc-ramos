@@ -67,6 +67,7 @@ export interface InfoClase {
 export interface InfoInterrogacion {
   interrogacion: number;
   fecha: string;
+  modulo: number;
 }
 
 export interface RamoInterface {
