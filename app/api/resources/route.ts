@@ -86,6 +86,10 @@ export async function GET(request: Request) {
           orderIndex: orderIndex,
         });
       } else {
+        // If the user is not verified and is looking for non-class resources, return an empty array.
+        if (type && type !== "CLASS") {
+          return NextResponse.json([], { status: 200 });
+        }
         resources = await getClassesResources({
           slug: slug,
           type: type,

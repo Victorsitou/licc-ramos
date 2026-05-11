@@ -125,6 +125,26 @@ export default function AyudantiasPage({
                     y guardar tu progreso.
                   </p>
                 </>
+              ) : !user.verified ? (
+                <>
+                  <div className="mb-4 text-zinc-400">
+                    <LockIcon sx={{ fontSize: 48 }} />
+                  </div>
+                  <h3 className="text-lg font-semibold text-primary">
+                    Verifica tu cuenta
+                  </h3>
+                  <p className="text-muted-foreground mt-2 max-w-sm">
+                    Necesitas verificar tu cuenta para ver las ayudantías
+                    disponibles y guardar tu progreso. Mándanos un correo a{" "}
+                    <a
+                      href="mailto:vvegaa5@estudiante.uc.cl"
+                      className="text-primary underline"
+                    >
+                      aquí
+                    </a>{" "}
+                    para verificar tu cuenta.
+                  </p>
+                </>
               ) : (
                 <>
                   <div className="mb-4 text-zinc-400">
