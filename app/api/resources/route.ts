@@ -44,14 +44,31 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const slug = searchParams.get("slug") || undefined;
+  const type = searchParams.get("type") as
+    | "CLASS"
+    | "WORKSHOP"
+    | "AYUDANTIA"
+    | undefined;
+  const orderIndex = searchParams.get("orderIndex")
+    ? parseInt(searchParams.get("orderIndex")!)
+    : undefined;
   try {
     const userJWt = await getCurrentUser();
 
     let resources;
     if (!userJWt?.sub) {
       // If the user is not logged in, then return only the classes.
-      resources = await getClassesResources();
+      if (type && type !== "CLASS") {
+        return NextResponse.json([], { status: 200 });
+      }
+      resources = await getClassesResources({
+        slug: slug,
+        type: type,
+        orderIndex: orderIndex,
+      });
     } else {
       const user = await getUserById(userJWt.sub);
 
@@ -63,9 +80,17 @@ export async function GET() {
       // if so, then return all resources with the completed status
       // if not, then only return the classes.
       if (user.verified) {
-        resources = await getUserResources(user.id);
+        resources = await getUserResources(user.id, {
+          slug: slug,
+          type: type,
+          orderIndex: orderIndex,
+        });
       } else {
-        resources = await getClassesResources();
+        resources = await getClassesResources({
+          slug: slug,
+          type: type,
+          orderIndex: orderIndex,
+        });
       }
     }
     return NextResponse.json(resources);

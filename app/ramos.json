@@ -2,7 +2,9 @@
   {
     "sigla": "MAT1207",
     "nombre": "Introducción a Algebra y Geometría",
+    "descripcion": "En este curso, de carácter teórico-aplicado, los estudiantes desarrollarán habilidades para el razonamiento científico, lógico-analítico y la resolución de problemas en el contexto del álgebra y la geometría. En el curso se abordarán temas como: fundamentos de lógica matemática, funciones, inducción, trigonometría, números complejos y geometría analítica.",
     "clases": 43,
+    "offset": 1,
     "url": "https://repositorios.mat.uc.cl/MAT1207/",
     "info_clases": [
       {
@@ -146,63 +148,72 @@
         "fecha": "2026-04-14",
         "objetivo": "Comprender razones trigonométricas.",
         "contenido": "Razones trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 19,
         "fecha": "2026-04-15",
         "objetivo": "Comprender funciones trigonométricas.",
         "contenido": "Funciones trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 20,
         "fecha": "2026-04-20",
         "objetivo": "Comprender funciones trigonométricas.",
         "contenido": "Funciones trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 21,
         "fecha": "2026-04-21",
         "objetivo": "Aplicar identidades trigonométricas.",
         "contenido": "Identidades trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 22,
         "fecha": "2026-04-22",
         "objetivo": "Aplicar identidades trigonométricas.",
         "contenido": "Identidades trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 23,
         "fecha": "2026-04-27",
         "objetivo": "Usar funciones trig inversas.",
         "contenido": "Funciones trigonométricas inversas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 24,
         "fecha": "2026-04-28",
         "objetivo": "Usar funciones trig inversas.",
         "contenido": "Funciones trigonométricas inversas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 25,
         "fecha": "2026-04-29",
         "objetivo": "Resolver ecuaciones trigonométricas.",
         "contenido": "Ecuaciones trigonométricas",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 26,
         "fecha": "2026-05-04",
         "objetivo": "Aplicar teorema del seno y coseno.",
         "contenido": "Teorema del seno y coseno",
-        "texto_guia": "Capítulo 4"
+        "texto_guia": "Capítulo 4",
+        "interrogacion": 5
       },
       {
         "clase": 27,
@@ -338,7 +349,9 @@
   {
     "sigla": "MAT1107",
     "nombre": "Introducción a Cálculo",
+    "descripcion": "En este curso, de carácter teórico-aplicado, los estudiantes desarrollarán habilidades para el razonamiento científico, lógico-analítico y la resolución de problemas en el contexto del precálculo. En el curso se abordarán temas como: inecuaciones, polinomios, sucesiones y funciones a valores reales.",
     "clases": 29,
+    "offset": 0,
     "url": "https://repositorios.mat.uc.cl/MAT1107/",
     "info_clases": [
       {
@@ -435,7 +448,7 @@
         "objetivo": "Comprender transformaciones de funciones.",
         "contenido": "Transformaciones de funciones",
         "texto_guia": "Capítulo 3",
-        "interrogacion": 4
+        "interrogacion": 5
       },
       {
         "clase": 13,
@@ -443,28 +456,31 @@
         "objetivo": "Analizar y graficar funciones racionales.",
         "contenido": "Gráfica de funciones racionales",
         "texto_guia": "Capítulo 3",
-        "interrogacion": 4
+        "interrogacion": 5
       },
       {
         "clase": 14,
         "fecha": "2026-04-20",
         "objetivo": "Comprender funciones biyectivas.",
         "contenido": "Funciones biyectivas",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 5
       },
       {
         "clase": 15,
         "fecha": "2026-04-22",
         "objetivo": "Comprender funciones biyectivas.",
         "contenido": "Funciones biyectivas",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 5
       },
       {
         "clase": 16,
         "fecha": "2026-04-27",
         "objetivo": "Usar álgebra y composición de funciones.",
         "contenido": "Álgebra y composición de funciones",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 5
       },
       {
         "clase": 17,

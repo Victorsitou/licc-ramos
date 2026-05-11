@@ -65,5 +65,27 @@
       }
     ],
     "footer": "Mucho éxito a todos :)"
+  },
+  {
+    "id": "6",
+    "date": "2026-05-10",
+    "features": [
+      {
+        "emoji": "🔒",
+        "title": "Reseteo de contraseña",
+        "description": "Ahora es posible recuperar tu contraseña en caso de que la hayas olvidado."
+      },
+      {
+        "emoji": "🎨",
+        "title": "¡Nuevos temas!",
+        "description": "Ahora puedes elegir entre más temas de colores para personalizar la app."
+      },
+      {
+        "emoji": "📊",
+        "title": "Contenidos de la interrogación 5",
+        "description": "Ya actualicé los contenidos que corresponden a la interrogación 5."
+      }
+    ],
+    "footer": "Mucha suerte a todos en la i5 <3"
   }
 ]

@@ -11,14 +11,38 @@ export interface Resource {
   completedAt: string | null;
 }
 
-export async function getResource(): Promise<Resource[]> {
-  const response = await fetch("/api/resources");
-
+export async function getResource({
+  slug,
+  type,
+  orderIndex,
+}: {
+  slug?: string;
+  type?: "CLASS" | "AYUDANTIA" | "WORKSHOP";
+  orderIndex?: number;
+}): Promise<Resource[]> {
+  const response = await fetch(
+    `/api/resources?${new URLSearchParams({
+      ...(slug ? { slug } : {}),
+      ...(type ? { type } : {}),
+      ...(orderIndex !== undefined
+        ? { orderIndex: orderIndex.toString() }
+        : {}),
+    })}`,
+  );
   if (!response.ok) {
     return [];
   }
 
   return response.json();
+}
+
+export async function getResourceByIndex(
+  slug: string,
+  type: "AYUDANTIA" | "WORKSHOP" | "CLASS",
+  orderIndex: number,
+): Promise<Resource | null> {
+  const resources = await getResource({ slug, type, orderIndex });
+  return resources[0] || null;
 }
 
 export async function toggleResourceCompletion(
