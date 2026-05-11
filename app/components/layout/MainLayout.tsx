@@ -30,13 +30,13 @@ function ThemeToggle() {
       onChange={(e) => setTheme(e.target.value)}
       className="h-11 rounded-xl border border-border bg-card px-4 text-sm text-foreground shadow-sm outline-none transition hover:opacity-90 cursor-pointer"
     >
-      <option value="light">☀️ Light</option>
+      <option value="light">☀️ Claro</option>
 
-      <option value="dark">🌙 Dark</option>
+      <option value="dark">🌙 Oscuro</option>
 
-      <option value="light-pink">🌸 Light Pink</option>
+      <option value="light-pink">🌸 Rosa claro</option>
 
-      <option value="dark-pink">🌺 Dark Pink</option>
+      <option value="dark-pink">🌺 Rosa oscuro</option>
     </select>
   );
 }
