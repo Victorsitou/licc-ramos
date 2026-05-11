@@ -32,6 +32,7 @@ export interface RamoInterface {
   sigla: string;
   nombre: string;
   clases: number;
+  offset: number;
   url: string;
   info_clases: InfoClase[];
   info_interrogaciones: InfoInterrogacion[];

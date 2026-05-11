@@ -73,7 +73,7 @@ export default function MainLayout({
   return (
     <div className=" bg-background text-foreground">
       <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 sm:px-10">
-        <div className="mb-10 flex items-start justify-between">
+        <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
           <div>
             <div className="flex items-center gap-3">
               {pathname !== "/" && (
@@ -98,7 +98,7 @@ export default function MainLayout({
             )}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <ThemeToggle />
 
             {!loading && <UserDropdown user={user} />}
