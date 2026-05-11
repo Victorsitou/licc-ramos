@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { zxcvbn, zxcvbnOptions } from "@zxcvbn-ts/core";
 import * as zxcvbnEsEsPackage from "@zxcvbn-ts/language-es-es";
@@ -201,12 +201,8 @@ function ResetPasswordForm({ token }: { token: string }) {
   );
 }
 
-export default function PasswordRecoveryPage({
-  searchParams,
-}: {
-  searchParams: { token?: string };
-}) {
-  const token = searchParams.token;
+function ResetPasswordContent() {
+  const token = useSearchParams().get("token");
   const isReset = Boolean(token);
 
   return (
@@ -226,5 +222,13 @@ export default function PasswordRecoveryPage({
         </main>
       </div>
     </MainLayout>
+  );
+}
+
+export default function PasswordRecoveryPage() {
+  return (
+    <Suspense fallback={<div>Cargando...</div>}>
+      <ResetPasswordContent />
+    </Suspense>
   );
 }
