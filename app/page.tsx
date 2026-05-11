@@ -62,7 +62,6 @@ export default function Home() {
     <MainLayout
       title="Busca tus diapositivas"
       subtitle="Accede a las diapositivas de los ramos MAT más rápido :)"
-      badge="Repositorio de clases"
     >
       <div className="transition-colors">
         <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 sm:px-10">
