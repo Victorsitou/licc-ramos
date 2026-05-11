@@ -27,9 +27,12 @@ export async function GET(
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    return NextResponse.json(await getProblemCollectionById(collectionId), {
-      status: 201,
-    });
+    return NextResponse.json(
+      await getProblemCollectionById(collectionId, user.sub),
+      {
+        status: 201,
+      },
+    );
   } catch {
     return NextResponse.json(
       { error: "Error fetching problem collection" },
@@ -70,9 +73,12 @@ export async function PATCH(
 
     await updateProblemCollection(collectionId, parsed.data);
 
-    return NextResponse.json(await getProblemCollectionById(collectionId), {
-      status: 200,
-    });
+    return NextResponse.json(
+      await getProblemCollectionById(collectionId, user.sub),
+      {
+        status: 200,
+      },
+    );
   } catch {
     return NextResponse.json(
       { error: "Error updating problem collection" },

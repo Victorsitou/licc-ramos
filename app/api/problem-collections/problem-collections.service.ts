@@ -10,15 +10,56 @@ export async function getProblemCollections() {
   });
 }
 
-export async function getProblemCollectionById(id: string) {
-  return await prisma.problemCollection.findUnique({
+export async function getProblemCollectionById(
+  collectionId: string,
+  userId: string,
+) {
+  const collection = await prisma.problemCollection.findUnique({
     where: {
-      id: id,
+      id: collectionId,
     },
     include: {
-      problems: true,
+      problems: {
+        orderBy: {
+          orderIndex: "asc",
+        },
+        include: {
+          progressRecords: {
+            where: {
+              userId,
+            },
+          },
+        },
+      },
     },
   });
+
+  if (!collection) return null;
+
+  const problems = collection.problems.map((problem) => ({
+    id: problem.id,
+    title: problem.title,
+    description: problem.description,
+    orderIndex: problem.orderIndex,
+
+    completed: problem.progressRecords.length > 0,
+  }));
+
+  const completed = problems.filter((p) => p.completed).length;
+
+  return {
+    ...collection,
+    problems,
+
+    progress: {
+      completed,
+      total: problems.length,
+      percentage:
+        problems.length === 0
+          ? 0
+          : Math.round((completed / problems.length) * 100),
+    },
+  };
 }
 
 export async function createProblemCollection(
