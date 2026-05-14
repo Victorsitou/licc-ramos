@@ -42,7 +42,7 @@ export default function ClasesHoy({ ramo }: { ramo: RamoInterface }) {
       className={clsx(
         "group w-full rounded-3xl border border-border bg-card p-5 text-left shadow-sm transition duration-200",
         "hover:-translate-y-1 hover:border-accent hover:shadow-xl",
-        "ring-2 ring-ring bg-highlight",
+        "ring-2 ring-ring bg-highlight cursor-pointer",
       )}
     >
       <h3 className="text-xl font-bold leading-tight">

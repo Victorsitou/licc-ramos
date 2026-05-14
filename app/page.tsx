@@ -76,10 +76,7 @@ export default function Home() {
           <div className="w-full">
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               {ramos.map((ramo) => (
-                <div
-                  key={ramo.sigla + "1"}
-                  className="flex flex-col gap-5 cursor-pointer"
-                >
+                <div key={ramo.sigla + "1"} className="flex flex-col gap-5">
                   <ClasesHoy key={ramo.sigla + "2"} ramo={ramo} />
                   <div
                     key={ramo.sigla + "3"}
