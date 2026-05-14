@@ -69,6 +69,21 @@ export default function MainLayout({
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
+  if (!mounted) {
+    return <div className="bg-background">Cargando...</div>;
+  }
+
+  const jigglypuff =
+    user &&
+    ["cmo77tiwb000004l2qo6fdnjx", "cmo6neexu000004l4761ipfk5"].includes(
+      user.id,
+    );
+  const mainWidth = fullWidth
+    ? "w-full"
+    : jigglypuff
+      ? "w-full lg:w-[calc(100%-200px)]"
+      : "max-w-5xl";
+
   return (
     <div className="relative bg-background text-foreground">
       {mounted && theme === "peru" && (
@@ -80,7 +95,7 @@ export default function MainLayout({
         />
       )}
       <main
-        className={`mx-auto flex min-h-screen w-full ${!fullWidth ? "max-w-5xl" : ""} flex-col px-6 py-10 sm:px-10`}
+        className={`mx-auto flex min-h-screen ${mainWidth} flex-col px-3 py-10 sm:px-10`}
       >
         <div className="mb-10 flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
           <div>
@@ -125,6 +140,19 @@ export default function MainLayout({
               >
                 <DashboardIcon sx={{ fontSize: 22 }} />
               </button>
+            )}
+
+            {jigglypuff && (
+              <div
+                style={{
+                  backgroundImage: "url('/jigglypuff.png')",
+                  width: "200px",
+                  height: "200px",
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                }}
+              />
             )}
           </div>
         </div>
