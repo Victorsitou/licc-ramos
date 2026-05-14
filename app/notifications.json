@@ -98,5 +98,16 @@
         "description": "¡Ahora puedes ver un calendario con todas las clases e interrogaciones de cada ramo!"
       }
     ]
+  },
+  {
+    "id": "8",
+    "date": "2026-05-14",
+    "features": [
+      {
+        "emoji": "📊",
+        "title": "Actualizados los contenidos de la interrogación 5",
+        "description": "Añadieron \"Funciones Inversas\" en Intro a Cálculo."
+      }
+    ]
   }
 ]

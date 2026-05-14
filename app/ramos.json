@@ -487,14 +487,16 @@
         "fecha": "2026-04-29",
         "objetivo": "Comprender funciones inversas.",
         "contenido": "Función inversa",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 5
       },
       {
         "clase": 18,
         "fecha": "2026-05-04",
         "objetivo": "Comprender funciones inversas.",
         "contenido": "Función inversa",
-        "texto_guia": "Capítulo 3"
+        "texto_guia": "Capítulo 3",
+        "interrogacion": 5
       },
       {
         "clase": 19,
