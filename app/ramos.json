@@ -220,21 +220,24 @@
         "fecha": "2026-05-05",
         "objetivo": "Resolver con números complejos.",
         "contenido": "Números complejos",
-        "texto_guia": "Capítulo 7"
+        "texto_guia": "Capítulo 7",
+        "interrogacion": 6
       },
       {
         "clase": 28,
         "fecha": "2026-05-06",
         "objetivo": "Trabajar forma polar.",
         "contenido": "Forma polar",
-        "texto_guia": "Capítulo 7"
+        "texto_guia": "Capítulo 7",
+        "interrogacion": 6
       },
       {
         "clase": 29,
         "fecha": "2026-05-11",
         "objetivo": "Manipular raíces complejas.",
         "contenido": "Raíces n-ésimas",
-        "texto_guia": "Capítulo 7"
+        "texto_guia": "Capítulo 7",
+        "interrogacion": 6
       },
       {
         "clase": 30,
@@ -503,21 +506,24 @@
         "fecha": "2026-05-06",
         "objetivo": "Introducir el concepto de límite en sucesiones.",
         "contenido": "Límites y convergencia",
-        "texto_guia": "Capítulo 10"
+        "texto_guia": "Capítulo 10",
+        "interrogacion": 6
       },
       {
         "clase": 20,
         "fecha": "2026-05-11",
         "objetivo": "Introducir el concepto de límite en sucesiones.",
         "contenido": "Límites y convergencia",
-        "texto_guia": "Capítulo 10"
+        "texto_guia": "Capítulo 10",
+        "interrogacion": 6
       },
       {
         "clase": 21,
         "fecha": "2026-05-13",
         "objetivo": "Operar con límites de sucesiones.",
         "contenido": "Operaciones con límites",
-        "texto_guia": "Capítulo 10"
+        "texto_guia": "Capítulo 10",
+        "interrogacion": 6
       },
       {
         "clase": 22,

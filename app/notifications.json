@@ -109,5 +109,17 @@
         "description": "Añadieron \"Funciones Inversas\" en Intro a Cálculo."
       }
     ]
+  },
+  {
+    "id": "9",
+    "date": "2026-05-24",
+    "features": [
+      {
+        "emoji": "📊",
+        "title": "Contenidos de la interrogación 6",
+        "description": "Ya actualicé los contenidos que corresponden a la interrogación 6."
+      }
+    ],
+    "footer": "Mucho éxito a todos!!!"
   }
 ]
