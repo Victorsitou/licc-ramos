@@ -20,7 +20,11 @@ export default function Login() {
   }, []);
 
   const handleLogin = () => {
-    login(email, password).then(async (res) => {
+    let userEmail = email.trim().toLowerCase();
+    if (!userEmail.split("@")[1]?.endsWith("estudiante.uc.cl")) {
+      userEmail = userEmail + "@estudiante.uc.cl";
+    }
+    login(userEmail, password).then(async (res) => {
       if (!res.ok) {
         const data = await res.json();
         alert(data.error || "Error al iniciar sesión");
