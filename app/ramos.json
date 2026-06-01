@@ -244,21 +244,24 @@
         "fecha": "2026-05-12",
         "objetivo": "Analizar gráficos de polinomios.",
         "contenido": "Gráficas de polinomios",
-        "texto_guia": "Capítulo 7"
+        "texto_guia": "Capítulo 7",
+        "interrogacion": 7
       },
       {
         "clase": 31,
         "fecha": "2026-05-13",
         "objetivo": "Resolver ecuaciones polinómicas.",
         "contenido": "Raíces racionales y complejas",
-        "texto_guia": "Capítulo 7"
+        "texto_guia": "Capítulo 7",
+        "interrogacion": 7
       },
       {
         "clase": 32,
         "fecha": "2026-05-25",
         "objetivo": "Comprender teorema fundamental del álgebra.",
         "contenido": "Teorema Fundamental del Álgebra",
-        "texto_guia": "Capítulo 7"
+        "texto_guia": "Capítulo 7",
+        "interrogacion": 7
       },
       {
         "clase": 33,
@@ -530,14 +533,16 @@
         "fecha": "2026-05-25",
         "objetivo": "Aplicar el Teorema del Sandwich.",
         "contenido": "Teorema del Sandwich",
-        "texto_guia": "Capítulo 10"
+        "texto_guia": "Capítulo 10",
+        "interrogacion": 7
       },
       {
         "clase": 23,
         "fecha": "2026-05-27",
         "objetivo": "Aplicar el Teorema del Sandwich.",
         "contenido": "Teorema del Sandwich",
-        "texto_guia": "Capítulo 10"
+        "texto_guia": "Capítulo 10",
+        "interrogacion": 7
       },
       {
         "clase": 24,
