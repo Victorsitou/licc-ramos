@@ -1,45 +1,35 @@
-import { getCurrentUser } from "@/src/lib/auth";
 import { NextResponse } from "next/server";
+import { getCurrentUser } from "@/src/lib/auth";
 import {
   deleteProblemCollection,
   getProblemCollectionById,
   updateProblemCollection,
 } from "../problem-collections.service";
 import { updateProblemCollectionDto } from "../../dtos/problem-sets/update-problem-collection.dto";
+import { withVerified } from "@/app/api/wrappers/withVerified";
 
-export async function GET(
-  request: Request,
-  {
-    params,
-  }: {
-    params: Promise<{ collectionId: string }>;
+export const GET = withVerified<{ collectionId: string }>(
+  async (_, user, { params }) => {
+    try {
+      const collectionId = (await params).collectionId;
+      const collection = await getProblemCollectionById(collectionId, user.id);
+
+      if (!collection) {
+        return NextResponse.json(
+          { error: "Problem collection not found" },
+          { status: 404 },
+        );
+      }
+
+      return NextResponse.json(collection, { status: 200 });
+    } catch {
+      return NextResponse.json(
+        { error: "Error fetching problem collection" },
+        { status: 500 },
+      );
+    }
   },
-) {
-  try {
-    const collectionId = (await params).collectionId;
-    const user = await getCurrentUser();
-
-    if (!user?.sub) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
-    if (user.role !== "ADMIN") {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-    }
-
-    return NextResponse.json(
-      await getProblemCollectionById(collectionId, user.sub),
-      {
-        status: 201,
-      },
-    );
-  } catch {
-    return NextResponse.json(
-      { error: "Error fetching problem collection" },
-      { status: 500 },
-    );
-  }
-}
+);
 
 export async function PATCH(
   request: Request,
