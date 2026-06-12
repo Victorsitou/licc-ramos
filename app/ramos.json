@@ -268,28 +268,32 @@
         "fecha": "2026-05-26",
         "objetivo": "Trabajar rectas en el plano.",
         "contenido": "Rectas en el plano",
-        "texto_guia": "Capítulo 9"
+        "texto_guia": "Capítulo 9",
+        "interrogacion": 8
       },
       {
         "clase": 34,
         "fecha": "2026-05-27",
         "objetivo": "Calcular distancia punto-recta.",
         "contenido": "Distancia a una recta",
-        "texto_guia": "Capítulo 9"
+        "texto_guia": "Capítulo 9",
+        "interrogacion": 8
       },
       {
         "clase": 35,
         "fecha": "2026-06-01",
         "objetivo": "Resolver problemas con circunferencia.",
         "contenido": "Circunferencia",
-        "texto_guia": "Capítulo 9"
+        "texto_guia": "Capítulo 9",
+        "interrogacion": 8
       },
       {
         "clase": 36,
         "fecha": "2026-06-02",
         "objetivo": "Analizar familias de circunferencias.",
         "contenido": "Familias de circunferencias",
-        "texto_guia": "Capítulo 9"
+        "texto_guia": "Capítulo 9",
+        "interrogacion": 8
       },
       {
         "clase": 37,
@@ -549,21 +553,24 @@
         "fecha": "2026-06-01",
         "objetivo": "Identificar sucesiones monótonas y acotadas.",
         "contenido": "Sucesiones monótonas y acotadas",
-        "texto_guia": "Capítulo 10"
+        "texto_guia": "Capítulo 10",
+        "interrogacion": 8
       },
       {
         "clase": 25,
         "fecha": "2026-06-03",
         "objetivo": "Calcular límites notables.",
         "contenido": "Límites relevantes",
-        "texto_guia": "Capítulo 10"
+        "texto_guia": "Capítulo 10",
+        "interrogacion": 8
       },
       {
         "clase": 26,
         "fecha": "2026-06-08",
         "objetivo": "Comprender límites infinitos.",
         "contenido": "Límites infinitos",
-        "texto_guia": "Capítulo 10"
+        "texto_guia": "Capítulo 10",
+        "interrogacion": 8
       },
       {
         "clase": 27,
