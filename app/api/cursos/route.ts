@@ -1,15 +1,8 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
-import { getCurrentUser } from "@/src/lib/auth";
 
 export async function GET() {
   try {
-    const user = await getCurrentUser();
-
-    if (!user?.sub) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
     const archivos = await fs.readdir(process.cwd() + "/app/cursos", {
       withFileTypes: true,
     });
