@@ -137,6 +137,8 @@ export default function Clases({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {(() => {
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
           const todayClass = filtered.find((c) => isToday(c.fecha));
           const highlightedClassNumber = todayClass
             ? todayClass.clase - ramo.offset
@@ -144,17 +146,34 @@ export default function Clases({
           const todayLabelClassNumber = todayClass
             ? Math.max(todayClass.clase - ramo.offset, 1)
             : undefined;
-          const nextInterrogacion = ramo.info_interrogaciones.find((i) => {
-            const fecha = new Date(i.fecha);
-            fecha.setDate(fecha.getDate() + 1);
-            return fecha >= new Date();
-          });
 
-          return filtered.map((item, i) => {
+          const interrogacionesOrdenadas = [...ramo.info_interrogaciones].sort(
+            (a, b) =>
+              new Date(`${a.fecha}T00:00:00`).getTime() -
+              new Date(`${b.fecha}T00:00:00`).getTime(),
+          );
+
+          const nextInterrogacion = interrogacionesOrdenadas.find(
+            (interrogacion) => {
+              const fecha = new Date(`${interrogacion.fecha}T00:00:00`);
+              return fecha >= today;
+            },
+          );
+
+          return filtered.map((item) => {
             const isNext = item.clase === nextClase?.clase;
             const isHighlighted = item.clase === highlightedClassNumber;
             const shouldPulse = isNext && highlight;
             const showsTodayLabel = item.clase === todayLabelClassNumber;
+            const interrogacionInfo = ramo.info_interrogaciones.find(
+              (interrogacion) =>
+                interrogacion.interrogacion === item.interrogacion,
+            );
+            const fechaInterrogacion = interrogacionInfo
+              ? new Date(`${interrogacionInfo.fecha}T00:00:00`)
+              : undefined;
+            const isInterrogacionCompleted =
+              fechaInterrogacion !== undefined && fechaInterrogacion < today;
             const isNextInterrogacion =
               nextInterrogacion?.interrogacion === item.interrogacion;
 
@@ -164,12 +183,9 @@ export default function Clases({
                 ref={isNext ? nextRef : null}
                 className={clsx(
                   "group rounded-3xl border border-border bg-card p-5 text-left shadow-sm transition duration-200",
-
                   "hover:-translate-y-1 hover:border-accent hover:shadow-xl",
-
                   {
                     "ring-2 ring-ring bg-highlight": isHighlighted,
-
                     "scale-[1.03]": shouldPulse,
                   },
                 )}
@@ -188,13 +204,27 @@ export default function Clases({
                   {item.interrogacion && (
                     <Chip
                       className="font-bold"
-                      label={`Interrogación ${item.interrogacion}`}
+                      label={
+                        isInterrogacionCompleted
+                          ? `Interrogación ${item.interrogacion} · Completada`
+                          : isNextInterrogacion
+                            ? `Interrogación ${item.interrogacion} · Próxima`
+                            : `Interrogación ${item.interrogacion} · Pendiente`
+                      }
                       size="small"
                       variant="outlined"
                       sx={{
-                        borderColor: isNextInterrogacion ? "red" : "green",
+                        borderColor: isInterrogacionCompleted
+                          ? "green"
+                          : isNextInterrogacion
+                            ? "red"
+                            : "orange",
 
-                        color: isNextInterrogacion ? "red" : "green",
+                        color: isInterrogacionCompleted
+                          ? "green"
+                          : isNextInterrogacion
+                            ? "red"
+                            : "orange",
                       }}
                     />
                   )}
