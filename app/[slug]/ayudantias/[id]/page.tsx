@@ -1,8 +1,8 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState, useMemo } from "react";
-import { getRamo } from "../../../utils";
+import { useEffect, useState } from "react";
+import { getRamo, RamoInterface } from "../../../utils";
 import PDFViewer from "@/app/components/PDFViewer";
 import {
   getResourceByIndex,
@@ -15,46 +15,49 @@ import Breadcrumb from "@/app/components/Breadcrumb";
 export default function AyudantiaPage() {
   const params = useParams();
   const router = useRouter();
-  const { slug, id } = params;
 
-  if (typeof slug !== "string" || typeof id !== "string") {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="flex flex-col items-center gap-3 rounded-xl border border-destructive bg-destructive-soft p-10">
-          <span className="text-3xl">⚠</span>
-          <p className="text-sm font-medium text-destructive">
-            Ramo no encontrado
-          </p>
-        </div>
-      </div>
-    );
-  }
+  const slug = params?.slug;
+  const id = params?.id;
 
-  const ramo = useMemo(() => getRamo(slug), [slug]);
+  const [ramo, setRamo] = useState<RamoInterface | null>(null);
   const [resource, setResource] = useState<Resource | null>(null);
   const [resourceURL, setResourceURL] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getResourceByIndex(slug, "AYUDANTIA", parseInt(id) - 1).then((resource) => {
-      setResource(resource);
-      if (resource) getFileURL(resource.key).then(setResourceURL);
+    if (typeof slug !== "string" || typeof id !== "string") {
       setLoading(false);
-    });
-  }, [slug, id]);
+      return;
+    }
 
-  if (!ramo) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3 p-10 rounded-xl border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/20">
-          <span className="text-3xl">⚠</span>
-          <p className="text-red-500 dark:text-red-400 text-sm font-medium">
-            Ramo no encontrado
-          </p>
-        </div>
-      </div>
-    );
-  }
+    async function loadData() {
+      setLoading(true);
+      try {
+        const [fetchedRamo, fetchedResource] = await Promise.all([
+          getRamo(slug as string),
+          getResourceByIndex(
+            slug as string,
+            "AYUDANTIA",
+            parseInt(id as string) - 1,
+          ),
+        ]);
+
+        setRamo(fetchedRamo);
+        setResource(fetchedResource);
+
+        if (fetchedResource) {
+          const url = await getFileURL(fetchedResource.key);
+          setResourceURL(url);
+        }
+      } catch (error) {
+        console.error("Error cargando la ayudantía:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, [slug, id]);
 
   if (loading) {
     return (
@@ -64,6 +67,25 @@ export default function AyudantiaPage() {
           <p className="text-zinc-400 dark:text-zinc-500 text-sm tracking-wide">
             Cargando ayudantía...
           </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (typeof slug !== "string" || typeof id !== "string" || !ramo) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex flex-col items-center gap-3 p-10 rounded-xl border border-red-200 dark:border-red-900/40 bg-red-50 dark:bg-red-950/20">
+          <span className="text-3xl">⚠</span>
+          <p className="text-red-500 dark:text-red-400 text-sm font-medium">
+            Ramo no encontrado
+          </p>
+          <button
+            onClick={() => router.push("/")}
+            className="text-xs text-zinc-400 underline hover:text-zinc-200"
+          >
+            Volver al inicio
+          </button>
         </div>
       </div>
     );

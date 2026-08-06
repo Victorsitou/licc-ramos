@@ -1,57 +1,60 @@
 "use client";
+
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 
 import NavigationButton from "@/app/components/NavigationButton";
 import Breadcrumb from "@/app/components/Breadcrumb";
 import PDFViewer from "@/app/components/PDFViewer";
 
-import { getRamo } from "@/app/utils";
+import { getRamo, RamoInterface } from "@/app/utils";
 import { getResourceByIndex, Resource } from "@/app/services/resources";
 
 export default function RamoClassPage() {
   const params = useParams();
   const router = useRouter();
-  const { slug, id } = params;
 
-  if (typeof slug !== "string" || typeof id !== "string") {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="flex flex-col items-center gap-3 rounded-xl border border-destructive bg-destructive-soft p-10">
-          <span className="text-3xl">⚠</span>
-          <p className="text-sm font-medium text-destructive">
-            Ramo no encontrado
-          </p>
-        </div>
-      </div>
-    );
-  }
+  const slug = params?.slug;
+  const id = params?.id;
 
-  const ramo = useMemo(() => getRamo(slug), [slug]);
+  const [ramo, setRamo] = useState<RamoInterface | null>(null);
   const [resource, setResource] = useState<Resource | null>(null);
   const [resourceURL, setResourceURL] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getResourceByIndex(slug, "CLASS", parseInt(id) - 1).then((resource) => {
-      setResource(resource);
-      if (resource) setResourceURL(resource.url);
+    if (typeof slug !== "string" || typeof id !== "string") {
       setLoading(false);
-    });
-  }, []);
+      return;
+    }
 
-  if (!ramo) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="flex flex-col items-center gap-3 rounded-xl border border-destructive bg-destructive-soft p-10">
-          <span className="text-3xl">⚠</span>
-          <p className="text-sm font-medium text-destructive">
-            Ramo no encontrado
-          </p>
-        </div>
-      </div>
-    );
-  }
+    async function loadData() {
+      setLoading(true);
+      try {
+        const [fetchedRamo, fetchedResource] = await Promise.all([
+          getRamo(slug as string),
+          getResourceByIndex(
+            slug as string,
+            "CLASS",
+            parseInt(id as string) - 1,
+          ),
+        ]);
+
+        setRamo(fetchedRamo);
+        setResource(fetchedResource);
+
+        if (fetchedResource) {
+          setResourceURL(fetchedResource.url);
+        }
+      } catch (error) {
+        console.error("Error cargando la clase:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadData();
+  }, [slug, id]);
 
   if (loading) {
     return (
@@ -66,9 +69,28 @@ export default function RamoClassPage() {
     );
   }
 
+  if (typeof slug !== "string" || typeof id !== "string" || !ramo) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="flex flex-col items-center gap-3 rounded-xl border border-destructive bg-destructive-soft p-10">
+          <span className="text-3xl">⚠</span>
+          <p className="text-sm font-medium text-destructive">
+            Ramo no encontrado
+          </p>
+          <button
+            onClick={() => router.push("/")}
+            className="text-xs text-zinc-400 underline hover:text-zinc-200"
+          >
+            Volver al inicio
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-5">
-      <div className="rounded-3xl border border-border bg-card  p-4 text-left shadow-sm">
+      <div className="rounded-3xl border border-border bg-card p-4 text-left shadow-sm">
         <div className="flex items-center gap-5 mb-5">
           <button
             onClick={() => router.push(`/${slug}/clases`)}
@@ -88,7 +110,7 @@ export default function RamoClassPage() {
 
           <Breadcrumb
             items={[
-              { label: slug },
+              { label: ramo.sigla },
               { label: "Clases" },
               { label: `Clase ${id}` },
             ]}

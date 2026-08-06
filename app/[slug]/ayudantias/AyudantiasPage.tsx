@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import Button from "@/app/components/Button";
 import Breadcrumb from "@/app/components/Breadcrumb";
-import { getRamo, getUser, User } from "../../utils";
+import { getRamo, getUser, User, RamoInterface } from "../../utils";
 import {
   getResource,
   toggleResourceCompletion,
@@ -25,17 +25,10 @@ export default function AyudantiasPage({
 }) {
   const params = useParams();
   const router = useRouter();
-  const slug = params.slug;
-  if (typeof slug !== "string") {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="flex flex-col items-center gap-3 p-10 rounded-xl border border-red-900/40 bg-red-950/20">
-          <p className="text-red-400 text-sm font-medium">Ramo no encontrado</p>
-        </div>
-      </div>
-    );
-  }
-  const [ramo] = useState(getRamo(slug));
+  const slug = params?.slug;
+
+  const [ramo, setRamo] = useState<RamoInterface | null>(null);
+  const [loadingRamo, setLoadingRamo] = useState(true);
 
   const [user, setUser] = useState<User | null>(null);
   const [ayudantiaData, setAyudantiaData] = useState<Resource[] | null>(
@@ -46,8 +39,26 @@ export default function AyudantiasPage({
     getUser().then(setUser);
   }, []);
 
+  useEffect(() => {
+    if (!slug || typeof slug !== "string") {
+      setLoadingRamo(false);
+      return;
+    }
+
+    async function fetchRamo() {
+      setLoadingRamo(true);
+      const fetchedRamo = await getRamo(slug as string);
+      setRamo(fetchedRamo);
+      setLoadingRamo(false);
+    }
+
+    fetchRamo();
+  }, [slug]);
+
   const loadAyudantiaData = () => {
-    getResource({ slug, type: "AYUDANTIA" }).then(setAyudantiaData);
+    if (typeof slug === "string") {
+      getResource({ slug, type: "AYUDANTIA" }).then(setAyudantiaData);
+    }
   };
 
   const toggleCompleted = (resource: Resource) => {
@@ -56,11 +67,25 @@ export default function AyudantiasPage({
     });
   };
 
-  if (!ramo) {
+  if (loadingRamo) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin h-8 w-8 border-2 border-zinc-300 border-t-blue-500 rounded-full" />
+      </div>
+    );
+  }
+
+  if (!ramo || typeof slug !== "string") {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center gap-3 p-10 rounded-xl border border-red-900/40 bg-red-950/20">
           <p className="text-red-400 text-sm font-medium">Ramo no encontrado</p>
+          <button
+            onClick={() => router.push("/")}
+            className="text-xs text-zinc-400 underline hover:text-zinc-200"
+          >
+            Volver al inicio
+          </button>
         </div>
       </div>
     );
