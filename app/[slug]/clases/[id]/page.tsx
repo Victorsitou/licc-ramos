@@ -8,7 +8,11 @@ import Breadcrumb from "@/app/components/Breadcrumb";
 import PDFViewer from "@/app/components/PDFViewer";
 
 import { getRamo, RamoInterface } from "@/app/utils";
-import { getResourceByIndex, Resource } from "@/app/services/resources";
+import {
+  getResourceByIndex,
+  Resource,
+  getFileURL,
+} from "@/app/services/resources";
 
 export default function RamoClassPage() {
   const params = useParams();
@@ -44,7 +48,12 @@ export default function RamoClassPage() {
         setResource(fetchedResource);
 
         if (fetchedResource) {
-          setResourceURL(fetchedResource.url);
+          if (fetchedResource.key !== "") {
+            // Hay una key por ende hay que usar cloudflare
+            setResourceURL(await getFileURL(fetchedResource.key));
+          } else {
+            setResourceURL(fetchedResource.url);
+          }
         }
       } catch (error) {
         console.error("Error cargando la clase:", error);
