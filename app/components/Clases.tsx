@@ -173,9 +173,11 @@ export default function Clases({
                     "scale-[1.03]": shouldPulse,
                   },
                 )}
-                onClick={() =>
-                  router.push(`${ramo.sigla}/clases/${item.clase}`)
-                }
+                onClick={() => {
+                  if (ramo.metadata?.has_pdf) {
+                    router.push(`/${ramo.sigla}/clases/${item.clase}`);
+                  }
+                }}
               >
                 <h3 className="text-xl font-bold leading-tight">
                   Clase {item.clase} -{" "}

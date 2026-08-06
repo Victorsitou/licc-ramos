@@ -1,31 +1,42 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter, useParams, usePathname } from "next/navigation";
 
 import Clases from "../components/Clases";
 import Button from "../components/Button";
 import Breadcrumb from "../components/Breadcrumb";
 
-import { getRamo } from "../utils";
+import { getRamo, RamoInterface } from "../utils";
 
 export default function ClasesPage() {
   const router = useRouter();
   const pathname = usePathname();
-
   const params = useParams();
-  const slug = params.slug;
-  if (typeof slug !== "string") {
-    return router.push("/");
-  }
-  const [ramo] = useState(getRamo(slug));
+
+  const [ramo, setRamo] = useState<RamoInterface | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const nextRef = useRef<HTMLButtonElement | null>(null);
   const [highlight, setHighlight] = useState(false);
 
-  if (!ramo) {
-    return <div>Ramo no encontrado</div>;
-  }
+  const slug = params?.slug;
+
+  useEffect(() => {
+    if (!slug || typeof slug !== "string") {
+      router.push("/");
+      return;
+    }
+
+    async function fetchRamo() {
+      setLoading(true);
+      const fetchedRamo = await getRamo(slug as string);
+      setRamo(fetchedRamo);
+      setLoading(false);
+    }
+
+    fetchRamo();
+  }, [slug, router]);
 
   const scrollToNext = () => {
     const el = nextRef.current;
@@ -51,6 +62,28 @@ export default function ClasesPage() {
     requestAnimationFrame(checkIfCentered);
   };
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center p-10 text-muted-foreground">
+        Cargando ramo...
+      </div>
+    );
+  }
+
+  if (!ramo) {
+    return (
+      <div className="flex flex-col items-center justify-center p-10 gap-4">
+        <p className="text-muted-foreground">Ramo no encontrado</p>
+        <button
+          onClick={() => router.push("/")}
+          className="text-sm font-medium text-primary underline"
+        >
+          Volver al inicio
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-5 p-4">
       <div className="rounded-3xl border border-border p-6 text-left shadow-sm transition bg-card">
@@ -73,7 +106,7 @@ export default function ClasesPage() {
                 Volver
               </button>
 
-              <Breadcrumb items={[{ label: slug }]} />
+              <Breadcrumb items={[{ label: String(slug) }]} />
             </div>
             <h2 className="text-xl font-bold sm:text-2xl">{ramo.nombre}</h2>
             <p className="text-sm font-semibold text-primary">{ramo.sigla}</p>
