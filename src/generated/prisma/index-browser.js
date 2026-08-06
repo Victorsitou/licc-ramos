@@ -122,23 +122,24 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  name: 'name',
   email: 'email',
-  role: 'role',
   passwordHash: 'passwordHash',
+  createdAt: 'createdAt',
+  name: 'name',
+  role: 'role',
   verified: 'verified',
-  createdAt: 'createdAt'
+  courses: 'courses'
 };
 
 exports.Prisma.ResourceScalarFieldEnum = {
   id: 'id',
   title: 'title',
   url: 'url',
-  key: 'key',
   type: 'type',
   slug: 'slug',
   orderIndex: 'orderIndex',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  key: 'key'
 };
 
 exports.Prisma.UserResourceProgressScalarFieldEnum = {
@@ -152,6 +153,30 @@ exports.Prisma.VerificationTokenScalarFieldEnum = {
   email: 'email',
   tokenHash: 'tokenHash',
   expiresAt: 'expiresAt'
+};
+
+exports.Prisma.ProblemScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  orderIndex: 'orderIndex',
+  createdAt: 'createdAt',
+  collectionId: 'collectionId'
+};
+
+exports.Prisma.ProblemCollectionScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  orderIndex: 'orderIndex',
+  type: 'type',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.UserProblemProgressScalarFieldEnum = {
+  userId: 'userId',
+  problemId: 'problemId',
+  completedAt: 'completedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -179,11 +204,21 @@ exports.ResourceType = exports.$Enums.ResourceType = {
   AYUDANTIA: 'AYUDANTIA'
 };
 
+exports.ProblemCollectionType = exports.$Enums.ProblemCollectionType = {
+  SET: 'SET',
+  ACTIVIDAD: 'ACTIVIDAD',
+  INTERROGACION: 'INTERROGACION',
+  COMPILADO: 'COMPILADO'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Resource: 'Resource',
   UserResourceProgress: 'UserResourceProgress',
-  VerificationToken: 'VerificationToken'
+  VerificationToken: 'VerificationToken',
+  Problem: 'Problem',
+  ProblemCollection: 'ProblemCollection',
+  UserProblemProgress: 'UserProblemProgress'
 };
 
 /**
