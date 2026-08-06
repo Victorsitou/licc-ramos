@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 
 import { User } from "../utils";
@@ -43,6 +44,12 @@ export default function UserDropdown({ user }: { user: User | null }) {
 
       {open && (
         <div className="absolute right-0 mt-2 w-44 rounded-2xl border border-border bg-card p-2 text-card-foreground shadow-lg">
+          <Link
+            href="/profile"
+            className="block rounded-xl px-3 py-2 text-left text-sm text-foreground transition hover:bg-muted cursor-pointer"
+          >
+            Ver perfil
+          </Link>
           <button
             onClick={handleLogout}
             className="w-full rounded-xl px-3 py-2 text-left text-sm text-red-500 transition hover:bg-muted cursor-pointer"
