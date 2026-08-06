@@ -78,6 +78,7 @@ export interface RamoInterface {
   clases: number;
   offset: number;
   url: string;
+  semester?: string;
   info_clases: InfoClase[];
   info_interrogaciones: InfoInterrogacion[];
   metadata?: {

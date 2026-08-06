@@ -75,7 +75,8 @@ export default function Profile() {
                   }}
                 />
                 <span>
-                  {ramo.nombre} ({ramo.sigla})
+                  {ramo.nombre} ({ramo.sigla}{" "}
+                  {ramo.semester ? `- ${ramo.semester}` : ""})
                 </span>
               </Box>
             ))}

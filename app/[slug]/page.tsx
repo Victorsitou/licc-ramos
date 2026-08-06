@@ -108,7 +108,9 @@ export default function ClasesPage() {
 
               <Breadcrumb items={[{ label: String(slug) }]} />
             </div>
-            <h2 className="text-xl font-bold sm:text-2xl">{ramo.nombre}</h2>
+            <h2 className="text-xl font-bold sm:text-2xl">
+              {ramo.nombre} {ramo.semester ? `- ${ramo.semester}` : ""}
+            </h2>
             <p className="text-sm font-semibold text-primary">{ramo.sigla}</p>
           </div>
         </div>
