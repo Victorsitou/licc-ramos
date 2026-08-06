@@ -64,6 +64,15 @@ export default function Profile() {
                   onChange={(e) =>
                     handleToggleRamo(ramo.sigla, e.target.checked)
                   }
+                  sx={{
+                    color: "var(--muted-foreground)",
+                    "&.Mui-checked": {
+                      color: "var(--primary)",
+                    },
+                    "&:hover": {
+                      backgroundColor: "var(--highlight)",
+                    },
+                  }}
                 />
                 <span>
                   {ramo.nombre} ({ramo.sigla})
