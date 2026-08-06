@@ -16,6 +16,7 @@ import Notifications, { FeatureData } from "./notifications";
 
 export default function Home() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [showModalNotification, setShowModalNotification] = useState(false);
   const [modalContent, setModalContent] = useState<FeatureData | null>(null);
   const [user, setUser] = useState<User | null>(null);
@@ -23,25 +24,41 @@ export default function Home() {
   const notifications = new Notifications();
 
   useEffect(() => {
-    getUser().then((user) => {
-      setUser(user);
-    });
+    let cancelled = false;
 
-    getRamos().then((ramos) => {
-      setRamos(ramos);
-    });
+    async function loadData() {
+      setLoading(true);
+      try {
+        const [fetchedUser, fetchedRamos, notificationResult] =
+          await Promise.all([
+            getUser(),
+            getRamos(),
+            notifications.unseenNotification(),
+          ]);
 
-    async function checkNotifications() {
-      const { unseen, latest, content } =
-        await notifications.unseenNotification();
-      if (unseen && latest) {
-        setShowModalNotification(true);
-        notifications.setLatestNotification(latest);
-        setModalContent(content);
+        if (cancelled) return;
+
+        setUser(fetchedUser);
+        setRamos(fetchedRamos);
+
+        if (notificationResult.unseen && notificationResult.latest) {
+          setShowModalNotification(true);
+          notifications.setLatestNotification(notificationResult.latest);
+          setModalContent(notificationResult.content);
+        }
+      } catch (error) {
+        console.error("Error cargando los datos: ", error);
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     }
 
-    checkNotifications();
+    loadData();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const displayedRamos =
@@ -65,7 +82,11 @@ export default function Home() {
           )}
 
           <div className="w-full">
-            {displayedRamos.length === 0 ? (
+            {loading ? (
+              <p className="text-center text-muted-foreground">
+                Cargando ramos...
+              </p>
+            ) : displayedRamos.length === 0 ? (
               <div className="rounded-3xl border border-dashed border-border p-10 text-center text-muted-foreground">
                 <p>No tienes ramos inscritos actualmente.</p>
                 <button
@@ -82,7 +103,9 @@ export default function Home() {
                     key={ramo.sigla + "1"}
                     className="flex flex-col gap-5 border border-border p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-xl cursor-pointer rounded-3xl"
                   >
-                    <ClasesHoy key={ramo.sigla + "2"} ramo={ramo} />
+                    {ramo.semester ? null : (
+                      <ClasesHoy key={ramo.sigla + "2"} ramo={ramo} />
+                    )}
                     <div
                       key={ramo.sigla + "3"}
                       className="group rounded-3xl border border-border bg-card p-6 text-left text-card-foreground shadow-sm transition duration-200 hover:-translate-y-1 hover:border-primary hover:shadow-xl cursor-pointer"
@@ -95,7 +118,8 @@ export default function Home() {
                         <div className="flex items-start justify-between gap-4">
                           <div>
                             <h2 className="text-xl font-bold leading-tight sm:text-2xl">
-                              {ramo.nombre}
+                              {ramo.nombre}{" "}
+                              {ramo.semester ? `- ${ramo.semester}` : ""}
                             </h2>
 
                             <p className="mt-1 text-sm font-semibold tracking-wide text-primary">
