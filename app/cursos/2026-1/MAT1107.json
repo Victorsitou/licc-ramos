@@ -1,0 +1,253 @@
+{
+  "sigla": "MAT1107",
+  "nombre": "Introducción a Cálculo",
+  "descripcion": "En este curso, de carácter teórico-aplicado, los estudiantes desarrollarán habilidades para el razonamiento científico, lógico-analítico y la resolución de problemas en el contexto del precálculo. En el curso se abordarán temas como: inecuaciones, polinomios, sucesiones y funciones a valores reales.",
+  "clases": 29,
+  "offset": 0,
+  "url": "https://repositorios.mat.uc.cl/MAT1107/",
+  "semester": "2026-1",
+  "info_clases": [
+    {
+      "clase": 1,
+      "fecha": "2026-03-04",
+      "objetivo": "Comprender el algoritmo de la división de polinomios.",
+      "contenido": "Algoritmo de la división",
+      "texto_guia": "Capítulo 7",
+      "interrogacion": 1
+    },
+    {
+      "clase": 2,
+      "fecha": "2026-03-09",
+      "objetivo": "Comprender y aplicar el Teorema del Resto y del Factor para determinar raíces y factores.",
+      "contenido": "Teorema del factor y aplicaciones",
+      "texto_guia": "Capítulo 7",
+      "interrogacion": 1
+    },
+    {
+      "clase": 3,
+      "fecha": "2026-03-11",
+      "objetivo": "Comprender los axiomas de orden y su aplicación en desigualdades.",
+      "contenido": "Axiomas de Orden",
+      "texto_guia": "Capítulo 2",
+      "interrogacion": 2
+    },
+    {
+      "clase": 4,
+      "fecha": "2026-03-16",
+      "objetivo": "Comprender los axiomas de orden y su aplicación en desigualdades.",
+      "contenido": "Axiomas de Orden",
+      "texto_guia": "Capítulo 2",
+      "interrogacion": 2
+    },
+    {
+      "clase": 5,
+      "fecha": "2026-03-18",
+      "objetivo": "Comprender el valor absoluto y su aplicación en ecuaciones e inecuaciones.",
+      "contenido": "Valor absoluto",
+      "texto_guia": "Capítulo 2",
+      "interrogacion": 2
+    },
+    {
+      "clase": 6,
+      "fecha": "2026-03-23",
+      "objetivo": "Resolver inecuaciones lineales y cuadráticas.",
+      "contenido": "Intervalos e inecuaciones lineales y cuadráticas",
+      "texto_guia": "Capítulo 2",
+      "interrogacion": 3
+    },
+    {
+      "clase": 7,
+      "fecha": "2026-03-25",
+      "objetivo": "Resolver inecuaciones racionales.",
+      "contenido": "Inecuaciones racionales",
+      "texto_guia": "Capítulo 2",
+      "interrogacion": 3
+    },
+    {
+      "clase": 8,
+      "fecha": "2026-03-30",
+      "objetivo": "Resolver inecuaciones con valor absoluto.",
+      "contenido": "Inecuaciones con valor absoluto",
+      "texto_guia": "Capítulo 2",
+      "interrogacion": 3
+    },
+    {
+      "clase": 9,
+      "fecha": "2026-04-01",
+      "objetivo": "Resolver inecuaciones con raíces.",
+      "contenido": "Inecuaciones con raíces",
+      "texto_guia": "Capítulo 2",
+      "interrogacion": 4
+    },
+    {
+      "clase": 10,
+      "fecha": "2026-04-06",
+      "objetivo": "Comprender la definición formal de función.",
+      "contenido": "Funciones reales",
+      "texto_guia": "Capítulo 3",
+      "interrogacion": 4
+    },
+    {
+      "clase": 11,
+      "fecha": "2026-04-08",
+      "objetivo": "Analizar propiedades y gráficos de funciones.",
+      "contenido": "Gráfico de funciones",
+      "texto_guia": "Capítulo 3",
+      "interrogacion": 4
+    },
+    {
+      "clase": 12,
+      "fecha": "2026-04-13",
+      "objetivo": "Comprender transformaciones de funciones.",
+      "contenido": "Transformaciones de funciones",
+      "texto_guia": "Capítulo 3",
+      "interrogacion": 5
+    },
+    {
+      "clase": 13,
+      "fecha": "2026-04-15",
+      "objetivo": "Analizar y graficar funciones racionales.",
+      "contenido": "Gráfica de funciones racionales",
+      "texto_guia": "Capítulo 3",
+      "interrogacion": 5
+    },
+    {
+      "clase": 14,
+      "fecha": "2026-04-20",
+      "objetivo": "Comprender funciones biyectivas.",
+      "contenido": "Funciones biyectivas",
+      "texto_guia": "Capítulo 3",
+      "interrogacion": 5
+    },
+    {
+      "clase": 15,
+      "fecha": "2026-04-22",
+      "objetivo": "Comprender funciones biyectivas.",
+      "contenido": "Funciones biyectivas",
+      "texto_guia": "Capítulo 3",
+      "interrogacion": 5
+    },
+    {
+      "clase": 16,
+      "fecha": "2026-04-27",
+      "objetivo": "Usar álgebra y composición de funciones.",
+      "contenido": "Álgebra y composición de funciones",
+      "texto_guia": "Capítulo 3",
+      "interrogacion": 5
+    },
+    {
+      "clase": 17,
+      "fecha": "2026-04-29",
+      "objetivo": "Comprender funciones inversas.",
+      "contenido": "Función inversa",
+      "texto_guia": "Capítulo 3",
+      "interrogacion": 5
+    },
+    {
+      "clase": 18,
+      "fecha": "2026-05-04",
+      "objetivo": "Comprender funciones inversas.",
+      "contenido": "Función inversa",
+      "texto_guia": "Capítulo 3",
+      "interrogacion": 5
+    },
+    {
+      "clase": 19,
+      "fecha": "2026-05-06",
+      "objetivo": "Introducir el concepto de límite en sucesiones.",
+      "contenido": "Límites y convergencia",
+      "texto_guia": "Capítulo 10",
+      "interrogacion": 6
+    },
+    {
+      "clase": 20,
+      "fecha": "2026-05-11",
+      "objetivo": "Introducir el concepto de límite en sucesiones.",
+      "contenido": "Límites y convergencia",
+      "texto_guia": "Capítulo 10",
+      "interrogacion": 6
+    },
+    {
+      "clase": 21,
+      "fecha": "2026-05-13",
+      "objetivo": "Operar con límites de sucesiones.",
+      "contenido": "Operaciones con límites",
+      "texto_guia": "Capítulo 10",
+      "interrogacion": 6
+    },
+    {
+      "clase": 22,
+      "fecha": "2026-05-25",
+      "objetivo": "Aplicar el Teorema del Sandwich.",
+      "contenido": "Teorema del Sandwich",
+      "texto_guia": "Capítulo 10",
+      "interrogacion": 7
+    },
+    {
+      "clase": 23,
+      "fecha": "2026-05-27",
+      "objetivo": "Aplicar el Teorema del Sandwich.",
+      "contenido": "Teorema del Sandwich",
+      "texto_guia": "Capítulo 10",
+      "interrogacion": 7
+    },
+    {
+      "clase": 24,
+      "fecha": "2026-06-01",
+      "objetivo": "Identificar sucesiones monótonas y acotadas.",
+      "contenido": "Sucesiones monótonas y acotadas",
+      "texto_guia": "Capítulo 10",
+      "interrogacion": 8
+    },
+    {
+      "clase": 25,
+      "fecha": "2026-06-03",
+      "objetivo": "Calcular límites notables.",
+      "contenido": "Límites relevantes",
+      "texto_guia": "Capítulo 10",
+      "interrogacion": 8
+    },
+    {
+      "clase": 26,
+      "fecha": "2026-06-08",
+      "objetivo": "Comprender límites infinitos.",
+      "contenido": "Límites infinitos",
+      "texto_guia": "Capítulo 10",
+      "interrogacion": 8
+    },
+    {
+      "clase": 27,
+      "fecha": "2026-06-10",
+      "objetivo": "Comprender funciones exponenciales.",
+      "contenido": "Función exponencial",
+      "texto_guia": "Capítulo 8"
+    },
+    {
+      "clase": 28,
+      "fecha": "2026-06-15",
+      "objetivo": "Comprender funciones logarítmicas.",
+      "contenido": "Función logarítmica",
+      "texto_guia": "Capítulo 8"
+    },
+    {
+      "clase": 29,
+      "fecha": "2026-06-17",
+      "objetivo": "Resolver ecuaciones exponenciales y logarítmicas.",
+      "contenido": "Ecuaciones exponenciales y logarítmicas",
+      "texto_guia": "Capítulo 8"
+    }
+  ],
+  "info_interrogaciones": [
+    { "interrogacion": 1, "fecha": "2026-03-20", "modulo": 4 },
+    { "interrogacion": 2, "fecha": "2026-03-27", "modulo": 2 },
+    { "interrogacion": 3, "fecha": "2026-04-10", "modulo": 4 },
+    { "interrogacion": 4, "fecha": "2026-04-24", "modulo": 2 },
+    { "interrogacion": 5, "fecha": "2026-05-15", "modulo": 4 },
+    { "interrogacion": 6, "fecha": "2026-05-29", "modulo": 2 },
+    { "interrogacion": 7, "fecha": "2026-06-05", "modulo": 4 },
+    { "interrogacion": 8, "fecha": "2026-06-19", "modulo": 2 }
+  ],
+  "metadata": {
+    "has_pdf": true
+  }
+}

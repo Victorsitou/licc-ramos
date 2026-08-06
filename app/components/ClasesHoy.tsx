@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import type { InfoClase, RamoInterface } from "../page";
+import { InfoClase, RamoInterface } from "@/app/utils";
 import { stringToDate } from "../utils";
 
 import { Chip } from "@mui/material";
@@ -38,7 +38,11 @@ export default function ClasesHoy({ ramo }: { ramo: RamoInterface }) {
   return (
     <button
       type="button"
-      onClick={() => router.push(`/${ramo.sigla}/clases/${claseHoy.clase}`)}
+      onClick={() => {
+        if (ramo.metadata?.has_pdf) {
+          router.push(`/${ramo.sigla}/clases/${claseHoy.clase}`);
+        }
+      }}
       className={clsx(
         "group w-full rounded-3xl border border-border bg-card p-5 text-left shadow-sm transition duration-200",
         "hover:-translate-y-1 hover:border-accent hover:shadow-xl",

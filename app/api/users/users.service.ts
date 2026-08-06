@@ -1,5 +1,6 @@
 import { prisma } from "@/src/lib/prisma";
 import { CreateUserDto } from "../dtos/user.dto";
+import { UpdateUserDto } from "../dtos/update.user.dto";
 import bcrypt from "bcryptjs";
 
 export async function getUserById(id: string) {
@@ -64,6 +65,14 @@ export async function updateUserPassword(userId: string, newPassword: string) {
   return await prisma.user.update({
     where: { id: userId },
     data: { passwordHash: hashedPassword },
+    omit: { passwordHash: true },
+  });
+}
+
+export async function updateUser(userId: string, data: UpdateUserDto) {
+  return await prisma.user.update({
+    where: { id: userId },
+    data: data,
     omit: { passwordHash: true },
   });
 }

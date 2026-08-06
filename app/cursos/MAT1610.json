@@ -1,0 +1,378 @@
+{
+  "sigla": "MAT1610",
+  "nombre": "Cálculo 1",
+  "descripcion": "En este curso, de carácter teórico-aplicado, los estudiantes desarrollarán habilidades para calcular límites y analizar continuidad, comprender y aplicar la derivada, resolver problemas de optimización y razones de cambio, y trabajar con integrales, técnicas de integración y aplicaciones geométricas.",
+  "clases": 45,
+  "offset": 0,
+  "url": "",
+  "info_clases": [
+    {
+      "clase": 1,
+      "fecha": "2026-08-05",
+      "objetivo": "Comprender gráfica y numéricamente el concepto de límite y su relación con los límites laterales.",
+      "contenido": "Concepto de límite y límites laterales",
+      "texto_guia": "Sección 2.2, págs. 87-93",
+      "interrogacion": 1
+    },
+    {
+      "clase": 2,
+      "fecha": "2026-08-07",
+      "objetivo": "Comprender gráfica y numéricamente el concepto de límite infinito y su relación con los límites laterales y las asíntotas verticales.",
+      "contenido": "Límites infinitos y asíntotas verticales",
+      "texto_guia": "Sección 2.2, págs. 93-95",
+      "interrogacion": 1
+    },
+    {
+      "clase": 3,
+      "fecha": "2026-08-10",
+      "objetivo": "Calcular límites usando las leyes de los límites, sustitución directa, potencias, raíces y el Teorema de Compresión.",
+      "contenido": "Cálculo de límites y Teorema de Compresión",
+      "texto_guia": "Sección 2.3, págs. 99-106",
+      "interrogacion": 1
+    },
+    {
+      "clase": 4,
+      "fecha": "2026-08-12",
+      "objetivo": "Comprender la representación gráfica y formal básica del concepto de límite mediante la relación ε-δ.",
+      "contenido": "Definición precisa de límite",
+      "texto_guia": "Sección 2.4, págs. 108-116",
+      "interrogacion": 1
+    },
+    {
+      "clase": 5,
+      "fecha": "2026-08-14",
+      "objetivo": "Conocer y aplicar límites conocidos y notables, incluyendo límites trigonométricos y exponenciales.",
+      "contenido": "Límites notables",
+      "texto_guia": "Secciones 2.3 y 3.1-3.3",
+      "interrogacion": 1
+    },
+    {
+      "clase": 6,
+      "fecha": "2026-08-17",
+      "objetivo": "Determinar si una función es continua o discontinua en un punto y clasificar discontinuidades removibles y no removibles.",
+      "contenido": "Continuidad en un punto y tipos de discontinuidad",
+      "texto_guia": "Sección 2.5, págs. 118-120",
+      "interrogacion": 1
+    },
+    {
+      "clase": 7,
+      "fecha": "2026-08-19",
+      "objetivo": "Determinar si una función, incluyendo funciones definidas por tramos, es continua en un intervalo y calcular límites mediante álgebra y composición.",
+      "contenido": "Continuidad en intervalos y funciones por tramos",
+      "texto_guia": "Sección 2.5, págs. 120-123",
+      "interrogacion": 1
+    },
+    {
+      "clase": 8,
+      "fecha": "2026-08-21",
+      "objetivo": "Usar el Teorema del Valor Intermedio y el Teorema de Bolzano para determinar la existencia de raíces de una ecuación.",
+      "contenido": "Teorema del Valor Intermedio y Teorema de Bolzano",
+      "texto_guia": "Sección 2.5, págs. 124-127",
+      "interrogacion": 1
+    },
+    {
+      "clase": 9,
+      "fecha": "2026-08-24",
+      "objetivo": "Comprender gráfica y numéricamente los límites al infinito, las asíntotas horizontales y los límites infinitos al infinito.",
+      "contenido": "Límites al infinito y asíntotas horizontales",
+      "texto_guia": "Sección 2.6, págs. 130-137",
+      "interrogacion": 1
+    },
+    {
+      "clase": 10,
+      "fecha": "2026-08-26",
+      "objetivo": "Determinar la recta tangente a la gráfica de una función y la velocidad instantánea, relacionando la derivada con la pendiente y la razón de cambio.",
+      "contenido": "Derivada, recta tangente y velocidad instantánea",
+      "texto_guia": "Sección 2.7, págs. 143-146",
+      "interrogacion": 2
+    },
+    {
+      "clase": 11,
+      "fecha": "2026-08-28",
+      "objetivo": "Diferenciar la razón de cambio promedio de la razón de cambio instantánea y comprender su aplicación en contextos físicos y geométricos.",
+      "contenido": "Razones de cambio promedio e instantánea",
+      "texto_guia": "Sección 2.7, págs. 147-150",
+      "interrogacion": 2
+    },
+    {
+      "clase": 12,
+      "fecha": "2026-08-31",
+      "objetivo": "Resolver consultas y repasar los contenidos evaluados en la Interrogación 1.",
+      "contenido": "Repaso de límites y continuidad para la Interrogación 1",
+      "texto_guia": "Repaso Capítulo 1",
+      "interrogacion": 1
+    },
+    {
+      "clase": 13,
+      "fecha": "2026-09-02",
+      "objetivo": "Determinar la fórmula y el dominio de la función derivada, conocer sus notaciones y comprender la relación entre continuidad y derivabilidad.",
+      "contenido": "La derivada como función",
+      "texto_guia": "Sección 2.8, págs. 154-161",
+      "interrogacion": 2
+    },
+    {
+      "clase": 14,
+      "fecha": "2026-09-04",
+      "objetivo": "Calcular derivadas de funciones polinomiales, potencias y exponenciales, y deducir y aplicar la Regla del Producto.",
+      "contenido": "Derivadas de polinomios y exponenciales; Regla del Producto",
+      "texto_guia": "Sección 3.1, págs. 174-181; Sección 3.2, págs. 184-186",
+      "interrogacion": 2
+    },
+    {
+      "clase": 15,
+      "fecha": "2026-09-07",
+      "objetivo": "Conocer y aplicar la Regla del Cociente y calcular derivadas de las seis funciones trigonométricas.",
+      "contenido": "Regla del Cociente y derivadas trigonométricas",
+      "texto_guia": "Sección 3.2, págs. 186-189; Sección 3.3, págs. 191-195",
+      "interrogacion": 2
+    },
+    {
+      "clase": 16,
+      "fecha": "2026-09-09",
+      "objetivo": "Calcular derivadas de composiciones de funciones mediante la Regla de la Cadena.",
+      "contenido": "Regla de la Cadena",
+      "texto_guia": "Sección 3.4, págs. 198-205",
+      "interrogacion": 2
+    },
+    {
+      "clase": 17,
+      "fecha": "2026-09-11",
+      "objetivo": "Calcular derivadas de funciones definidas implícitamente y hallar ecuaciones de rectas tangentes a curvas implícitas.",
+      "contenido": "Derivación implícita",
+      "texto_guia": "Sección 3.5, págs. 209-213",
+      "interrogacion": 2
+    },
+    {
+      "clase": 18,
+      "fecha": "2026-09-21",
+      "objetivo": "Calcular derivadas de funciones inversas y logarítmicas, e introducir la derivación logarítmica.",
+      "contenido": "Derivadas de funciones inversas y logarítmicas",
+      "texto_guia": "Sección 3.5, págs. 213-214; Sección 3.6, págs. 218-222",
+      "interrogacion": 2
+    },
+    {
+      "clase": 19,
+      "fecha": "2026-09-23",
+      "objetivo": "Resolver problemas de razón de cambio aplicados en la física y en la economía.",
+      "contenido": "Razones de cambio en ciencias",
+      "texto_guia": "Sección 3.7, págs. 224-233",
+      "interrogacion": 2
+    },
+    {
+      "clase": 20,
+      "fecha": "2026-09-25",
+      "objetivo": "Modelar y resolver problemas de razones relacionadas vinculadas implícitamente por la geometría o la física.",
+      "contenido": "Razones relacionadas",
+      "texto_guia": "Sección 3.9, págs. 244-248",
+      "interrogacion": 2
+    },
+    {
+      "clase": 21,
+      "fecha": "2026-09-28",
+      "objetivo": "Determinar la aproximación lineal de una función y estimar valores usando diferenciales.",
+      "contenido": "Aproximaciones lineales y diferenciales",
+      "texto_guia": "Sección 3.10, págs. 250-254",
+      "interrogacion": 2
+    },
+    {
+      "clase": 22,
+      "fecha": "2026-09-30",
+      "objetivo": "Comprender máximos y mínimos locales y absolutos, analizar el Teorema del Valor Extremo y aplicar el Teorema de Fermat.",
+      "contenido": "Máximos, mínimos y números críticos",
+      "texto_guia": "Sección 4.1, págs. 274-278",
+      "interrogacion": 3
+    },
+    {
+      "clase": 23,
+      "fecha": "2026-10-05",
+      "objetivo": "Resolver consultas y repasar los contenidos evaluados en la Interrogación 2.",
+      "contenido": "Repaso de derivadas y aplicaciones para la Interrogación 2",
+      "texto_guia": "Repaso Capítulos 2-3",
+      "interrogacion": 2
+    },
+    {
+      "clase": 24,
+      "fecha": "2026-10-07",
+      "objetivo": "Determinar valores extremos absolutos en intervalos cerrados y aplicar el Teorema de Rolle y el Teorema del Valor Medio.",
+      "contenido": "Extremos absolutos, Teorema de Rolle y Teorema del Valor Medio",
+      "texto_guia": "Sección 4.1, págs. 278-280; Sección 4.2, págs. 284-287",
+      "interrogacion": 3
+    },
+    {
+      "clase": 25,
+      "fecha": "2026-10-09",
+      "objetivo": "Determinar intervalos de monotonía, concavidad y puntos de inflexión usando la primera y la segunda derivada.",
+      "contenido": "Monotonía, concavidad y puntos de inflexión",
+      "texto_guia": "Sección 4.3, págs. 290-297",
+      "interrogacion": 3
+    },
+    {
+      "clase": 26,
+      "fecha": "2026-10-14",
+      "objetivo": "Reconocer las siete formas indeterminadas y calcular límites usando la Regla de l’Hôpital.",
+      "contenido": "Regla de l’Hôpital",
+      "texto_guia": "Sección 4.4, págs. 301-307",
+      "interrogacion": 3
+    },
+    {
+      "clase": 27,
+      "fecha": "2026-10-16",
+      "objetivo": "Realizar el trazado cualitativo de la gráfica de una función analizando dominio, simetrías y comportamiento global.",
+      "contenido": "Trazado de curvas",
+      "texto_guia": "Sección 4.5, págs. 311-316",
+      "interrogacion": 3
+    },
+    {
+      "clase": 28,
+      "fecha": "2026-10-19",
+      "objetivo": "Resolver problemas de modelación y optimización en diversos contextos prácticos y geométricos.",
+      "contenido": "Problemas de optimización",
+      "texto_guia": "Sección 4.7, págs. 325-331",
+      "interrogacion": 3
+    },
+    {
+      "clase": 29,
+      "fecha": "2026-10-21",
+      "objetivo": "Comprender el concepto de antiderivada y constante de integración, y conocer antiderivadas inmediatas.",
+      "contenido": "Antiderivadas",
+      "texto_guia": "Sección 4.9, págs. 344-348",
+      "interrogacion": 3
+    },
+    {
+      "clase": 30,
+      "fecha": "2026-10-23",
+      "objetivo": "Conocer la notación sigma, sus propiedades de linealidad y las sumas notables, y calcular sumas finitas y límites de sumas.",
+      "contenido": "Notación sigma y sumas",
+      "texto_guia": "Apéndice E, págs. A34-A37; Sección 5.1, págs. 360-363",
+      "interrogacion": 3
+    },
+    {
+      "clase": 31,
+      "fecha": "2026-10-26",
+      "objetivo": "Aproximar el área bajo la curva mediante sumas de Riemann y definir la integral definida como límite de estas sumas.",
+      "contenido": "Sumas de Riemann e integral definida",
+      "texto_guia": "Sección 5.1, págs. 360-369; Sección 5.2, págs. 371-377",
+      "interrogacion": 3
+    },
+    {
+      "clase": 32,
+      "fecha": "2026-10-28",
+      "objetivo": "Conocer y aplicar las propiedades de la integral definida, incluyendo linealidad, aditividad del intervalo y comparación.",
+      "contenido": "Propiedades de la integral definida",
+      "texto_guia": "Sección 5.2, págs. 377-382",
+      "interrogacion": 3
+    },
+    {
+      "clase": 33,
+      "fecha": "2026-10-30",
+      "objetivo": "Comprender y aplicar las partes I y II del Teorema Fundamental del Cálculo.",
+      "contenido": "Teorema Fundamental del Cálculo",
+      "texto_guia": "Sección 5.3, págs. 386-394"
+    },
+    {
+      "clase": 34,
+      "fecha": "2026-11-02",
+      "objetivo": "Resolver consultas y repasar los contenidos evaluados en la Interrogación 3.",
+      "contenido": "Repaso de aplicaciones de la derivada e integrales para la Interrogación 3",
+      "texto_guia": "Repaso Capítulos 3-4",
+      "interrogacion": 3
+    },
+    {
+      "clase": 35,
+      "fecha": "2026-11-04",
+      "objetivo": "Diferenciar la integral indefinida de la definida, aplicar el Teorema del Cambio Neto y hallar el valor promedio de una función.",
+      "contenido": "Integrales indefinidas, cambio neto y valor promedio",
+      "texto_guia": "Sección 5.4, págs. 397-403; Sección 6.5, págs. 451-453"
+    },
+    {
+      "clase": 36,
+      "fecha": "2026-11-06",
+      "objetivo": "Calcular antiderivadas usando la Regla de Sustitución para integrales indefinidas.",
+      "contenido": "Regla de Sustitución en integrales indefinidas",
+      "texto_guia": "Sección 5.5, págs. 407-410"
+    },
+    {
+      "clase": 37,
+      "fecha": "2026-11-09",
+      "objetivo": "Calcular integrales definidas mediante cambio de variable, ajustando los límites de integración.",
+      "contenido": "Cambio de variable en integrales definidas",
+      "texto_guia": "Sección 5.5, págs. 411-413"
+    },
+    {
+      "clase": 38,
+      "fecha": "2026-11-11",
+      "objetivo": "Calcular integrales mediante la técnica de Integración por Partes.",
+      "contenido": "Integración por Partes",
+      "texto_guia": "Sección 7.1, págs. 464-468"
+    },
+    {
+      "clase": 39,
+      "fecha": "2026-11-13",
+      "objetivo": "Calcular integrales trigonométricas e introducir la técnica de sustitución trigonométrica en sus casos más representativos.",
+      "contenido": "Integrales trigonométricas y sustitución trigonométrica",
+      "texto_guia": "Sección 7.2, págs. 471-476; Sección 7.3, págs. 478-483"
+    },
+    {
+      "clase": 40,
+      "fecha": "2026-11-16",
+      "objetivo": "Calcular integrales de funciones racionales mediante fracciones parciales.",
+      "contenido": "Fracciones parciales",
+      "texto_guia": "Sección 7.4, págs. 485-492"
+    },
+    {
+      "clase": 41,
+      "fecha": "2026-11-18",
+      "objetivo": "Analizar y seleccionar la técnica óptima de integración mediante estrategias generales.",
+      "contenido": "Estrategias de integración",
+      "texto_guia": "Sección 7.5, págs. 494-499"
+    },
+    {
+      "clase": 42,
+      "fecha": "2026-11-20",
+      "objetivo": "Calcular el área de regiones planas acotadas por dos o más curvas, integrando respecto de x o de y.",
+      "contenido": "Área entre curvas",
+      "texto_guia": "Sección 6.1, págs. 422-427"
+    },
+    {
+      "clase": 43,
+      "fecha": "2026-11-23",
+      "objetivo": "Calcular volúmenes de sólidos de revolución mediante el método de discos y arandelas.",
+      "contenido": "Volúmenes por discos y arandelas",
+      "texto_guia": "Sección 6.2, págs. 430-436"
+    },
+    {
+      "clase": 44,
+      "fecha": "2026-11-25",
+      "objetivo": "Calcular volúmenes de sólidos de revolución usando el método de cascarones cilíndricos.",
+      "contenido": "Volúmenes por cascarones cilíndricos",
+      "texto_guia": "Sección 6.3, págs. 439-444"
+    },
+    {
+      "clase": 45,
+      "fecha": "2026-11-27",
+      "objetivo": "Integrar los contenidos del curso, resolver ejercicios tipo examen y atender consultas finales.",
+      "contenido": "Ejercicios integrativos, consultas finales y cierre del curso",
+      "texto_guia": "Consolidación general y cierre"
+    }
+  ],
+  "info_interrogaciones": [
+    {
+      "interrogacion": 1,
+      "fecha": "2026-08-31",
+      "modulo": null
+    },
+    {
+      "interrogacion": 2,
+      "fecha": "2026-10-05",
+      "modulo": null
+    },
+    {
+      "interrogacion": 3,
+      "fecha": "2026-11-02",
+      "modulo": null
+    }
+  ],
+  "metadata": {
+    "has_pdf": true
+  }
+}

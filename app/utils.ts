@@ -36,6 +36,7 @@ export interface User {
   verified: boolean;
   role: "STUDENT" | "ADMIN";
   createdAt: string;
+  courses: string[];
 }
 
 export function getUser(): Promise<User | null> {
@@ -77,14 +78,27 @@ export interface RamoInterface {
   clases: number;
   offset: number;
   url: string;
+  semester?: string;
   info_clases: InfoClase[];
   info_interrogaciones: InfoInterrogacion[];
+  metadata?: {
+    has_pdf: boolean;
+  };
 }
 
-export function getRamo(slug: string): RamoInterface | null {
-  return (
-    ramos.find(
-      (ramo) => ramo.sigla.toLocaleLowerCase() === slug.toLowerCase(),
-    ) || null
+export async function getRamo(slug: string): Promise<RamoInterface | null> {
+  const ramos = await getRamos();
+  const ramoEncontrado = ramos.find(
+    (ramo) => ramo.sigla.toLowerCase() === slug.toLowerCase(),
   );
+
+  return ramoEncontrado || null;
+}
+
+export function getRamos(): Promise<RamoInterface[]> {
+  return fetch("/api/cursos")
+    .then((res) => res.json())
+    .catch(() => {
+      return [];
+    });
 }

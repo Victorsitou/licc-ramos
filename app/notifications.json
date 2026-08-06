@@ -145,5 +145,27 @@
       }
     ],
     "footer": "Mucho éxito a todos!!!"
+  },
+  {
+    "id": "12",
+    "date": "2026-08-06",
+    "features": [
+      {
+        "emoji": "📂",
+        "title": "Cálculo 1!!!!",
+        "description": "Añadí el ramo de Cálculo 1 (MAT1610) para el segundo semestre de 2026."
+      },
+      {
+        "emoji": "📂",
+        "title": "Ramos de 2026-1",
+        "description": "Ya que no tengo información de Intro a Cálculo e Intro a Algebra no puedo añadirlos este semestre, pero de todas formas puedes revisar los contenidos que habían en el primer semestre de 2026. :)"
+      },
+      {
+        "emoji": "💾",
+        "title": "Configuración de perfil",
+        "description": "Para poder ver los ramos de este semestre como los del semestre pasado puedes configurar tu perfil clickando arriba la derecha en \"Hola, [nombre]\" :)"
+      }
+    ],
+    "footer": "Mucho éxito a todos en este nuevo semestre!!!!!"
   }
 ]
