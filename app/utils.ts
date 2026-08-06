@@ -95,5 +95,9 @@ export async function getRamo(slug: string): Promise<RamoInterface | null> {
 }
 
 export function getRamos(): Promise<RamoInterface[]> {
-  return fetch("/api/cursos").then((res) => res.json());
+  return fetch("/api/cursos")
+    .then((res) => res.json())
+    .catch(() => {
+      return [];
+    });
 }
