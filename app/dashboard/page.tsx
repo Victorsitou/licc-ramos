@@ -29,7 +29,7 @@ export default function Dashboard() {
 
     try {
       const res = await uploadFile(file, {
-        title: file.name,
+        title: file.name.replace("_", " "),
         key: `${slug}/${typeToCFFolder[type]}/${file.name}`,
         url: `${slug}/${typeToCFFolder[type]}/${file.name}`,
         type,
@@ -59,6 +59,7 @@ export default function Dashboard() {
               <option value="" disabled>
                 Selecciona curso
               </option>
+              <option value="MAT1610">MAT1610</option>
               <option value="MAT1107">MAT1107</option>
               <option value="MAT1207">MAT1207</option>
               <option value="Talleres">Talleres</option>
