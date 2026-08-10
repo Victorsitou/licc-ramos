@@ -8,6 +8,7 @@ import Button from "../components/Button";
 import Breadcrumb from "../components/Breadcrumb";
 
 import { getRamo, RamoInterface } from "../utils";
+import { getResource } from "../services/resources";
 
 export default function ClasesPage() {
   const router = useRouter();
@@ -31,6 +32,23 @@ export default function ClasesPage() {
     async function fetchRamo() {
       setLoading(true);
       const fetchedRamo = await getRamo(slug as string);
+      if (fetchedRamo && !fetchedRamo.metadata?.has_classes) {
+        // Fetch the classes
+        const classes = await getResource({
+          slug: slug as string,
+          type: "CLASS",
+        });
+        if (classes.length > 0) {
+          fetchedRamo.info_clases = classes.map((c) => ({
+            clase: c.orderIndex + 1,
+            fecha: c.createdAt.split("T")[0],
+            objetivo: c.title,
+            contenido: "",
+          }));
+          fetchedRamo.clases = classes.length;
+        }
+      }
+
       setRamo(fetchedRamo);
       setLoading(false);
     }
