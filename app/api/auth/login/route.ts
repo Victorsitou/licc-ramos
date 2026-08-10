@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { loginUserSchema } from "@/app/api/dtos/auth.dto";
-import { signToken } from "@/src/lib/jwt";
+import { signAccessToken } from "@/src/lib/jwt";
 import { prisma } from "@/src/lib/prisma";
 import bcrypt from "bcryptjs";
+import { setAuthCookies } from "@/src/lib/auth";
+import { generateRefreshToken } from "../refresh/refreshToken.service";
 
 import { getZodErrorMessage } from "@/src/lib/errors";
 
@@ -40,20 +42,16 @@ export async function POST(request: Request) {
         { status: 401 },
       );
     }
-    const token = await signToken({
+    const accessToken = await signAccessToken({
       sub: user.id,
       email: user.email,
       role: user.role,
     });
+    const { plainToken: refreshToken } = await generateRefreshToken(user.id);
 
     const response = NextResponse.json(user, { status: 201 });
 
-    response.cookies.set("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 60 * 60 * 24 * 2 * 7,
-    });
+    setAuthCookies(response, accessToken, refreshToken);
 
     return response;
   } catch (error) {

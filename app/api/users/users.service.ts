@@ -2,6 +2,7 @@ import { prisma } from "@/src/lib/prisma";
 import { CreateUserDto } from "../dtos/user.dto";
 import { UpdateUserDto } from "../dtos/update.user.dto";
 import bcrypt from "bcryptjs";
+import { revokeAllRefreshTokens } from "../auth/refresh/refreshToken.service";
 
 export async function getUserById(id: string) {
   return await prisma.user.findUnique({
@@ -62,6 +63,9 @@ export async function verifyUser(userId: string) {
 
 export async function updateUserPassword(userId: string, newPassword: string) {
   const hashedPassword = await bcrypt.hash(newPassword, 12);
+
+  await revokeAllRefreshTokens(userId);
+
   return await prisma.user.update({
     where: { id: userId },
     data: { passwordHash: hashedPassword },

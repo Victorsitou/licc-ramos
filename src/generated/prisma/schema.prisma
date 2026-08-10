@@ -19,6 +19,7 @@ model User {
   UserProblemProgress UserProblemProgress[]
   progressRecords     UserResourceProgress[]
   courses             String[]               @default([])
+  refreshTokens       RefreshToken[]
 
   @@map("users")
 }
@@ -72,6 +73,20 @@ model Problem {
 
   @@unique([collectionId, orderIndex])
   @@index([collectionId, orderIndex])
+}
+
+model RefreshToken {
+  id           String    @id @default(cuid())
+  tokenHash    String    @unique
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now())
+  lastUsedAt   DateTime?
+  expiresAt    DateTime
+  replacedById String?   @unique
+  revoked      Boolean   @default(false)
+
+  @@index([tokenHash])
 }
 
 model ProblemCollection {
