@@ -1,16 +1,25 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import {
   ACCESS_TOKEN_COOKIE,
   REFRESH_TOKEN_COOKIE,
-  getCurrentUser,
 } from "@/src/lib/auth";
-import { revokeAllRefreshTokens } from "../refresh/refreshToken.service";
+import {
+  getUserIdFromRefreshToken,
+  revokeAllRefreshTokens,
+} from "../refresh/refreshToken.service";
 
 export async function POST() {
-  const userJWT = await getCurrentUser();
+  const cookieStore = await cookies();
+  const refreshToken = cookieStore.get(REFRESH_TOKEN_COOKIE)?.value;
 
-  if (userJWT?.sub) {
-    await revokeAllRefreshTokens(String(userJWT.sub));
+  // Revoke from the refresh token so logout also works when the access
+  // token has already expired (otherwise the DB row would survive logout).
+  if (refreshToken) {
+    const userId = await getUserIdFromRefreshToken(refreshToken);
+    if (userId) {
+      await revokeAllRefreshTokens(userId);
+    }
   }
 
   const response = NextResponse.json({ ok: true });

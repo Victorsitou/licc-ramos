@@ -1,12 +1,9 @@
-import {
-  attachRotatedCookies,
-  getCurrentUserWithRefresh,
-} from "@/src/lib/auth";
+import { getCurrentUser } from "@/src/lib/auth";
 import { getUserById } from "../../users/users.service";
 import { NextResponse } from "next/dist/server/web/spec-extension/response";
 
 export async function GET() {
-  const { payload: JWTData, rotated } = await getCurrentUserWithRefresh();
+  const JWTData = await getCurrentUser();
 
   if (!JWTData) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -18,11 +15,5 @@ export async function GET() {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
-  const response = NextResponse.json(user);
-
-  if (rotated) {
-    attachRotatedCookies(response, rotated.accessToken, rotated.refreshToken);
-  }
-
-  return response;
+  return NextResponse.json(user);
 }

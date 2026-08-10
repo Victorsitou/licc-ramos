@@ -9,10 +9,10 @@ export async function signAccessToken(payload: JWTPayload) {
     .sign(secret);
 }
 
-export async function signToken(payload: JWTPayload) {
+export async function signPasswordResetToken(payload: JWTPayload) {
   return new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
-    .setExpirationTime("7d")
+    .setExpirationTime("15m")
     .sign(secret);
 }
 

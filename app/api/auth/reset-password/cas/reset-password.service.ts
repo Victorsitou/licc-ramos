@@ -1,6 +1,6 @@
-import { signToken } from "@/src/lib/jwt";
+import { signPasswordResetToken } from "@/src/lib/jwt";
 
 export async function generateToken(userId: string) {
-  const token = await signToken({ sub: userId });
+  const token = await signPasswordResetToken({ sub: userId });
   return token;
 }

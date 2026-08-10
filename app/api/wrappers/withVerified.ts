@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { attachRotatedCookies, getCurrentUserWithRefresh } from "@/src/lib/auth";
+import { getCurrentUser } from "@/src/lib/auth";
 import { getUserById } from "../users/users.service";
 import { User } from "@/src/generated/prisma";
 
@@ -13,7 +13,7 @@ export function withVerified<TParams = any>(
   ) => Promise<Response>,
 ) {
   return async (req: Request, ctx: { params: Promise<TParams> }) => {
-    const { payload: userJWT, rotated } = await getCurrentUserWithRefresh();
+    const userJWT = await getCurrentUser();
 
     if (!userJWT?.sub) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -32,12 +32,6 @@ export function withVerified<TParams = any>(
       );
     }
 
-    const response = await handler(req, user, ctx);
-
-    if (rotated) {
-      attachRotatedCookies(response, rotated.accessToken, rotated.refreshToken);
-    }
-
-    return response;
+    return handler(req, user, ctx);
   };
 }
