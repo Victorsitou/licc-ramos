@@ -61,7 +61,8 @@ export namespace $Enums {
   export const ResourceType: {
   CLASS: 'CLASS',
   WORKSHOP: 'WORKSHOP',
-  AYUDANTIA: 'AYUDANTIA'
+  AYUDANTIA: 'AYUDANTIA',
+  EXTRA: 'EXTRA'
 };
 
 export type ResourceType = (typeof ResourceType)[keyof typeof ResourceType]

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter, useParams, usePathname } from "next/navigation";
+import { useExtraResources } from "../hooks/useExtraResources";
 
 import Clases from "../components/Clases";
 import Button from "../components/Button";
@@ -22,6 +23,9 @@ export default function ClasesPage() {
   const [highlight, setHighlight] = useState(false);
 
   const slug = params?.slug;
+  const extraResources = useExtraResources(
+    typeof slug === "string" ? slug : "",
+  );
 
   useEffect(() => {
     if (!slug || typeof slug !== "string") {
@@ -135,7 +139,7 @@ export default function ClasesPage() {
 
         <p className="mt-4 text-m text-muted-foreground">{ramo.descripcion}</p>
 
-        <div className="flex gap-4 mt-5">
+        <div className="flex flex-wrap gap-4 mt-5">
           <div className="rounded-full border border-border border-2 px-4 py-2 text-sm">
             {ramo.clases} clases
           </div>
@@ -143,6 +147,12 @@ export default function ClasesPage() {
           <Button onClick={() => router.push(`${pathname}/ayudantias`)}>
             Ver Ayudantías
           </Button>
+
+          {extraResources && (
+            <Button onClick={() => router.push(`${pathname}/extras`)}>
+              Ver Material Extra
+            </Button>
+          )}
         </div>
         <div className="mt-5">
           <Clases

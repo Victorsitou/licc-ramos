@@ -3,7 +3,7 @@ import { z } from "zod";
 export const createResourceSchema = z.object({
   title: z.string(),
   key: z.string(),
-  type: z.enum(["CLASS", "WORKSHOP", "AYUDANTIA"]),
+  type: z.enum(["CLASS", "WORKSHOP", "AYUDANTIA", "EXTRA"]),
   slug: z.string().optional(),
   orderIndex: z.number().int().optional(),
 });

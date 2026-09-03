@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import MainLayout from "@/app/components/layout/MainLayout";
 import { uploadFile } from "../services/resources";
+import { ResourceType } from "@/app/services/resources";
 
 import AdminGuard from "../guards/AdminGuard";
 
@@ -10,11 +11,12 @@ const typeToCFFolder = {
   AYUDANTIA: "Ayudantias",
   CLASS: "Clases",
   WORKSHOP: "Talleres",
+  EXTRA: "Extras",
 };
 
 export default function Dashboard() {
   const [slug, setSlug] = useState<string>("");
-  const [type, setType] = useState<"AYUDANTIA" | "WORKSHOP" | "">("");
+  const [type, setType] = useState<ResourceType | "">("");
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -29,7 +31,7 @@ export default function Dashboard() {
     setLoading(true);
 
     try {
-      const res = await uploadFile(file, {
+      await uploadFile(file, {
         title: file.name.replace("_", " "),
         key: `${slug}/${typeToCFFolder[type]}/${file.name}`,
         url: `${slug}/${typeToCFFolder[type]}/${file.name}`,
@@ -72,7 +74,7 @@ export default function Dashboard() {
             <label className="text-sm text-zinc-400">Tipo</label>
             <select
               value={type}
-              onChange={(e) => setType(e.target.value as any)}
+              onChange={(e) => setType(e.target.value as ResourceType | "")}
               className="w-full bg-zinc-800 border border-zinc-700  rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-white/20"
             >
               <option value="" disabled>
@@ -81,6 +83,7 @@ export default function Dashboard() {
               <option value="AYUDANTIA">Ayudantía</option>
               <option value="CLASS">Clase</option>
               <option value="WORKSHOP">Taller</option>
+              <option value="EXTRA">Extra</option>
             </select>
           </div>
 

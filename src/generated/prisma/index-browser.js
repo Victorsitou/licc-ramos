@@ -212,7 +212,8 @@ exports.UserRole = exports.$Enums.UserRole = {
 exports.ResourceType = exports.$Enums.ResourceType = {
   CLASS: 'CLASS',
   WORKSHOP: 'WORKSHOP',
-  AYUDANTIA: 'AYUDANTIA'
+  AYUDANTIA: 'AYUDANTIA',
+  EXTRA: 'EXTRA'
 };
 
 exports.ProblemCollectionType = exports.$Enums.ProblemCollectionType = {

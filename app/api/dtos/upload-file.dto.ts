@@ -5,7 +5,7 @@ export const uploadFileSchema = z.object({
   resourceData: z.object({
     title: z.string(),
     key: z.string(),
-    type: z.enum(["CLASS", "WORKSHOP", "AYUDANTIA"]),
+    type: z.enum(["CLASS", "WORKSHOP", "AYUDANTIA", "EXTRA"]),
     slug: z.string().optional(),
     orderIndex: z.number().int().optional(),
   }),
