@@ -8,6 +8,7 @@ import AdminGuard from "../guards/AdminGuard";
 
 const typeToCFFolder = {
   AYUDANTIA: "Ayudantias",
+  CLASS: "Clases",
   WORKSHOP: "Talleres",
 };
 
@@ -60,6 +61,7 @@ export default function Dashboard() {
                 Selecciona curso
               </option>
               <option value="MAT1610">MAT1610</option>
+              <option value="IIC1253">IIC1253</option>
               <option value="MAT1107">MAT1107</option>
               <option value="MAT1207">MAT1207</option>
               <option value="Talleres">Talleres</option>
@@ -77,6 +79,7 @@ export default function Dashboard() {
                 Selecciona tipo
               </option>
               <option value="AYUDANTIA">Ayudantía</option>
+              <option value="CLASS">Clase</option>
               <option value="WORKSHOP">Taller</option>
             </select>
           </div>

@@ -1,4 +1,5 @@
 import { authedFetch } from "./api";
+import { RamoInterface } from "@/app/utils";
 
 export interface Resource {
   id: string;
@@ -95,4 +96,23 @@ export async function uploadFile(
     }),
   });
   return res.json();
+}
+
+export async function fillClasses(ramo: RamoInterface): Promise<RamoInterface> {
+  if (!ramo.metadata?.has_classes) {
+    const classes = await getResource({
+      slug: ramo.sigla,
+      type: "CLASS",
+    });
+    if (classes.length > 0) {
+      ramo.info_clases = classes.map((c) => ({
+        clase: c.orderIndex + 1,
+        fecha: c.createdAt.split("T")[0],
+        objetivo: c.title,
+        contenido: "",
+      }));
+      ramo.clases = classes.length;
+    }
+  }
+  return ramo;
 }

@@ -85,6 +85,7 @@ export interface RamoInterface {
   info_interrogaciones: InfoInterrogacion[];
   metadata?: {
     has_pdf: boolean;
+    has_classes: boolean;
   };
 }
 

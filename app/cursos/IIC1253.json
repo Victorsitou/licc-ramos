@@ -1,0 +1,30 @@
+{
+  "sigla": "IIC1253",
+  "nombre": "Matemáticas Discretas",
+  "descripcion": "El curso enseña los elementos que permiten formalizar enunciados de problemas diversos de ingeniería usando conceptos de matemática discreta (conjuntos, relaciones, funciones, inducción, etc.) y a modelar este tipo de problemas con estos elementos además, se enseña la teoría de grafos, para representar y resolver algunos de estos tipos de problemas, y la metodología formal de análisis de algoritmos y de complejidad computacional.",
+  "clases": null,
+  "offset": 0,
+  "url": "",
+  "info_clases": [],
+  "info_interrogaciones": [
+    {
+      "interrogacion": 1,
+      "fecha": "2026-08-28",
+      "modulo": null
+    },
+    {
+      "interrogacion": 2,
+      "fecha": "2026-09-25",
+      "modulo": null
+    },
+    {
+      "interrogacion": 3,
+      "fecha": "2026-10-30",
+      "modulo": null
+    }
+  ],
+  "metadata": {
+    "has_pdf": true,
+    "has_classes": false
+  }
+}
