@@ -1,12 +1,14 @@
 import { authedFetch } from "./api";
 import { RamoInterface } from "@/app/utils";
 
+export type ResourceType = "CLASS" | "WORKSHOP" | "AYUDANTIA" | "EXTRA";
+
 export interface Resource {
   id: string;
   title: string;
   url: string; // DEPRECATED
   key: string;
-  type: "CLASS" | "AYUDANTIA" | "WORKSHOP";
+  type: ResourceType;
   slug: string;
   orderIndex: number;
   createdAt: string;
@@ -20,7 +22,7 @@ export async function getResource({
   orderIndex,
 }: {
   slug?: string;
-  type?: "CLASS" | "AYUDANTIA" | "WORKSHOP";
+  type?: ResourceType;
   orderIndex?: number;
 }): Promise<Resource[]> {
   const response = await authedFetch(
@@ -41,7 +43,7 @@ export async function getResource({
 
 export async function getResourceByIndex(
   slug: string,
-  type: "AYUDANTIA" | "WORKSHOP" | "CLASS",
+  type: ResourceType,
   orderIndex: number,
 ): Promise<Resource | null> {
   const resources = await getResource({ slug, type, orderIndex });

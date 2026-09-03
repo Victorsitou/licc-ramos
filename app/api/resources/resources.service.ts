@@ -2,6 +2,8 @@ import { Prisma } from "@/src/generated/prisma";
 import { prisma } from "@/src/lib/prisma";
 import { CreateResourceDto } from "@/app/api/dtos/create-resource.dto";
 
+import { ResourceType } from "@/app/services/resources";
+
 export async function createResource(data: CreateResourceDto) {
   try {
     const lastOrderIndex = await prisma.resource.findFirst({
@@ -22,21 +24,19 @@ export async function createResource(data: CreateResourceDto) {
             : data.orderIndex || 0,
       },
     });
-  } catch {
+  } catch (error) {
+    console.error("Error creating resource:", error);
     throw new Error("Slug already exists");
   }
 }
 
 type Filters = {
   slug?: string | null;
-  type?: "CLASS" | "WORKSHOP" | "AYUDANTIA" | null;
+  type?: ResourceType | null;
   orderIndex?: number | null;
 };
 
-function buildResourceWhere(
-  filters: Filters,
-  forceType?: "CLASS" | "WORKSHOP" | "AYUDANTIA",
-) {
+function buildResourceWhere(filters: Filters, forceType?: ResourceType) {
   return {
     ...(forceType && { type: forceType }),
 

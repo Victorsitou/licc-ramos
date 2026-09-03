@@ -1,6 +1,7 @@
 import { getCurrentUser } from "@/src/lib/auth";
 import { NextResponse } from "next/server";
 import { createResourceSchema } from "../dtos/create-resource.dto";
+import { ResourceType } from "@/app/services/resources";
 
 import {
   createResource,
@@ -47,11 +48,7 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get("slug") || undefined;
-  const type = searchParams.get("type") as
-    | "CLASS"
-    | "WORKSHOP"
-    | "AYUDANTIA"
-    | undefined;
+  const type = searchParams.get("type") as ResourceType | undefined;
   const orderIndex = searchParams.get("orderIndex")
     ? parseInt(searchParams.get("orderIndex")!)
     : undefined;

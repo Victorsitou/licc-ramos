@@ -2,13 +2,15 @@ import { Resource } from "./resources";
 import { baseURL } from "../utils";
 import { cookies } from "next/headers";
 
+import { ResourceType } from "@/app/services/resources";
+
 export async function getResourceServer({
   slug,
   type,
   orderIndex,
 }: {
   slug?: string;
-  type?: "CLASS" | "AYUDANTIA" | "WORKSHOP";
+  type?: ResourceType;
   orderIndex?: number;
 }): Promise<Resource[]> {
   const response = await fetch(

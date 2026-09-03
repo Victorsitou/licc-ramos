@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import MainLayout from "@/app/components/layout/MainLayout";
 import { uploadFile } from "../services/resources";
+import { ResourceType } from "@/app/services/resources";
 
 import AdminGuard from "../guards/AdminGuard";
 
@@ -10,11 +11,20 @@ const typeToCFFolder = {
   AYUDANTIA: "Ayudantias",
   CLASS: "Clases",
   WORKSHOP: "Talleres",
+  EXTRA: "Extras",
 };
+
+const CoursesWithTypes: { slug: string; types: ResourceType[] }[] = [
+  { slug: "Talleres", types: ["WORKSHOP"] },
+  { slug: "MAT1610", types: ["CLASS", "AYUDANTIA"] },
+  { slug: "IIC1253", types: ["CLASS", "AYUDANTIA", "EXTRA"] },
+  { slug: "MAT1107", types: ["CLASS", "AYUDANTIA"] },
+  { slug: "MAT1207", types: ["CLASS", "AYUDANTIA"] },
+];
 
 export default function Dashboard() {
   const [slug, setSlug] = useState<string>("");
-  const [type, setType] = useState<"AYUDANTIA" | "WORKSHOP" | "">("");
+  const [type, setType] = useState<ResourceType | "">("");
   const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -29,7 +39,7 @@ export default function Dashboard() {
     setLoading(true);
 
     try {
-      const res = await uploadFile(file, {
+      await uploadFile(file, {
         title: file.name.replace("_", " "),
         key: `${slug}/${typeToCFFolder[type]}/${file.name}`,
         url: `${slug}/${typeToCFFolder[type]}/${file.name}`,
@@ -60,11 +70,11 @@ export default function Dashboard() {
               <option value="" disabled>
                 Selecciona curso
               </option>
-              <option value="MAT1610">MAT1610</option>
-              <option value="IIC1253">IIC1253</option>
-              <option value="MAT1107">MAT1107</option>
-              <option value="MAT1207">MAT1207</option>
-              <option value="Talleres">Talleres</option>
+              {CoursesWithTypes.map((course) => (
+                <option key={course.slug} value={course.slug}>
+                  {course.slug}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -72,15 +82,20 @@ export default function Dashboard() {
             <label className="text-sm text-zinc-400">Tipo</label>
             <select
               value={type}
-              onChange={(e) => setType(e.target.value as any)}
+              onChange={(e) => setType(e.target.value as ResourceType | "")}
               className="w-full bg-zinc-800 border border-zinc-700  rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-white/20"
             >
               <option value="" disabled>
                 Selecciona tipo
               </option>
-              <option value="AYUDANTIA">Ayudantía</option>
-              <option value="CLASS">Clase</option>
-              <option value="WORKSHOP">Taller</option>
+              {slug &&
+                CoursesWithTypes.find(
+                  (course) => course.slug === slug,
+                )?.types.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
             </select>
           </div>
 
