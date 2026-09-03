@@ -14,6 +14,14 @@ const typeToCFFolder = {
   EXTRA: "Extras",
 };
 
+const CoursesWithTypes: { slug: string; types: ResourceType[] }[] = [
+  { slug: "Talleres", types: ["WORKSHOP"] },
+  { slug: "MAT1610", types: ["CLASS", "AYUDANTIA"] },
+  { slug: "IIC1253", types: ["CLASS", "AYUDANTIA", "EXTRA"] },
+  { slug: "MAT1107", types: ["CLASS", "AYUDANTIA"] },
+  { slug: "MAT1207", types: ["CLASS", "AYUDANTIA"] },
+];
+
 export default function Dashboard() {
   const [slug, setSlug] = useState<string>("");
   const [type, setType] = useState<ResourceType | "">("");
@@ -62,11 +70,11 @@ export default function Dashboard() {
               <option value="" disabled>
                 Selecciona curso
               </option>
-              <option value="MAT1610">MAT1610</option>
-              <option value="IIC1253">IIC1253</option>
-              <option value="MAT1107">MAT1107</option>
-              <option value="MAT1207">MAT1207</option>
-              <option value="Talleres">Talleres</option>
+              {CoursesWithTypes.map((course) => (
+                <option key={course.slug} value={course.slug}>
+                  {course.slug}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -80,10 +88,14 @@ export default function Dashboard() {
               <option value="" disabled>
                 Selecciona tipo
               </option>
-              <option value="AYUDANTIA">Ayudantía</option>
-              <option value="CLASS">Clase</option>
-              <option value="WORKSHOP">Taller</option>
-              <option value="EXTRA">Extra</option>
+              {slug &&
+                CoursesWithTypes.find(
+                  (course) => course.slug === slug,
+                )?.types.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
             </select>
           </div>
 
