@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { InfoClase, RamoInterface } from "@/app/utils";
 import { stringToDate } from "../utils";
+import { fillClasses } from "../services/resources";
 
 import { Chip } from "@mui/material";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
@@ -26,6 +28,16 @@ export default function ClasesHoy({ ramo }: { ramo: RamoInterface }) {
         (c) => c.clase === Math.max(claseRealHoy.clase - ramo.offset, 1),
       ) ?? null)
     : null;
+
+  useEffect(() => {
+    if (!ramo.metadata?.has_classes) {
+      fillClasses(ramo).then((updatedRamo) => {
+        if (updatedRamo) {
+          router.refresh();
+        }
+      });
+    }
+  }, [ramo, router]);
 
   if (!claseHoy) {
     return (
