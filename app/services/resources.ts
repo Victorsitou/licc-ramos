@@ -1,4 +1,5 @@
-import {RamoInterface} from "@/app/utils";
+import { authedFetch } from "./api";
+import { RamoInterface } from "@/app/utils";
 
 export interface Resource {
   id: string;
@@ -22,7 +23,7 @@ export async function getResource({
   type?: "CLASS" | "AYUDANTIA" | "WORKSHOP";
   orderIndex?: number;
 }): Promise<Resource[]> {
-  const response = await fetch(
+  const response = await authedFetch(
     `/api/resources?${new URLSearchParams({
       ...(slug ? { slug } : {}),
       ...(type ? { type } : {}),
@@ -61,7 +62,7 @@ export async function toggleResourceCompletion(
     method = "DELETE";
   }
 
-  const response = await fetch(url, { method });
+  const response = await authedFetch(url, { method });
 
   if (!response.ok) {
     throw new Error("Failed to toggle resource completion");
@@ -70,7 +71,7 @@ export async function toggleResourceCompletion(
 }
 
 export async function getFileURL(key: string) {
-  const res = await fetch(`/api/file-url?key=${encodeURIComponent(key)}`);
+  const res = await authedFetch(`/api/file-url?key=${encodeURIComponent(key)}`);
   if (!res.ok) {
     throw new Error("Failed to get file URL");
   }
@@ -85,7 +86,7 @@ export async function uploadFile(
     "id" | "createdAt" | "orderIndex" | "completed" | "completedAt"
   >,
 ) {
-  const res = await fetch("/api/resources/cf", {
+  const res = await authedFetch("/api/resources/cf", {
     method: "POST",
     body: JSON.stringify({
       content: await file

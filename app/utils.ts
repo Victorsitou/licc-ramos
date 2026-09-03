@@ -1,4 +1,6 @@
 import ramosJson from "./ramos.json";
+import { authedFetch } from "./services/api";
+
 export const ramos: RamoInterface[] = ramosJson;
 
 export const baseURL = process.env.VERCEL_URL
@@ -41,7 +43,7 @@ export interface User {
 
 export function getUser(): Promise<User | null> {
   // TODO: cache this?
-  return fetch("/api/auth/me")
+  return authedFetch("/api/auth/me")
     .then((res) => res.json())
     .then((data) => {
       if (data.error) {

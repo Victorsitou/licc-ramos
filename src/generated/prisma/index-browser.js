@@ -164,6 +164,17 @@ exports.Prisma.ProblemScalarFieldEnum = {
   collectionId: 'collectionId'
 };
 
+exports.Prisma.RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  tokenHash: 'tokenHash',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  lastUsedAt: 'lastUsedAt',
+  expiresAt: 'expiresAt',
+  replacedById: 'replacedById',
+  revoked: 'revoked'
+};
+
 exports.Prisma.ProblemCollectionScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -217,6 +228,7 @@ exports.Prisma.ModelName = {
   UserResourceProgress: 'UserResourceProgress',
   VerificationToken: 'VerificationToken',
   Problem: 'Problem',
+  RefreshToken: 'RefreshToken',
   ProblemCollection: 'ProblemCollection',
   UserProblemProgress: 'UserProblemProgress'
 };

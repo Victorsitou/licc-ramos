@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const user = await getUserById(JWTData.sub!);
+  const user = await getUserById(String(JWTData.sub!));
 
   if (!user) {
     return NextResponse.json({ error: "User not found" }, { status: 404 });

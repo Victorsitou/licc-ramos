@@ -19,7 +19,7 @@ export function withVerified<TParams = any>(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const user = await getUserById(userJWT.sub);
+    const user = await getUserById(String(userJWT.sub));
 
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
